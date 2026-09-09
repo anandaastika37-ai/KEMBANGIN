@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --font-montserrat : "Montserrat", sans-serif;
+    --font-openSans : "Open Sans", sans-serif;
+    --font-poppins : "Poppins", sans-serif;
+    --font-plusJakartaSans : "Plus Jakarta Sans", sans-serif;
+}
+
+body{
+    background-color: black;
+}
+
+.container{
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+
+/* navbar */
+
+.navbar-container{
+    padding: 0 40px;
+    width: 100%;
+    height: 62px;
+    background-color: #0d0d11;
+    border-bottom: #242424 1px solid;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-navigation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.img-logo > img{
+    width: 30px;
+}
+
+.logo-text > h4{
+    font-family: var(--font-plusJakartaSans);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.logo-text > h4 > span{
+    font-family: var(--font-montserrat);
+    color: rgb(0, 140, 255);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.right-side{
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-search{
+    width: 25%;
+    border: 1px solid #424242;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: #242527;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.navbar-search > i {
+    padding: 2px;
+    font-size: .9rem;
+    color: #747272;
+}
+.navbar-search > input{
+    height: 13px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: #fffcfc;
+}
+
+.navbar-navigation{
+    width: 50%;
+}
+
+.navbar-navigation > ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    font-family: var(--font-openSans);
+    font-size: 13px;
+}
+
+.navbar-navigation > ul > li > a{
+    color: #d4d4d4;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 8px 13px;
+    font-weight: 450;
+}
+
+.navbar-navigation > ul > li > a:hover{
+    background-color: #2c2e30;
+    border-radius: 5px;
+}
+
+.navbar-dropdown{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.navbar-dropdown > i {
+    font-size: 8px;
+}
+
+.navbar-btn{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.notif-btn{
+    color: #e0e0e0;
+    font-size: 16px;
+}
+
+.notif-btn:hover{
+    color: #ffffff;
+}
+
+.login-btn {
+  background: linear-gradient(to right, #0369c9, #177efc);
+  padding: 6px 15px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-openSans);
+}
+
+/* navbar end */
+
+/* dropdown */
+.dropdown-container{
+    position: absolute;
+    top: 75px;
+    right: 20px;
+    width: 19%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.dropdown-produk > ul{
+    border-radius: 6px;
+    background-color: #0d0d11;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    padding: 10px;
+    font-family: var(--font-openSans);
+    gap: 10px;
+    list-style: none;
+    border: #242424 1px solid;
+}
+
+.drop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #d4d4d4;
+    width: 150px;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.drop > span{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.drop:hover{
+    background-color: #2c2e30;
+    color: #eeebeb;
+}
+
+.dropdown-profile{
+    border-radius: 6px;
+    background-color: #0d0d11;
+    color: white;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    padding: 10px;
+    font-family: var(--font-openSans);
+    gap: 10px;
+    list-style: none;
+    border: #242424 1px solid;
+    width: 160px;
+}
+
+.username-display{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile{
+    background-color: #0369c9;
+    padding: 5px 10px;
+    border-radius: 100%;
+}
+
+.username > h3{
+    font-family: var(--font-poppins);
+    font-size: 11px;
+    font-weight: 500; 
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.username > h5{
+    font-family: var(--font-poppins);
+    font-size: 9px;
+    font-weight: 500; 
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.premium {
+    background: linear-gradient(to left , blue , rgb(50, 102, 245));
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.premium > span {
+    font-size: 10px;
+    font-weight: 550;
+}
+
+.premium > i {
+    color: rgb(221, 221, 3);
+    font-size: 10px;
+}
+
+.profile-navigation{
+    width: 100%;
+}
+
+.profile-navigation > ul{
+    padding: 10px 0;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.profile-navigation > ul > li{
+    width: 100%;
+}
+
+.profile-navigation > ul > li > a{
+    padding: 5px;
+    border-radius: 5px;
+    font-family: var(--font-openSans);
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  
+}
+
+.profile-navigation > ul > li > a:hover{
+    background-color: #2c2e30;
+    color: #eeebeb;
+}
+
+.logout{
+    width: 100%;
+}
+
+.logout > a{
+    width: 100%;
+    background-color: rgba(167, 9, 9, 0.411);
+    color: rgba(252, 48, 48, 0.952);
+    display: inline-block;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 4px;
+    border-radius: 5px;
+    font-family: var(--font-openSans);
+}
+
+/* dropdown end */
