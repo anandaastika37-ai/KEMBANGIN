@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
-    <link rel="stylesheet" href="../public/css/component.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
-</head>
-<body>
+class SiteNavbar extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
 <div class="container">
     <nav class="navbar-container">
         <div class="logo-navigation">
@@ -121,6 +114,15 @@
         </ul>
     </div>
 </div>
-    <script src="../public/js/component.js"></script>
-</body>
-</html>
+    `;
+    this.highlightActivePage();
+  }
+
+  highlightActivePage() {
+    const currentPage = document.body.dataset.page;
+    const link = this.querySelector(`a[data-page="${currentPage}"]`);
+    if (link) link.classList.add("active");
+  }
+}
+
+customElements.define("site-navbar", SiteNavbar);
