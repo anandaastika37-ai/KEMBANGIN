@@ -14,7 +14,7 @@ class SiteNavbar extends HTMLElement {
         <div class="right-side">
             <div class="navbar-search">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="search" autocomplete="none">
+                <input type="text" id="search" autocomplete="off">
             </div>
             <div class="navbar-navigation">
                 <ul class="desktop-navigation">
