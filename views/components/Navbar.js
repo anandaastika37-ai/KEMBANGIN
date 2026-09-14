@@ -106,7 +106,7 @@ class SiteNavbar extends HTMLElement {
     </div>
     <div class="dropdown-search">
         <ul class="hiddenSearch">
-            <span>Find...</span>
+            <span>Pages</span>
             <li><a href=""><i class="fa-regular fa-file"></i> mencari halaman</a></li>
             <li><a href=""><i class="fa-regular fa-file"></i> mencari halaman</a></li>
             <li><a href=""><i class="fa-regular fa-file"></i> mencari halaman</a></li>
