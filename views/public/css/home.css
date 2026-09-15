@@ -13,6 +13,71 @@
     --font-poppins : "Poppins", sans-serif;
     --font-plusJakartaSans : "Plus Jakarta Sans", sans-serif;
     --font-quicksand : "Quicksand", sans-serif;
+ 
+    /* === Colors: Neutrals === */
+    --color-black: black;
+    --color-white: white;
+    --color-border-gray: gray;
+ 
+    /* === Colors: Backgrounds & Surfaces === */
+    --color-bg-card: #00000ad7;
+    --color-bg-section: #020513d2;
+    --color-border-card: #13153a;
+    --color-border-dark: rgb(12, 9, 39);
+    --color-border-product: rgb(21, 18, 63);
+ 
+    /* === Colors: Hero Gradient === */
+    --color-hero-gradient-start: #01030f;
+    --color-hero-gradient-end: #071d50;
+    --color-accent-gradient-start: #2054e2;
+    --color-accent-gradient-end: #00007e;
+ 
+    /* === Colors: Tema Badge === */
+    --color-tema-bg: #5454ff49;
+    --color-tema-text: #a0a0fa;
+ 
+    /* === Colors: Text === */
+    --color-text-primary: #dddddd;
+    --color-text-secondary: #b8b7b7;
+    --color-text-muted: #b4b4b4;
+    --color-text-colab: #d4d4d4;
+    --color-text-heading-muted: #b9b8b8;
+    --color-text-body-muted: #919191;
+    --color-text-title: #c0bfbf;
+    --color-heading-product: #bbb8b8;
+    --color-text-product: #bdbdbd;
+    --color-heading-about: #cccbcb;
+    --color-text-about: #838282;
+    --color-text-why: #646464;
+    --color-analisa-text: #cccccc;
+    --color-analisa-heading: #dadada;
+    --color-heading-product-list: #e0e0e0;
+    --color-text-product-list: #a09f9f;
+    --color-product-analisa-text: #a7a7a7;
+    --color-product-analisa-heading: #b9b9b9;
+ 
+    /* === Colors: Buttons === */
+    --color-btn-primary-start: #0c2c83e1;
+    --color-btn-primary-end: #02028b9f;
+    --color-btn-primary-text: #cacaca;
+    --color-btn-secondary-text: #3a5bc7;
+    --color-btn-secondary-bg: #0c146694;
+ 
+    /* === Colors: Borders === */
+    --color-border-secondary: #585858;
+    --color-border-why: #504f4f;
+    --color-analisa-border: #0b044d;
+ 
+    /* === Colors: Links & Icons === */
+    --color-link-primary: #0808f8;
+    --color-link-primary-border: rgb(15, 15, 252);
+    --color-link-product: #3737e2;
+    --color-icon-primary: #0e0ec4;
+    --color-icon-bg: #03038534;
+    --color-icon-accent: #2525da;
+ 
+    /* === Colors: Backgrounds (misc) === */
+    --color-analisa-bg: #03033542;
 }
 
 body{
@@ -547,8 +612,47 @@ body{
     color: white;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     padding: 10px 30px;
     justify-content: center;
     gap: 20px;
+}
+
+.event{
+    border: 1px solid gray;
+    padding: 10px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.box-event{
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box-event > img{
+    width: 630px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.ket > h3{
+    font-family: var(--font-montserrat);
+    font-size: 1.5rem;
+}
+
+.ket > p{
+    width: 630px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
 }
