@@ -1,0 +1,422 @@
+[
+  {
+    "id": 1,
+    "title": "Memahami Dasar Ekonomi: Mengapa Ekonomi Penting dalam Kehidupan Sehari-hari?",
+    "slug": "memahami-dasar-ekonomi-dalam-kehidupan-sehari-hari",
+    "excerpt": "Ekonomi bukan hanya tentang uang, tetapi juga tentang bagaimana manusia mengambil keputusan dalam menggunakan sumber daya yang terbatas.",
+    "content": "<p>Ekonomi merupakan bagian yang tidak terpisahkan dari kehidupan sehari-hari. Setiap keputusan yang kita ambil, mulai dari membeli makanan hingga menentukan apakah akan menabung atau berinvestasi, memiliki hubungan dengan konsep ekonomi.</p><p>Pada dasarnya, ilmu ekonomi mempelajari bagaimana manusia menggunakan sumber daya yang terbatas untuk memenuhi kebutuhan yang tidak terbatas. Karena sumber daya memiliki keterbatasan, manusia harus menentukan prioritas.</p><p>Memahami dasar ekonomi dapat membantu seseorang mengambil keputusan keuangan dengan lebih bijak. Pengetahuan ekonomi juga membantu kita memahami berbagai fenomena seperti kenaikan harga, pengangguran, pertumbuhan ekonomi, dan perubahan daya beli masyarakat.</p>",
+    "category": "Ekonomi",
+    "tags": ["Ekonomi Dasar", "Keuangan", "Edukasi"],
+    "author": {
+      "name": "Alexander Morgan",
+      "role": "Economic Writer"
+    },
+    "image": "/images/articles/dasar-ekonomi.jpg",
+    "status": "public",
+    "views": 12540,
+    "likes": 842,
+    "publishedAt": "2026-01-12T08:30:00+08:00",
+    "updatedAt": "2026-01-15T10:20:00+08:00",
+    "readingTime": 5,
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Inflasi dan Dampaknya terhadap Daya Beli Masyarakat",
+    "slug": "inflasi-dan-dampaknya-terhadap-daya-beli-masyarakat",
+    "excerpt": "Inflasi dapat memengaruhi harga barang, biaya hidup, tabungan, dan kemampuan masyarakat dalam memenuhi kebutuhan.",
+    "content": "<p>Inflasi adalah kondisi ketika tingkat harga barang dan jasa secara umum mengalami kenaikan dalam suatu periode. Ketika inflasi terjadi, nilai uang secara riil dapat mengalami penurunan sehingga jumlah barang yang dapat dibeli dengan uang yang sama menjadi lebih sedikit.</p><p>Salah satu dampak yang paling mudah dirasakan adalah meningkatnya biaya kebutuhan sehari-hari. Harga makanan, transportasi, tempat tinggal, dan berbagai kebutuhan lainnya dapat mengalami perubahan.</p><p>Untuk menghadapi perubahan daya beli, masyarakat dapat melakukan pengelolaan keuangan dengan membuat anggaran, mengurangi pengeluaran yang tidak diperlukan, serta mempertimbangkan instrumen penyimpanan nilai yang sesuai dengan tujuan finansial.</p>",
+    "category": "Ekonomi",
+    "tags": ["Inflasi", "Daya Beli", "Keuangan"],
+    "author": {
+      "name": "Sophia Bennett",
+      "role": "Economic Analyst"
+    },
+    "image": "/images/articles/inflasi.jpg",
+    "status": "public",
+    "views": 18920,
+    "likes": 1204,
+    "publishedAt": "2026-01-18T09:00:00+08:00",
+    "updatedAt": "2026-01-19T11:15:00+08:00",
+    "readingTime": 6,
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "Mengapa Harga Barang Bisa Naik dan Turun?",
+    "slug": "mengapa-harga-barang-bisa-naik-dan-turun",
+    "excerpt": "Perubahan harga dipengaruhi oleh berbagai faktor, termasuk permintaan, penawaran, biaya produksi, dan kondisi pasar.",
+    "content": "<p>Harga barang di pasar tidak selalu tetap. Perubahan harga merupakan bagian dari mekanisme pasar yang dipengaruhi oleh interaksi antara permintaan dan penawaran.</p><p>Ketika permintaan terhadap suatu barang meningkat sementara jumlah barang yang tersedia terbatas, harga cenderung mengalami kenaikan. Sebaliknya, ketika persediaan meningkat sementara permintaan tidak berubah secara signifikan, harga dapat mengalami penurunan.</p><p>Selain permintaan dan penawaran, biaya produksi, distribusi, nilai tukar, kebijakan pemerintah, dan kondisi global juga dapat memengaruhi harga suatu produk.</p>",
+    "category": "Ekonomi",
+    "tags": ["Harga", "Permintaan", "Penawaran", "Pasar"],
+    "author": {
+      "name": "Daniel Carter",
+      "role": "Market Researcher"
+    },
+    "image": "/images/articles/harga-barang.jpg",
+    "status": "public",
+    "views": 15430,
+    "likes": 978,
+    "publishedAt": "2026-01-25T10:00:00+08:00",
+    "updatedAt": "2026-01-27T13:30:00+08:00",
+    "readingTime": 5,
+    "featured": false
+  },
+  {
+    "id": 4,
+    "title": "Peran UMKM dalam Mendorong Pertumbuhan Ekonomi",
+    "slug": "peran-umkm-dalam-mendorong-pertumbuhan-ekonomi",
+    "excerpt": "UMKM menjadi salah satu bagian penting dalam aktivitas ekonomi karena menciptakan lapangan kerja dan menggerakkan aktivitas bisnis lokal.",
+    "content": "<p>Usaha Mikro, Kecil, dan Menengah atau UMKM memiliki peran penting dalam perekonomian. Keberadaan UMKM tidak hanya menciptakan produk dan jasa, tetapi juga membuka peluang kerja bagi masyarakat.</p><p>UMKM dapat membantu menggerakkan perekonomian daerah melalui aktivitas produksi, perdagangan, dan konsumsi. Bisnis kecil yang berkembang juga dapat menciptakan rantai ekonomi baru bagi pemasok, distributor, dan penyedia jasa.</p><p>Digitalisasi memberikan peluang tambahan bagi UMKM untuk memperluas pasar. Melalui platform digital, pelaku usaha dapat menjangkau pelanggan di luar wilayah operasional mereka.</p>",
+    "category": "Bisnis",
+    "tags": ["UMKM", "Bisnis", "Ekonomi Lokal"],
+    "author": {
+      "name": "Emma Richardson",
+      "role": "Business Writer"
+    },
+    "image": "/images/articles/umkm.jpg",
+    "status": "public",
+    "views": 21350,
+    "likes": 1560,
+    "publishedAt": "2026-02-02T08:45:00+08:00",
+    "updatedAt": "2026-02-05T09:30:00+08:00",
+    "readingTime": 7,
+    "featured": true
+  },
+  {
+    "id": 5,
+    "title": "Ekonomi Digital dan Perubahan Cara Masyarakat Berbelanja",
+    "slug": "ekonomi-digital-dan-perubahan-cara-masyarakat-berbelanja",
+    "excerpt": "Perkembangan teknologi digital mengubah cara konsumen mencari informasi, membandingkan produk, dan melakukan transaksi.",
+    "content": "<p>Perkembangan internet telah mengubah berbagai aktivitas ekonomi. Salah satu perubahan yang paling terlihat adalah cara masyarakat melakukan pembelian barang dan jasa.</p><p>Konsumen kini dapat mencari informasi produk, membandingkan harga, membaca ulasan, dan melakukan transaksi melalui perangkat digital. Perubahan tersebut menciptakan peluang baru bagi pelaku bisnis.</p><p>Ekonomi digital juga mendorong perusahaan untuk meningkatkan pengalaman pelanggan. Kecepatan layanan, kemudahan pembayaran, keamanan transaksi, dan kualitas informasi menjadi bagian penting dalam persaingan bisnis digital.</p>",
+    "category": "Teknologi",
+    "tags": ["Ekonomi Digital", "E-Commerce", "Teknologi"],
+    "author": {
+      "name": "Michael Anderson",
+      "role": "Technology Economist"
+    },
+    "image": "/images/articles/ekonomi-digital.jpg",
+    "status": "public",
+    "views": 17680,
+    "likes": 1125,
+    "publishedAt": "2026-02-08T09:15:00+08:00",
+    "updatedAt": "2026-02-10T14:00:00+08:00",
+    "readingTime": 6,
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "Apa Itu Produk Domestik Bruto dan Mengapa Penting?",
+    "slug": "apa-itu-produk-domestik-bruto-dan-mengapa-penting",
+    "excerpt": "PDB merupakan salah satu indikator yang digunakan untuk melihat nilai aktivitas produksi barang dan jasa dalam suatu perekonomian.",
+    "content": "<p>Produk Domestik Bruto atau PDB merupakan salah satu indikator ekonomi yang sering digunakan untuk menggambarkan aktivitas ekonomi suatu negara.</p><p>PDB menghitung nilai barang dan jasa akhir yang diproduksi dalam suatu wilayah selama periode tertentu. Perubahan PDB dapat memberikan gambaran mengenai perkembangan aktivitas ekonomi.</p><p>Meskipun penting, PDB bukan satu-satunya ukuran kesejahteraan masyarakat. Kondisi distribusi pendapatan, kualitas pendidikan, kesehatan, dan berbagai faktor sosial juga perlu diperhatikan ketika melihat kondisi ekonomi secara lebih luas.</p>",
+    "category": "Ekonomi",
+    "tags": ["PDB", "Pertumbuhan Ekonomi", "Ekonomi Makro"],
+    "author": {
+      "name": "James Wilson",
+      "role": "Macroeconomics Writer"
+    },
+    "image": "/images/articles/pdb.jpg",
+    "status": "public",
+    "views": 9320,
+    "likes": 634,
+    "publishedAt": "2026-02-15T08:00:00+08:00",
+    "updatedAt": "2026-02-16T10:00:00+08:00",
+    "readingTime": 7,
+    "featured": false
+  },
+  {
+    "id": 7,
+    "title": "Mengenal Kebijakan Moneter dan Pengaruhnya terhadap Ekonomi",
+    "slug": "mengenal-kebijakan-moneter-dan-pengaruhnya-terhadap-ekonomi",
+    "excerpt": "Kebijakan moneter digunakan otoritas moneter untuk memengaruhi kondisi moneter dan stabilitas ekonomi.",
+    "content": "<p>Kebijakan moneter berkaitan dengan pengelolaan kondisi moneter dalam perekonomian. Salah satu instrumen yang sering dibahas adalah suku bunga kebijakan.</p><p>Perubahan suku bunga dapat memengaruhi keputusan rumah tangga dan perusahaan dalam meminjam, menabung, maupun melakukan investasi. Dampaknya kemudian dapat memengaruhi aktivitas ekonomi secara lebih luas.</p><p>Kebijakan moneter juga berkaitan dengan upaya menjaga stabilitas harga dan kondisi sistem keuangan. Efek kebijakan dapat berbeda tergantung kondisi ekonomi pada saat kebijakan diterapkan.</p>",
+    "category": "Ekonomi",
+    "tags": ["Kebijakan Moneter", "Suku Bunga", "Bank Sentral"],
+    "author": {
+      "name": "Robert Thompson",
+      "role": "Economic Researcher"
+    },
+    "image": "/images/articles/kebijakan-moneter.jpg",
+    "status": "public",
+    "views": 8450,
+    "likes": 520,
+    "publishedAt": "2026-02-21T10:30:00+08:00",
+    "updatedAt": "2026-02-23T12:00:00+08:00",
+    "readingTime": 8,
+    "featured": false
+  },
+  {
+    "id": 8,
+    "title": "Kebijakan Fiskal: Bagaimana Pemerintah Memengaruhi Perekonomian?",
+    "slug": "kebijakan-fiskal-dan-pengaruhnya-terhadap-perekonomian",
+    "excerpt": "Kebijakan fiskal berkaitan dengan penerimaan dan pengeluaran pemerintah serta pengaruhnya terhadap aktivitas ekonomi.",
+    "content": "<p>Kebijakan fiskal merupakan kebijakan yang berkaitan dengan keputusan pemerintah mengenai pendapatan dan pengeluaran negara.</p><p>Pemerintah dapat menggunakan anggaran untuk membiayai pembangunan infrastruktur, pendidikan, kesehatan, pelayanan publik, dan berbagai program lainnya.</p><p>Perubahan belanja pemerintah maupun kebijakan perpajakan dapat memberikan pengaruh terhadap aktivitas ekonomi. Namun, dampaknya perlu dilihat berdasarkan kondisi ekonomi dan tujuan kebijakan yang diterapkan.</p>",
+    "category": "Ekonomi",
+    "tags": ["Kebijakan Fiskal", "Pajak", "APBN"],
+    "author": {
+      "name": "Olivia Harris",
+      "role": "Public Policy Writer"
+    },
+    "image": "/images/articles/kebijakan-fiskal.jpg",
+    "status": "public",
+    "views": 7680,
+    "likes": 455,
+    "publishedAt": "2026-02-28T09:45:00+08:00",
+    "updatedAt": "2026-03-01T11:00:00+08:00",
+    "readingTime": 7,
+    "featured": false
+  },
+  {
+    "id": 9,
+    "title": "Mengapa Pengangguran Menjadi Masalah Ekonomi?",
+    "slug": "mengapa-pengangguran-menjadi-masalah-ekonomi",
+    "excerpt": "Pengangguran tidak hanya berkaitan dengan individu yang belum bekerja, tetapi juga berhubungan dengan produktivitas dan kondisi perekonomian.",
+    "content": "<p>Pengangguran merupakan salah satu indikator penting dalam melihat kondisi pasar tenaga kerja. Ketika seseorang yang ingin bekerja belum mendapatkan pekerjaan, terdapat sumber daya tenaga kerja yang belum digunakan secara optimal.</p><p>Tingkat pengangguran dapat dipengaruhi oleh berbagai faktor seperti perubahan struktur industri, perkembangan teknologi, kondisi ekonomi, keterampilan tenaga kerja, dan perubahan permintaan terhadap jenis pekerjaan tertentu.</p><p>Peningkatan keterampilan, pendidikan, penciptaan lapangan kerja, dan penyesuaian antara kebutuhan industri dengan kemampuan tenaga kerja merupakan beberapa aspek yang sering dibahas dalam mengatasi masalah pasar tenaga kerja.</p>",
+    "category": "Ekonomi",
+    "tags": ["Pengangguran", "Tenaga Kerja", "Ekonomi"],
+    "author": {
+      "name": "William Turner",
+      "role": "Labor Economist"
+    },
+    "image": "/images/articles/pengangguran.jpg",
+    "status": "public",
+    "views": 11280,
+    "likes": 720,
+    "publishedAt": "2026-03-05T08:30:00+08:00",
+    "updatedAt": "2026-03-07T09:20:00+08:00",
+    "readingTime": 6,
+    "featured": false
+  },
+  {
+    "id": 10,
+    "title": "Perdagangan Internasional dan Hubungannya dengan Ekonomi Negara",
+    "slug": "perdagangan-internasional-dan-ekonomi-negara",
+    "excerpt": "Perdagangan internasional memungkinkan negara melakukan pertukaran barang dan jasa dengan negara lain.",
+    "content": "<p>Perdagangan internasional merupakan aktivitas pertukaran barang dan jasa antarnegara. Setiap negara memiliki sumber daya, teknologi, tenaga kerja, dan kondisi produksi yang berbeda.</p><p>Melalui perdagangan internasional, suatu negara dapat memperoleh barang yang sulit atau mahal untuk diproduksi sendiri. Di sisi lain, perusahaan dapat memperoleh pasar yang lebih luas untuk produk mereka.</p><p>Perdagangan internasional juga menghadirkan tantangan seperti persaingan global, perubahan nilai tukar, ketergantungan terhadap pasar luar negeri, serta perubahan kondisi ekonomi dunia.</p>",
+    "category": "Ekonomi",
+    "tags": ["Perdagangan", "Ekspor", "Impor", "Ekonomi Global"],
+    "author": {
+      "name": "Lucas Martin",
+      "role": "Global Economy Writer"
+    },
+    "image": "/images/articles/perdagangan-internasional.jpg",
+    "status": "public",
+    "views": 10350,
+    "likes": 681,
+    "publishedAt": "2026-03-12T10:00:00+08:00",
+    "updatedAt": "2026-03-14T13:10:00+08:00",
+    "readingTime": 7,
+    "featured": false
+  },
+  {
+    "id": 11,
+    "title": "Ekonomi Kreatif dan Peluang Bisnis di Era Digital",
+    "slug": "ekonomi-kreatif-dan-peluang-bisnis-di-era-digital",
+    "excerpt": "Ekonomi kreatif membuka peluang bagi individu dan bisnis untuk menghasilkan nilai melalui ide, kreativitas, dan inovasi.",
+    "content": "<p>Ekonomi kreatif menempatkan kreativitas, ide, pengetahuan, dan inovasi sebagai bagian penting dalam menghasilkan nilai ekonomi.</p><p>Perkembangan teknologi digital memberikan ruang yang lebih luas bagi pelaku ekonomi kreatif. Desainer, pembuat konten, pengembang aplikasi, fotografer, penulis, musisi, dan berbagai profesi kreatif dapat memanfaatkan platform digital untuk menjangkau pasar.</p><p>Namun, kreativitas perlu didukung oleh kemampuan bisnis seperti pemasaran, pengelolaan keuangan, pengembangan produk, dan pemahaman terhadap kebutuhan konsumen.</p>",
+    "category": "Bisnis",
+    "tags": ["Ekonomi Kreatif", "Bisnis Digital", "Kreativitas"],
+    "author": {
+      "name": "Emily Cooper",
+      "role": "Creative Economy Writer"
+    },
+    "image": "/images/articles/ekonomi-kreatif.jpg",
+    "status": "public",
+    "views": 14260,
+    "likes": 930,
+    "publishedAt": "2026-03-19T09:00:00+08:00",
+    "updatedAt": "2026-03-20T15:30:00+08:00",
+    "readingTime": 6,
+    "featured": true
+  },
+  {
+    "id": 12,
+    "title": "Mengapa Literasi Keuangan Penting bagi Generasi Muda?",
+    "slug": "mengapa-literasi-keuangan-penting-bagi-generasi-muda",
+    "excerpt": "Literasi keuangan membantu seseorang memahami cara mengelola pendapatan, pengeluaran, tabungan, dan risiko keuangan.",
+    "content": "<p>Literasi keuangan merupakan kemampuan untuk memahami dan menggunakan pengetahuan keuangan dalam mengambil keputusan. Bagi generasi muda, kemampuan ini menjadi semakin relevan karena mereka mulai berhadapan dengan berbagai pilihan finansial.</p><p>Pengelolaan keuangan dapat dimulai dari hal sederhana seperti membuat anggaran bulanan, mencatat pengeluaran, membangun dana darurat, dan memahami risiko sebelum menggunakan produk keuangan.</p><p>Literasi keuangan bukan berarti harus memahami semua produk investasi. Hal yang lebih mendasar adalah mampu memahami kondisi keuangan pribadi dan mengambil keputusan berdasarkan informasi yang memadai.</p>",
+    "category": "Keuangan",
+    "tags": ["Literasi Keuangan", "Generasi Muda", "Keuangan Pribadi"],
+    "author": {
+      "name": "Sophia Bennett",
+      "role": "Financial Writer"
+    },
+    "image": "/images/articles/literasi-keuangan.jpg",
+    "status": "public",
+    "views": 23840,
+    "likes": 1840,
+    "publishedAt": "2026-03-25T08:15:00+08:00",
+    "updatedAt": "2026-03-27T10:45:00+08:00",
+    "readingTime": 6,
+    "featured": true
+  },
+  {
+    "id": 13,
+    "title": "Investasi dan Hubungannya dengan Pertumbuhan Ekonomi",
+    "slug": "investasi-dan-hubungannya-dengan-pertumbuhan-ekonomi",
+    "excerpt": "Investasi dapat membantu meningkatkan kapasitas produksi dan menjadi salah satu bagian penting dalam aktivitas ekonomi.",
+    "content": "<p>Investasi dalam konteks ekonomi dapat berkaitan dengan penambahan modal yang digunakan untuk menghasilkan barang dan jasa di masa depan. Perusahaan dapat melakukan investasi dengan membeli mesin, membangun fasilitas produksi, atau mengembangkan teknologi.</p><p>Investasi juga dapat berkaitan dengan pengembangan sumber daya manusia melalui pendidikan dan pelatihan. Peningkatan kapasitas tersebut dapat mendukung produktivitas dalam jangka panjang.</p><p>Bagi perekonomian, investasi dapat berhubungan dengan peningkatan kapasitas produksi, penciptaan lapangan kerja, dan perkembangan sektor usaha.</p>",
+    "category": "Ekonomi",
+    "tags": ["Investasi", "Produktivitas", "Pertumbuhan"],
+    "author": {
+      "name": "Henry Walker",
+      "role": "Investment Writer"
+    },
+    "image": "/images/articles/investasi.jpg",
+    "status": "public",
+    "views": 13580,
+    "likes": 870,
+    "publishedAt": "2026-04-02T10:30:00+08:00",
+    "updatedAt": "2026-04-04T12:00:00+08:00",
+    "readingTime": 7,
+    "featured": false
+  },
+  {
+    "id": 14,
+    "title": "Peran Teknologi dalam Meningkatkan Produktivitas Bisnis",
+    "slug": "peran-teknologi-dalam-meningkatkan-produktivitas-bisnis",
+    "excerpt": "Teknologi dapat membantu perusahaan mengotomatisasi proses, mengolah data, dan meningkatkan efisiensi operasional.",
+    "content": "<p>Teknologi telah menjadi bagian penting dalam kegiatan bisnis modern. Perusahaan dapat menggunakan teknologi untuk mengelola data, berkomunikasi dengan pelanggan, mengotomatisasi pekerjaan, dan memantau proses bisnis.</p><p>Penggunaan teknologi yang tepat dapat membantu mengurangi pekerjaan berulang dan memberikan lebih banyak waktu bagi karyawan untuk mengerjakan aktivitas yang membutuhkan kreativitas dan pengambilan keputusan.</p><p>Namun, digitalisasi bukan sekadar membeli perangkat lunak. Perusahaan perlu memahami masalah yang ingin diselesaikan dan memastikan teknologi sesuai dengan kebutuhan bisnis.</p>",
+    "category": "Teknologi",
+    "tags": ["Teknologi", "Produktivitas", "Digitalisasi"],
+    "author": {
+      "name": "Ethan Brooks",
+      "role": "Technology Business Writer"
+    },
+    "image": "/images/articles/produktivitas.jpg",
+    "status": "public",
+    "views": 11940,
+    "likes": 755,
+    "publishedAt": "2026-04-09T09:20:00+08:00",
+    "updatedAt": "2026-04-11T11:40:00+08:00",
+    "readingTime": 6,
+    "featured": false
+  },
+  {
+    "id": 15,
+    "title": "Supply Chain dan Mengapa Rantai Pasok Penting bagi Bisnis",
+    "slug": "supply-chain-dan-pentingnya-rantai-pasok-bagi-bisnis",
+    "excerpt": "Rantai pasok menghubungkan berbagai aktivitas mulai dari bahan baku hingga produk sampai kepada konsumen.",
+    "content": "<p>Supply chain atau rantai pasok merupakan jaringan aktivitas yang terlibat dalam proses menghasilkan dan menyalurkan produk kepada konsumen.</p><p>Rantai pasok dapat mencakup pemasok bahan baku, produsen, distributor, perusahaan logistik, hingga toko atau platform yang menjual produk.</p><p>Gangguan pada salah satu bagian rantai pasok dapat memengaruhi ketersediaan produk dan biaya operasional. Karena itu, perusahaan perlu memahami hubungan antarbagian dalam rantai pasok dan mengelola risiko yang mungkin muncul.</p>",
+    "category": "Bisnis",
+    "tags": ["Supply Chain", "Logistik", "Bisnis"],
+    "author": {
+      "name": "Noah Evans",
+      "role": "Business Analyst"
+    },
+    "image": "/images/articles/supply-chain.jpg",
+    "status": "public",
+    "views": 8640,
+    "likes": 490,
+    "publishedAt": "2026-04-16T08:50:00+08:00",
+    "updatedAt": "2026-04-18T10:30:00+08:00",
+    "readingTime": 7,
+    "featured": false
+  },
+  {
+    "id": 16,
+    "title": "Ekonomi Berkelanjutan dan Tantangan Bisnis Masa Depan",
+    "slug": "ekonomi-berkelanjutan-dan-tantangan-bisnis-masa-depan",
+    "excerpt": "Konsep ekonomi berkelanjutan mendorong aktivitas ekonomi yang mempertimbangkan dampak jangka panjang terhadap lingkungan dan masyarakat.",
+    "content": "<p>Ekonomi berkelanjutan berusaha melihat aktivitas ekonomi tidak hanya dari sisi keuntungan jangka pendek, tetapi juga dari dampak jangka panjang terhadap lingkungan dan masyarakat.</p><p>Perusahaan mulai menghadapi kebutuhan untuk mempertimbangkan penggunaan energi, bahan baku, limbah, dan dampak sosial dalam aktivitas bisnis mereka.</p><p>Perubahan tersebut dapat menciptakan tantangan sekaligus peluang. Bisnis dapat mencari cara baru untuk menggunakan sumber daya secara lebih efisien dan mengembangkan produk yang sesuai dengan perubahan kebutuhan konsumen.</p>",
+    "category": "Ekonomi",
+    "tags": ["Ekonomi Berkelanjutan", "Lingkungan", "Bisnis"],
+    "author": {
+      "name": "Grace Mitchell",
+      "role": "Sustainability Writer"
+    },
+    "image": "/images/articles/ekonomi-berkelanjutan.jpg",
+    "status": "public",
+    "views": 9870,
+    "likes": 610,
+    "publishedAt": "2026-04-23T10:00:00+08:00",
+    "updatedAt": "2026-04-25T14:20:00+08:00",
+    "readingTime": 8,
+    "featured": false
+  },
+  {
+    "id": 17,
+    "title": "Ekonomi Kreatif Lokal: Dari Ide Sederhana Menjadi Produk Bernilai",
+    "slug": "ekonomi-kreatif-lokal-dari-ide-menjadi-produk-bernilai",
+    "excerpt": "Kreativitas lokal dapat menjadi peluang ekonomi ketika dikembangkan menjadi produk atau layanan yang memiliki nilai bagi pasar.",
+    "content": "<p>Banyak produk ekonomi kreatif bermula dari ide sederhana yang berasal dari budaya, kebutuhan masyarakat, atau pengalaman sehari-hari.</p><p>Nilai sebuah produk tidak hanya ditentukan oleh bahan yang digunakan. Identitas merek, desain, cerita produk, kualitas layanan, dan kemampuan menjangkau konsumen juga dapat memengaruhi nilai yang dirasakan pelanggan.</p><p>Pelaku usaha lokal dapat memanfaatkan teknologi digital untuk memperkenalkan produk kepada pasar yang lebih luas sekaligus membangun komunitas pelanggan.</p>",
+    "category": "Bisnis",
+    "tags": ["Ekonomi Kreatif", "Produk Lokal", "UMKM"],
+    "author": {
+      "name": "Charlotte Adams",
+      "role": "Creative Business Writer"
+    },
+    "image": "/images/articles/produk-lokal.jpg",
+    "status": "public",
+    "views": 10850,
+    "likes": 735,
+    "publishedAt": "2026-05-01T09:30:00+08:00",
+    "updatedAt": "2026-05-03T12:15:00+08:00",
+    "readingTime": 6,
+    "featured": false
+  },
+  {
+    "id": 18,
+    "title": "Mengenal Konsep Permintaan dan Penawaran dalam Bisnis",
+    "slug": "mengenal-konsep-permintaan-dan-penawaran-dalam-bisnis",
+    "excerpt": "Permintaan dan penawaran merupakan konsep dasar ekonomi yang membantu menjelaskan bagaimana pasar menentukan harga dan jumlah barang.",
+    "content": "<p>Permintaan menggambarkan jumlah barang atau jasa yang ingin dibeli konsumen pada berbagai tingkat harga. Sementara itu, penawaran menggambarkan jumlah barang atau jasa yang ingin dijual produsen.</p><p>Interaksi antara permintaan dan penawaran menjadi salah satu dasar dalam pembentukan harga pasar. Perubahan preferensi konsumen, pendapatan, biaya produksi, jumlah produsen, dan berbagai faktor lain dapat mengubah kondisi pasar.</p><p>Bagi pelaku bisnis, memahami permintaan dapat membantu dalam menentukan produk, harga, jumlah produksi, dan strategi pemasaran.</p>",
+    "category": "Ekonomi",
+    "tags": ["Permintaan", "Penawaran", "Bisnis", "Ekonomi Dasar"],
+    "author": {
+      "name": "George Foster",
+      "role": "Economics Educator"
+    },
+    "image": "/images/articles/permintaan-penawaran.jpg",
+    "status": "public",
+    "views": 12670,
+    "likes": 805,
+    "publishedAt": "2026-05-08T08:00:00+08:00",
+    "updatedAt": "2026-05-09T09:45:00+08:00",
+    "readingTime": 6,
+    "featured": false
+  },
+  {
+    "id": 19,
+    "title": "Bagaimana Nilai Tukar Memengaruhi Bisnis dan Harga Produk?",
+    "slug": "bagaimana-nilai-tukar-memengaruhi-bisnis-dan-harga-produk",
+    "excerpt": "Perubahan nilai tukar dapat memengaruhi biaya impor, pendapatan eksportir, dan harga berbagai produk yang memiliki komponen dari luar negeri.",
+    "content": "<p>Nilai tukar menunjukkan harga suatu mata uang jika dibandingkan dengan mata uang lainnya. Perubahan nilai tukar dapat memberikan dampak berbeda bagi berbagai jenis bisnis.</p><p>Perusahaan yang menggunakan bahan baku impor dapat menghadapi perubahan biaya ketika nilai tukar bergerak. Sementara itu, perusahaan yang melakukan ekspor dapat mengalami perubahan nilai penerimaan ketika pendapatan dalam mata uang asing dikonversikan.</p><p>Karena itu, bisnis yang memiliki aktivitas lintas negara perlu mempertimbangkan risiko nilai tukar dalam perencanaan keuangan dan operasional.</p>",
+    "category": "Ekonomi",
+    "tags": ["Nilai Tukar", "Ekspor", "Impor", "Bisnis"],
+    "author": {
+      "name": "Benjamin Clark",
+      "role": "Global Market Analyst"
+    },
+    "image": "/images/articles/nilai-tukar.jpg",
+    "status": "public",
+    "views": 9140,
+    "likes": 570,
+    "publishedAt": "2026-05-15T10:15:00+08:00",
+    "updatedAt": "2026-05-17T13:00:00+08:00",
+    "readingTime": 7,
+    "featured": false
+  },
+  {
+    "id": 20,
+    "title": "Strategi Membangun Bisnis di Era Digital",
+    "slug": "strategi-membangun-bisnis-di-era-digital",
+    "excerpt": "Membangun bisnis digital membutuhkan pemahaman terhadap konsumen, produk, teknologi, pemasaran, dan pengelolaan bisnis.",
+    "content": "<p>Era digital memberikan banyak peluang bagi seseorang untuk membangun bisnis dengan modal dan sumber daya yang lebih fleksibel. Namun, teknologi saja tidak cukup untuk menjamin sebuah bisnis dapat berkembang.</p><p>Langkah pertama adalah memahami masalah yang ingin diselesaikan dan siapa konsumen yang menjadi target. Setelah itu, bisnis dapat mengembangkan produk atau layanan yang memberikan nilai nyata bagi pelanggan.</p><p>Pemasaran digital dapat digunakan untuk membangun kesadaran merek, menjangkau calon pelanggan, dan mempertahankan hubungan dengan pelanggan. Di sisi lain, pengelolaan keuangan dan evaluasi data tetap diperlukan agar pertumbuhan bisnis dapat berlangsung secara terukur.</p>",
+    "category": "Bisnis",
+    "tags": ["Bisnis Digital", "Strategi Bisnis", "UMKM", "Pemasaran"],
+    "author": {
+      "name": "Alexander Morgan",
+      "role": "Business Strategist"
+    },
+    "image": "/images/articles/bisnis-digital.jpg",
+    "status": "public",
+    "views": 27650,
+    "likes": 2140,
+    "publishedAt": "2026-05-22T09:00:00+08:00",
+    "updatedAt": "2026-05-25T15:30:00+08:00",
+    "readingTime": 8,
+    "featured": true
+  }
+]

@@ -13,13 +13,14 @@
     --font-plusJakartaSans : "Plus Jakarta Sans", sans-serif;
 }
 
-body{
+/* body{
     background-color: black;
-}
+} */
 
 .container{
-    position: relative;
+    position: fixed;
     height: auto;
+    z-index: 10;
     width: 100%;
 }
 
