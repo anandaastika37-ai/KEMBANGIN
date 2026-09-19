@@ -938,8 +938,25 @@ body {
 .tool-ai-container > ul > li{
   width: 100%;
   height: 27vh;
-    border: 1px solid #060925;
+  border: 1px solid #060925;
   border-radius: 10px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.tool-ai-container > ul > li > img{
+  width: 200px;
+}
+
+.tool-ai-container > ul > li > span >  h3{
+  font-family: var(--font-montserrat);
+  font-size: 2rem;
+}
+
+.tool-ai-container > ul > li > span >  p{
+  font-family: var(--font-poppins);
+  font-size: 1rem;
 }
 
 .consultan-container{
