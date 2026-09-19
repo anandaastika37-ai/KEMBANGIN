@@ -5,15 +5,289 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kembangin</title>
     <link rel="stylesheet" href="../public/css/component.css">
+    <link rel="stylesheet" href="../public/css/article.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 </head>
 <body data-page="article">
 
   <site-navbar></site-navbar>
   <main>
-    <section class="hero">...</section>
+    <div class="left-side">
+      <div class="filter-artikel">
+        <div class="search-artikel">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Cari artikel..." aria-label="Cari artikel">
+        </div>
+        <div class="filter-btn">
+          <select name="urutan" id="filter-urutan" aria-label="Urutkan berdasarkan tanggal">
+            <option value="newest">Terbaru</option>
+            <option value="oldest">Terlama</option>
+          </select>
+          <select name="nama" id="filter-nama" aria-label="Urutkan berdasarkan nama">
+            <option value="az">Nama A - Z</option>
+            <option value="za">Nama Z - A</option>
+          </select>
+          <select name="populer" id="filter-populer" aria-label="Urutkan berdasarkan popularitas">
+            <option value="popular">Paling Populer</option>
+            <option value="most-viewed">Paling Banyak Dilihat</option>
+          </select>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card-artikel">
+          <div class="img-artikel">
+            <img src="../assets/artike-img.jpg" alt="Ilustrasi artikel bisnis digital" loading="lazy">
+            <span>Bisnis</span>
+          </div>
+          <div class="deskripsi-artikel">
+            <h2>Strategi Membangun Bisnis di Era Digital</h2>
+            <p>Membangun bisnis digital membutuhkan pemahaman terhadap konsumen, produk, teknologi, pemasaran, dan pengelolaan bisnis.</p>
+            <h4><i class="fa-solid fa-feather-pointed"></i> Alexander Morgan</h4>
+            <ul>
+              <li>Bisnis Digital</li>
+              <li>Strategi Bisnis</li>
+              <li>UMKM</li>
+            </ul>
+          </div>
+          <div class="tag-artikel">
+            <ul class="icon">
+              <li><i class="fa-regular fa-heart"></i>27650</li>
+              <li><i class="fa-regular fa-eye"></i>2140</li>
+            </ul>
+            <a href="">Selengkapnya <i class="fa-solid fa-angles-right"></i></a>
+          </div>
+        </div>
+        <div class="card-artikel">
+          <div class="img-artikel">
+            <img src="../assets/artike-img.jpg" alt="Ilustrasi artikel bisnis digital" loading="lazy">
+            <span>Bisnis</span>
+          </div>
+          <div class="deskripsi-artikel">
+            <h2>Strategi Membangun Bisnis di Era Digital</h2>
+            <p>Membangun bisnis digital membutuhkan pemahaman terhadap konsumen, produk, teknologi, pemasaran, dan pengelolaan bisnis.</p>
+            <h4><i class="fa-solid fa-feather-pointed"></i> Alexander Morgan</h4>
+            <ul>
+              <li>Bisnis Digital</li>
+              <li>Strategi Bisnis</li>
+              <li>UMKM</li>
+            </ul>
+          </div>
+          <div class="tag-artikel">
+            <ul class="icon">
+              <li><i class="fa-regular fa-heart"></i>27650</li>
+              <li><i class="fa-regular fa-eye"></i>2140</li>
+            </ul>
+            <a href="">Selengkapnya <i class="fa-solid fa-angles-right"></i></a>
+          </div>
+        </div>
+        <div class="card-artikel">
+          <div class="img-artikel">
+            <img src="../assets/artike-img.jpg" alt="Ilustrasi artikel bisnis digital" loading="lazy">
+            <span>Bisnis</span>
+          </div>
+          <div class="deskripsi-artikel">
+            <h2>Strategi Membangun Bisnis di Era Digital</h2>
+            <p>Membangun bisnis digital membutuhkan pemahaman terhadap konsumen, produk, teknologi, pemasaran, dan pengelolaan bisnis.</p>
+            <h4><i class="fa-solid fa-feather-pointed"></i> Alexander Morgan</h4>
+            <ul>
+              <li>Bisnis Digital</li>
+              <li>Strategi Bisnis</li>
+              <li>UMKM</li>
+            </ul>
+          </div>
+          <div class="tag-artikel">
+            <ul class="icon">
+              <li><i class="fa-regular fa-heart"></i>27650</li>
+              <li><i class="fa-regular fa-eye"></i>2140</li>
+            </ul>
+            <a href="">Selengkapnya <i class="fa-solid fa-angles-right"></i></a>
+          </div>
+        </div>
+        <div class="card-artikel">
+          <div class="img-artikel">
+            <img src="../assets/artike-img.jpg" alt="Ilustrasi artikel bisnis digital" loading="lazy">
+            <span>Bisnis</span>
+          </div>
+          <div class="deskripsi-artikel">
+            <h2>Strategi Membangun Bisnis di Era Digital</h2>
+            <p>Membangun bisnis digital membutuhkan pemahaman terhadap konsumen, produk, teknologi, pemasaran, dan pengelolaan bisnis.</p>
+            <h4><i class="fa-solid fa-feather-pointed"></i> Alexander Morgan</h4>
+            <ul>
+              <li>Bisnis Digital</li>
+              <li>Strategi Bisnis</li>
+              <li>UMKM</li>
+            </ul>
+          </div>
+          <div class="tag-artikel">
+            <ul class="icon">
+              <li><i class="fa-regular fa-heart"></i>27650</li>
+              <li><i class="fa-regular fa-eye"></i>2140</li>
+            </ul>
+            <a href="">Selengkapnya <i class="fa-solid fa-angles-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <nav class="pagination" aria-label="Navigasi halaman">
+        <button type="button" class="page-btn prev" aria-label="Halaman sebelumnya"><i class="fa-solid fa-angle-left"></i></button>
+        <button type="button" class="page-btn active" aria-current="page">1</button>
+        <button type="button" class="page-btn">2</button>
+        <button type="button" class="page-btn">3</button>
+        <span class="page-dots">...</span>
+        <button type="button" class="page-btn">8</button>
+        <button type="button" class="page-btn next" aria-label="Halaman berikutnya"><i class="fa-solid fa-angle-right"></i></button>
+      </nav>
+    </div>
+    <div class="right">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Artikel Populer</h3>
+        <div class="popular-scroll">
+          <a class="popular-card" href="" style="background-image: url('../assets/artike-img.jpg')">
+            <div class="popular-overlay">
+              <span class="popular-badge">Bisnis</span>
+              <div class="popular-content">
+                <h4>5 Kesalahan Umum saat Memulai Bisnis Online</h4>
+                <p>Hindari jebakan yang sering membuat bisnis online pemula gagal di bulan-bulan pertama.</p>
+                <div class="popular-author"><i class="fa-solid fa-feather-pointed"></i> Alexander Morgan</div>
+                <ul class="popular-tags">
+                  <li>Bisnis Digital</li>
+                  <li>UMKM</li>
+                </ul>
+                <div class="popular-footer">
+                  <ul class="popular-stats">
+                    <li><i class="fa-regular fa-heart"></i>18200</li>
+                    <li><i class="fa-regular fa-eye"></i>9400</li>
+                  </ul>
+                  <span class="popular-more">Selengkapnya <i class="fa-solid fa-angles-right"></i></span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a class="popular-card" href="" style="background-image: url('../assets/artike-img.jpg')">
+            <div class="popular-overlay">
+              <span class="popular-badge">Bisnis</span>
+              <div class="popular-content">
+                <h4>Cara Menentukan Target Pasar yang Tepat</h4>
+                <p>Kenali audiens sebelum menyusun strategi pemasaran agar tidak salah sasaran.</p>
+                <div class="popular-author"><i class="fa-solid fa-feather-pointed"></i> Alexander Morgan</div>
+                <ul class="popular-tags">
+                  <li>Strategi Bisnis</li>
+                  <li>Marketing</li>
+                </ul>
+                <div class="popular-footer">
+                  <ul class="popular-stats">
+                    <li><i class="fa-regular fa-heart"></i>15420</li>
+                    <li><i class="fa-regular fa-eye"></i>8210</li>
+                  </ul>
+                  <span class="popular-more">Selengkapnya <i class="fa-solid fa-angles-right"></i></span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a class="popular-card" href="" style="background-image: url('../assets/artike-img.jpg')">
+            <div class="popular-overlay">
+              <span class="popular-badge">Bisnis</span>
+              <div class="popular-content">
+                <h4>Tips Mengelola Keuangan Startup Pemula</h4>
+                <p>Atur arus kas sejak awal supaya bisnis tetap sehat di masa-masa krusial.</p>
+                <div class="popular-author"><i class="fa-solid fa-feather-pointed"></i> Alexander Morgan</div>
+                <ul class="popular-tags">
+                  <li>Keuangan</li>
+                  <li>Startup</li>
+                </ul>
+                <div class="popular-footer">
+                  <ul class="popular-stats">
+                    <li><i class="fa-regular fa-heart"></i>12980</li>
+                    <li><i class="fa-regular fa-eye"></i>7040</li>
+                  </ul>
+                  <span class="popular-more">Selengkapnya <i class="fa-solid fa-angles-right"></i></span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a class="popular-card" href="" style="background-image: url('../assets/artike-img.jpg')">
+            <div class="popular-overlay">
+              <span class="popular-badge">Bisnis</span>
+              <div class="popular-content">
+                <h4>Membangun Branding yang Kuat di Media Sosial</h4>
+                <p>Konsistensi visual dan suara brand membuat audiens lebih mudah mengenali bisnismu.</p>
+                <div class="popular-author"><i class="fa-solid fa-feather-pointed"></i> Alexander Morgan</div>
+                <ul class="popular-tags">
+                  <li>Branding</li>
+                  <li>Media Sosial</li>
+                </ul>
+                <div class="popular-footer">
+                  <ul class="popular-stats">
+                    <li><i class="fa-regular fa-heart"></i>9760</li>
+                    <li><i class="fa-regular fa-eye"></i>5310</li>
+                  </ul>
+                  <span class="popular-more">Selengkapnya <i class="fa-solid fa-angles-right"></i></span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Rekomendasi Artikel</h3>
+        <ul class="sidebar-list">
+          <li>
+            <a class="sidebar-item" href="">
+              <img src="../assets/artike-img.jpg" alt="" loading="lazy">
+              <div class="sidebar-item-info">
+                <h5>Panduan Riset Kompetitor untuk UMKM</h5>
+                <p class="sidebar-item-desc">Kenali strategi dan pergerakan kompetitor sebelum menyusun rencana bisnis.</p>
+                <ul class="sidebar-item-tags">
+                  <li>Riset Pasar</li>
+                  <li>UMKM</li>
+                </ul>
+                <div class="sidebar-item-meta">
+                  <span class="sidebar-author"><i class="fa-solid fa-feather-pointed"></i> Alexander Morgan</span>
+                  <span class="sidebar-stats"><i class="fa-regular fa-heart"></i> 980</span>
+                  <span class="sidebar-stats"><i class="fa-regular fa-eye"></i> 4310</span>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-item" href="">
+              <img src="../assets/artike-img.jpg" alt="" loading="lazy">
+              <div class="sidebar-item-info">
+                <h5>Strategi Konten Marketing di Tahun 2026</h5>
+                <p class="sidebar-item-desc">Tren format konten yang paling efektif menjangkau audiens tahun ini.</p>
+                <ul class="sidebar-item-tags">
+                  <li>Konten</li>
+                  <li>Marketing</li>
+                </ul>
+                <div class="sidebar-item-meta">
+                  <span class="sidebar-author"><i class="fa-solid fa-feather-pointed"></i> Alexander Morgan</span>
+                  <span class="sidebar-stats"><i class="fa-regular fa-heart"></i> 870</span>
+                  <span class="sidebar-stats"><i class="fa-regular fa-eye"></i> 3890</span>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-item" href="">
+              <img src="../assets/artike-img.jpg" alt="" loading="lazy">
+              <div class="sidebar-item-info">
+                <h5>Cara Memilih Platform E-Commerce yang Tepat</h5>
+                <p class="sidebar-item-desc">Pertimbangkan biaya, fitur, dan skalabilitas sebelum memutuskan platform.</p>
+                <ul class="sidebar-item-tags">
+                  <li>E-Commerce</li>
+                  <li>UMKM</li>
+                </ul>
+                <div class="sidebar-item-meta">
+                  <span class="sidebar-author"><i class="fa-solid fa-feather-pointed"></i> Alexander Morgan</span>
+                  <span class="sidebar-stats"><i class="fa-regular fa-heart"></i> 640</span>
+                  <span class="sidebar-stats"><i class="fa-regular fa-eye"></i> 3105</span>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </main>
-
     <!-- script -->
     <script src="../components/Navbar.js"></script>
     <script src="../public/js/component.js"></script>

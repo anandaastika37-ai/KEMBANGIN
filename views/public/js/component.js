@@ -52,6 +52,7 @@ class Dropdown {
             event.stopPropagation();
         });
     }
+
     toggle() {
         const isActive = this.dropdown.classList.contains(this.activeClass);
         dropdowns.forEach((dropdown) => {
@@ -96,13 +97,12 @@ class Dropdown {
         }
     }
 }
+
 const profileDropdown = new Dropdown(profileBtn, dropdownProfile, { buttonActiveClass: 'profile-active' });
-const productDropdown = new Dropdown(produkBtn, dropdownProduct, { icon: iconArrow });
 const mobileMenuDropdown = new Dropdown(menuBtn, mobileNav, { activeClass: 'show' });
 const mobileSearchDropdown = new Dropdown(mobileSearchBtn, mobileSearchBar, { activeClass: 'show' });
+const productDropdown = new Dropdown(produkBtn, dropdownProduct, { icon: iconArrow });
 
-/* dropdown produk versi mobile: cukup pakai 1 class (slide-down),
-   activeClass & slideClass memang sama - jadi cukup set salah satunya saja */
 const productDropdownMobile = new Dropdown(produkBtnMobile, dropdownProductMobile, { activeClass: 'slide-down' });
 
 mobileSearchBtn.addEventListener('click', () => {
