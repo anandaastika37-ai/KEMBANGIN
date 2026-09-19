@@ -7,10 +7,45 @@
 }
 
 :root {
+ /* ===== Fonts ===== */
   --font-montserrat: "Montserrat", sans-serif;
   --font-openSans: "Open Sans", sans-serif;
   --font-poppins: "Poppins", sans-serif;
   --font-plusJakartaSans: "Plus Jakarta Sans", sans-serif;
+ 
+  /* ===== Base backgrounds ===== */
+  --color-bg: #000000;              /* body background */
+  --color-bg-deep: #030512;         /* deepest navy-black (hero gradient start) */
+  --color-bg-deep-rgb: 3, 5, 18;    /* same color as --color-bg-deep, as r,g,b for alpha use */
+  --color-bg-navy: #0a1c5c;         /* navy blue (hero gradient end) */
+ 
+  /* ===== Surfaces (translucent panels, all derived from --color-bg-deep) ===== */
+  --color-panel: rgba(var(--color-bg-deep-rgb), 0.92);       /* card / section panels */
+  --color-panel-soft: rgba(var(--color-bg-deep-rgb), 0.55);  /* lighter panel, e.g. event card base */
+  --color-section-bg: rgba(var(--color-bg-deep-rgb), 0.85);  /* full-width section wrapper */
+ 
+  /* ===== Borders ===== */
+  --color-border: #171b4a;   /* default hairline border on dark surfaces */
+  --color-divider: #34386e;  /* small vertical/horizontal divider lines */
+  --line-faint: #4a4a52;     /* faintest separator lines */
+ 
+  /* ===== Accent (brand indigo-blue) ===== */
+  --color-accent-rgb: 43, 55, 226;
+  --color-accent: rgb(var(--color-accent-rgb));                 /* icons, links, active state */
+  --color-accent-light: #7c8bff;                                /* light tint: badges, small labels */
+  --color-accent-dark: #0a0e5c;                                 /* deep tint: gradients, hover states */
+  --color-accent-soft-bg: rgba(var(--color-accent-rgb), 0.14);  /* translucent accent background */
+  --color-accent-border: rgba(var(--color-accent-rgb), 0.35);   /* translucent accent border */
+ 
+  /* ===== Buttons ===== */
+  --color-button-bg: #0d1660;   /* solid CTA background (selengkapnya, bookmark, gabung) */
+ 
+  /* ===== Text (neutral gray scale, light -> dark) ===== */
+  --text-100: #ededed;  /* strongest headings / big numbers */
+  --text-200: #d0d0d0;  /* strong secondary text */
+  --text-300: #b8b8b8;  /* labels, card titles */
+  --text-400: #969696;  /* body copy / descriptions */
+  --text-500: #6f6f6f;  /* quotes, least emphasis */
 }
 
 body {
@@ -357,6 +392,7 @@ body {
 
 .our-product {
   width: 90%;
+  margin-top: 10px;
 }
 
 
@@ -592,9 +628,9 @@ body {
   min-width: 0;
   height: 420px;
   border: 1px solid #040530;
+  background-color: #03033b2c;
   border-radius: 16px;
   overflow: hidden;
-  background-color: #03033b2c;
 }
 
 .box-event > img.thumb-event {
@@ -771,9 +807,146 @@ body {
 
 .new-fitur-container{
    width: 100%;
-   height: 80vh;
+   height: 105vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   gap: 10px;
 }
 
+.intro-fitur{
+     width: 100%;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+}
+
+.intro-ai{
+  border: 1px solid #0f1233;
+  border-radius: 10px;
+  height: 40vh;
+  width: 40%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.intro-ai > img{
+  width: 140px;
+  opacity: 80%;
+  margin-bottom: 30px;
+}
+
+.intro-ai > h2{
+  font-family: var(--font-montserrat);
+  font-size: 1.9rem;
+  margin-bottom: 10px;
+  color: #fffefe;
+}
+.intro-ai > p{
+  font-family: var(--font-poppins);
+  font-size: .8rem;
+  color: gray;
+}
+
+
+.intro-our-chatbot{
+  border: 1px solid #0f1233;
+  border-radius: 10px;
+  height: 40vh;
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+
+.intro-our-chatbot > img{
+  width: 230px;
+  opacity: 80%;
+}
+
+.chatbot-desk{
+  width: 620px;
+}
+
+.chatbot-desk > h2{
+  font-family: var(--font-montserrat);
+  margin-bottom: 3px;
+  font-size: 1.9rem;
+  color: #fffefe;
+}
+.chatbot-desk > h3{
+  font-family: var(--font-openSans);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #c4c4c4;
+}
+.chatbot-desk > p{
+  font-family: var(--font-poppins);
+  font-size: .9rem;
+  margin-bottom: 10px;
+  color: #a0a0a0;
+}
+
+.skill-chatbot{
+  margin-top: 20px;
+}
+
+
+.skill-chatbot > ul{
+  display: flex;
+  margin-top: 20px;
+  list-style: none;
+  gap: 5px;
+}
+
+.skill-chatbot > ul > li{
+  font-family: var(--font-poppins);
+  font-size: .7rem;
+  padding: 10px;
+  border: 1px solid #363636;
+  border-radius: 5px;
+  color: #b3b1b1;
+}
+
+.tool-ai-container{
+ width: 100%;
+ height: 60vh; 
+   border: 1px solid #0f1233;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.tool-ai-container > ul{
+  list-style: none;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tool-ai-container > ul > li{
+  width: 100%;
+  height: 27vh;
+    border: 1px solid #060925;
+  border-radius: 10px;
+}
+
+.consultan-container{
+  width: 90%;
+  height: 40Vh;
+  margin-top: 10px;
+}
 
 @media (max-width: 1024px) {
   .hero {
@@ -896,6 +1069,7 @@ body {
     width: 100%;
   }
 }
+
 
 @media (max-width: 600px) {
   .title {

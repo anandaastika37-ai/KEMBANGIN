@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "title": "The Lean Startup",
+  "author": "Eric Ries",
+  "cover": "/assets/books/lean-startup.jpg",
+  "description": "Buku tentang membangun bisnis dengan pendekatan eksperimen dan validasi.",
+  "category": "Startup",
+  "type": "Book",
+  "publisher": "Crown Business",
+  "publishedYear": 2011,
+  "language": "English",
+  "pages": 336,
+  "isbn": "9780307887894",
+  "rating": 4.8,
+  "totalReader": 1250
+}

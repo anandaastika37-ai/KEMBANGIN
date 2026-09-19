@@ -11,10 +11,8 @@
   --font-openSans: "Open Sans", sans-serif;
   --font-poppins: "Poppins", sans-serif;
   --font-plusJakartaSans: "Plus Jakarta Sans", sans-serif;
+}
 
-  --color-accent: #173ff0;
-  --color-accent-light: #5a5dff;
-  --color-border: #181b2e;
-  --color-border-hover: #242c5c;
-  --color-card-bg: #090916;
+body {
+  background-color: black;
 }

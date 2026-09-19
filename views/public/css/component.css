@@ -155,6 +155,15 @@
     color: #ffffff;
 }
 
+.chatbot-btn{
+    background: linear-gradient(to right , rgb(51, 51, 238) , rgb(14, 1, 128));
+    padding: 5px 12px;
+    padding-top: 9px;
+    font-size: 1rem;
+    color: rgb(196, 196, 196);
+    border-radius: 10px;
+}
+
 .mobile-search-btn{
     display: none;
     color: #e0e0e0;
