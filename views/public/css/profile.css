@@ -1,0 +1,213 @@
+body{
+    background-color: #05050a;
+}
+
+.profile-hero{
+    background: linear-gradient(to top, #01030f, #071d50);
+    width: 100%;
+    padding: 55px 10% 45px;
+    color: white;
+}
+
+.profile-card{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+.profile-avatar{
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    border-radius: 50%;
+    background-color: rgb(0, 140, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-montserrat);
+    font-size: 2.2rem;
+    font-weight: 700;
+    border: 3px solid #13153a;
+}
+
+.profile-detail h2{
+    font-family: var(--font-poppins);
+    font-size: 1.6rem;
+}
+
+.profile-detail p{
+    color: #a09f9f;
+    font-size: .85rem;
+    margin: 4px 0 8px;
+}
+
+.profile-badge{
+    background-color: #5454ff49;
+    color: #a0a0fa;
+    font-family: var(--font-poppins);
+    padding: 4px 10px;
+    font-size: .75rem;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.edit-btn{
+    margin-left: auto;
+    background-color: rgb(0, 140, 255);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-family: var(--font-poppins);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edit-btn:hover{
+    background-color: rgb(0, 110, 210);
+}
+
+.profile-body{
+    width: 90%;
+    max-width: 950px;
+    margin: 35px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.info-box{
+    background-color: #00000ad7;
+    border: 1px solid #13153a;
+    border-radius: 10px;
+    padding: 25px;
+    color: white;
+}
+
+.info-box h3{
+    font-family: var(--font-poppins);
+    color: #e0e0e0;
+    margin-bottom: 18px;
+}
+
+.info-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 30px;
+}
+
+.info-grid label{
+    display: block;
+    font-size: .75rem;
+    color: #706f6f;
+    margin-bottom: 4px;
+}
+
+.info-grid p{
+    font-size: .95rem;
+    color: #dddddd;
+    font-family: var(--font-openSans);
+}
+
+.edit-overlay{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: #000000cc;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 20px;
+}
+
+.edit-overlay.show{
+    display: flex;
+}
+
+.edit-modal{
+    background-color: #0d0d14;
+    border: 1px solid #13153a;
+    border-radius: 12px;
+    padding: 25px;
+    width: 100%;
+    max-width: 420px;
+    max-height: 85vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.edit-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.edit-head h3{
+    font-family: var(--font-poppins);
+    color: #e0e0e0;
+}
+
+.edit-head button{
+    background: none;
+    border: none;
+    color: #a09f9f;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.edit-modal label{
+    font-size: .8rem;
+    color: #a09f9f;
+    margin-top: 12px;
+    margin-bottom: 6px;
+}
+
+.edit-modal input{
+    background-color: #242527;
+    border: 1px solid #424242;
+    border-radius: 6px;
+    padding: 10px;
+    color: white;
+    font-family: var(--font-openSans);
+}
+
+.edit-modal input:focus{
+    outline: 1px solid rgb(0, 140, 255);
+}
+
+.edit-modal button[type="submit"]{
+    margin-top: 20px;
+    background-color: rgb(0, 140, 255);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-family: var(--font-poppins);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.edit-modal button[type="submit"]:hover{
+    background-color: rgb(0, 110, 210);
+}
+
+@media (max-width: 600px){
+    .profile-card{
+        flex-wrap: wrap;
+    }
+    .edit-btn{
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    .info-grid{
+        grid-template-columns: 1fr;
+    }
+}

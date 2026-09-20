@@ -260,21 +260,21 @@ class SiteNavbar extends HTMLElement {
               <ul>
 
                 <li>
-                  <a href="#">
+                  <a href="profile.html" data-page="profile">
                     <i class="fa-solid fa-image-portrait"></i>
                     Profil
                   </a>
                 </li>
 
                 <li>
-                  <a href="#">
+                  <a href="dashboard.html" data-page="dashboard">
                     <i class="fa-solid fa-table"></i>
                     Dasbor
                   </a>
                 </li>
 
                 <li>
-                  <a href="#">
+                  <a href="community.html" data-page="community">
                     <i class="fa-solid fa-users"></i>
                     Komunitas
                   </a>
