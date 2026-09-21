@@ -6,13 +6,924 @@
   box-sizing: border-box;
 }
 
+/* =====================================================================
+   DESIGN TOKENS
+   Sama dengan home.css. Semua warna HANYA boleh diambil dari variable ini.
+   ===================================================================== */
 :root {
+  /* ===== Fonts ===== */
   --font-montserrat: "Montserrat", sans-serif;
   --font-openSans: "Open Sans", sans-serif;
   --font-poppins: "Poppins", sans-serif;
   --font-plusJakartaSans: "Plus Jakarta Sans", sans-serif;
+
+  /* ===== 1. Background dasar ===== */
+  --color-bg: #000000;
+  --color-bg-deep: #030512;
+  --color-bg-deep-rgb: 3, 5, 18;
+  --color-bg-navy: #0a1c5c;
+  --color-overlay-rgb: 1, 1, 66;
+
+  /* ===== 2. Surface (panel & kartu, semi transparan) ===== */
+  --color-section-bg: rgba(var(--color-bg-deep-rgb), 0.82);
+  --color-panel: rgba(var(--color-bg-deep-rgb), 0.85);
+  --color-surface-tint: rgba(3, 3, 53, 0.26);
+
+  /* ===== 3. Border & garis pemisah ===== */
+  --color-border: #13153a;
+  --color-border-subtle: #0f1233;
+  --color-border-hover: #060670;
+  --color-divider: #34386e;
+  --line-faint: #4a4a52;
+
+  /* ===== 4. Teks (skala abu, terang -> gelap) ===== */
+  --color-white: #ffffff;
+  --text-100: #ededed;
+  --text-200: #d0d0d0;
+  --text-300: #b8b8b8;
+  --text-400: #969696;
+  --text-500: #6f6f6f;
+
+  /* ===== 5. Aksen brand (biru indigo) ===== */
+  --color-accent-rgb: 43, 55, 226;
+  --color-accent: rgb(var(--color-accent-rgb));
+  --color-accent-light: #7c8bff;
+  --color-accent-soft-bg: rgba(var(--color-accent-rgb), 0.14);
+  --color-accent-badge-bg: rgba(var(--color-accent-rgb), 0.3);
+  --color-accent-border: rgba(var(--color-accent-rgb), 0.35);
+
+  /* ===== 6. Biru pendukung ===== */
+  --color-blue: #2054e2;
+  --color-blue-deep: #00007e;
+
+  /* ===== 7. Tombol ===== */
+  --color-button-bg: #0d1660;
+  --color-button-bg-soft: rgba(13, 22, 96, 0.58);
+  --color-button-grad-start: rgba(12, 44, 131, 0.88);
+  --color-button-grad-end: rgba(2, 2, 139, 0.62);
+
+  /* ===== 8. Gradient ===== */
+  --gradient-hero: linear-gradient(to top, var(--color-bg-deep), var(--color-bg-navy));
+  --gradient-title: linear-gradient(to left, var(--color-blue), var(--color-blue-deep));
+  --gradient-button: linear-gradient(to right, var(--color-button-grad-start), var(--color-button-grad-end));
+  --gradient-event-overlay: linear-gradient(
+    to top,
+    var(--color-bg-deep) 5%,
+    rgba(var(--color-overlay-rgb), 0.9) 30%,
+    rgba(var(--color-overlay-rgb), 0.4) 70%,
+    rgba(var(--color-overlay-rgb), 0) 100%
+  );
+
+  /* ===== 9. Khusus halaman liblary ===== */
+  --color-rating: #f2b544;   /* ikon bintang rating */
+  --navbar-offset: 90px;         /* tinggi navbar fixed di ATAS layar */
+  --navbar-offset-bottom: 0px;   /* isi dengan tinggi navbar jika navbar fixed di BAWAH layar */
 }
 
 body {
-  background-color: black;
+  background-color: var(--color-bg);
+  font-family: var(--font-poppins);
+}
+
+/* Teks khusus screen reader */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: 2px;
+}
+
+/* ===== Layout halaman ===== */
+/* Padding atas/bawah mengikuti tinggi navbar fixed supaya konten tidak tertutup */
+.liblary-page {
+  width: 100%;
+  padding: calc(var(--navbar-offset) + 24px) 0 calc(var(--navbar-offset-bottom) + 72px);
+  background-color: var(--color-section-bg);
+  color: var(--color-white);
+}
+
+.liblary {
+  width: 94%;
+  max-width: 1760px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 28px;
+  align-items: start;
+}
+
+.liblary-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+
+/* ===== Header: search + filter ===== */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.search-liblary {
+  display: flex;
+  gap: 12px;
+}
+
+.search-field {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.search-field > i {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  color: var(--text-400);
+  pointer-events: none;
+}
+
+.search-liblary input {
+  width: 100%;
+  height: 50px;
+  padding: 0 16px 0 46px;
+  background-color: var(--color-surface-tint);
+  border: 1px solid var(--color-divider);
+  border-radius: 10px;
+  color: var(--text-100);
+  font-size: 0.95rem;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.2s ease;
+}
+
+.search-liblary input::placeholder {
+  color: var(--text-400);
+}
+
+.search-liblary input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.search-liblary input:focus {
+  border-color: var(--color-accent);
+}
+
+.btn-cari {
+  height: 50px;
+  padding: 0 28px;
+  border: none;
+  border-radius: 10px;
+  background: var(--gradient-button);
+  color: var(--text-200);
+  font-family: var(--font-plusJakartaSans);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1 1 360px;
+  min-width: 0;
+}
+
+.chip {
+  padding: 9px 16px;
+  background-color: var(--color-surface-tint);
+  border: 1px solid var(--color-divider);
+  border-radius: 30px;
+  color: var(--text-300);
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.chip:hover {
+  color: var(--text-100);
+  border-color: var(--color-accent);
+}
+
+.chip.is-active {
+  background-color: var(--color-accent-badge-bg);
+  border-color: var(--color-accent);
+  color: var(--color-accent-light);
+}
+
+.filter-selects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.select {
+  position: relative;
+  display: inline-flex;
+}
+
+.select > select {
+  height: 42px;
+  padding: 0 36px 0 16px;
+  background-color: var(--color-surface-tint);
+  border: 1px solid var(--color-divider);
+  border-radius: 10px;
+  color: var(--text-200);
+  font-size: 0.82rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.2s ease;
+}
+
+.select > select:hover {
+  border-color: var(--color-accent);
+}
+
+.select > select option {
+  background-color: var(--color-bg-deep);
+  color: var(--text-100);
+}
+
+.select > i {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.65rem;
+  color: var(--text-400);
+  pointer-events: none;
+}
+
+/* ===== Daftar buku ===== */
+.liblary-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+  scroll-margin-top: calc(var(--navbar-offset) + 16px);
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-border-hover);
+}
+
+.cover {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--color-surface-tint);
+}
+
+.cover > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.badge-cat {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-accent-border);
+  border-radius: 10px;
+  color: var(--color-accent-light);
+  font-family: var(--font-plusJakartaSans);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.book-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 4px 4px;
+}
+
+.book-title {
+  font-family: var(--font-montserrat);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  min-height: 2.6em;
+  color: var(--text-100);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.book-author {
+  font-size: 0.85rem;
+  color: var(--text-400);
+}
+
+.book-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 2px;
+  font-family: sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-300);
+}
+
+.book-meta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.book-meta i {
+  font-size: 0.72rem;
+  color: var(--text-400);
+}
+
+.book-meta .meta-rating i {
+  color: var(--color-rating);
+}
+
+.book-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.btn-hype,
+.btn-simpan {
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 8px;
+  font-family: sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-hype {
+  padding: 0 14px;
+  background-color: var(--color-surface-tint);
+  border: 1px solid var(--color-accent-border);
+  color: var(--text-300);
+}
+
+.btn-hype > i {
+  color: var(--text-400);
+  transition: color 0.2s ease;
+}
+
+.btn-hype:hover {
+  border-color: var(--color-accent);
+  color: var(--text-100);
+}
+
+.btn-hype[aria-pressed="true"] {
+  background-color: var(--color-accent-badge-bg);
+  border-color: var(--color-accent);
+  color: var(--color-accent-light);
+}
+
+.btn-hype[aria-pressed="true"] > i {
+  color: var(--color-accent-light);
+}
+
+.btn-hype > i.is-pop {
+  animation: hype-pop 0.35s ease;
+}
+
+@keyframes hype-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+.btn-simpan {
+  flex: 1;
+  padding: 0 14px;
+  background-color: var(--color-button-bg);
+  border: 1px solid transparent;
+  color: var(--text-200);
+}
+
+.btn-simpan:hover {
+  border-color: var(--color-accent);
+}
+
+.btn-simpan.is-saved {
+  background-color: transparent;
+  border-color: var(--color-accent);
+  color: var(--color-accent-light);
+}
+
+/* ===== Pagination ===== */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.page-info {
+  font-size: 0.85rem;
+  color: var(--text-400);
+}
+
+.page-list {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.page-btn {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  background-color: var(--color-surface-tint);
+  border: 1px solid var(--color-divider);
+  border-radius: 8px;
+  color: var(--text-300);
+  font-family: var(--font-plusJakartaSans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+  color: var(--text-100);
+  border-color: var(--color-accent);
+}
+
+.page-btn.is-active {
+  background-color: var(--color-accent-badge-bg);
+  border-color: var(--color-accent);
+  color: var(--color-accent-light);
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-gap {
+  padding: 0 4px;
+  color: var(--text-500);
+}
+
+/* ===== Sidebar (sticky: ikut terlihat saat daftar buku di-scroll) ===== */
+.sidebar {
+  position: sticky;
+  top: calc(var(--navbar-offset) + 16px);
+  max-height: calc(100vh - var(--navbar-offset) - var(--navbar-offset-bottom) - 32px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-divider) transparent;
+}
+
+.side-box {
+  padding: 18px;
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.side-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-family: var(--font-montserrat);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-200);
+}
+
+.side-sub {
+  margin: 18px 0 10px;
+  font-family: var(--font-plusJakartaSans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-300);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  list-style: none;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  background-color: var(--color-surface-tint);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+}
+
+.stat-label {
+  font-family: var(--font-plusJakartaSans);
+  font-size: 0.7rem;
+  color: var(--text-300);
+}
+
+.stat-value {
+  font-family: var(--font-openSans);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-100);
+}
+
+.cat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.cat-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.75rem;
+  color: var(--text-300);
+}
+
+.cat-count {
+  font-weight: 600;
+  color: var(--text-100);
+}
+
+.bar {
+  height: 6px;
+  overflow: hidden;
+  background-color: var(--color-surface-tint);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 10px;
+}
+
+.bar > span {
+  display: block;
+  width: var(--w);
+  height: 100%;
+  background-color: var(--color-accent);
+}
+
+.mini-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.mini-book {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  background-color: var(--color-surface-tint);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 10px;
+}
+
+.mini-book > img {
+  flex-shrink: 0;
+  width: 48px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  opacity: 0.85;
+}
+
+.mini-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mini-title {
+  font-family: var(--font-montserrat);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-200);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.mini-author {
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: var(--text-400);
+}
+
+.mini-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-family: sans-serif;
+  font-size: 0.68rem;
+  color: var(--text-300);
+}
+
+.mini-rating > i {
+  font-size: 0.65rem;
+  color: var(--color-rating);
+}
+
+/* ===== Top 5 hype (memakai .mini-book, ditambah nomor urut & jumlah hype) ===== */
+.rank-num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent-soft-bg);
+  border: 1px solid var(--color-accent-border);
+  border-radius: 50%;
+  color: var(--color-accent-light);
+  font-family: var(--font-plusJakartaSans);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.rank-item:first-child .rank-num {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.rank-hype {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-family: sans-serif;
+  font-size: 0.68rem;
+  color: var(--color-accent-light);
+}
+
+/* Top 5 hype di bawah daftar buku: kartu vertikal, 5 kolom di layar lebar */
+.top-hype-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  list-style: none;
+}
+
+.top-hype-list .mini-book {
+  position: relative;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  padding: 10px;
+}
+
+.top-hype-list .mini-book > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+}
+
+.top-hype-list .mini-title {
+  font-size: 0.9rem;
+}
+
+.top-hype-list .rank-num {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 1;
+  background-color: var(--color-bg-deep);
+}
+
+@media (min-width: 1101px) and (max-width: 1299px), (max-width: 700px) {
+  .top-hype-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .top-hype-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.btn-save-mini {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-button-bg);
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: var(--text-300);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-save-mini:hover {
+  border-color: var(--color-accent);
+}
+
+.btn-save-mini[aria-pressed="true"] {
+  color: var(--color-accent-light);
+  border-color: var(--color-accent);
+}
+
+.empty {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-400);
+}
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--navbar-offset-bottom) + 24px);
+  z-index: 50;
+  max-width: min(90vw, 420px);
+  padding: 10px 16px;
+  overflow: hidden;
+  background-color: var(--color-bg-deep);
+  border: 1px solid var(--color-accent-border);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(var(--color-bg-deep-rgb), 0.6);
+  color: var(--text-100);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+
+.toast.is-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* ===== Responsif ===== */
+@media (max-width: 1100px) {
+  .liblary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* Satu kolom: sidebar pindah ke bawah dan tidak lagi sticky */
+  .sidebar {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    align-items: start;
+  }
+}
+
+@media (max-width: 600px) {
+  .liblary-page {
+    padding: calc(var(--navbar-offset) + 12px) 0 calc(var(--navbar-offset-bottom) + 56px);
+  }
+  .liblary {
+    width: calc(100% - 32px);
+  }
+  .page-head > h1 {
+    font-size: 1.7rem;
+  }
+  .header {
+    padding: 14px;
+  }
+  .btn-cari {
+    padding: 0 18px;
+  }
+  .filter-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-divider) transparent;
+  }
+  .filter-selects {
+    width: 100%;
+  }
+  .filter-selects > .select {
+    flex: 1;
+  }
+  .filter-selects .select > select {
+    width: 100%;
+  }
+  .liblary-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .book-card {
+    padding: 10px;
+  }
+  .book-title {
+    font-size: 0.92rem;
+  }
+  .book-meta {
+    font-size: 0.7rem;
+  }
+  .btn-hype {
+    padding: 0 10px;
+  }
+  .btn-simpan {
+    padding: 0 8px;
+    font-size: 0.74rem;
+  }
+  .pagination {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  .book-card:hover {
+    transform: none;
+  }
 }

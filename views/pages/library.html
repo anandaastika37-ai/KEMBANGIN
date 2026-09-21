@@ -1,36 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kembangin</title>
+    <title>Perpustakaan - Kembangin</title>
     <link rel="stylesheet" href="../public/css/component.css">
     <link rel="stylesheet" href="../public/css/liblary.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 </head>
 <body data-page="liblary">
   <site-navbar></site-navbar>
-  <main>
-    <section>
+
+  <main class="liblary-page">
+    <section class="liblary">
+
+      <!-- ===== Kolom utama: judul, search, filter, daftar buku, pagination, top 5 hype ===== -->
+      <div class="liblary-main"> 
+
         <div class="header">
-          <div class="search-liblary">
-            <input type="text">
+          <form class="search-liblary" id="search-form" role="search">
+            <div class="search-field">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <label class="sr-only" for="search-input">Cari buku</label>
+              <input id="search-input" type="search" placeholder="Cari judul, penulis, atau topik" autocomplete="off">
+            </div>
+            <button type="submit" class="btn-cari">Cari</button>
+          </form>
+
+          <div class="filter">
+            <div class="filter-chips" id="filter-chips" role="group" aria-label="Filter kategori"></div>
+
+            <div class="filter-selects">
+              <label class="select">
+                <span class="sr-only">Urutkan</span>
+                <select id="sort-select">
+                  <option value="popular">Urutkan: Terpopuler</option>
+                  <option value="rating">Urutkan: Rating tertinggi</option>
+                  <option value="newest">Urutkan: Terbaru</option>
+                  <option value="az">Urutkan: Judul A–Z</option>
+                  <option value="za">Urutkan: Judul Z–A</option>
+                  <option value="author">Urutkan: Penulis A–Z</option>
+                </select>
+                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+              </label>
+
+              <label class="select">
+                <span class="sr-only">Level</span>
+                <select id="level-select">
+                  <option value="all">Semua level</option>
+                  <option value="pemula">Pemula</option>
+                  <option value="menengah">Menengah</option>
+                  <option value="lanjutan">Lanjutan</option>
+                </select>
+                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+              </label>
+            </div>
           </div>
-          <div class="filter"></div>
         </div>
-        <div class="liblary-container">
-          <div class="book-card">
-            <img src="../assets/book-asset.jpg" alt="">
-          </div>
-        </div>
-        <div class="sidebar">
-          analisa buku ada berapa buku
-        </div>
+
+        <h2 class="sr-only">Daftar buku</h2>
+        <!-- Kartu buku dirender oleh liblary.js -->
+        <div class="liblary-container" id="book-list"></div>
+
+        <!-- Pagination dirender oleh liblary.js -->
+        <div class="pagination" id="pagination"></div>
+
+        <!-- Top 5 hype dirender oleh liblary.js -->
+        <section class="side-box top-hype" aria-labelledby="judul-hype">
+          <h2 class="side-title" id="judul-hype">Top 5 buku lagi hype</h2>
+          <ul class="top-hype-list" id="top-hype-list"></ul>
+        </section>
+      </div>
+
+      <!-- ===== Sidebar (sticky): analisa, rekomendasi ===== -->
+      <aside class="sidebar" aria-label="Analisa dan rekomendasi buku">
+        <section class="side-box" aria-labelledby="judul-analisa">
+          <h2 class="side-title" id="judul-analisa">Analisa koleksi</h2>
+          <ul class="stat-grid" id="stat-grid"></ul>
+          <h3 class="side-sub">Sebaran kategori</h3>
+          <ul class="cat-list" id="cat-list"></ul>
+        </section>
+
+        <section class="side-box" aria-labelledby="judul-rekomendasi">
+          <h2 class="side-title" id="judul-rekomendasi">Rekomendasi buku</h2>
+          <ul class="mini-list" id="rekom-list"></ul>
+        </section>
+      </aside>
+
     </section>
   </main>
+
+  <!-- Notifikasi kecil saat menyimpan buku -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
     <!-- script -->
     <script src="../components/Navbar.js"></script>
     <script src="../public/js/component.js"></script>
+    <script src="../public/js/liblary.js"></script>
     <!-- script end-->
 </body>
 </html>

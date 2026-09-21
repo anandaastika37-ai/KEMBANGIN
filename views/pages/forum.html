@@ -1,22 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kembangin</title>
-    <link rel="stylesheet" href="../public/css/component.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
-</head>
-<body data-page="forum">
-  <site-navbar></site-navbar>
+    <link rel="stylesheet" href="../public/css/component.css" />
+    <link rel="stylesheet" href="../public/css/forum.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    />
+  </head>
+  <body data-page="forum">
+    <site-navbar></site-navbar>
 
-  <main>
-    <section class="hero">...</section>
-  </main>
+    <main class="wrap">
+      <!-- Intro -->
+      <section class="hero">
+        <h1>Temukan Insight, Bagikan Pengalaman</h1>
+        <p>
+          Tempat berdiskusi seputar bisnis, UMKM, ekonomi, pemasaran, dan
+          pengembangan usaha bersama sesama pelaku usaha.
+        </p>
+        <div class="hero-bar">
+          <label class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              id="search"
+              type="search"
+              placeholder="Cari judul, kategori, atau username"
+              autocomplete="off"
+              aria-label="Cari diskusi"
+            />
+          </label>
+          <button class="btn" data-open>
+            <i class="fa-solid fa-plus"></i> Buat Diskusi
+          </button>
+        </div>
+      </section>
+
+      <div class="layout">
+        <section aria-label="Daftar diskusi">
+          <div
+            class="chips"
+            id="cats"
+            role="tablist"
+            aria-label="Kategori forum"
+          ></div>
+
+          <div class="toolbar">
+            <div class="sorts" id="sorts">
+              <button class="on" data-sort="terbaru">Terbaru</button>
+              <button data-sort="populer">Terpopuler</button>
+              <button data-sort="belum">Belum Terjawab</button>
+            </div>
+            <span class="count" id="count"></span>
+          </div>
+
+          <div id="list" class="list"></div>
+
+          <div class="state" id="empty" hidden>
+            <i class="fa-regular fa-comments"></i>
+            <h3>Belum ada diskusi yang cocok</h3>
+            <p>
+              Coba kata kunci lain, atau mulai diskusi baru untuk topik ini.
+            </p>
+            <div class="state-act">
+              <button class="btn ghost" id="reset">Reset filter</button>
+              <button class="btn" data-open>Buat Diskusi</button>
+            </div>
+          </div>
+
+          <button class="btn ghost more" id="more" hidden>
+            Muat Lebih Banyak
+          </button>
+        </section>
+
+        <aside class="side">
+          <div class="panel">
+            <h2><i class="fa-solid fa-fire"></i> Diskusi Populer</h2>
+            <ol id="popular" class="pop"></ol>
+          </div>
+          <div class="panel tips">
+            <h2>Tips berdiskusi</h2>
+            <p>
+              Tulis judul yang spesifik, ceritakan konteks usahamu, dan hargai
+              jawaban dari anggota lain.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </main>
 
     <!-- script -->
     <script src="../components/Navbar.js"></script>
+    <script src="../public/js/forum.js"></script>
     <script src="../public/js/component.js"></script>
     <!-- script end-->
-</body>
+  </body>
 </html>
