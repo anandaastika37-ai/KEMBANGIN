@@ -10,13 +10,17 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
   </head>
   <body data-page="home">
     <site-navbar></site-navbar>
 
     <main>
       <section class="hero">
-        <div class="left-side">
+        <div class="left-side" data-aos="fade-right" data-aos-duration="800">
           <span class="tema">Insight untuk Pertumbuhan</span>
           <h2 class="title">
             Tumbuh Lebih Cepat, Melangkah <span>Lebih Jauh</span>
@@ -56,14 +60,14 @@
             </p>
           </div>
         </div>
-        <div class="right-side">
-          <img src="../assets/hero-section-img.png" alt="" />
+        <div class="right-side" data-aos="fade-left" data-aos-duration="800" data-aos-delay="150">
+          <img src="../assets/logo-3d.png" alt="" />
         </div>
       </section>
       <div class="second-content">
         <div class="information">
           <ul>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="0">
               <i class="fa-solid fa-chart-column"></i>
               <span>
                 <h4>Strategi Pertumbuhan</h4>
@@ -73,7 +77,7 @@
                 </p>
               </span>
             </li>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="100">
               <i class="fa-solid fa-arrow-trend-up"></i>
               <span>
                 <h4>Pengembangan Bisnis</h4>
@@ -83,7 +87,7 @@
                 </p>
               </span>
             </li>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="200">
               <i class="fa-solid fa-magnifying-glass-chart"></i>
               <span>
                 <h4>Wawasan Bisnis</h4>
@@ -93,7 +97,7 @@
                 </p>
               </span>
             </li>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="300">
               <i class="fa-regular fa-lightbulb"></i>
               <span>
                 <h4>Inovasi & Peluang</h4>
@@ -106,21 +110,86 @@
           </ul>
         </div>
         <div class="artikel-recomand">
-          <div class="title-content">
+          <div class="title-content" data-aos="fade-up">
             <span>Article</span>
             <a href="">selengkapnya</a>
           </div>
           <ul>
-            <li><img src="../assets/stategi-bisnis.jpg" alt="" /></li>
-            <li><img src="../assets/digital-bisnis.jpg" alt="" /></li>
-            <li><img src="../assets/pemasaran.jpg" alt="" /></li>
-            <li><img src="../assets/keuangan-bisnis.jpg" alt="" /></li>
-            <li><img src="../assets/inovasi.jpg" alt="" /></li>
+            <li data-aos="zoom-in" data-aos-delay="0">
+              <img
+                src="../assets/stategi-bisnis.jpg"
+                alt="Strategi Bisnis yang Wajib Dicoba di Tahun Ini"
+              />
+              <div class="artikel-info">
+                <span class="artikel-tag">Strategi</span>
+                <h4>5 Strategi Bisnis yang Wajib Dicoba di Tahun Ini</h4>
+                <div class="artikel-meta">
+                  <span><i class="fa-regular fa-calendar"></i> 12 Sep 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 6 menit baca</span>
+                </div>
+              </div>
+            </li>
+            <li data-aos="zoom-in" data-aos-delay="100">
+              <img
+                src="../assets/digital-bisnis.jpg"
+                alt="Transformasi Digital Kunci Bertahan di Pasar Modern"
+              />
+              <div class="artikel-info">
+                <span class="artikel-tag">Digital</span>
+                <h4>Transformasi Digital: Kunci Bertahan di Pasar Modern</h4>
+                <div class="artikel-meta">
+                  <span><i class="fa-regular fa-calendar"></i> 8 Sep 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 5 menit baca</span>
+                </div>
+              </div>
+            </li>
+            <li data-aos="zoom-in" data-aos-delay="150">
+              <img
+                src="../assets/pemasaran.jpg"
+                alt="Membangun Brand yang Diingat Lewat Pemasaran Kreatif"
+              />
+              <div class="artikel-info">
+                <span class="artikel-tag">Pemasaran</span>
+                <h4>Membangun Brand yang Diingat Lewat Pemasaran Kreatif</h4>
+                <div class="artikel-meta">
+                  <span><i class="fa-regular fa-calendar"></i> 3 Sep 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 4 menit baca</span>
+                </div>
+              </div>
+            </li>
+            <li data-aos="zoom-in" data-aos-delay="200">
+              <img
+                src="../assets/keuangan-bisnis.jpg"
+                alt="Mengelola Arus Kas agar Bisnis Tetap Sehat"
+              />
+              <div class="artikel-info">
+                <span class="artikel-tag">Keuangan</span>
+                <h4>Mengelola Arus Kas agar Bisnis Tetap Sehat</h4>
+                <div class="artikel-meta">
+                  <span><i class="fa-regular fa-calendar"></i> 29 Agu 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 7 menit baca</span>
+                </div>
+              </div>
+            </li>
+            <li data-aos="zoom-in" data-aos-delay="250">
+              <img
+                src="../assets/inovasi.jpg"
+                alt="Inovasi Kecil, Dampak Besar untuk Bisnis Kamu"
+              />
+              <div class="artikel-info">
+                <span class="artikel-tag">Inovasi</span>
+                <h4>Inovasi Kecil, Dampak Besar untuk Bisnis Kamu</h4>
+                <div class="artikel-meta">
+                  <span><i class="fa-regular fa-calendar"></i> 24 Agu 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 5 menit baca</span>
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
         <div class="about-us">
           <div class="box">
-            <div class="about">
+            <div class="about" data-aos="fade-right">
               <img src="../assets/Kembangin-logo.png" alt="" />
               <span>
                 <h3>Tentang Kembangin</h3>
@@ -134,7 +203,7 @@
                 </p>
               </span>
             </div>
-            <div class="why">
+            <div class="why" data-aos="fade-left">
               <h3>Kenapa Kembangin?</h3>
               <p>
                 Karena berkembang membutuhkan lebih dari sekadar informasi.
@@ -155,7 +224,7 @@
           </div>
           <div class="product">
             <ul>
-              <li>
+              <li data-aos="fade-up" data-aos-delay="0">
                 <h3>Konsultasi Dengan Ahlinya</h3>
                 <p>
                   Dapatkan wawasan dan solusi dari para ahli untuk membantu
@@ -173,7 +242,7 @@
                   >
                 </div>
               </li>
-              <li>
+              <li data-aos="fade-up" data-aos-delay="100">
                 <h3>Belajar Dari Dasar</h3>
                 <p>
                   Pelajari dunia bisnis dan ekonomi mulai dari dasar dengan
@@ -191,7 +260,7 @@
                   >
                 </div>
               </li>
-              <li>
+              <li data-aos="fade-up" data-aos-delay="200">
                 <h3>Buku Tentang Bisnis</h3>
                 <p>
                   Temukan berbagai rekomendasi buku yang membahas bisnis,
@@ -215,7 +284,7 @@
         </div>
         <div class="new-box">
           <div class="event">
-            <div class="box-event">
+            <div class="box-event" data-aos="fade-up" data-aos-delay="0">
               <img
                 class="thumb-event"
                 src="../assets/thum-event-1.jpg"
@@ -289,7 +358,7 @@
               </div>
             </div>
 
-            <div class="box-event">
+            <div class="box-event" data-aos="fade-up" data-aos-delay="100">
               <img
                 class="thumb-event"
                 src="../assets/thum-event-2.jpg"
@@ -363,7 +432,7 @@
               </div>
             </div>
 
-            <div class="box-event">
+            <div class="box-event" data-aos="fade-up" data-aos-delay="200">
               <img
                 class="thumb-event"
                 src="../assets/thum-event-3.jpg"
@@ -439,7 +508,7 @@
           </div>
           <div class="new-fitur-container">
             <div class="intro-fitur">
-              <div class="intro-ai">
+              <div class="intro-ai" data-aos="fade-right">
                 <img src="../assets/logo-ai-Photoroom.png" alt="" />
                 <h2>Kemba AI Telah Hadir</h2>
                 <p>
@@ -450,7 +519,7 @@
                   membantu aktivitasmu di dalam platform.
                 </p>
               </div>
-              <div class="intro-our-chatbot">
+              <div class="intro-our-chatbot" data-aos="fade-left">
                 <img src="../assets/logo-chatbot-Photoroom.png" alt="" />
                 <div class="chatbot-desk">
                   <h2>Kenalan dengan Kemba AI</h2>
@@ -481,7 +550,7 @@
             </div>
             <div class="tool-ai-container">
               <ul>
-                <li>
+                <li data-aos="fade-up" data-aos-delay="0">
                   <img src="../assets/logo-ai-article-summarizer.png" alt="" />
                   <span>
                     <h3>AI Article Summarizer</h3>
@@ -493,7 +562,7 @@
                     </p>
                   </span>
                 </li>
-                <li>
+                <li data-aos="fade-up" data-aos-delay="100">
                   <img src="../assets/logo-ai-library-assistant.png" alt="" />
                   <span>
                     <h3>AI Library Assistant</h3>
@@ -507,7 +576,7 @@
                 </li>
               </ul>
               <ul>
-                <li>
+                <li data-aos="fade-up" data-aos-delay="0">
                   <img src="../assets/logo-ai-swot-analyzer.png" alt="" />
                   <span>
                     <h3>AI SWOT Analyzer</h3>
@@ -520,7 +589,7 @@
                     </p>
                   </span>
                 </li>
-                <li>
+                <li data-aos="fade-up" data-aos-delay="100">
                   <img src="../assets/logo-ai-pricing-assistant.png" alt="" />
                   <span>
                     <h3>AI Pricing Assistant</h3>
@@ -544,8 +613,9 @@
             <img
               src="https://res.cloudinary.com/k1ryqda7/image/upload/v1789890606/фото_для_бизнеса_переговоры_с_партнёрами.jpg"
               alt=""
+              data-aos="fade-right"
             />
-            <span class="consul-des">
+            <span class="consul-des" data-aos="fade-left">
               <h3>Temukan Arah untuk Mengembangkan Bisnis</h3>
               <p>
                 Dari memulai usaha hingga mengembangkan bisnis, Kembangin
@@ -574,7 +644,7 @@
           </div>
 
           <!-- Konsultan Populer (urut dari sesi terbanyak) -->
-          <div class="cc-head">
+          <div class="cc-head" data-aos="fade-up">
             <div>
               <h3>Konsultan Populer</h3>
               <p>5 konsultan dengan sesi konsultasi terbanyak</p>
@@ -583,7 +653,7 @@
           </div>
 
           <div class="card-consultan-container">
-            <article class="card-consultan">
+            <article class="card-consultan" data-aos="fade-up" data-aos-delay="0">
               <div class="cc-photo">
                 <img
                   src="../assets/consultant/consultant-47.jpg"
@@ -635,7 +705,7 @@
                 </div>
               </div>
             </article>
-            <article class="card-consultan">
+            <article class="card-consultan" data-aos="fade-up" data-aos-delay="80">
               <div class="cc-photo">
                 <img
                   src="../assets/consultant/consultant-12.jpg"
@@ -687,7 +757,7 @@
                 </div>
               </div>
             </article>
-            <article class="card-consultan">
+            <article class="card-consultan" data-aos="fade-up" data-aos-delay="160">
               <div class="cc-photo">
                 <img
                   src="../assets/consultant/consultant-88.jpg"
@@ -739,7 +809,7 @@
                 </div>
               </div>
             </article>
-            <article class="card-consultan">
+            <article class="card-consultan" data-aos="fade-up" data-aos-delay="240">
               <div class="cc-photo">
                 <img
                   src="../assets/consultant/consultant-171.jpg"
@@ -791,7 +861,7 @@
                 </div>
               </div>
             </article>
-            <article class="card-consultan">
+            <article class="card-consultan" data-aos="fade-up" data-aos-delay="320">
               <div class="cc-photo">
                 <img
                   src="../assets/consultant/consultant-130.jpg"
@@ -847,22 +917,22 @@
         </div>
         <div class="course-container">
           <ul>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="0">
               <i class="fa-solid fa-glasses"></i>
               <span>Kenali</span>
               Pahami dasar-dasar bisnis dan temukan hal yang perlu dikembangkan.
             </li>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="100">
               <i class="fa-solid fa-chalkboard"></i>
               <span>Pelajari</span>
               Pelajari strategi, marketing, keuangan, dan keterampilan bisnis lainnya.
             </li>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="200">
               <i class="fa-solid fa-person-digging"></i>
               <span>Terapkan</span>
               Gunakan pengetahuan yang dipelajari untuk menghadapi kebutuhan bisnis secara nyata
             </li>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="300">
               <i class="fa-solid fa-seedling"></i>
               <span>Kembangkan</span>
               Terus tingkatkan kemampuan dan bawa bisnismu melangkah lebih jauh.
@@ -871,10 +941,22 @@
         </div>
       </div>
     </main>
-
+    <site-footer></site-footer>
     <!-- script -->
     <script src="../components/Navbar.js"></script>
+    <script src="../components/Footer.js"></script>
     <script src="../public/js/component.js"></script>
+
+    <!-- animation on scroll (AOS) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 700,
+        easing: "ease-out-cubic",
+        offset: 80,
+        once: true,
+      });
+    </script>
     <!-- script end-->
   </body>
 </html>

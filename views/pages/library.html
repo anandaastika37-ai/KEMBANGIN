@@ -18,17 +18,15 @@
       <div class="liblary-main"> 
 
         <div class="header">
-          <form class="search-liblary" id="search-form" role="search">
-            <div class="search-field">
-              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-              <label class="sr-only" for="search-input">Cari buku</label>
-              <input id="search-input" type="search" placeholder="Cari judul, penulis, atau topik" autocomplete="off">
-            </div>
-            <button type="submit" class="btn-cari">Cari</button>
-          </form>
-
-          <div class="filter">
-            <div class="filter-chips" id="filter-chips" role="group" aria-label="Filter kategori"></div>
+          <!-- Search & filter (urutkan/level/cocok untuk/tersimpan) sejajar dalam satu baris -->
+          <div class="search-filter-row">
+            <form class="search-liblary" id="search-form" role="search">
+              <div class="search-field">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <label class="sr-only" for="search-input">Cari buku</label>
+                <input id="search-input" type="search" placeholder="Cari judul, penulis, atau topik" autocomplete="off">
+              </div>
+            </form>
 
             <div class="filter-selects">
               <label class="select">
@@ -54,8 +52,25 @@
                 </select>
                 <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
               </label>
+
+              <label class="select" id="purpose-select-wrap" hidden>
+                <span class="sr-only">Cocok untuk</span>
+                <select id="purpose-select">
+                  <option value="all">Semua tujuan baca</option>
+                </select>
+                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+              </label>
+
+              <button type="button" class="btn-toggle-saved" id="toggle-saved" data-action="toggle-saved" aria-pressed="false">
+                <i class="fa-regular fa-bookmark" aria-hidden="true"></i>
+                <span>Tersimpan</span>
+                <span class="saved-badge" id="saved-badge">0</span>
+              </button>
             </div>
           </div>
+
+          <!-- Chip kategori: baris tersendiri di bawah search & filter biar rapi -->
+          <div class="filter-chips" id="filter-chips" role="group" aria-label="Filter kategori"></div>
         </div>
 
         <h2 class="sr-only">Daftar buku</h2>
@@ -70,6 +85,12 @@
           <h2 class="side-title" id="judul-hype">Top 5 buku lagi hype</h2>
           <ul class="top-hype-list" id="top-hype-list"></ul>
         </section>
+
+        <!-- Buku terbaru dirender oleh liblary.js -->
+        <section class="side-box top-hype" aria-labelledby="judul-terbaru">
+          <h2 class="side-title" id="judul-terbaru">Baru rilis</h2>
+          <ul class="top-hype-list" id="new-releases-list"></ul>
+        </section>
       </div>
 
       <!-- ===== Sidebar (sticky): analisa, rekomendasi ===== -->
@@ -79,6 +100,8 @@
           <ul class="stat-grid" id="stat-grid"></ul>
           <h3 class="side-sub">Sebaran kategori</h3>
           <ul class="cat-list" id="cat-list"></ul>
+          <h3 class="side-sub">Sebaran level</h3>
+          <ul class="cat-list" id="level-list"></ul>
         </section>
 
         <section class="side-box" aria-labelledby="judul-rekomendasi">
@@ -93,8 +116,53 @@
   <!-- Notifikasi kecil saat menyimpan buku -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <!-- Modal detail buku, diisi & dibuka lewat liblary.js -->
+  <div class="book-modal" id="book-modal" hidden>
+    <div class="book-modal-backdrop" data-action="close-modal"></div>
+    <div class="book-modal-panel" id="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+      <button type="button" class="modal-close" data-action="close-modal" aria-label="Tutup detail buku">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ===== AI Library Assistant (prototipe tampilan, balasan otomatis sederhana) ===== -->
+  <button type="button" class="ai-assistant-toggle" id="ai-toggle" aria-haspopup="dialog" aria-expanded="false" aria-controls="ai-panel">
+    <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+    <span>AI Library Assistant</span>
+  </button>
+
+  <div class="ai-panel" id="ai-panel" hidden role="dialog" aria-labelledby="ai-panel-title">
+    <div class="ai-panel-header">
+      <div class="ai-panel-heading">
+        <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+        <div>
+          <p class="ai-panel-title" id="ai-panel-title">AI Library Assistant</p>
+          <span class="ai-panel-badge">Prototipe</span>
+        </div>
+      </div>
+      <button type="button" class="ai-panel-close" id="ai-close" aria-label="Tutup AI Library Assistant">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="ai-panel-body" id="ai-messages" aria-live="polite"></div>
+
+    <div class="ai-panel-suggestions" id="ai-suggestions"></div>
+
+    <form class="ai-panel-input" id="ai-form">
+      <label class="sr-only" for="ai-input">Tanya AI Library Assistant</label>
+      <input id="ai-input" type="text" placeholder="Tanya rekomendasi buku..." autocomplete="off">
+      <button type="submit" aria-label="Kirim pesan">
+        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+    <site-footer></site-footer>
     <!-- script -->
     <script src="../components/Navbar.js"></script>
+    <script src="../components/Footer.js"></script>
     <script src="../public/js/component.js"></script>
     <script src="../public/js/liblary.js"></script>
     <!-- script end-->

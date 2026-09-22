@@ -93,7 +93,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 80px;
+  gap: 100px;
   color: var(--color-white);
 }
 
@@ -163,10 +163,20 @@ body {
   border: none;
   color: var(--text-200);
 }
+
+.selengkapnya:hover {
+  background: linear-gradient(to right , rgb(1, 1, 156) , blue);
+}
+
 .diskusi {
   width: 170px;
   color: var(--color-blue);
   background-color: var(--color-button-bg-soft);
+}
+
+.diskusi:hover{
+  background-color: #010dbd6c;
+  color: rgb(197, 197, 197);
 }
 
 .count-analist {
@@ -246,7 +256,7 @@ body {
 
 .right-side > img {
   margin-bottom: -20px;
-  width: 1050px;
+  width: 850px;
   height: 100%;
 }
 
@@ -406,6 +416,13 @@ body {
   margin: 0;
 }
 
+.artikel-recomand > ul > li {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+}
+
 .artikel-recomand > ul > li:first-child {
   grid-row-start: 1;
   grid-row-end: 4;
@@ -418,9 +435,87 @@ body {
   width: 520px;
   height: 310px;
   object-fit: cover;
-  border-radius: 10px;
   opacity: 0.75;
-  border: 1px solid var(--color-border);
+}
+.artikel-recomand > ul > li > img {
+  transition: transform 0.5s ease;
+}
+
+.artikel-recomand > ul > li:hover > img {
+  transform: scale(1.04);
+}
+
+/* gradasi gelap di bawah gambar supaya title & info tetap kebaca */
+.artikel-recomand > ul > li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--color-bg-deep) 0%,
+    rgba(var(--color-bg-deep-rgb), 0.75) 32%,
+    rgba(var(--color-bg-deep-rgb), 0) 65%
+  );
+  pointer-events: none;
+}
+
+.artikel-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.artikel-tag {
+  align-self: flex-start;
+  padding: 4px 10px;
+  background-color: var(--color-accent-soft-bg);
+  border: 1px solid var(--color-accent-border);
+  border-radius: 20px;
+  font-family: sans-serif;
+  font-size: 0.65rem;
+  color: var(--color-accent-light);
+}
+
+.artikel-info > h4 {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-100);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.artikel-recomand > ul > li:first-child .artikel-info > h4 {
+  font-size: 1.4rem;
+}
+
+.artikel-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 2px;
+}
+.artikel-meta > span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: sans-serif;
+  font-size: 0.68rem;
+  color: var(--text-300);
+}
+.artikel-meta i {
+  font-size: 0.65rem;
+  color: var(--text-400);
 }
 
 .our-product {
@@ -669,6 +764,14 @@ body {
   opacity: 80%;
   object-fit: cover;
   z-index: 0;
+}
+
+.box-event > img.thumb-event {
+  transition: transform 0.5s ease;
+}
+
+.box-event:hover > img.thumb-event {
+  transform: scale(1.04);
 }
 
 .box-event::after {
@@ -1355,6 +1458,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 40px;
 }
 
 .course-container > ul {
