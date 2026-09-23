@@ -99,7 +99,7 @@
     toggleSaved: $('toggle-saved'),
     savedBadge: $('saved-badge'),
     statGrid: $('stat-grid'),
-    catList: $('cat-list'),
+    // catList: $('cat-list'),
     levelList: $('level-list'),
     topHype: $('top-hype-list'),
     newReleases: $('new-releases-list'),
@@ -554,18 +554,18 @@
   }
 
   // Sebaran kategori: klik baris untuk langsung memfilter daftar buku
-  function renderCategories() {
-    const max = categories[0]?.count || 1;
-    el.catList.innerHTML = categories.map((c) => `
-      <li>
-        <button type="button" class="cat-row${c.name === state.category ? ' is-active' : ''}"
-                data-action="filter-category" data-category="${esc(c.name)}">
-          <span class="cat-head"><span>${esc(c.name)}</span><span class="cat-count">${c.count}</span></span>
-          <span class="bar" aria-hidden="true"><span style="--w: ${Math.round((c.count / max) * 100)}%"></span></span>
-        </button>
-      </li>
-    `).join('');
-  }
+  // function renderCategories() {
+  //   const max = categories[0]?.count || 1;
+  //   el.catList.innerHTML = categories.map((c) => `
+  //     <li>
+  //       <button type="button" class="cat-row${c.name === state.category ? ' is-active' : ''}"
+  //               data-action="filter-category" data-category="${esc(c.name)}">
+  //         <span class="cat-head"><span>${esc(c.name)}</span><span class="cat-count">${c.count}</span></span>
+  //         <span class="bar" aria-hidden="true"><span style="--w: ${Math.round((c.count / max) * 100)}%"></span></span>
+  //       </button>
+  //     </li>
+  //   `).join('');
+  // }
 
   // Sebaran level: sama seperti kategori, ikut menyinkron #level-select
   function renderLevels() {
@@ -919,7 +919,7 @@
     renderList();
     renderPagination();
     renderStats();
-    renderCategories();
+    // renderCategories();
     renderLevels();
     renderTopHype();
     renderNewReleases();

@@ -1,320 +1,359 @@
 /* ============================================================
    KEMBANGIN — Halaman Konsultasi (vanilla JS, tanpa dependency)
+   Menggunakan data asli dari consultants-data.js (window.CONSULTANTS_DATA)
    ============================================================ */
 (function () {
   "use strict";
 
-  /* ---------------- DATA DUMMY KONSULTAN ---------------- */
-  const consultants = [
-    {
-      id: 1, name: "Andi Pratama", category: "Bisnis", role: "Business Strategy Consultant",
-      experience: 8, rating: 4.9, consultations: 124, status: "online", price: 150000,
-      bio: "Berpengalaman membantu bisnis dan UMKM dalam menyusun strategi pertumbuhan, pengembangan model bisnis, dan perencanaan usaha.",
-      skills: ["Business Strategy", "Business Model", "Market Research", "Business Development"],
-      languages: ["Indonesia", "Inggris"]
-    },
-    {
-      id: 2, name: "Nadia Putri", category: "Marketing", role: "Marketing Consultant",
-      experience: 6, rating: 4.8, consultations: 98, status: "online", price: 125000,
-      bio: "Fokus membantu brand menyusun strategi pemasaran yang terukur, mulai dari riset target pasar hingga eksekusi kampanye.",
-      skills: ["Marketing Strategy", "Campaign Planning", "Social Media", "Customer Insight"],
-      languages: ["Indonesia", "Inggris"]
-    },
-    {
-      id: 3, name: "Raka Wijaya", category: "Keuangan", role: "Financial Consultant",
-      experience: 7, rating: 4.9, consultations: 115, status: "offline", price: 175000,
-      bio: "Membantu pemilik bisnis memahami kesehatan keuangan perusahaan dan menyusun perencanaan finansial jangka panjang.",
-      skills: ["Financial Planning", "Cash Flow", "Investment", "Budgeting"],
-      languages: ["Indonesia"]
-    },
-    {
-      id: 4, name: "Siti Rahayu", category: "UMKM", role: "UMKM Development Consultant",
-      experience: 5, rating: 4.7, consultations: 86, status: "online", price: 100000,
-      bio: "Mendampingi pelaku UMKM dalam mengelola operasional, keuangan sederhana, dan strategi naik kelas.",
-      skills: ["UMKM Management", "Operasional", "Business Model", "Legalitas Usaha"],
-      languages: ["Indonesia"]
-    },
-    {
-      id: 5, name: "Bagus Santoso", category: "Digitalisasi", role: "Digital Transformation Consultant",
-      experience: 9, rating: 4.9, consultations: 140, status: "online", price: 200000,
-      bio: "Membantu bisnis konvensional bertransformasi ke sistem digital, mulai dari proses operasional hingga penjualan online.",
-      skills: ["Digital Transformation", "E-Commerce", "Automation", "Sistem Operasional"],
-      languages: ["Indonesia", "Inggris"]
-    },
-    {
-      id: 6, name: "Dewi Lestari", category: "Branding", role: "Brand Strategy Consultant",
-      experience: 4, rating: 4.6, consultations: 62, status: "offline", price: 110000,
-      bio: "Membangun identitas brand yang konsisten dan mudah diingat, dari positioning hingga panduan visual.",
-      skills: ["Brand Positioning", "Visual Identity", "Brand Voice", "Naming"],
-      languages: ["Indonesia"]
-    },
-    {
-      id: 7, name: "Fajar Nugroho", category: "Bisnis", role: "Business Development Consultant",
-      experience: 3, rating: 4.5, consultations: 40, status: "online", price: 90000,
-      bio: "Membantu bisnis rintisan menemukan peluang ekspansi dan kemitraan yang tepat sasaran.",
-      skills: ["Business Development", "Partnership", "Market Entry"],
-      languages: ["Indonesia", "Inggris"]
-    },
-    {
-      id: 8, name: "Maya Kusuma", category: "Keuangan", role: "Investment & Cash Flow Consultant",
-      experience: 10, rating: 5.0, consultations: 180, status: "online", price: 220000,
-      bio: "Spesialis dalam manajemen arus kas dan strategi investasi untuk bisnis yang sedang bertumbuh.",
-      skills: ["Cash Flow", "Investment Strategy", "Financial Modeling"],
-      languages: ["Indonesia", "Inggris"]
-    },
-    {
-      id: 9, name: "Rian Hidayat", category: "Marketing", role: "Digital Marketing Consultant",
-      experience: 2, rating: 4.4, consultations: 28, status: "offline", price: 80000,
-      bio: "Membantu bisnis kecil memulai strategi pemasaran digital dengan anggaran terbatas namun efektif.",
-      skills: ["Digital Ads", "SEO Dasar", "Content Planning"],
-      languages: ["Indonesia"]
-    },
-    {
-      id: 10, name: "Putri Ramadhani", category: "Branding", role: "Visual Identity Consultant",
-      experience: 6, rating: 4.8, consultations: 95, status: "online", price: 130000,
-      bio: "Merancang identitas visual yang mencerminkan karakter brand, mulai dari logo hingga pedoman desain.",
-      skills: ["Visual Identity", "Logo Design", "Brand Guideline"],
-      languages: ["Indonesia", "Inggris"]
-    },
-    {
-      id: 11, name: "Yoga Pratama", category: "Digitalisasi", role: "Tech & Automation Consultant",
-      experience: 5, rating: 4.7, consultations: 70, status: "online", price: 140000,
-      bio: "Membantu bisnis mengotomatisasi proses operasional menggunakan tools digital yang sesuai skala usaha.",
-      skills: ["Automation", "Sistem Digital", "Tools Bisnis"],
-      languages: ["Indonesia"]
-    },
-    {
-      id: 12, name: "Lina Marlina", category: "UMKM", role: "Micro Business Consultant",
-      experience: 3, rating: 4.6, consultations: 45, status: "offline", price: 85000,
-      bio: "Fokus mendampingi usaha mikro dalam pencatatan keuangan sederhana dan strategi bertahan serta berkembang.",
-      skills: ["UMKM", "Pencatatan Keuangan", "Strategi Bertahan"],
-      languages: ["Indonesia"]
-    }
+  const DATA = window.CONSULTANTS_DATA || [];
+  const PAGE_SIZE = 12;
+
+  /* ---------------- KLASIFIKASI BIDANG ----------------
+     Data asli tidak punya field "kategori" tunggal, jadi bidang
+     diturunkan dari spesialisasi + konsultasi memakai kata kunci.
+     Satu konsultan bisa masuk lebih dari satu bidang. */
+  const CATEGORIES = [
+    { id: "strategi", label: "Strategi & Pengembangan Bisnis", keywords: ["strategi bisnis", "business strategy", "pengembangan bisnis", "business development", "business model", "business planning", "business plan", "ekspansi", "expansion", "franchise", "business analysis", "analisis bisnis", "analisis model bisnis", "market analysis", "analisis pasar", "manajemen bisnis", "strategy"] },
+    { id: "keuangan", label: "Keuangan & Investasi", keywords: ["keuangan", "finance", "financial", "cash flow", "investasi", "investment", "accounting", "akuntansi"] },
+    { id: "marketing", label: "Marketing & Digital Marketing", keywords: ["marketing", "digital marketing", "content", "social media", "consumer behavior", "consumer research"] },
+    { id: "branding", label: "Branding", keywords: ["branding", "brand strategy", "brand "] },
+    { id: "digital", label: "Digital & E-Commerce", keywords: ["digital business", "e-commerce", "marketplace", "digitalisasi"] },
+    { id: "umkm", label: "UMKM", keywords: ["umkm"] },
+    { id: "startup", label: "Startup & Produk", keywords: ["startup", "product development", "product strategy", "product"] },
+    { id: "sales", label: "Sales & Partnership", keywords: ["sales", "negotiation", "negosiasi", "partnership", "customer acquisition", "retail", "customer experience"] },
+    { id: "operasional", label: "Operasional & Supply Chain", keywords: ["operasional", "operations", "sop", "supply chain", "logistik", "logistics"] },
+    { id: "leadership", label: "Leadership & SDM", keywords: ["leadership", "hr", "human resources", "management", "manajemen", "kepemimpinan"] }
   ];
 
-  const CHANNELS = ["Bisnis", "Keuangan", "Marketing", "Branding", "Digitalisasi", "UMKM"];
+  const EDU_COLORS = { S1: "#4c7dff", S2: "#7c9bff", MBA: "#34d399" };
+  const EDU_LABELS = { S1: "Sarjana (S1)", S2: "Magister (S2)", MBA: "MBA" };
+
   const TIME_SLOTS = ["09:00", "10:00", "13:00", "14:00", "16:00", "19:00"];
   const DAY_NAMES = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
   const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+  const MONTH_NAMES_FULL = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
   /* ---------------- STATE ---------------- */
   const state = {
     search: "",
     bidang: "Semua",
     pengalaman: "Semua",
+    pendidikan: "Semua",
     rating: "Semua",
-    status: "Semua",
-    sort: "terbaru"
+    durasi: "Semua",
+    sort: "default",
+    visibleCount: PAGE_SIZE
   };
 
   const booking = { consultant: null, dateIndex: null, timeSlot: null };
 
   /* ---------------- HELPERS ---------------- */
-  function formatPrice(value) {
-    return "Rp" + value.toLocaleString("id-ID");
-  }
-
-  function avatarUrl(name) {
-    const encoded = encodeURIComponent(name);
-    return "https://ui-avatars.com/api/?name=" + encoded +
-      "&background=1B2A4A&color=8FB4FF&size=160&bold=true&font-size=0.36";
-  }
-
-  function experienceBucket(years) {
-    if (years <= 3) return "1-3";
-    if (years <= 5) return "3-5";
-    return "5+";
-  }
-
   function escapeHtml(str) {
     const div = document.createElement("div");
-    div.textContent = str;
+    div.textContent = str == null ? "" : String(str);
     return div.innerHTML;
+  }
+
+  function expYears(c) { return parseInt(c.pengalaman, 10) || 0; }
+
+  function expBucket(years) {
+    if (years <= 7) return "5-7";
+    if (years <= 10) return "8-10";
+    return "11+";
+  }
+
+  function eduBucket(pendidikan) {
+    if (pendidikan.indexOf("Master of Business Administration") !== -1) return "MBA";
+    if (pendidikan.indexOf("Magister") === 0) return "S2";
+    return "S1";
+  }
+
+  function priceValue(harga) {
+    return parseInt(String(harga).replace(/[^0-9]/g, ""), 10) || 0;
+  }
+
+  function formatRupiah(value) {
+    return "Rp" + Math.round(value).toLocaleString("id-ID");
+  }
+
+  function classify(c) {
+    const text = (c.spesialisasi.join(" ") + " " + c.konsultasi.join(" ")).toLowerCase();
+    const matched = CATEGORIES.filter(cat => cat.keywords.some(k => text.indexOf(k) !== -1)).map(cat => cat.id);
+    return matched.length ? matched : ["lainnya"];
   }
 
   /* ---------------- FILTER + SORT ---------------- */
   function matchesConsultant(c) {
     const term = state.search.trim().toLowerCase();
     if (term) {
-      const haystack = (c.name + " " + c.category + " " + c.role + " " + c.skills.join(" ")).toLowerCase();
-      if (!haystack.includes(term)) return false;
+      const haystack = (c.nama + " " + c.spesialisasi.join(" ") + " " + c.konsultasi.join(" ") + " " + c.pendidikan).toLowerCase();
+      if (haystack.indexOf(term) === -1) return false;
     }
-    if (state.bidang !== "Semua" && c.category !== state.bidang) return false;
-    if (state.pengalaman !== "Semua" && experienceBucket(c.experience) !== state.pengalaman) return false;
+    if (state.bidang !== "Semua" && classify(c).indexOf(state.bidang) === -1) return false;
+    if (state.pengalaman !== "Semua" && expBucket(expYears(c)) !== state.pengalaman) return false;
+    if (state.pendidikan !== "Semua" && eduBucket(c.pendidikan) !== state.pendidikan) return false;
     if (state.rating !== "Semua" && c.rating < parseFloat(state.rating)) return false;
-    if (state.status !== "Semua" && c.status !== state.status) return false;
+    if (state.durasi !== "Semua" && c.durasi !== state.durasi) return false;
     return true;
   }
 
   function sortConsultants(list) {
     const sorted = list.slice();
     switch (state.sort) {
-      case "rating":
-        sorted.sort((a, b) => b.rating - a.rating);
-        break;
-      case "pengalaman":
-        sorted.sort((a, b) => b.experience - a.experience);
-        break;
-      case "konsultasi":
-        sorted.sort((a, b) => b.consultations - a.consultations);
-        break;
-      default: // terbaru -> urutan id terbalik (dianggap paling baru ditambahkan)
-        sorted.sort((a, b) => b.id - a.id);
+      case "rating": sorted.sort((a, b) => b.rating - a.rating); break;
+      case "pengalaman": sorted.sort((a, b) => expYears(b) - expYears(a)); break;
+      case "konsultasi": sorted.sort((a, b) => b.jumlah_konsultasi - a.jumlah_konsultasi); break;
+      case "harga-rendah": sorted.sort((a, b) => priceValue(a.harga) - priceValue(b.harga)); break;
+      case "harga-tinggi": sorted.sort((a, b) => priceValue(b.harga) - priceValue(a.harga)); break;
+      case "nama": sorted.sort((a, b) => a.nama.localeCompare(b.nama)); break;
+      default: sorted.sort((a, b) => a.id - b.id);
     }
     return sorted;
   }
 
-  /* ---------------- RENDER: CONSULTANT GRID ---------------- */
+  /* ---------------- RENDER: CONSULTANT CARD ---------------- */
   function consultantCardHtml(c) {
-    const statusLabel = c.status === "online" ? "Online" : "Offline";
-    const skillsHtml = c.skills.slice(0, 3).map(s =>
-      '<span class="consultant-card__skill">' + escapeHtml(s) + "</span>"
-    ).join("");
+    const specText = c.spesialisasi.slice(0, 2).join(", ");
+    const hargaParts = String(c.harga).split(" / ");
+    const hargaValue = hargaParts[0] || c.harga;
+    const hargaUnit = hargaParts[1] || "sesi";
 
     return (
-      '<article class="consultant-card consultation-fade-up" data-id="' + c.id + '">' +
-        '<div class="consultant-card__top">' +
-          '<div class="consultant-card__avatar-wrap">' +
-            '<img class="consultant-card__avatar" src="' + avatarUrl(c.name) + '" alt="Foto profil ' + escapeHtml(c.name) + '">' +
-            '<span class="consultant-card__status consultant-card__status--' + c.status + '"></span>' +
+      '<article class="consultant-card" style="background-image:url(\'' + c.foto + '\')" data-id="' + c.id + '" role="button" tabindex="0" aria-label="Lihat profil ' + escapeHtml(c.nama) + '">' +
+        '<div class="consultant-card__scrim"></div>' +
+        '<div class="consultant-card__top-row">' +
+          '<span class="consultant-card__available"><i class="fa-solid fa-circle"></i>' + escapeHtml(c.status) + "</span>" +
+          '<span class="consultant-card__rating"><i class="fa-solid fa-star"></i>' + c.rating.toFixed(1) + "</span>" +
+        "</div>" +
+        '<div class="consultant-card__content">' +
+          '<div class="consultant-card__name">' + escapeHtml(c.nama) + "</div>" +
+          '<div class="consultant-card__specialisasi">' + escapeHtml(specText) + "</div>" +
+          '<div class="consultant-card__meta">' +
+            '<span><i class="fa-solid fa-briefcase"></i>' + expYears(c) + " Tahun</span>" +
+            '<span><i class="fa-solid fa-comments"></i>' + c.jumlah_konsultasi + "</span>" +
           "</div>" +
-          "<div>" +
-            '<div class="consultant-card__name">' + escapeHtml(c.name) + "</div>" +
-            '<div class="consultant-card__role">' + escapeHtml(c.role) + "</div>" +
-            '<div class="consultant-card__status-label"><i class="fa-solid fa-circle" style="font-size:6px;color:' + (c.status === "online" ? "#34d399" : "#6b7280") + '"></i>' + statusLabel + "</div>" +
+          '<div class="consultant-card__footer">' +
+            '<div class="consultant-card__price">' + escapeHtml(hargaValue) + "<small>/ " + escapeHtml(hargaUnit) + "</small></div>" +
+            '<div class="consultant-card__actions">' +
+              '<button type="button" class="consultation-btn consultation-btn--ghost" data-action="profile" data-id="' + c.id + '">Profil</button>' +
+              '<button type="button" class="consultation-btn consultation-btn--primary" data-action="book" data-id="' + c.id + '">Konsultasi</button>' +
+            "</div>" +
           "</div>" +
-        "</div>" +
-        '<div class="consultant-card__meta">' +
-          '<span><i class="fa-solid fa-briefcase"></i>' + c.experience + " Tahun</span>" +
-          '<span><i class="fa-solid fa-star"></i>' + c.rating.toFixed(1) + "</span>" +
-          '<span><i class="fa-solid fa-comments"></i>' + c.consultations + "</span>" +
-        "</div>" +
-        '<div class="consultant-card__skills">' + skillsHtml + "</div>" +
-        '<div class="consultant-card__footer">' +
-          '<div class="consultant-card__price"><small>Mulai dari</small>' + formatPrice(c.price) + "</div>" +
-        "</div>" +
-        '<div class="consultant-card__actions">' +
-          '<button type="button" class="consultation-btn consultation-btn--ghost" data-action="profile" data-id="' + c.id + '">Lihat Profil</button>' +
-          '<button type="button" class="consultation-btn consultation-btn--primary" data-action="book" data-id="' + c.id + '">Konsultasi</button>' +
         "</div>" +
       "</article>"
     );
   }
 
+  /* ---------------- RENDER: ANALYTICS ---------------- */
+  function renderStatCards(list) {
+    const total = list.length;
+    const avgRating = total ? (list.reduce((s, c) => s + c.rating, 0) / total) : 0;
+    const avgHarga = total ? (list.reduce((s, c) => s + priceValue(c.harga), 0) / total) : 0;
+    const avgExp = total ? (list.reduce((s, c) => s + expYears(c), 0) / total) : 0;
+
+    const cards = [
+      { label: "Total Konsultan", icon: "fa-users", value: total, suffix: "" },
+      { label: "Rating Rata-rata", icon: "fa-star", value: avgRating.toFixed(1), suffix: "/ 5.0" },
+      { label: "Harga Rata-rata", icon: "fa-tag", value: formatRupiah(avgHarga), suffix: "/ sesi" },
+      { label: "Pengalaman Rata-rata", icon: "fa-briefcase", value: avgExp.toFixed(1), suffix: "tahun" }
+    ];
+
+    document.getElementById("statGrid").innerHTML = cards.map(card =>
+      '<div class="consultation-stat-card">' +
+        '<div class="consultation-stat-card__label"><i class="fa-solid ' + card.icon + '"></i>' + card.label + "</div>" +
+        '<div class="consultation-stat-card__value">' + card.value + (card.suffix ? " <small>" + card.suffix + "</small>" : "") + "</div>" +
+      "</div>"
+    ).join("");
+  }
+
+  function renderBidangChart(list) {
+    const counts = {};
+    CATEGORIES.forEach(cat => { counts[cat.id] = 0; });
+    list.forEach(c => classify(c).forEach(id => { if (counts[id] !== undefined) counts[id]++; }));
+
+    const rows = CATEGORIES
+      .map(cat => ({ label: cat.label, count: counts[cat.id] }))
+      .sort((a, b) => b.count - a.count);
+
+    const max = Math.max(1, ...rows.map(r => r.count));
+    const container = document.getElementById("bidangChart");
+
+    if (!list.length) {
+      container.innerHTML = '<p style="font-size:0.85rem;">Tidak ada data untuk ditampilkan.</p>';
+      return;
+    }
+
+    container.innerHTML = rows.map(r =>
+      '<div class="consultation-bar-row">' +
+        '<span class="consultation-bar-row__label">' + escapeHtml(r.label) + "</span>" +
+        '<div class="consultation-bar-row__track"><div class="consultation-bar-row__fill" style="width:' + Math.round((r.count / max) * 100) + '%"></div></div>' +
+        '<span class="consultation-bar-row__count">' + r.count + "</span>" +
+      "</div>"
+    ).join("");
+  }
+
+  function renderEduDonut(list) {
+    const counts = { S1: 0, S2: 0, MBA: 0 };
+    list.forEach(c => { counts[eduBucket(c.pendidikan)]++; });
+
+    const total = list.length;
+    const donut = document.getElementById("eduDonut");
+    const legend = document.getElementById("eduLegend");
+
+    if (!total) {
+      donut.style.background = "var(--c-border)";
+      legend.innerHTML = '<li>Tidak ada data.</li>';
+      return;
+    }
+
+    let cursor = 0;
+    const segments = [];
+    ["S1", "S2", "MBA"].forEach(key => {
+      const pct = (counts[key] / total) * 100;
+      if (pct > 0) {
+        segments.push(EDU_COLORS[key] + " " + cursor.toFixed(2) + "% " + (cursor + pct).toFixed(2) + "%");
+        cursor += pct;
+      }
+    });
+
+    donut.style.background = "conic-gradient(" + segments.join(", ") + ")";
+
+    legend.innerHTML = ["S1", "S2", "MBA"].map(key => {
+      const pct = total ? Math.round((counts[key] / total) * 100) : 0;
+      return '<li><span class="consultation-donut-legend__swatch" style="background:' + EDU_COLORS[key] + '"></span>' +
+        EDU_LABELS[key] + '<strong>' + counts[key] + " (" + pct + "%)</strong></li>";
+    }).join("");
+  }
+
+  function renderAnalytics(list) {
+    renderStatCards(list);
+    renderBidangChart(list);
+    renderEduDonut(list);
+  }
+
+  /* ---------------- RENDER: LIST ---------------- */
   function renderConsultants() {
     const grid = document.getElementById("consultantGrid");
     const emptyState = document.getElementById("emptyState");
     const resultCount = document.getElementById("resultCount");
+    const loadMoreWrap = document.getElementById("loadMoreWrap");
 
-    const filtered = sortConsultants(consultants.filter(matchesConsultant));
+    const filtered = sortConsultants(DATA.filter(matchesConsultant));
+    renderAnalytics(filtered);
 
     if (filtered.length === 0) {
       grid.innerHTML = "";
       emptyState.hidden = false;
+      loadMoreWrap.hidden = true;
       resultCount.textContent = "0 konsultan ditemukan";
       return;
     }
 
     emptyState.hidden = true;
-    resultCount.textContent = filtered.length + " konsultan ditemukan";
-    grid.innerHTML = filtered.map(consultantCardHtml).join("");
+    const visible = filtered.slice(0, state.visibleCount);
+    grid.innerHTML = visible.map(consultantCardHtml).join("");
+    resultCount.textContent = "Menampilkan " + visible.length + " dari " + filtered.length + " konsultan";
+    loadMoreWrap.hidden = visible.length >= filtered.length;
+  }
 
-    requestAnimationFrame(() => {
-      grid.querySelectorAll(".consultation-fade-up").forEach(el => el.classList.add("is-visible"));
+  /* ---------------- FILTER BAR / SEARCH ---------------- */
+  function populateBidangFilter() {
+    const select = document.getElementById("filterBidang");
+    CATEGORIES.forEach(cat => {
+      const opt = document.createElement("option");
+      opt.value = cat.id;
+      opt.textContent = cat.label;
+      select.appendChild(opt);
     });
   }
 
-  function renderChannelCounts() {
-    CHANNELS.forEach(channel => {
-      const count = consultants.filter(c => c.category === channel).length;
-      const el = document.querySelector('[data-channel-count="' + channel + '"]');
-      if (el) el.textContent = count + " konsultan tersedia";
-    });
+  function resetFilters() {
+    state.search = "";
+    state.bidang = "Semua";
+    state.pengalaman = "Semua";
+    state.pendidikan = "Semua";
+    state.rating = "Semua";
+    state.durasi = "Semua";
+    state.sort = "default";
+    state.visibleCount = PAGE_SIZE;
+
+    document.getElementById("searchInput").value = "";
+    document.getElementById("searchClearBtn").hidden = true;
+    document.getElementById("filterBidang").value = "Semua";
+    document.getElementById("filterPengalaman").value = "Semua";
+    document.getElementById("filterPendidikan").value = "Semua";
+    document.getElementById("filterRating").value = "Semua";
+    document.getElementById("filterDurasi").value = "Semua";
+    document.getElementById("filterSort").value = "default";
+
+    renderConsultants();
   }
 
-  /* ---------------- FILTER BAR EVENTS ---------------- */
-  function bindFilterBar() {
-    document.getElementById("filterBidang").addEventListener("change", e => { state.bidang = e.target.value; renderConsultants(); });
-    document.getElementById("filterPengalaman").addEventListener("change", e => { state.pengalaman = e.target.value; renderConsultants(); });
-    document.getElementById("filterRating").addEventListener("change", e => { state.rating = e.target.value; renderConsultants(); });
-    document.getElementById("filterStatus").addEventListener("change", e => { state.status = e.target.value; renderConsultants(); });
-    document.getElementById("filterSort").addEventListener("change", e => { state.sort = e.target.value; renderConsultants(); });
+  function bindToolbar() {
+    const searchInput = document.getElementById("searchInput");
+    const clearBtn = document.getElementById("searchClearBtn");
 
-    function resetFilters() {
-      state.search = "";
-      state.bidang = "Semua";
-      state.pengalaman = "Semua";
-      state.rating = "Semua";
-      state.status = "Semua";
-      state.sort = "terbaru";
-      document.getElementById("quickSearchInput").value = "";
-      document.getElementById("filterBidang").value = "Semua";
-      document.getElementById("filterPengalaman").value = "Semua";
-      document.getElementById("filterRating").value = "Semua";
-      document.getElementById("filterStatus").value = "Semua";
-      document.getElementById("filterSort").value = "terbaru";
+    searchInput.addEventListener("input", () => {
+      state.search = searchInput.value;
+      state.visibleCount = PAGE_SIZE;
+      clearBtn.hidden = searchInput.value.length === 0;
       renderConsultants();
-    }
+    });
+
+    clearBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      state.search = "";
+      state.visibleCount = PAGE_SIZE;
+      clearBtn.hidden = true;
+      renderConsultants();
+      searchInput.focus();
+    });
+
+    document.getElementById("searchForm").addEventListener("submit", e => e.preventDefault());
+
+    ["filterBidang", "filterPengalaman", "filterPendidikan", "filterRating", "filterDurasi", "filterSort"].forEach(id => {
+      document.getElementById(id).addEventListener("change", e => {
+        const key = id.replace("filter", "");
+        state[key.charAt(0).toLowerCase() + key.slice(1)] = e.target.value;
+        state.visibleCount = PAGE_SIZE;
+        renderConsultants();
+      });
+    });
 
     document.getElementById("filterResetBtn").addEventListener("click", resetFilters);
     document.getElementById("emptyResetBtn").addEventListener("click", resetFilters);
-  }
 
-  /* ---------------- QUICK SEARCH ---------------- */
-  function bindQuickSearch() {
-    const form = document.getElementById("quickSearchForm");
-    const input = document.getElementById("quickSearchInput");
-
-    input.addEventListener("input", () => {
-      state.search = input.value;
+    document.getElementById("loadMoreBtn").addEventListener("click", () => {
+      state.visibleCount += PAGE_SIZE;
       renderConsultants();
     });
+  }
 
-    form.addEventListener("submit", e => {
+  /* ---------------- GRID ACTIONS ---------------- */
+  function bindGridActions() {
+    document.getElementById("consultantGrid").addEventListener("click", e => {
+      const actionBtn = e.target.closest("[data-action]");
+      if (actionBtn) {
+        const consultant = DATA.find(c => c.id === parseInt(actionBtn.dataset.id, 10));
+        if (!consultant) return;
+        if (actionBtn.dataset.action === "profile") openProfileModal(consultant);
+        if (actionBtn.dataset.action === "book") openBookingModal(consultant);
+        return;
+      }
+      const card = e.target.closest(".consultant-card");
+      if (card) {
+        const consultant = DATA.find(c => c.id === parseInt(card.dataset.id, 10));
+        if (consultant) openProfileModal(consultant);
+      }
+    });
+
+    document.getElementById("consultantGrid").addEventListener("keydown", e => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const card = e.target.closest(".consultant-card");
+      if (!card) return;
       e.preventDefault();
-      state.search = input.value;
-      renderConsultants();
-      scrollToId("consultants");
-    });
-
-    document.querySelectorAll(".consultation-chip").forEach(chip => {
-      chip.addEventListener("click", () => {
-        input.value = chip.dataset.term;
-        state.search = chip.dataset.term;
-        renderConsultants();
-        scrollToId("consultants");
-      });
-    });
-  }
-
-  /* ---------------- CHANNEL CARDS ---------------- */
-  function bindChannelCards() {
-    document.querySelectorAll("[data-channel-btn]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const channel = btn.dataset.channelBtn;
-        state.bidang = channel;
-        document.getElementById("filterBidang").value = channel;
-        renderConsultants();
-        scrollToId("consultants");
-      });
-    });
-  }
-
-  /* ---------------- SMOOTH SCROLL ---------------- */
-  function scrollToId(id) {
-    const target = document.getElementById(id);
-    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function bindScrollLinks() {
-    document.querySelectorAll("[data-scroll]").forEach(link => {
-      link.addEventListener("click", e => {
-        const href = link.getAttribute("href");
-        if (href && href.startsWith("#")) {
-          e.preventDefault();
-          scrollToId(href.slice(1));
-        }
-      });
+      const consultant = DATA.find(c => c.id === parseInt(card.dataset.id, 10));
+      if (consultant) openProfileModal(consultant);
     });
   }
 
@@ -323,31 +362,35 @@
     const overlay = document.getElementById("profileModalOverlay");
     const body = document.getElementById("profileModalBody");
 
-    const skillsHtml = consultant.skills.map(s =>
-      '<span class="consultant-card__skill">' + escapeHtml(s) + "</span>"
+    const spesialisasiHtml = consultant.spesialisasi.map(s =>
+      '<span class="consultant-profile__skill">' + escapeHtml(s) + "</span>"
+    ).join("");
+    const konsultasiHtml = consultant.konsultasi.map(s =>
+      '<span class="consultant-profile__skill">' + escapeHtml(s) + "</span>"
     ).join("");
 
     body.innerHTML =
       '<div class="consultant-profile__head">' +
-        '<img class="consultant-profile__avatar" src="' + avatarUrl(consultant.name) + '" alt="Foto profil ' + escapeHtml(consultant.name) + '">' +
+        '<div class="consultant-profile__avatar" style="background-image:url(\'' + consultant.foto + '\')"></div>' +
         "<div>" +
-          '<div class="consultant-profile__name" id="profileModalName">' + escapeHtml(consultant.name) + "</div>" +
-          '<div class="consultant-profile__role">' + escapeHtml(consultant.role) + "</div>" +
-          '<div class="consultant-profile__status"><i class="fa-solid fa-circle" style="font-size:6px;color:' + (consultant.status === "online" ? "#34d399" : "#6b7280") + '"></i>' + (consultant.status === "online" ? "Online" : "Offline") + "</div>" +
+          '<div class="consultant-profile__name" id="profileModalName">' + escapeHtml(consultant.nama) + "</div>" +
+          '<div class="consultant-profile__role">Ahli Bisnis &middot; ' + escapeHtml(consultant.pendidikan) + "</div>" +
+          '<div class="consultant-profile__status"><i class="fa-solid fa-circle" style="font-size:6px;color:#34d399"></i>' + escapeHtml(consultant.status) + "</div>" +
         "</div>" +
       "</div>" +
       '<div class="consultant-profile__meta-grid">' +
-        '<div class="consultant-profile__meta-item"><span>Pengalaman</span><strong>' + consultant.experience + " Tahun</strong></div>" +
+        '<div class="consultant-profile__meta-item"><span>Pengalaman</span><strong>' + escapeHtml(consultant.pengalaman) + "</strong></div>" +
         '<div class="consultant-profile__meta-item"><span>Rating</span><strong><i class="fa-solid fa-star" style="color:#f5b942"></i> ' + consultant.rating.toFixed(1) + "</strong></div>" +
-        '<div class="consultant-profile__meta-item"><span>Jumlah Konsultasi</span><strong>' + consultant.consultations + "</strong></div>" +
-        '<div class="consultant-profile__meta-item"><span>Harga Konsultasi</span><strong>' + formatPrice(consultant.price) + " / sesi</strong></div>" +
+        '<div class="consultant-profile__meta-item"><span>Jumlah Konsultasi</span><strong>' + consultant.jumlah_konsultasi + "</strong></div>" +
+        '<div class="consultant-profile__meta-item"><span>Durasi Sesi</span><strong>' + escapeHtml(consultant.durasi) + "</strong></div>" +
+        '<div class="consultant-profile__meta-item"><span>Harga Konsultasi</span><strong>' + escapeHtml(consultant.harga) + "</strong></div>" +
+        '<div class="consultant-profile__meta-item"><span>Status</span><strong>' + escapeHtml(consultant.status) + "</strong></div>" +
       "</div>" +
-      '<div class="consultant-profile__section"><h4>Tentang Konsultan</h4><p>' + escapeHtml(consultant.bio) + "</p></div>" +
-      '<div class="consultant-profile__section"><h4>Keahlian</h4><div class="consultant-profile__skills">' + skillsHtml + "</div></div>" +
-      '<div class="consultant-profile__section"><h4>Channel Tersedia</h4><div class="consultant-profile__skills"><span class="consultant-card__skill">' + escapeHtml(consultant.category) + "</span></div></div>" +
-      '<div class="consultant-profile__section"><h4>Bahasa</h4><p>' + consultant.languages.join(", ") + "</p></div>" +
+      '<div class="consultant-profile__section"><h4>Tentang Konsultan</h4><p>' + escapeHtml(consultant.deskripsi) + "</p></div>" +
+      '<div class="consultant-profile__section"><h4>Spesialisasi</h4><div class="consultant-profile__skills">' + spesialisasiHtml + "</div></div>" +
+      '<div class="consultant-profile__section"><h4>Layanan Konsultasi</h4><div class="consultant-profile__skills">' + konsultasiHtml + "</div></div>" +
       '<div class="consultant-profile__actions">' +
-        '<button type="button" class="consultation-btn consultation-btn--primary" id="profileScheduleBtn" data-id="' + consultant.id + '">Jadwalkan Konsultasi</button>' +
+        '<button type="button" class="consultation-btn consultation-btn--primary" id="profileScheduleBtn">Jadwalkan Konsultasi</button>' +
       "</div>";
 
     overlay.hidden = false;
@@ -371,7 +414,6 @@
 
   /* ---------------- BOOKING MODAL ---------------- */
   function slotIsFull(consultantId, dateIndex, timeIndex) {
-    // Distribusi ketersediaan semu namun konsisten (deterministik) per konsultan/tanggal/jam.
     return (consultantId * 7 + dateIndex * 3 + timeIndex) % 5 === 0;
   }
 
@@ -391,7 +433,7 @@
     booking.dateIndex = null;
     booking.timeSlot = null;
 
-    document.getElementById("bookingConsultantName").textContent = consultant.name;
+    document.getElementById("bookingConsultantName").textContent = consultant.nama;
     document.getElementById("bookingSummary").hidden = true;
     document.getElementById("bookingConfirmBtn").disabled = true;
 
@@ -447,14 +489,13 @@
     });
 
     const dateLabel = dateObj.getDate() + " " + MONTH_NAMES_FULL[dateObj.getMonth()] + " " + dateObj.getFullYear();
-    document.getElementById("summaryConsultant").textContent = booking.consultant.name;
+    document.getElementById("summaryConsultant").textContent = booking.consultant.nama;
     document.getElementById("summaryDate").textContent = dateLabel;
     document.getElementById("summaryTime").textContent = time;
+    document.getElementById("summaryDuration").textContent = booking.consultant.durasi;
     document.getElementById("bookingSummary").hidden = false;
     document.getElementById("bookingConfirmBtn").disabled = false;
   }
-
-  const MONTH_NAMES_FULL = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
   function bindBookingConfirm() {
     document.getElementById("bookingConfirmBtn").addEventListener("click", () => {
@@ -474,19 +515,6 @@
     toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 3200);
   }
 
-  /* ---------------- GRID ACTION DELEGATION ---------------- */
-  function bindGridActions() {
-    document.getElementById("consultantGrid").addEventListener("click", e => {
-      const btn = e.target.closest("[data-action]");
-      if (!btn) return;
-      const id = parseInt(btn.dataset.id, 10);
-      const consultant = consultants.find(c => c.id === id);
-      if (!consultant) return;
-      if (btn.dataset.action === "profile") openProfileModal(consultant);
-      if (btn.dataset.action === "book") openBookingModal(consultant);
-    });
-  }
-
   /* ---------------- MODAL CLOSE HANDLERS ---------------- */
   function bindModalClosers() {
     const overlays = [
@@ -496,48 +524,26 @@
 
     overlays.forEach(({ overlay, closeBtn }) => {
       closeBtn.addEventListener("click", () => closeModal(overlay));
-      overlay.addEventListener("click", e => {
-        if (e.target === overlay) closeModal(overlay);
-      });
+      overlay.addEventListener("click", e => { if (e.target === overlay) closeModal(overlay); });
     });
 
     document.addEventListener("keydown", e => {
       if (e.key === "Escape") {
-        overlays.forEach(({ overlay }) => {
-          if (overlay.classList.contains("is-open")) closeModal(overlay);
-        });
+        overlays.forEach(({ overlay }) => { if (overlay.classList.contains("is-open")) closeModal(overlay); });
       }
     });
   }
 
-  /* ---------------- FADE-UP ON SCROLL ---------------- */
-  function bindFadeUpSections() {
-    const targets = document.querySelectorAll(".consultation-section, .consultation-cta-banner, .consultation-quick");
-    targets.forEach(el => el.classList.add("consultation-fade-up"));
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    targets.forEach(el => observer.observe(el));
-  }
-
   /* ---------------- INIT ---------------- */
   document.addEventListener("DOMContentLoaded", () => {
-    renderChannelCounts();
+    document.getElementById("pageHeadSubtitle").textContent =
+      DATA.length + " konsultan siap membantu bisnis Anda menemukan arah yang tepat.";
+
+    populateBidangFilter();
     renderConsultants();
-    bindFilterBar();
-    bindQuickSearch();
-    bindChannelCards();
-    bindScrollLinks();
+    bindToolbar();
     bindGridActions();
     bindModalClosers();
     bindBookingConfirm();
-    bindFadeUpSections();
   });
 })();
