@@ -48,6 +48,15 @@ class Dropdown {
             event.stopPropagation();
             this.toggle();
         });
+        // Keyboard support: Enter/Space triggers the same toggle as a click,
+        // since the trigger elements (li/div) aren't natively focusable buttons.
+        this.button.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                event.stopPropagation();
+                this.toggle();
+            }
+        });
         this.dropdown.addEventListener('click', (event) => {
             event.stopPropagation();
         });
@@ -70,6 +79,7 @@ class Dropdown {
     open() {
         this.dropdown.classList.add(this.activeClass);
         this.dropdown.classList.add(this.slideClass);
+        this.button.setAttribute('aria-expanded', 'true');
         if (this.buttonActiveClass) {
             this.button.classList.add(this.buttonActiveClass);
         }
@@ -85,6 +95,7 @@ class Dropdown {
     close() {
         this.dropdown.classList.remove(this.activeClass);
         this.dropdown.classList.remove(this.slideClass);
+        this.button.setAttribute('aria-expanded', 'false');
         if (this.buttonActiveClass) {
             this.button.classList.remove(this.buttonActiveClass);
         }
@@ -114,3 +125,27 @@ document.addEventListener('click', () => {
         dropdown.close();
     });
 });
+
+/* NOTIFICATIONS
+   The bell now lives inside the profile dropdown instead of sitting on its
+   own in the navbar. This just wires up the unread badge — swap
+   `unreadNotifCount` for real data from your backend/API. */
+
+const notifDot = document.querySelector('.notif-dot');
+const notifCount = document.querySelector('.notif-count');
+const unreadNotifCount = 3;
+
+function renderNotifBadge(count) {
+    const hasUnread = count > 0;
+
+    if (notifDot) {
+        notifDot.classList.toggle('show', hasUnread);
+    }
+
+    if (notifCount) {
+        notifCount.textContent = hasUnread ? (count > 9 ? '9+' : String(count)) : '';
+        notifCount.classList.toggle('show', hasUnread);
+    }
+}
+
+renderNotifBadge(unreadNotifCount);

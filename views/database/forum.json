@@ -1,0 +1,287 @@
+[
+ {
+  "id": "t1",
+  "user": "dewi_kuliner",
+  "cat": "UMKM",
+  "text": "Cara menentukan harga jual produk UMKM agar tetap untung?\n\nHarga bahan naik terus, tapi pelanggan sensitif harga. Bagaimana menghitung margin yang aman?",
+  "mins": 45,
+  "views": 340,
+  "answered": true,
+  "tags": [
+   "UMKM",
+   "HargaJual"
+  ],
+  "likes": 27,
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgMzIwIDIyMCI+CiAgICA8cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIyMCIgZmlsbD0iIzBhMTIzMCIvPgogICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIgcng9IjEwIiBmaWxsPSIjMGYxNDQwIiBzdHJva2U9IiMzNDM4NmUiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPGNpcmNsZSBjeD0iNDUiIGN5PSIzNSIgcj0iNiIgZmlsbD0iIzdjOGJmZiIvPgogICAgPHJlY3QgeD0iNjAiIHk9IjMwIiB3aWR0aD0iOTAiIGhlaWdodD0iMTAiIHJ4PSI1IiBmaWxsPSIjN2M4YmZmIi8+CiAgICA8cmVjdCB4PSIzMCIgeT0iNDAiIHdpZHRoPSIyMDAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMzYTNmNzgiLz48cmVjdCB4PSIzMCIgeT0iNTgiIHdpZHRoPSIxNjAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMzYTNmNzgiLz48cmVjdCB4PSIzMCIgeT0iNzYiIHdpZHRoPSIyMDAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMzYTNmNzgiLz48cmVjdCB4PSIzMCIgeT0iOTQiIHdpZHRoPSIxNjAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMzYTNmNzgiLz48cmVjdCB4PSIzMCIgeT0iMTEyIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjM2EzZjc4Ii8+PHJlY3QgeD0iMzAiIHk9IjEzMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzNhM2Y3OCIvPjxyZWN0IHg9IjMwIiB5PSIxNDgiIHdpZHRoPSIyMDAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMzYTNmNzgiLz4KICAgIDxyZWN0IHg9IjMwIiB5PSIxODAiIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIiIHJ4PSI2IiBmaWxsPSIjMmIzN2UyIi8+CiAgICA8L3N2Zz4=",
+  "replies": [
+   {
+    "user": "andi_fin",
+    "text": "Coba hitung dulu HPP per porsi, lalu tambahkan margin minimal 30%. Jangan lupa masukkan biaya kemasan.",
+    "mins": 30
+   },
+   {
+    "user": "maya_akun",
+    "text": "Saya biasa bandingkan harga 3 kompetitor terdekat dulu sebelum menentukan margin.",
+    "mins": 10
+   }
+  ]
+ },
+ {
+  "id": "t2",
+  "user": "rizky_mkt",
+  "cat": "Pemasaran",
+  "text": "Strategi konten Instagram untuk toko online baru\n\nBaru buka toko fashion online dan belum punya pengikut. Jenis konten apa yang sebaiknya diprioritaskan?",
+  "mins": 180,
+  "views": 210,
+  "answered": false,
+  "tags": [
+   "DigitalMarketing",
+   "TokoOnline"
+  ],
+  "likes": 16,
+  "replies": [
+   {
+    "user": "toni_seo",
+    "text": "Mulai dari konten behind the scene produksi, itu biasanya lebih engaging untuk akun baru.",
+    "mins": 150
+   }
+  ]
+ },
+ {
+  "id": "t3",
+  "user": "andi_fin",
+  "cat": "Keuangan",
+  "text": "Perlukah memisahkan rekening pribadi dan usaha sejak awal?\n\nUsaha masih kecil dan omzetnya belum stabil. Apakah pemisahan rekening tetap perlu?",
+  "mins": 300,
+  "views": 890,
+  "answered": true,
+  "tags": [
+   "ArusKas",
+   "KeuanganUsaha"
+  ],
+  "likes": 71,
+  "replies": [
+   {
+    "user": "maya_akun",
+    "text": "Perlu banget, dari awal walau omzet kecil. Supaya laporan keuangan usaha lebih jelas nantinya.",
+    "mins": 260
+   },
+   {
+    "user": "hendra_b",
+    "text": "Setuju, saya baru pisahkan setelah setahun dan ternyata banyak pengeluaran pribadi ikut tercampur.",
+    "mins": 200
+   },
+   {
+    "user": "sinta_biz",
+    "text": "Bank sekarang banyak yang gratis buka rekening bisnis kok, jadi tidak ada alasan menunda.",
+    "mins": 90
+   }
+  ]
+ },
+ {
+  "id": "t4",
+  "user": "nadia_eko",
+  "cat": "Ekonomi",
+  "text": "Dampak inflasi terhadap daya beli pelanggan kelas menengah\n\nBagaimana pelaku usaha menyesuaikan strategi ketika daya beli konsumen menurun?",
+  "mins": 1440,
+  "views": 560,
+  "answered": true,
+  "tags": [
+   "Inflasi",
+   "DayaBeli"
+  ],
+  "likes": 38,
+  "replies": [
+   {
+    "user": "putu_craft",
+    "text": "Saya mulai menawarkan varian ukuran lebih kecil dengan harga lebih terjangkau.",
+    "mins": 1200
+   }
+  ]
+ },
+ {
+  "id": "t5",
+  "user": "bayu_tech",
+  "cat": "Teknologi",
+  "text": "Tools digital gratis untuk mengelola stok dan kasir\n\nMencari aplikasi ringan untuk toko kelontong dengan satu kasir dan dua karyawan.",
+  "mins": 720,
+  "views": 430,
+  "answered": false,
+  "tags": [
+   "UMKM",
+   "Digitalisasi"
+  ],
+  "likes": 22,
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0ODAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgNDgwIDIyMCI+CiAgICA8cmVjdCB3aWR0aD0iNDgwIiBoZWlnaHQ9IjIyMCIgZmlsbD0iIzBhMTIzMCIvPgogICAgPHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjcwIiByeD0iMTAiIGZpbGw9IiMwZjE0NDAiIHN0cm9rZT0iIzM0Mzg2ZSIvPgogICAgPHJlY3QgeD0iMjMwIiB5PSIyMCIgd2lkdGg9IjIzMCIgaGVpZ2h0PSI3MCIgcng9IjEwIiBmaWxsPSIjMGYxNDQwIiBzdHJva2U9IiMzNDM4NmUiLz4KICAgIDxwb2x5bGluZSBwb2ludHM9IjMwLDE1MCA5MCwxMjAgMTUwLDE2MCAyMTAsMTAwIDI3MCwxNDAgMzMwLDkwIDM5MCwxMzAgNDUwLDgwIiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzhiZmYiIHN0cm9rZS13aWR0aD0iNCIvPgogICAgPHJlY3QgeD0iMjAiIHk9IjE3MCIgd2lkdGg9IjQ0MCIgaGVpZ2h0PSIzMCIgcng9IjgiIGZpbGw9IiMwZjE0NDAiIHN0cm9rZT0iIzM0Mzg2ZSIvPgogICAgPC9zdmc+",
+  "replies": [
+   {
+    "user": "fajar_kembangin",
+    "text": "Banyak aplikasi kasir gratis untuk skala kecil, tinggal sesuaikan dengan jumlah transaksi harianmu.",
+    "mins": 600
+   }
+  ]
+ },
+ {
+  "id": "t6",
+  "user": "sinta_biz",
+  "cat": "Bisnis",
+  "text": "Bagaimana cara memulai bisnis dari nol dengan modal terbatas?\n\nPunya ide usaha makanan ringan, tapi modal hanya beberapa juta rupiah. Mulai dari mana?",
+  "mins": 1800,
+  "views": 1520,
+  "answered": true,
+  "tags": [
+   "ModalUsaha",
+   "MulaiBisnis"
+  ],
+  "likes": 118,
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0ODAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgNDgwIDIwMCI+CiAgICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM1YjZjZmYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyYjM3ZTIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICAgIDxyZWN0IHdpZHRoPSI0ODAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMGExMjMwIi8+CiAgICA8bGluZSB4MT0iMjAiIHkxPSIxODAiIHgyPSI0NjAiIHkyPSIxODAiIHN0cm9rZT0iIzM0Mzg2ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8cmVjdCB4PSI0MCIgeT0iMTIwIiB3aWR0aD0iNDYiIGhlaWdodD0iNjAiIHJ4PSI2IiBmaWxsPSJ1cmwoI2cpIi8+PHJlY3QgeD0iMTIwIiB5PSI4MCIgd2lkdGg9IjQ2IiBoZWlnaHQ9IjEwMCIgcng9IjYiIGZpbGw9InVybCgjZykiLz48cmVjdCB4PSIyMDAiIHk9IjYwIiB3aWR0aD0iNDYiIGhlaWdodD0iMTIwIiByeD0iNiIgZmlsbD0idXJsKCNnKSIvPjxyZWN0IHg9IjI4MCIgeT0iMTQwIiB3aWR0aD0iNDYiIGhlaWdodD0iNDAiIHJ4PSI2IiBmaWxsPSJ1cmwoI2cpIi8+PHJlY3QgeD0iMzYwIiB5PSIzMCIgd2lkdGg9IjQ2IiBoZWlnaHQ9IjE1MCIgcng9IjYiIGZpbGw9InVybCgjZykiLz4KICAgIDwvc3ZnPg==",
+  "replies": [
+   {
+    "user": "hendra_b",
+    "text": "Mulai dari skala rumahan dulu, uji pasar lewat pre-order sebelum produksi besar.",
+    "mins": 1700
+   },
+   {
+    "user": "dewi_kuliner",
+    "text": "Fokus ke satu produk andalan dulu sampai stabil, baru tambah varian lain.",
+    "mins": 1500
+   },
+   {
+    "user": "lina_katering",
+    "text": "Modal kecil bisa disiasati dengan sistem pre-order supaya bahan tidak mengendap.",
+    "mins": 1000
+   },
+   {
+    "user": "toni_seo",
+    "text": "Manfaatkan media sosial gratis untuk promosi awal sebelum keluar biaya iklan.",
+    "mins": 600
+   }
+  ]
+ },
+ {
+  "id": "t7",
+  "user": "fajar_kembangin",
+  "cat": "Umum",
+  "text": "Kenalkan usahamu di sini: apa yang kamu jual?\n\nRuang perkenalan untuk anggota baru. Ceritakan usahamu dan tantangan terbesarmu saat ini.",
+  "mins": 2880,
+  "views": 980,
+  "answered": false,
+  "tags": [
+   "UMKM",
+   "Perkenalan"
+  ],
+  "likes": 54,
+  "replies": [
+   {
+    "user": "putu_craft",
+    "text": "Saya jual kerajinan anyaman, tantangan terbesar di packing agar aman saat pengiriman jauh.",
+    "mins": 2600
+   },
+   {
+    "user": "bayu_tech",
+    "text": "Jasa servis perangkat elektronik rumahan, tantangannya cari teknisi yang bisa dipercaya.",
+    "mins": 2000
+   }
+  ]
+ },
+ {
+  "id": "t8",
+  "user": "lina_katering",
+  "cat": "UMKM",
+  "text": "Cara mendapatkan pelanggan pertama untuk jasa katering\n\nSudah punya menu dan dapur siap, tetapi belum ada pesanan tetap. Saran dari yang berpengalaman?",
+  "mins": 4320,
+  "views": 275,
+  "answered": false,
+  "tags": [
+   "PelangganPertama",
+   "UMKM"
+  ],
+  "likes": 19,
+  "replies": [
+   {
+    "user": "dewi_kuliner",
+    "text": "Coba tawarkan paket tester gratis untuk acara kantor kecil di sekitar rumah dulu.",
+    "mins": 4000
+   }
+  ]
+ },
+ {
+  "id": "t9",
+  "user": "toni_seo",
+  "cat": "Pemasaran",
+  "text": "SEO dasar atau iklan berbayar, mana yang lebih efektif?\n\nAnggaran promosi terbatas. Mana yang lebih cepat memberi hasil untuk bisnis jasa lokal?",
+  "mins": 5760,
+  "views": 720,
+  "answered": true,
+  "tags": [
+   "SEO",
+   "DigitalMarketing"
+  ],
+  "likes": 49,
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MjAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgNDIwIDIyMCI+CiAgICA8cmVjdCB3aWR0aD0iNDIwIiBoZWlnaHQ9IjIyMCIgZmlsbD0iIzBhMTIzMCIvPgogICAgPHJlY3QgeD0iNDAiIHk9IjYwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE0MCIgcng9IjgiIGZpbGw9IiMwZjE0NDAiIHN0cm9rZT0iIzM0Mzg2ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8cG9seWdvbiBwb2ludHM9IjMwLDcwIDIxMCwyMCAzOTAsNzAiIGZpbGw9IiMyYjM3ZTIiLz4KICAgIDxyZWN0IHg9IjE4MCIgeT0iMTIwIiB3aWR0aD0iNjAiIGhlaWdodD0iODAiIGZpbGw9IiMxYTIwNjAiIHN0cm9rZT0iIzM0Mzg2ZSIvPgogICAgPHJlY3QgeD0iNzAiIHk9IjEwMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjMTUxYTRhIiBzdHJva2U9IiMzNDM4NmUiLz4KICAgIDxyZWN0IHg9IjMwMCIgeT0iMTAwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiMxNTFhNGEiIHN0cm9rZT0iIzM0Mzg2ZSIvPgogICAgPC9zdmc+",
+  "replies": [
+   {
+    "user": "rizky_mkt",
+    "text": "Kalau butuh hasil cepat, iklan berbayar lebih terasa. SEO baru terasa setelah beberapa bulan.",
+    "mins": 5000
+   },
+   {
+    "user": "nadia_eko",
+    "text": "Bisa dikombinasikan, iklan untuk jangka pendek dan SEO untuk jangka panjang.",
+    "mins": 3000
+   }
+  ]
+ },
+ {
+  "id": "t10",
+  "user": "maya_akun",
+  "cat": "Keuangan",
+  "text": "Membuat laporan arus kas sederhana untuk usaha kecil\n\nButuh format laporan yang mudah diisi setiap hari tanpa pengetahuan akuntansi mendalam.",
+  "mins": 8640,
+  "views": 610,
+  "answered": true,
+  "tags": [
+   "ArusKas",
+   "LaporanKeuangan"
+  ],
+  "likes": 41,
+  "replies": [
+   {
+    "user": "andi_fin",
+    "text": "Cukup catat tiga kolom: pemasukan, pengeluaran, dan saldo akhir setiap hari.",
+    "mins": 8000,
+    "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgMzIwIDIyMCI+CiAgICA8cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIyMCIgZmlsbD0iIzBhMTIzMCIvPgogICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIgcng9IjEwIiBmaWxsPSIjMGYxNDQwIiBzdHJva2U9IiMzNDM4NmUiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPGNpcmNsZSBjeD0iNDUiIGN5PSIzNSIgcj0iNiIgZmlsbD0iIzdjOGJmZiIvPgogICAgPHJlY3QgeD0iNjAiIHk9IjMwIiB3aWR0aD0iOTAiIGhlaWdodD0iMTAiIHJ4PSI1IiBmaWxsPSIjN2M4YmZmIi8+CiAgICA8cmVjdCB4PSIzMCIgeT0iNDAiIHdpZHRoPSIyMDAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMzYTNmNzgiLz48cmVjdCB4PSIzMCIgeT0iNTgiIHdpZHRoPSIxNjAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMzYTNmNzgiLz48cmVjdCB4PSIzMCIgeT0iNzYiIHdpZHRoPSIyMDAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMzYTNmNzgiLz48cmVjdCB4PSIzMCIgeT0iOTQiIHdpZHRoPSIxNjAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMzYTNmNzgiLz48cmVjdCB4PSIzMCIgeT0iMTEyIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjM2EzZjc4Ii8+PHJlY3QgeD0iMzAiIHk9IjEzMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzNhM2Y3OCIvPjxyZWN0IHg9IjMwIiB5PSIxNDgiIHdpZHRoPSIyMDAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMzYTNmNzgiLz4KICAgIDxyZWN0IHg9IjMwIiB5PSIxODAiIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIiIHJ4PSI2IiBmaWxsPSIjMmIzN2UyIi8+CiAgICA8L3N2Zz4="
+   }
+  ]
+ },
+ {
+  "id": "t11",
+  "user": "hendra_b",
+  "cat": "Bisnis",
+  "text": "Kapan waktu yang tepat merekrut karyawan pertama?\n\nPesanan mulai menumpuk, tetapi arus kas masih pas-pasan. Apa tanda usaha siap punya karyawan?",
+  "mins": 10080,
+  "views": 320,
+  "answered": false,
+  "tags": [
+   "Karyawan",
+   "MulaiBisnis"
+  ],
+  "likes": 14,
+  "replies": []
+ },
+ {
+  "id": "t12",
+  "user": "putu_craft",
+  "cat": "Ekonomi",
+  "text": "Peluang ekspor produk kerajinan lokal ke pasar Asia\n\nAdakah pengalaman mengirim kerajinan tangan ke luar negeri? Bagaimana soal izin dan ongkos kirim?",
+  "mins": 14400,
+  "views": 470,
+  "answered": false,
+  "tags": [
+   "Ekspor",
+   "Kerajinan"
+  ],
+  "likes": 25,
+  "replies": []
+ }
+]

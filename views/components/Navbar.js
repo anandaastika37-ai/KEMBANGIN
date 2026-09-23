@@ -19,12 +19,13 @@ class SiteNavbar extends HTMLElement {
 
             <!-- SEARCH -->
             <div class="navbar-search">
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
               <input 
                 type="text" 
                 id="search" 
                 autocomplete="off"
                 placeholder="Cari..."
+                aria-label="Cari"
               >
             </div>
 
@@ -46,10 +47,10 @@ class SiteNavbar extends HTMLElement {
                   </a>
                 </li>
 
-                <li id="nav-drop">
+                <li id="nav-drop" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Menu produk">
                   <a class="navbar-dropdown">
                     Produk
-                    <i class="fa-solid fa-angle-down"></i>
+                    <i class="fa-solid fa-angle-down" aria-hidden="true"></i>
                   </a>
                 </li>
 
@@ -65,40 +66,40 @@ class SiteNavbar extends HTMLElement {
               <ul class="mobile-navigation">
 
                 <li>
-                  <a href="../pages/home.html" data-page="home">
-                    <i class="fa-solid fa-house"></i>
+                  <a href="../pages/home.html" data-page="home" aria-label="Beranda">
+                    <i class="fa-solid fa-house" aria-hidden="true"></i>
                   </a>
                 </li>
 
                 <li>
-                  <a href="../pages/article.html" data-page="article">
-                    <i class="fa-solid fa-newspaper"></i>
+                  <a href="../pages/article.html" data-page="article" aria-label="Artikel">
+                    <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
                   </a>
                 </li>
 
-                <li class="nav-drop-mobile">
+                <li class="nav-drop-mobile" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Menu produk">
 
                   <a>
-                    <i class="fa-solid fa-industry"></i>
+                    <i class="fa-solid fa-industry" aria-hidden="true"></i>
                   </a>
 
                   <ul class="dropdown-produk-mobile">
 
                     <li>
-                      <a href="../pages/course.html" data-page="course">
-                        <i class="fa-solid fa-chalkboard-user"></i>
+                      <a href="../pages/course.html" data-page="course" aria-label="Belajar">
+                        <i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i>
                       </a>
                     </li>
 
                     <li>
-                      <a href="../pages/consultation.html" data-page="consultation">
-                        <i class="fa-solid fa-microphone-lines"></i>
+                      <a href="../pages/consultation.html" data-page="consultation" aria-label="Konsultasi">
+                        <i class="fa-solid fa-microphone-lines" aria-hidden="true"></i>
                       </a>
                     </li>
 
                     <li>
-                      <a href="../pages/library.html" data-page="library">
-                        <i class="fa-solid fa-book"></i>
+                      <a href="../pages/library.html" data-page="library" aria-label="Perpustakaan">
+                        <i class="fa-solid fa-book" aria-hidden="true"></i>
                       </a>
                     </li>
 
@@ -107,8 +108,8 @@ class SiteNavbar extends HTMLElement {
                 </li>
 
                 <li>
-                  <a href="../pages/forum.html" data-page="forum">
-                    <i class="fa-solid fa-comments"></i>
+                  <a href="../pages/forum.html" data-page="forum" aria-label="Forum">
+                    <i class="fa-solid fa-comments" aria-hidden="true"></i>
                   </a>
                 </li>
 
@@ -119,16 +120,12 @@ class SiteNavbar extends HTMLElement {
             <!-- BUTTON -->
             <div class="navbar-btn">
 
-              <div class="mobile-search-btn">
-                <i class="fa-solid fa-magnifying-glass"></i>
+              <div class="mobile-search-btn" tabindex="0" role="button" aria-expanded="false" aria-label="Buka pencarian">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
               </div>
 
-              <a href="#" class="notif-btn">
-                <i class="fa-solid fa-bell"></i>
-              </a>
-
-              <a href="#" class="chatbot-btn">
-                <i class="fa-solid fa-robot"></i>
+              <a href="#" class="chatbot-btn" aria-label="Chatbot">
+                <i class="fa-solid fa-robot" aria-hidden="true"></i>
               </a>
 
               <a 
@@ -141,14 +138,17 @@ class SiteNavbar extends HTMLElement {
             </div>
 
             <!-- PROFILE -->
-            <div class="profile-login" id="profile-login">
-              <h2>S</h2>
-              <span>username</span>
+            <div class="profile-login" id="profile-login" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Menu profil dan notifikasi">
+              <span class="avatar">
+                <h2>S</h2>
+                <span class="notif-dot" aria-hidden="true"></span>
+              </span>
+              <span class="profile-login-name">username</span>
             </div>
 
             <!-- MENU MOBILE -->
-            <div class="menu">
-              <i class="fa-solid fa-bars"></i>
+            <div class="menu" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Buka menu navigasi">
+              <i class="fa-solid fa-bars" aria-hidden="true"></i>
             </div>
 
           </div>
@@ -160,13 +160,14 @@ class SiteNavbar extends HTMLElement {
 
           <div class="mobile-search-input">
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
 
             <input 
               type="text" 
               id="mobile-search"
               placeholder="Cari..."
               autocomplete="off"
+              aria-label="Cari"
             >
 
           </div>
@@ -189,11 +190,11 @@ class SiteNavbar extends HTMLElement {
                   data-page="course"
                 >
                   <span>
-                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i>
                     Belajar
                   </span>
 
-                  <i class="fa-solid fa-angle-right"></i>
+                  <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
                 </a>
               </li>
 
@@ -205,11 +206,11 @@ class SiteNavbar extends HTMLElement {
                   data-page="consultation"
                 >
                   <span>
-                    <i class="fa-solid fa-microphone-lines"></i>
+                    <i class="fa-solid fa-microphone-lines" aria-hidden="true"></i>
                     Konsultasi
                   </span>
 
-                  <i class="fa-solid fa-angle-right"></i>
+                  <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
                 </a>
               </li>
 
@@ -221,11 +222,11 @@ class SiteNavbar extends HTMLElement {
                   data-page="library"
                 >
                   <span>
-                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-book" aria-hidden="true"></i>
                     Perpustakaan
                   </span>
 
-                  <i class="fa-solid fa-angle-right"></i>
+                  <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
                 </a>
               </li>
 
@@ -251,7 +252,7 @@ class SiteNavbar extends HTMLElement {
 
             <div class="premium">
               <span>Berlangganan</span>
-              <i class="fa-solid fa-crown"></i>
+              <i class="fa-solid fa-crown" aria-hidden="true"></i>
             </div>
 
 
@@ -260,22 +261,36 @@ class SiteNavbar extends HTMLElement {
               <ul>
 
                 <li>
-                  <a href="profile.html" data-page="profile">
-                    <i class="fa-solid fa-image-portrait"></i>
+
+                  <a href="#" class="notif-link">
+                    <span>
+                      <i class="fa-solid fa-bell" aria-hidden="true"></i>
+                      Notifikasi
+                    </span>
+                    <span class="notif-count"></span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#">
+                    <i class="fa-solid fa-image-portrait" aria-hidden="true"></i>
                     Profil
                   </a>
                 </li>
 
                 <li>
-                  <a href="dashboard.html" data-page="dashboard">
-                    <i class="fa-solid fa-table"></i>
+
+                  <a href="#">
+                    <i class="fa-solid fa-table" aria-hidden="true"></i>
+
                     Dasbor
                   </a>
                 </li>
 
                 <li>
-                  <a href="community.html" data-page="community">
-                    <i class="fa-solid fa-users"></i>
+
+                  <a href="#">
+                    <i class="fa-solid fa-users" aria-hidden="true"></i>
                     Komunitas
                   </a>
                 </li>
@@ -288,7 +303,7 @@ class SiteNavbar extends HTMLElement {
             <div class="logout">
 
               <a href="../auth/login.html">
-                <i class="fa-solid fa-right-from-bracket"></i>
+                <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
                 Keluar
               </a>
 
@@ -308,42 +323,42 @@ class SiteNavbar extends HTMLElement {
 
             <li>
               <a href="../pages/home.html">
-                <i class="fa-regular fa-file"></i>
+                <i class="fa-regular fa-file" aria-hidden="true"></i>
                 Beranda
               </a>
             </li>
 
             <li>
               <a href="../pages/article.html">
-                <i class="fa-regular fa-file"></i>
+                <i class="fa-regular fa-file" aria-hidden="true"></i>
                 Artikel
               </a>
             </li>
 
             <li>
               <a href="../pages/course.html">
-                <i class="fa-regular fa-file"></i>
+                <i class="fa-regular fa-file" aria-hidden="true"></i>
                 Belajar
               </a>
             </li>
 
             <li>
               <a href="../pages/consultation.html">
-                <i class="fa-regular fa-file"></i>
+                <i class="fa-regular fa-file" aria-hidden="true"></i>
                 Konsultasi
               </a>
             </li>
 
             <li>
               <a href="../pages/library.html">
-                <i class="fa-regular fa-file"></i>
+                <i class="fa-regular fa-file" aria-hidden="true"></i>
                 Perpustakaan
               </a>
             </li>
 
             <li>
               <a href="../pages/forum.html">
-                <i class="fa-regular fa-file"></i>
+                <i class="fa-regular fa-file" aria-hidden="true"></i>
                 Forum
               </a>
             </li>

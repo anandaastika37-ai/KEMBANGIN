@@ -10,13 +10,17 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
   </head>
   <body data-page="home">
     <site-navbar></site-navbar>
 
     <main>
       <section class="hero">
-        <div class="left-side">
+        <div class="left-side" data-aos="fade-right" data-aos-duration="800">
           <span class="tema">Insight untuk Pertumbuhan</span>
           <h2 class="title">
             Tumbuh Lebih Cepat, Melangkah <span>Lebih Jauh</span>
@@ -56,14 +60,14 @@
             </p>
           </div>
         </div>
-        <div class="right-side">
-          <img src="../assets/hero-section-img.png" alt="" />
+        <div class="right-side" data-aos="fade-left" data-aos-duration="800" data-aos-delay="150">
+          <img src="../assets/logo-3d.png" alt="" />
         </div>
       </section>
       <div class="second-content">
         <div class="information">
           <ul>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="0">
               <i class="fa-solid fa-chart-column"></i>
               <span>
                 <h4>Strategi Pertumbuhan</h4>
@@ -73,7 +77,7 @@
                 </p>
               </span>
             </li>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="100">
               <i class="fa-solid fa-arrow-trend-up"></i>
               <span>
                 <h4>Pengembangan Bisnis</h4>
@@ -83,7 +87,7 @@
                 </p>
               </span>
             </li>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="200">
               <i class="fa-solid fa-magnifying-glass-chart"></i>
               <span>
                 <h4>Wawasan Bisnis</h4>
@@ -93,7 +97,7 @@
                 </p>
               </span>
             </li>
-            <li>
+            <li data-aos="fade-up" data-aos-delay="300">
               <i class="fa-regular fa-lightbulb"></i>
               <span>
                 <h4>Inovasi & Peluang</h4>
@@ -106,21 +110,86 @@
           </ul>
         </div>
         <div class="artikel-recomand">
-          <div class="title-content">
+          <div class="title-content" data-aos="fade-up">
             <span>Article</span>
             <a href="">selengkapnya</a>
           </div>
           <ul>
-            <li><img src="../assets/stategi-bisnis.jpg" alt="" /></li>
-            <li><img src="../assets/digital-bisnis.jpg" alt="" /></li>
-            <li><img src="../assets/pemasaran.jpg" alt="" /></li>
-            <li><img src="../assets/keuangan-bisnis.jpg" alt="" /></li>
-            <li><img src="../assets/inovasi.jpg" alt="" /></li>
+            <li data-aos="zoom-in" data-aos-delay="0">
+              <img
+                src="../assets/stategi-bisnis.jpg"
+                alt="Strategi Bisnis yang Wajib Dicoba di Tahun Ini"
+              />
+              <div class="artikel-info">
+                <span class="artikel-tag">Strategi</span>
+                <h4>5 Strategi Bisnis yang Wajib Dicoba di Tahun Ini</h4>
+                <div class="artikel-meta">
+                  <span><i class="fa-regular fa-calendar"></i> 12 Sep 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 6 menit baca</span>
+                </div>
+              </div>
+            </li>
+            <li data-aos="zoom-in" data-aos-delay="100">
+              <img
+                src="../assets/digital-bisnis.jpg"
+                alt="Transformasi Digital Kunci Bertahan di Pasar Modern"
+              />
+              <div class="artikel-info">
+                <span class="artikel-tag">Digital</span>
+                <h4>Transformasi Digital: Kunci Bertahan di Pasar Modern</h4>
+                <div class="artikel-meta">
+                  <span><i class="fa-regular fa-calendar"></i> 8 Sep 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 5 menit baca</span>
+                </div>
+              </div>
+            </li>
+            <li data-aos="zoom-in" data-aos-delay="150">
+              <img
+                src="../assets/pemasaran.jpg"
+                alt="Membangun Brand yang Diingat Lewat Pemasaran Kreatif"
+              />
+              <div class="artikel-info">
+                <span class="artikel-tag">Pemasaran</span>
+                <h4>Membangun Brand yang Diingat Lewat Pemasaran Kreatif</h4>
+                <div class="artikel-meta">
+                  <span><i class="fa-regular fa-calendar"></i> 3 Sep 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 4 menit baca</span>
+                </div>
+              </div>
+            </li>
+            <li data-aos="zoom-in" data-aos-delay="200">
+              <img
+                src="../assets/keuangan-bisnis.jpg"
+                alt="Mengelola Arus Kas agar Bisnis Tetap Sehat"
+              />
+              <div class="artikel-info">
+                <span class="artikel-tag">Keuangan</span>
+                <h4>Mengelola Arus Kas agar Bisnis Tetap Sehat</h4>
+                <div class="artikel-meta">
+                  <span><i class="fa-regular fa-calendar"></i> 29 Agu 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 7 menit baca</span>
+                </div>
+              </div>
+            </li>
+            <li data-aos="zoom-in" data-aos-delay="250">
+              <img
+                src="../assets/inovasi.jpg"
+                alt="Inovasi Kecil, Dampak Besar untuk Bisnis Kamu"
+              />
+              <div class="artikel-info">
+                <span class="artikel-tag">Inovasi</span>
+                <h4>Inovasi Kecil, Dampak Besar untuk Bisnis Kamu</h4>
+                <div class="artikel-meta">
+                  <span><i class="fa-regular fa-calendar"></i> 24 Agu 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 5 menit baca</span>
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
         <div class="about-us">
           <div class="box">
-            <div class="about">
+            <div class="about" data-aos="fade-right">
               <img src="../assets/Kembangin-logo.png" alt="" />
               <span>
                 <h3>Tentang Kembangin</h3>
@@ -134,7 +203,7 @@
                 </p>
               </span>
             </div>
-            <div class="why">
+            <div class="why" data-aos="fade-left">
               <h3>Kenapa Kembangin?</h3>
               <p>
                 Karena berkembang membutuhkan lebih dari sekadar informasi.
@@ -155,7 +224,7 @@
           </div>
           <div class="product">
             <ul>
-              <li>
+              <li data-aos="fade-up" data-aos-delay="0">
                 <h3>Konsultasi Dengan Ahlinya</h3>
                 <p>
                   Dapatkan wawasan dan solusi dari para ahli untuk membantu
@@ -173,7 +242,7 @@
                   >
                 </div>
               </li>
-              <li>
+              <li data-aos="fade-up" data-aos-delay="100">
                 <h3>Belajar Dari Dasar</h3>
                 <p>
                   Pelajari dunia bisnis dan ekonomi mulai dari dasar dengan
@@ -191,7 +260,7 @@
                   >
                 </div>
               </li>
-              <li>
+              <li data-aos="fade-up" data-aos-delay="200">
                 <h3>Buku Tentang Bisnis</h3>
                 <p>
                   Temukan berbagai rekomendasi buku yang membahas bisnis,
@@ -215,7 +284,7 @@
         </div>
         <div class="new-box">
           <div class="event">
-            <div class="box-event">
+            <div class="box-event" data-aos="fade-up" data-aos-delay="0">
               <img
                 class="thumb-event"
                 src="../assets/thum-event-1.jpg"
@@ -289,7 +358,7 @@
               </div>
             </div>
 
-            <div class="box-event">
+            <div class="box-event" data-aos="fade-up" data-aos-delay="100">
               <img
                 class="thumb-event"
                 src="../assets/thum-event-2.jpg"
@@ -363,7 +432,7 @@
               </div>
             </div>
 
-            <div class="box-event">
+            <div class="box-event" data-aos="fade-up" data-aos-delay="200">
               <img
                 class="thumb-event"
                 src="../assets/thum-event-3.jpg"
@@ -439,118 +508,455 @@
           </div>
           <div class="new-fitur-container">
             <div class="intro-fitur">
-                <div class="intro-ai">
-                  <img src="../assets/logo-ai-Photoroom.png" alt="">
-                  <h2>Kemba AI Telah Hadir</h2>
-                  <p>Kemba AI hadir untuk membantu kamu menggunakan Kembangin dengan lebih mudah melalui AI Chatbot dan berbagai AI Tools. Tanyakan apa saja tentang Kembangin, temukan informasi yang kamu butuhkan, atau gunakan tools AI yang tersedia untuk membantu aktivitasmu di dalam platform.</p>
+              <div class="intro-ai" data-aos="fade-right">
+                <img src="../assets/logo-ai-Photoroom.png" alt="" />
+                <h2>Kemba AI Telah Hadir</h2>
+                <p>
+                  Kemba AI hadir untuk membantu kamu menggunakan Kembangin
+                  dengan lebih mudah melalui AI Chatbot dan berbagai AI Tools.
+                  Tanyakan apa saja tentang Kembangin, temukan informasi yang
+                  kamu butuhkan, atau gunakan tools AI yang tersedia untuk
+                  membantu aktivitasmu di dalam platform.
+                </p>
+              </div>
+              <div class="intro-our-chatbot" data-aos="fade-left">
+                <img src="../assets/logo-chatbot-Photoroom.png" alt="" />
+                <div class="chatbot-desk">
+                  <h2>Kenalan dengan Kemba AI</h2>
+                  <h3>Temanmu untuk Menjelajahi Kembangin</h3>
+                  <p>
+                    Bingung mencari sesuatu di Kembangin? Kemba siap membantu
+                    kamu menemukan informasi, memahami fitur, dan menjelajahi
+                    berbagai konten yang tersedia. Mulai dari artikel, library,
+                    course, hingga layanan lainnya, cukup tanyakan kepada Kemba
+                    dan temukan apa yang kamu butuhkan.
+                  </p>
+                  <div class="skill-chatbot">
+                    <ul>
+                      <li>
+                        Temukan berbagai konten dan resource di Kembangin.
+                      </li>
+                      <li>
+                        Cari artikel berdasarkan topik yang kamu inginkan.
+                      </li>
+                      <li>Bantu menemukan halaman dan fitur yang kamu cari.</li>
+                      <li>
+                        Dapatkan penjelasan mengenai Kembangin dan fiturnya.
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="intro-our-chatbot">
-                    <img src="../assets/logo-chatbot-Photoroom.png" alt="">
-                    <div class="chatbot-desk">
-                      <h2>Kenalan dengan Kemba AI</h2>
-                      <h3>Temanmu untuk Menjelajahi Kembangin</h3>
-                      <p>Bingung mencari sesuatu di Kembangin? Kemba siap membantu kamu menemukan informasi, memahami fitur, dan menjelajahi berbagai konten yang tersedia. Mulai dari artikel, library, course, hingga layanan lainnya, cukup tanyakan kepada Kemba dan temukan apa yang kamu butuhkan.</p>
-                      <div class="skill-chatbot">
-                        <ul>
-                          <li>Temukan berbagai konten dan resource di Kembangin.</li>
-                          <li>Cari artikel berdasarkan topik yang kamu inginkan.</li>
-                          <li>Bantu menemukan halaman dan fitur yang kamu cari.</li>
-                          <li>Dapatkan penjelasan mengenai Kembangin dan fiturnya.</li>
-                        </ul>
-                      </div>
-                    </div>
-                </div>
+              </div>
             </div>
             <div class="tool-ai-container">
               <ul>
-                <li>
-                  <img src="../assets/logo-ai-article-summarizer.png" alt="">
+                <li data-aos="fade-up" data-aos-delay="0">
+                  <img src="../assets/logo-ai-article-summarizer.png" alt="" />
                   <span>
                     <h3>AI Article Summarizer</h3>
-                    <P>Pahami isi artikel dengan lebih cepat. AI Article Summarizer membantu merangkum artikel menjadi poin-poin penting, sehingga kamu dapat menangkap inti dan informasi utama tanpa harus membaca keseluruhan artikel.</P>
+                    <p>
+                      Pahami isi artikel dengan lebih cepat. AI Article
+                      Summarizer membantu merangkum artikel menjadi poin-poin
+                      penting, sehingga kamu dapat menangkap inti dan informasi
+                      utama tanpa harus membaca keseluruhan artikel.
+                    </p>
                   </span>
                 </li>
-                <li>
-                  <img src="../assets/logo-ai-library-assistant.png" alt="">
-                  <span>  
+                <li data-aos="fade-up" data-aos-delay="100">
+                  <img src="../assets/logo-ai-library-assistant.png" alt="" />
+                  <span>
                     <h3>AI Library Assistant</h3>
-                    <P>Temukan buku, ebook, dan berbagai resource yang sesuai dengan kebutuhanmu. AI Library Assistant membantu mencari dan merekomendasikan materi dari Library Kembangin berdasarkan topik atau informasi yang kamu masukkan.</P>
+                    <p>
+                      Temukan buku, ebook, dan berbagai resource yang sesuai
+                      dengan kebutuhanmu. AI Library Assistant membantu mencari
+                      dan merekomendasikan materi dari Library Kembangin
+                      berdasarkan topik atau informasi yang kamu masukkan.
+                    </p>
                   </span>
                 </li>
               </ul>
               <ul>
-                <li>
-                  <img src="../assets/logo-ai-swot-analyzer.png" alt="">
+                <li data-aos="fade-up" data-aos-delay="0">
+                  <img src="../assets/logo-ai-swot-analyzer.png" alt="" />
                   <span>
                     <h3>AI SWOT Analyzer</h3>
-                    <P>Bantu menganalisis bisnis melalui Strengths, Weaknesses, Opportunities, dan Threats berdasarkan informasi yang kamu masukkan. Dapatkan gambaran yang lebih terstruktur mengenai kondisi bisnis dan berbagai faktor yang dapat menjadi bahan pertimbangan dalam pengembangannya.</P>
+                    <p>
+                      Bantu menganalisis bisnis melalui Strengths, Weaknesses,
+                      Opportunities, dan Threats berdasarkan informasi yang kamu
+                      masukkan. Dapatkan gambaran yang lebih terstruktur
+                      mengenai kondisi bisnis dan berbagai faktor yang dapat
+                      menjadi bahan pertimbangan dalam pengembangannya.
+                    </p>
                   </span>
                 </li>
-                <li>
-                  <img src="../assets/logo-ai-pricing-assistant.png" alt="">
+                <li data-aos="fade-up" data-aos-delay="100">
+                  <img src="../assets/logo-ai-pricing-assistant.png" alt="" />
                   <span>
                     <h3>AI Pricing Assistant</h3>
-                    <P>Bantu tentukan harga produk atau layanan dengan mempertimbangkan biaya, target keuntungan, dan informasi bisnis yang kamu masukkan. Dapatkan rekomendasi harga sebagai bahan pertimbangan untuk membantu kamu membuat keputusan harga yang lebih terarah.</P>
+                    <p>
+                      Bantu tentukan harga produk atau layanan dengan
+                      mempertimbangkan biaya, target keuntungan, dan informasi
+                      bisnis yang kamu masukkan. Dapatkan rekomendasi harga
+                      sebagai bahan pertimbangan untuk membantu kamu membuat
+                      keputusan harga yang lebih terarah.
+                    </p>
                   </span>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="our-product">
+
+        <!-- Ganti seluruh blok <div class="consultan-container"> di home.html dengan blok ini -->
+        <div class="consultan-container">
+          <div class="intro-consultan">
+            <img
+              src="https://res.cloudinary.com/k1ryqda7/image/upload/v1789890606/фото_для_бизнеса_переговоры_с_партнёрами.jpg"
+              alt=""
+              data-aos="fade-right"
+            />
+            <span class="consul-des" data-aos="fade-left">
+              <h3>Temukan Arah untuk Mengembangkan Bisnis</h3>
+              <p>
+                Dari memulai usaha hingga mengembangkan bisnis, Kembangin
+                membantu Anda mendapatkan insight dan arahan untuk memahami
+                masalah, menemukan peluang, dan menentukan langkah berikutnya.
+              </p>
+              <div class="data-consul">
+                <span>100+ <span>Ahli Bisnis</span></span>
+                <span>300+ <span>Ahli Ekonomi</span></span>
+              </div>
+              <ul>
+                <li>
+                  <i class="fa-solid fa-magnifying-glass"></i> Pahami tantangan
+                  yang sedang dihadapi bisnis.
+                </li>
+                <li>
+                  <i class="fa-solid fa-lightbulb"></i> Cari peluang yang dapat
+                  dikembangkan.
+                </li>
+                <li>
+                  <i class="fa-solid fa-compass"></i> Susun langkah yang lebih
+                  terarah untuk bisnis.
+                </li>
+              </ul>
+            </span>
+          </div>
+
+          <!-- Konsultan Populer (urut dari sesi terbanyak) -->
+          <div class="cc-head" data-aos="fade-up">
+            <div>
+              <h3>Konsultan Populer</h3>
+              <p>5 konsultan dengan sesi konsultasi terbanyak</p>
+            </div>
+            <a href="../pages/consultation.html">Lihat semua</a>
+          </div>
+
+          <div class="card-consultan-container">
+            <article class="card-consultan" data-aos="fade-up" data-aos-delay="0">
+              <div class="cc-photo">
+                <img
+                  src="../assets/consultant/consultant-47.jpg"
+                  alt="Foto Rahmat Hidayat"
+                  loading="lazy"
+                />
+                <span class="cc-rating"
+                  ><i class="fa-solid fa-star" aria-hidden="true"></i>4,9</span
+                >
+                <span class="cc-status is-on"
+                  ><span class="dot" aria-hidden="true"></span>Tersedia</span
+                >
+              </div>
+              <div class="cc-body">
+                <h4 class="cc-name">
+                  Rahmat Hidayat, S.E., M.Ak.<i
+                    class="fa-solid fa-circle-check cc-verified"
+                    role="img"
+                    aria-label="Konsultan terverifikasi"
+                    title="Konsultan terverifikasi"
+                  ></i>
+                </h4>
+                <p class="cc-spes">Akuntansi Bisnis · Laporan Keuangan</p>
+                <p class="cc-desc">
+                  Membantu pemilik usaha menyusun pembukuan dan membaca laporan
+                  keuangan agar keputusan bisnis lebih terarah.
+                </p>
+                <div class="cc-stats">
+                  <span
+                    ><i class="fa-regular fa-comments" aria-hidden="true"></i
+                    >420 sesi</span
+                  >
+                  <span
+                    ><i class="fa-solid fa-briefcase" aria-hidden="true"></i>9
+                    tahun</span
+                  >
+                </div>
+                <div class="cc-foot">
+                  <div class="cc-price">
+                    <strong>Rp350.000</strong>
+                    <small>/ sesi · 60 menit</small>
+                  </div>
+                  <a
+                    class="cc-btn"
+                    href="../pages/consultation.html?konsultan=47"
+                    >Konsultasi
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i
+                  ></a>
+                </div>
+              </div>
+            </article>
+            <article class="card-consultan" data-aos="fade-up" data-aos-delay="80">
+              <div class="cc-photo">
+                <img
+                  src="../assets/consultant/consultant-12.jpg"
+                  alt="Foto Melati Kusuma"
+                  loading="lazy"
+                />
+                <span class="cc-rating"
+                  ><i class="fa-solid fa-star" aria-hidden="true"></i>4,8</span
+                >
+                <span class="cc-status is-on"
+                  ><span class="dot" aria-hidden="true"></span>Tersedia</span
+                >
+              </div>
+              <div class="cc-body">
+                <h4 class="cc-name">
+                  Melati Kusuma, S.M., M.M.<i
+                    class="fa-solid fa-circle-check cc-verified"
+                    role="img"
+                    aria-label="Konsultan terverifikasi"
+                    title="Konsultan terverifikasi"
+                  ></i>
+                </h4>
+                <p class="cc-spes">Strategi Pemasaran · Branding</p>
+                <p class="cc-desc">
+                  Mendampingi pelaku usaha menyusun strategi pemasaran dan
+                  membangun merek yang konsisten.
+                </p>
+                <div class="cc-stats">
+                  <span
+                    ><i class="fa-regular fa-comments" aria-hidden="true"></i
+                    >318 sesi</span
+                  >
+                  <span
+                    ><i class="fa-solid fa-briefcase" aria-hidden="true"></i>7
+                    tahun</span
+                  >
+                </div>
+                <div class="cc-foot">
+                  <div class="cc-price">
+                    <strong>Rp275.000</strong>
+                    <small>/ sesi · 60 menit</small>
+                  </div>
+                  <a
+                    class="cc-btn"
+                    href="../pages/consultation.html?konsultan=12"
+                    >Konsultasi
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i
+                  ></a>
+                </div>
+              </div>
+            </article>
+            <article class="card-consultan" data-aos="fade-up" data-aos-delay="160">
+              <div class="cc-photo">
+                <img
+                  src="../assets/consultant/consultant-88.jpg"
+                  alt="Foto Dimas Prakoso"
+                  loading="lazy"
+                />
+                <span class="cc-rating"
+                  ><i class="fa-solid fa-star" aria-hidden="true"></i>4,7</span
+                >
+                <span class="cc-status"
+                  ><span class="dot" aria-hidden="true"></span>Sibuk</span
+                >
+              </div>
+              <div class="cc-body">
+                <h4 class="cc-name">
+                  Dimas Prakoso, S.T., M.B.A.<i
+                    class="fa-solid fa-circle-check cc-verified"
+                    role="img"
+                    aria-label="Konsultan terverifikasi"
+                    title="Konsultan terverifikasi"
+                  ></i>
+                </h4>
+                <p class="cc-spes">Pengembangan Bisnis · Model Bisnis</p>
+                <p class="cc-desc">
+                  Membantu merumuskan model bisnis dan rencana pertumbuhan yang
+                  realistis untuk usaha tahap awal.
+                </p>
+                <div class="cc-stats">
+                  <span
+                    ><i class="fa-regular fa-comments" aria-hidden="true"></i
+                    >256 sesi</span
+                  >
+                  <span
+                    ><i class="fa-solid fa-briefcase" aria-hidden="true"></i>8
+                    tahun</span
+                  >
+                </div>
+                <div class="cc-foot">
+                  <div class="cc-price">
+                    <strong>Rp300.000</strong>
+                    <small>/ sesi · 75 menit</small>
+                  </div>
+                  <a
+                    class="cc-btn"
+                    href="../pages/consultation.html?konsultan=88"
+                    >Konsultasi
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i
+                  ></a>
+                </div>
+              </div>
+            </article>
+            <article class="card-consultan" data-aos="fade-up" data-aos-delay="240">
+              <div class="cc-photo">
+                <img
+                  src="../assets/consultant/consultant-171.jpg"
+                  alt="Foto Nadia Wardhani"
+                  loading="lazy"
+                />
+                <span class="cc-rating"
+                  ><i class="fa-solid fa-star" aria-hidden="true"></i>4,8</span
+                >
+                <span class="cc-status is-on"
+                  ><span class="dot" aria-hidden="true"></span>Tersedia</span
+                >
+              </div>
+              <div class="cc-body">
+                <h4 class="cc-name">
+                  Nadia Wardhani, S.E., M.Si.<i
+                    class="fa-solid fa-circle-check cc-verified"
+                    role="img"
+                    aria-label="Konsultan terverifikasi"
+                    title="Konsultan terverifikasi"
+                  ></i>
+                </h4>
+                <p class="cc-spes">Analisis Industri · Ekonomi Bisnis</p>
+                <p class="cc-desc">
+                  Membantu membaca kondisi pasar dan industri untuk menentukan
+                  peluang dan arah usaha.
+                </p>
+                <div class="cc-stats">
+                  <span
+                    ><i class="fa-regular fa-comments" aria-hidden="true"></i
+                    >187 sesi</span
+                  >
+                  <span
+                    ><i class="fa-solid fa-briefcase" aria-hidden="true"></i>6
+                    tahun</span
+                  >
+                </div>
+                <div class="cc-foot">
+                  <div class="cc-price">
+                    <strong>Rp250.000</strong>
+                    <small>/ sesi · 60 menit</small>
+                  </div>
+                  <a
+                    class="cc-btn"
+                    href="../pages/consultation.html?konsultan=171"
+                    >Konsultasi
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i
+                  ></a>
+                </div>
+              </div>
+            </article>
+            <article class="card-consultan" data-aos="fade-up" data-aos-delay="320">
+              <div class="cc-photo">
+                <img
+                  src="../assets/consultant/consultant-130.jpg"
+                  alt="Foto Gilang Saputra"
+                  loading="lazy"
+                />
+                <span class="cc-rating"
+                  ><i class="fa-solid fa-star" aria-hidden="true"></i>4,8</span
+                >
+                <span class="cc-status is-on"
+                  ><span class="dot" aria-hidden="true"></span>Tersedia</span
+                >
+              </div>
+              <div class="cc-body">
+                <h4 class="cc-name">
+                  Gilang Saputra, S.M., M.M.<i
+                    class="fa-solid fa-circle-check cc-verified"
+                    role="img"
+                    aria-label="Konsultan terverifikasi"
+                    title="Konsultan terverifikasi"
+                  ></i>
+                </h4>
+                <p class="cc-spes">Perpajakan Bisnis · Pajak UMKM</p>
+                <p class="cc-desc">
+                  Membantu pelaku usaha memahami perencanaan dan kewajiban
+                  perpajakan yang berkaitan dengan bisnis.
+                </p>
+                <div class="cc-stats">
+                  <span
+                    ><i class="fa-regular fa-comments" aria-hidden="true"></i
+                    >105 sesi</span
+                  >
+                  <span
+                    ><i class="fa-solid fa-briefcase" aria-hidden="true"></i>3
+                    tahun</span
+                  >
+                </div>
+                <div class="cc-foot">
+                  <div class="cc-price">
+                    <strong>Rp200.000</strong>
+                    <small>/ sesi · 90 menit</small>
+                  </div>
+                  <a
+                    class="cc-btn"
+                    href="../pages/consultation.html?konsultan=130"
+                    >Konsultasi
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i
+                  ></a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="course-container">
           <ul>
-            <li data-index="01">
-              <i class="fa-solid fa-chalkboard-user"></i>
-              <span>
-                <h4>Belajar & Tingkatkan Kemampuan</h4>
-                <p>
-                  Pelajari bisnis, pemasaran, ekonomi, dan keterampilan lainnya
-                  melalui course yang praktis dan terarah.
-                </p>
-              </span>
-              <a href=""
-                >selengkapnya <i class="fa-solid fa-angles-right"></i
-              ></a>
+            <li data-aos="fade-up" data-aos-delay="0">
+              <i class="fa-solid fa-glasses"></i>
+              <span>Kenali</span>
+              Pahami dasar-dasar bisnis dan temukan hal yang perlu dikembangkan.
             </li>
-            <li data-index="02">
-              <i class="fa-solid fa-microphone-lines"></i>
-              <span>
-                <h4>Konsultasi dengan Ahli</h4>
-                <p>
-                  Dapatkan insight dan saran dari konsultasi untuk membantu
-                  menghadapi tantangan dan mengembangkan bisnis.
-                </p>
-              </span>
-              <a href=""
-                >selengkapnya <i class="fa-solid fa-angles-right"></i
-              ></a>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="fa-solid fa-chalkboard"></i>
+              <span>Pelajari</span>
+              Pelajari strategi, marketing, keuangan, dan keterampilan bisnis lainnya.
             </li>
-            <li data-index="03">
-              <i class="fa-solid fa-book"></i>
-              <span>
-                <h4>Akses Artikel & Panduan</h4>
-                <p>
-                  Akses berbagai artikel, panduan, dan informasi seputar bisnis,
-                  ekonomi, pasar, dan industri.
-                </p>
-              </span>
-              <a href=""
-                >selengkapnya <i class="fa-solid fa-angles-right"></i
-              ></a>
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="fa-solid fa-person-digging"></i>
+              <span>Terapkan</span>
+              Gunakan pengetahuan yang dipelajari untuk menghadapi kebutuhan bisnis secara nyata
+            </li>
+            <li data-aos="fade-up" data-aos-delay="300">
+              <i class="fa-solid fa-seedling"></i>
+              <span>Kembangkan</span>
+              Terus tingkatkan kemampuan dan bawa bisnismu melangkah lebih jauh.
             </li>
           </ul>
         </div>
-        <div class="consultan-container">tentang ahli kumpulan ahli</div>
-        <div class="course-container">mulai dari dasar</div>
-        <div class="forum-explain">forum penjelasan</div>
-        <div class="permium fitur">berlangganan</div>
-        <div class="feedback">Berikan ulasan</div>
       </div>
     </main>
-
+    <site-footer></site-footer>
     <!-- script -->
     <script src="../components/Navbar.js"></script>
+    <script src="../components/Footer.js"></script>
     <script src="../public/js/component.js"></script>
+
+    <!-- animation on scroll (AOS) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 700,
+        easing: "ease-out-cubic",
+        offset: 80,
+        once: true,
+      });
+    </script>
     <!-- script end-->
   </body>
 </html>

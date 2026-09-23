@@ -1,16 +1,1230 @@
-{
-  "id": 1,
-  "title": "The Lean Startup",
-  "author": "Eric Ries",
-  "cover": "/assets/books/lean-startup.jpg",
-  "description": "Buku tentang membangun bisnis dengan pendekatan eksperimen dan validasi.",
-  "category": "Startup",
-  "type": "Book",
-  "publisher": "Crown Business",
-  "publishedYear": 2011,
-  "language": "English",
-  "pages": 336,
-  "isbn": "9780307887894",
-  "rating": 4.8,
-  "totalReader": 1250
-}
+[
+  {
+    "id": 1,
+    "title": "Langkah Pertama Menuju Fokus",
+    "author": "Rani Kusuma",
+    "category": "Pengembangan Diri",
+    "pages": 184,
+    "rating": 4.6,
+    "hype": 132,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Panduan praktis membangun rutinitas fokus harian bagi pemula yang mudah teralihkan.",
+    "readers": 2400,
+    "purposes": [
+      "Membangun kebiasaan",
+      "Growth mindset"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Peta Karier Tanpa Drama",
+    "author": "Bimo Aditya",
+    "category": "Karier & Produktivitas",
+    "pages": 212,
+    "rating": 4.4,
+    "hype": 98,
+    "level": "Menengah",
+    "year": 2022,
+    "description": "Kerangka sederhana menyusun rencana karier lima tahun tanpa tekanan berlebihan.",
+    "readers": 1850,
+    "purposes": [
+      "Naik karier",
+      "Perencanaan jangka panjang"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Dasar-Dasar JavaScript Modern",
+    "author": "Fajar Nugroho",
+    "category": "Teknologi & Coding",
+    "pages": 296,
+    "rating": 4.7,
+    "hype": 210,
+    "level": "Pemula",
+    "year": 2024,
+    "description": "Pengantar JavaScript untuk pemula lengkap dengan latihan proyek kecil.",
+    "readers": 3600,
+    "purposes": [
+      "Belajar dasar",
+      "Persiapan kerja"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Validasi Ide Startup dalam 2 Minggu",
+    "author": "Sisca Ardiani",
+    "category": "Bisnis & Startup",
+    "pages": 168,
+    "rating": 4.3,
+    "hype": 87,
+    "level": "Menengah",
+    "year": 2021,
+    "description": "Metode cepat menguji ide bisnis sebelum menghabiskan modal besar.",
+    "readers": 1420,
+    "purposes": [
+      "Merintis usaha",
+      "Validasi ide"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Anggaran yang Nggak Bikin Pusing",
+    "author": "Dewi Larasati",
+    "category": "Keuangan Pribadi",
+    "pages": 150,
+    "rating": 4.5,
+    "hype": 145,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Cara menyusun anggaran bulanan yang realistis untuk penghasilan pas-pasan.",
+    "readers": 2750,
+    "purposes": [
+      "Perencanaan keuangan",
+      "Bebas utang"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Memimpin Tanpa Gelar",
+    "author": "Aji Prakoso",
+    "category": "Kepemimpinan",
+    "pages": 220,
+    "rating": 4.2,
+    "hype": 76,
+    "level": "Menengah",
+    "year": 2020,
+    "description": "Prinsip kepemimpinan informal untuk anggota tim yang ingin memberi dampak lebih.",
+    "readers": 1120,
+    "purposes": [
+      "Pengembangan tim",
+      "Growth mindset"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Sketsa Ide dalam Semalam",
+    "author": "Nadia Puspita",
+    "category": "Kreativitas & Desain",
+    "pages": 132,
+    "rating": 4.6,
+    "hype": 118,
+    "level": "Pemula",
+    "year": 2022,
+    "description": "Teknik cepat menuangkan ide visual jadi sketsa yang siap dipresentasikan.",
+    "readers": 1980,
+    "purposes": [
+      "Portofolio kreatif",
+      "Belajar dasar"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Tidur Cukup, Kerja Jalan",
+    "author": "Made Wirawan",
+    "category": "Kesehatan Mental",
+    "pages": 176,
+    "rating": 4.4,
+    "hype": 102,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Hubungan kualitas tidur dengan performa kerja harian dan cara memperbaikinya.",
+    "readers": 2100,
+    "purposes": [
+      "Kesehatan & keseimbangan"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Refactoring untuk Pemula",
+    "author": "Fajar Nugroho",
+    "category": "Teknologi & Coding",
+    "pages": 264,
+    "rating": 4.5,
+    "hype": 134,
+    "level": "Menengah",
+    "year": 2022,
+    "description": "Membersihkan kode berantakan langkah demi langkah tanpa merusak fitur.",
+    "readers": 1760,
+    "purposes": [
+      "Persiapan kerja",
+      "Naik karier"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Negosiasi Gaji Tanpa Canggung",
+    "author": "Ratih Anindya",
+    "category": "Karier & Produktivitas",
+    "pages": 140,
+    "rating": 4.3,
+    "hype": 158,
+    "level": "Pemula",
+    "year": 2024,
+    "description": "Skrip dan strategi menegosiasikan gaji dengan percaya diri.",
+    "readers": 2980,
+    "purposes": [
+      "Naik karier",
+      "Persiapan kerja"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Investasi Receh, Hasil Jangka Panjang",
+    "author": "Yoga Firmansyah",
+    "category": "Keuangan Pribadi",
+    "pages": 198,
+    "rating": 4.1,
+    "hype": 90,
+    "level": "Menengah",
+    "year": 2021,
+    "description": "Strategi investasi kecil-kecilan yang konsisten untuk pemula.",
+    "readers": 1540,
+    "purposes": [
+      "Perencanaan keuangan"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Tim Kecil, Dampak Besar",
+    "author": "Aji Prakoso",
+    "category": "Kepemimpinan",
+    "pages": 204,
+    "rating": 4.0,
+    "hype": 64,
+    "level": "Lanjutan",
+    "year": 2019,
+    "description": "Studi kasus membangun tim ramping yang tetap produktif di bawah tekanan.",
+    "readers": 890,
+    "purposes": [
+      "Pengembangan tim"
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Warna dan Rasa dalam Desain",
+    "author": "Nadia Puspita",
+    "category": "Kreativitas & Desain",
+    "pages": 188,
+    "rating": 4.7,
+    "hype": 172,
+    "level": "Menengah",
+    "year": 2023,
+    "description": "Memahami psikologi warna untuk desain yang lebih menyentuh audiens.",
+    "readers": 2340,
+    "purposes": [
+      "Portofolio kreatif",
+      "Growth mindset"
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Fokus di Tengah Notifikasi",
+    "author": "Rani Kusuma",
+    "category": "Pengembangan Diri",
+    "pages": 160,
+    "rating": 4.2,
+    "hype": 80,
+    "level": "Menengah",
+    "year": 2020,
+    "description": "Menata ulang hubungan dengan gawai supaya tetap produktif.",
+    "readers": 1310,
+    "purposes": [
+      "Membangun kebiasaan"
+    ]
+  },
+  {
+    "id": 15,
+    "title": "API yang Ramah Pengembang",
+    "author": "Teguh Santosa",
+    "category": "Teknologi & Coding",
+    "pages": 242,
+    "rating": 4.6,
+    "hype": 151,
+    "level": "Lanjutan",
+    "year": 2024,
+    "description": "Prinsip merancang API yang mudah dipahami dan dipakai tim lain.",
+    "readers": 1990,
+    "purposes": [
+      "Naik karier",
+      "Persiapan kerja"
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Pitching yang Diingat Investor",
+    "author": "Sisca Ardiani",
+    "category": "Bisnis & Startup",
+    "pages": 176,
+    "rating": 4.4,
+    "hype": 112,
+    "level": "Lanjutan",
+    "year": 2022,
+    "description": "Menyusun presentasi bisnis yang singkat tapi membekas di benak investor.",
+    "readers": 1670,
+    "purposes": [
+      "Merintis usaha"
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Cemas Boleh, Berhenti Jangan",
+    "author": "Made Wirawan",
+    "category": "Kesehatan Mental",
+    "pages": 150,
+    "rating": 4.5,
+    "hype": 124,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Cara mengenali dan mengelola kecemasan tanpa menghakimi diri sendiri.",
+    "readers": 2210,
+    "purposes": [
+      "Kesehatan & keseimbangan"
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Dari Karyawan ke Pemilik Bisnis",
+    "author": "Yoga Firmansyah",
+    "category": "Bisnis & Startup",
+    "pages": 230,
+    "rating": 4.0,
+    "hype": 58,
+    "level": "Menengah",
+    "year": 2019,
+    "description": "Perjalanan nyata beralih dari kerja kantoran menjadi pemilik usaha kecil.",
+    "readers": 760,
+    "purposes": [
+      "Merintis usaha",
+      "Growth mindset"
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Rapat Singkat, Keputusan Cepat",
+    "author": "Bimo Aditya",
+    "category": "Karier & Produktivitas",
+    "pages": 128,
+    "rating": 4.3,
+    "hype": 95,
+    "level": "Menengah",
+    "year": 2021,
+    "description": "Format rapat yang memangkas basa-basi dan langsung ke keputusan.",
+    "readers": 1450,
+    "purposes": [
+      "Pengembangan tim",
+      "Naik karier"
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Dana Darurat dalam 90 Hari",
+    "author": "Dewi Larasati",
+    "category": "Keuangan Pribadi",
+    "pages": 132,
+    "rating": 4.6,
+    "hype": 167,
+    "level": "Pemula",
+    "year": 2024,
+    "description": "Rencana bertahap membangun dana darurat tanpa mengorbankan kebutuhan pokok.",
+    "readers": 3020,
+    "purposes": [
+      "Perencanaan keuangan",
+      "Bebas utang"
+    ]
+  },
+  {
+    "id": 21,
+    "title": "Portofolio yang Bicara Sendiri",
+    "author": "Teguh Santosa",
+    "category": "Kreativitas & Desain",
+    "pages": 164,
+    "rating": 4.3,
+    "hype": 99,
+    "level": "Pemula",
+    "year": 2022,
+    "description": "Menyusun portofolio desain yang menjelaskan proses berpikir, bukan cuma hasil akhir.",
+    "readers": 1580,
+    "purposes": [
+      "Portofolio kreatif",
+      "Persiapan kerja"
+    ]
+  },
+  {
+    "id": 22,
+    "title": "Basis Data untuk Pemikir Produk",
+    "author": "Fajar Nugroho",
+    "category": "Teknologi & Coding",
+    "pages": 256,
+    "rating": 4.1,
+    "hype": 70,
+    "level": "Lanjutan",
+    "year": 2020,
+    "description": "Memahami desain basis data dari sudut pandang kebutuhan produk, bukan hanya teknis.",
+    "readers": 980,
+    "purposes": [
+      "Naik karier"
+    ]
+  },
+  {
+    "id": 23,
+    "title": "Istirahat Itu Strategi",
+    "author": "Rani Kusuma",
+    "category": "Kesehatan Mental",
+    "pages": 140,
+    "rating": 4.7,
+    "hype": 143,
+    "level": "Menengah",
+    "year": 2023,
+    "description": "Mengapa jeda terjadwal justru mempercepat pencapaian target jangka panjang.",
+    "readers": 2460,
+    "purposes": [
+      "Kesehatan & keseimbangan",
+      "Membangun kebiasaan"
+    ]
+  },
+  {
+    "id": 24,
+    "title": "Delegasi Tanpa Rasa Bersalah",
+    "author": "Aji Prakoso",
+    "category": "Kepemimpinan",
+    "pages": 172,
+    "rating": 4.2,
+    "hype": 83,
+    "level": "Pemula",
+    "year": 2021,
+    "description": "Belajar melepas kendali sebagian tugas supaya tim ikut bertumbuh.",
+    "readers": 1240,
+    "purposes": [
+      "Pengembangan tim",
+      "Growth mindset"
+    ]
+  },
+  {
+    "id": 25,
+    "title": "Menulis Jurnal Tanpa Basa-basi",
+    "author": "Rani Kusuma",
+    "category": "Pengembangan Diri",
+    "pages": 140,
+    "rating": 4.5,
+    "hype": 96,
+    "level": "Pemula",
+    "year": 2024,
+    "description": "Format jurnal singkat 10 menit sehari untuk melacak progres dan mood.",
+    "readers": 1780,
+    "purposes": [
+      "Membangun kebiasaan",
+      "Refleksi diri"
+    ]
+  },
+  {
+    "id": 26,
+    "title": "Berhenti Menunda, Mulai Hari Ini",
+    "author": "Bimo Aditya",
+    "category": "Pengembangan Diri",
+    "pages": 176,
+    "rating": 4.3,
+    "hype": 121,
+    "level": "Pemula",
+    "year": 2022,
+    "description": "Teknik praktis mengatasi kebiasaan menunda pekerjaan penting.",
+    "readers": 2050,
+    "purposes": [
+      "Membangun kebiasaan",
+      "Produktivitas harian"
+    ]
+  },
+  {
+    "id": 27,
+    "title": "Identitas di Balik Pencapaian",
+    "author": "Nadia Puspita",
+    "category": "Pengembangan Diri",
+    "pages": 210,
+    "rating": 4.1,
+    "hype": 58,
+    "level": "Menengah",
+    "year": 2020,
+    "description": "Mengeksplorasi rasa percaya diri yang tidak bergantung pada validasi eksternal.",
+    "readers": 940,
+    "purposes": [
+      "Growth mindset",
+      "Refleksi diri"
+    ]
+  },
+  {
+    "id": 28,
+    "title": "Kebiasaan Kecil, Efek Berlipat",
+    "author": "Yoga Firmansyah",
+    "category": "Pengembangan Diri",
+    "pages": 188,
+    "rating": 4.6,
+    "hype": 154,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Prinsip perubahan bertahap yang terbukti bertahan lebih lama dari resolusi besar.",
+    "readers": 2680,
+    "purposes": [
+      "Membangun kebiasaan"
+    ]
+  },
+  {
+    "id": 29,
+    "title": "Percakapan dengan Diri Sendiri",
+    "author": "Made Wirawan",
+    "category": "Pengembangan Diri",
+    "pages": 164,
+    "rating": 4.4,
+    "hype": 87,
+    "level": "Lanjutan",
+    "year": 2021,
+    "description": "Latihan refleksi terstruktur untuk mengenali pola pikir yang menghambat.",
+    "readers": 1310,
+    "purposes": [
+      "Refleksi diri",
+      "Kesehatan & keseimbangan"
+    ]
+  },
+  {
+    "id": 30,
+    "title": "To-Do List yang Benar-benar Dikerjakan",
+    "author": "Ratih Anindya",
+    "category": "Karier & Produktivitas",
+    "pages": 132,
+    "rating": 4.5,
+    "hype": 140,
+    "level": "Pemula",
+    "year": 2024,
+    "description": "Sistem manajemen tugas sederhana yang tidak butuh aplikasi rumit.",
+    "readers": 2390,
+    "purposes": [
+      "Produktivitas harian"
+    ]
+  },
+  {
+    "id": 31,
+    "title": "Email Singkat, Respons Cepat",
+    "author": "Bimo Aditya",
+    "category": "Karier & Produktivitas",
+    "pages": 118,
+    "rating": 4.2,
+    "hype": 74,
+    "level": "Pemula",
+    "year": 2021,
+    "description": "Cara menulis email kerja yang jelas dan tidak bertele-tele.",
+    "readers": 1180,
+    "purposes": [
+      "Persiapan kerja",
+      "Naik karier"
+    ]
+  },
+  {
+    "id": 32,
+    "title": "Wawancara Kerja Tanpa Skrip Hafalan",
+    "author": "Ratih Anindya",
+    "category": "Karier & Produktivitas",
+    "pages": 156,
+    "rating": 4.4,
+    "hype": 168,
+    "level": "Menengah",
+    "year": 2023,
+    "description": "Kerangka menjawab pertanyaan wawancara dengan jujur dan percaya diri.",
+    "readers": 2870,
+    "purposes": [
+      "Persiapan kerja"
+    ]
+  },
+  {
+    "id": 33,
+    "title": "Multitasking Itu Mitos",
+    "author": "Aji Prakoso",
+    "category": "Karier & Produktivitas",
+    "pages": 148,
+    "rating": 4.0,
+    "hype": 62,
+    "level": "Menengah",
+    "year": 2019,
+    "description": "Bukti dan strategi kenapa fokus satu hal lebih efektif dari mengerjakan banyak sekaligus.",
+    "readers": 870,
+    "purposes": [
+      "Produktivitas harian"
+    ]
+  },
+  {
+    "id": 34,
+    "title": "CV Satu Halaman yang Dilirik HR",
+    "author": "Sisca Ardiani",
+    "category": "Karier & Produktivitas",
+    "pages": 104,
+    "rating": 4.6,
+    "hype": 189,
+    "level": "Pemula",
+    "year": 2024,
+    "description": "Panduan menyusun CV ringkas yang tetap menonjolkan pencapaian utama.",
+    "readers": 3150,
+    "purposes": [
+      "Persiapan kerja",
+      "Naik karier"
+    ]
+  },
+  {
+    "id": 35,
+    "title": "Git untuk Kerja Tim yang Tenang",
+    "author": "Teguh Santosa",
+    "category": "Teknologi & Coding",
+    "pages": 172,
+    "rating": 4.5,
+    "hype": 128,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Alur kerja Git dasar untuk menghindari conflict yang bikin panik.",
+    "readers": 2010,
+    "purposes": [
+      "Belajar dasar",
+      "Persiapan kerja"
+    ]
+  },
+  {
+    "id": 36,
+    "title": "Testing Otomatis Tanpa Drama",
+    "author": "Fajar Nugroho",
+    "category": "Teknologi & Coding",
+    "pages": 226,
+    "rating": 4.3,
+    "hype": 95,
+    "level": "Menengah",
+    "year": 2022,
+    "description": "Pengantar menulis unit test yang benar-benar membantu, bukan membebani.",
+    "readers": 1420,
+    "purposes": [
+      "Naik karier"
+    ]
+  },
+  {
+    "id": 37,
+    "title": "Membaca Kode Orang Lain",
+    "author": "Teguh Santosa",
+    "category": "Teknologi & Coding",
+    "pages": 198,
+    "rating": 4.4,
+    "hype": 110,
+    "level": "Menengah",
+    "year": 2021,
+    "description": "Strategi menelusuri basis kode besar yang bukan buatan sendiri.",
+    "readers": 1560,
+    "purposes": [
+      "Persiapan kerja",
+      "Naik karier"
+    ]
+  },
+  {
+    "id": 38,
+    "title": "Dasar Keamanan Aplikasi Web",
+    "author": "Fajar Nugroho",
+    "category": "Teknologi & Coding",
+    "pages": 240,
+    "rating": 4.2,
+    "hype": 84,
+    "level": "Lanjutan",
+    "year": 2020,
+    "description": "Konsep dasar mengamankan aplikasi web dari celah yang paling umum.",
+    "readers": 1090,
+    "purposes": [
+      "Naik karier"
+    ]
+  },
+  {
+    "id": 39,
+    "title": "Dari Skrip ke Sistem",
+    "author": "Teguh Santosa",
+    "category": "Teknologi & Coding",
+    "pages": 214,
+    "rating": 4.6,
+    "hype": 137,
+    "level": "Lanjutan",
+    "year": 2024,
+    "description": "Transisi menulis skrip kecil menjadi sistem yang bisa dipelihara jangka panjang.",
+    "readers": 1730,
+    "purposes": [
+      "Naik karier",
+      "Persiapan kerja"
+    ]
+  },
+  {
+    "id": 40,
+    "title": "Harga yang Nggak Bikin Rugi",
+    "author": "Yoga Firmansyah",
+    "category": "Bisnis & Startup",
+    "pages": 160,
+    "rating": 4.1,
+    "hype": 66,
+    "level": "Menengah",
+    "year": 2021,
+    "description": "Cara menentukan harga produk tanpa menebak-nebak atau ikut-ikutan kompetitor.",
+    "readers": 980,
+    "purposes": [
+      "Merintis usaha"
+    ]
+  },
+  {
+    "id": 41,
+    "title": "Pelanggan Pertama, Bukan Seribu",
+    "author": "Sisca Ardiani",
+    "category": "Bisnis & Startup",
+    "pages": 144,
+    "rating": 4.4,
+    "hype": 103,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Fokus mendapatkan dan memuaskan pelanggan pertama sebelum berpikir skala besar.",
+    "readers": 1640,
+    "purposes": [
+      "Merintis usaha",
+      "Validasi ide"
+    ]
+  },
+  {
+    "id": 42,
+    "title": "Rapat Investor dalam 15 Menit",
+    "author": "Bimo Aditya",
+    "category": "Bisnis & Startup",
+    "pages": 128,
+    "rating": 4.0,
+    "hype": 55,
+    "level": "Lanjutan",
+    "year": 2019,
+    "description": "Menyiapkan update singkat yang tetap menjawab pertanyaan penting investor.",
+    "readers": 720,
+    "purposes": [
+      "Merintis usaha"
+    ]
+  },
+  {
+    "id": 43,
+    "title": "Bootstrapping Tanpa Modal Besar",
+    "author": "Yoga Firmansyah",
+    "category": "Bisnis & Startup",
+    "pages": 182,
+    "rating": 4.5,
+    "hype": 119,
+    "level": "Menengah",
+    "year": 2022,
+    "description": "Strategi membangun usaha kecil dengan sumber daya terbatas.",
+    "readers": 1890,
+    "purposes": [
+      "Merintis usaha",
+      "Perencanaan keuangan"
+    ]
+  },
+  {
+    "id": 44,
+    "title": "Kontrak Kerja Sama yang Jelas",
+    "author": "Sisca Ardiani",
+    "category": "Bisnis & Startup",
+    "pages": 150,
+    "rating": 4.2,
+    "hype": 71,
+    "level": "Menengah",
+    "year": 2020,
+    "description": "Poin-poin penting yang wajib ada dalam perjanjian kerja sama bisnis kecil.",
+    "readers": 1030,
+    "purposes": [
+      "Merintis usaha"
+    ]
+  },
+  {
+    "id": 45,
+    "title": "Utang yang Masih Masuk Akal",
+    "author": "Dewi Larasati",
+    "category": "Keuangan Pribadi",
+    "pages": 138,
+    "rating": 4.3,
+    "hype": 108,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Membedakan utang produktif dan konsumtif sebelum mengambil keputusan.",
+    "readers": 2140,
+    "purposes": [
+      "Perencanaan keuangan",
+      "Bebas utang"
+    ]
+  },
+  {
+    "id": 46,
+    "title": "Asuransi yang Benar-benar Perlu",
+    "author": "Yoga Firmansyah",
+    "category": "Keuangan Pribadi",
+    "pages": 156,
+    "rating": 4.1,
+    "hype": 63,
+    "level": "Menengah",
+    "year": 2021,
+    "description": "Memilih perlindungan finansial sesuai kebutuhan, bukan sekadar ikut tren.",
+    "readers": 940,
+    "purposes": [
+      "Perencanaan keuangan"
+    ]
+  },
+  {
+    "id": 47,
+    "title": "Gaji UMR, Tabungan Jalan Terus",
+    "author": "Dewi Larasati",
+    "category": "Keuangan Pribadi",
+    "pages": 128,
+    "rating": 4.6,
+    "hype": 175,
+    "level": "Pemula",
+    "year": 2024,
+    "description": "Strategi menabung konsisten meski penghasilan pas-pasan.",
+    "readers": 3210,
+    "purposes": [
+      "Perencanaan keuangan",
+      "Bebas utang"
+    ]
+  },
+  {
+    "id": 48,
+    "title": "Pajak Pribadi Tanpa Bingung",
+    "author": "Ratih Anindya",
+    "category": "Keuangan Pribadi",
+    "pages": 142,
+    "rating": 4.0,
+    "hype": 52,
+    "level": "Menengah",
+    "year": 2019,
+    "description": "Panduan dasar memahami kewajiban pajak untuk pekerja lepas dan karyawan.",
+    "readers": 810,
+    "purposes": [
+      "Perencanaan keuangan"
+    ]
+  },
+  {
+    "id": 49,
+    "title": "Pensiun Dini, Realistis atau Mimpi?",
+    "author": "Yoga Firmansyah",
+    "category": "Keuangan Pribadi",
+    "pages": 190,
+    "rating": 4.4,
+    "hype": 97,
+    "level": "Lanjutan",
+    "year": 2022,
+    "description": "Menghitung ulang rencana pensiun dini dengan angka yang jujur.",
+    "readers": 1360,
+    "purposes": [
+      "Perencanaan keuangan",
+      "Perencanaan jangka panjang"
+    ]
+  },
+  {
+    "id": 50,
+    "title": "Umpan Balik yang Didengar, Bukan Ditakuti",
+    "author": "Aji Prakoso",
+    "category": "Kepemimpinan",
+    "pages": 168,
+    "rating": 4.5,
+    "hype": 114,
+    "level": "Menengah",
+    "year": 2023,
+    "description": "Cara menyampaikan kritik membangun tanpa membuat tim defensif.",
+    "readers": 1760,
+    "purposes": [
+      "Pengembangan tim"
+    ]
+  },
+  {
+    "id": 51,
+    "title": "Memimpin Tim yang Lelah",
+    "author": "Rani Kusuma",
+    "category": "Kepemimpinan",
+    "pages": 174,
+    "rating": 4.3,
+    "hype": 89,
+    "level": "Menengah",
+    "year": 2021,
+    "description": "Mengenali tanda burnout tim dan cara memulihkan ritme kerja bersama.",
+    "readers": 1220,
+    "purposes": [
+      "Pengembangan tim",
+      "Kesehatan & keseimbangan"
+    ]
+  },
+  {
+    "id": 52,
+    "title": "Keputusan Cepat di Bawah Tekanan",
+    "author": "Aji Prakoso",
+    "category": "Kepemimpinan",
+    "pages": 196,
+    "rating": 4.2,
+    "hype": 78,
+    "level": "Lanjutan",
+    "year": 2020,
+    "description": "Kerangka mengambil keputusan penting saat waktu dan informasi terbatas.",
+    "readers": 1040,
+    "purposes": [
+      "Growth mindset"
+    ]
+  },
+  {
+    "id": 53,
+    "title": "Onboarding yang Bikin Betah",
+    "author": "Bimo Aditya",
+    "category": "Kepemimpinan",
+    "pages": 152,
+    "rating": 4.4,
+    "hype": 101,
+    "level": "Pemula",
+    "year": 2024,
+    "description": "Merancang minggu pertama karyawan baru supaya cepat produktif dan nyaman.",
+    "readers": 1590,
+    "purposes": [
+      "Pengembangan tim"
+    ]
+  },
+  {
+    "id": 54,
+    "title": "Konflik Tim Bukan Akhir Dunia",
+    "author": "Rani Kusuma",
+    "category": "Kepemimpinan",
+    "pages": 160,
+    "rating": 4.1,
+    "hype": 67,
+    "level": "Menengah",
+    "year": 2019,
+    "description": "Menyelesaikan gesekan antar anggota tim tanpa menunda-nunda.",
+    "readers": 890,
+    "purposes": [
+      "Pengembangan tim"
+    ]
+  },
+  {
+    "id": 55,
+    "title": "Tipografi untuk yang Bukan Desainer",
+    "author": "Teguh Santosa",
+    "category": "Kreativitas & Desain",
+    "pages": 158,
+    "rating": 4.5,
+    "hype": 122,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Aturan dasar memilih dan memadukan font tanpa latar belakang desain.",
+    "readers": 1980,
+    "purposes": [
+      "Belajar dasar",
+      "Portofolio kreatif"
+    ]
+  },
+  {
+    "id": 56,
+    "title": "Riset Sebelum Mendesain",
+    "author": "Nadia Puspita",
+    "category": "Kreativitas & Desain",
+    "pages": 176,
+    "rating": 4.3,
+    "hype": 85,
+    "level": "Menengah",
+    "year": 2021,
+    "description": "Kebiasaan riset singkat yang membuat hasil desain lebih tepat sasaran.",
+    "readers": 1150,
+    "purposes": [
+      "Portofolio kreatif"
+    ]
+  },
+  {
+    "id": 57,
+    "title": "Revisi Tanpa Baper",
+    "author": "Teguh Santosa",
+    "category": "Kreativitas & Desain",
+    "pages": 134,
+    "rating": 4.4,
+    "hype": 96,
+    "level": "Pemula",
+    "year": 2022,
+    "description": "Menerima dan mengelola masukan klien tanpa kehilangan semangat berkarya.",
+    "readers": 1480,
+    "purposes": [
+      "Persiapan kerja",
+      "Portofolio kreatif"
+    ]
+  },
+  {
+    "id": 58,
+    "title": "Dari Sketsa ke Prototipe Digital",
+    "author": "Nadia Puspita",
+    "category": "Kreativitas & Desain",
+    "pages": 202,
+    "rating": 4.6,
+    "hype": 131,
+    "level": "Lanjutan",
+    "year": 2024,
+    "description": "Alur kerja memindahkan ide sketsa tangan menjadi prototipe siap uji.",
+    "readers": 1870,
+    "purposes": [
+      "Portofolio kreatif",
+      "Naik karier"
+    ]
+  },
+  {
+    "id": 59,
+    "title": "Gaya Visual yang Konsisten",
+    "author": "Teguh Santosa",
+    "category": "Kreativitas & Desain",
+    "pages": 168,
+    "rating": 4.2,
+    "hype": 74,
+    "level": "Menengah",
+    "year": 2020,
+    "description": "Membangun panduan visual sederhana supaya karya terasa satu identitas.",
+    "readers": 1020,
+    "purposes": [
+      "Portofolio kreatif"
+    ]
+  },
+  {
+    "id": 60,
+    "title": "Batasan yang Sehat di Tempat Kerja",
+    "author": "Made Wirawan",
+    "category": "Kesehatan Mental",
+    "pages": 148,
+    "rating": 4.6,
+    "hype": 149,
+    "level": "Pemula",
+    "year": 2024,
+    "description": "Cara menetapkan batasan kerja tanpa merasa bersalah atau dianggap tidak kooperatif.",
+    "readers": 2530,
+    "purposes": [
+      "Kesehatan & keseimbangan"
+    ]
+  },
+  {
+    "id": 61,
+    "title": "Overthinking, Diajak Bicara Baik-baik",
+    "author": "Rani Kusuma",
+    "category": "Kesehatan Mental",
+    "pages": 156,
+    "rating": 4.4,
+    "hype": 118,
+    "level": "Pemula",
+    "year": 2022,
+    "description": "Teknik sederhana menghentikan putaran pikiran yang berlebihan.",
+    "readers": 2080,
+    "purposes": [
+      "Kesehatan & keseimbangan",
+      "Refleksi diri"
+    ]
+  },
+  {
+    "id": 62,
+    "title": "Kelelahan Emosional Itu Nyata",
+    "author": "Made Wirawan",
+    "category": "Kesehatan Mental",
+    "pages": 172,
+    "rating": 4.3,
+    "hype": 92,
+    "level": "Menengah",
+    "year": 2021,
+    "description": "Mengenali tanda kelelahan emosional sebelum berubah jadi burnout penuh.",
+    "readers": 1310,
+    "purposes": [
+      "Kesehatan & keseimbangan"
+    ]
+  },
+  {
+    "id": 63,
+    "title": "Journaling untuk Meredakan Cemas",
+    "author": "Nadia Puspita",
+    "category": "Kesehatan Mental",
+    "pages": 130,
+    "rating": 4.5,
+    "hype": 105,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Latihan menulis singkat yang membantu menenangkan pikiran yang ramai.",
+    "readers": 1760,
+    "purposes": [
+      "Kesehatan & keseimbangan",
+      "Membangun kebiasaan"
+    ]
+  },
+  {
+    "id": 64,
+    "title": "Support System yang Dibangun Sendiri",
+    "author": "Made Wirawan",
+    "category": "Kesehatan Mental",
+    "pages": 164,
+    "rating": 4.1,
+    "hype": 61,
+    "level": "Lanjutan",
+    "year": 2019,
+    "description": "Merancang lingkaran dukungan sosial yang realistis untuk dijaga jangka panjang.",
+    "readers": 860,
+    "purposes": [
+      "Kesehatan & keseimbangan"
+    ]
+  },
+  {
+    "id": 65,
+    "title": "Bicara di Depan Umum Tanpa Gemetar",
+    "author": "Ratih Anindya",
+    "category": "Bahasa & Komunikasi",
+    "pages": 154,
+    "rating": 4.5,
+    "hype": 143,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Latihan bertahap mengatasi gugup saat presentasi atau berbicara di depan banyak orang.",
+    "readers": 2260,
+    "purposes": [
+      "Persiapan kerja",
+      "Naik karier"
+    ]
+  },
+  {
+    "id": 66,
+    "title": "Menulis Pesan yang Nggak Bikin Salah Paham",
+    "author": "Bimo Aditya",
+    "category": "Bahasa & Komunikasi",
+    "pages": 120,
+    "rating": 4.3,
+    "hype": 88,
+    "level": "Pemula",
+    "year": 2022,
+    "description": "Prinsip menulis pesan singkat di chat kerja supaya maksudnya jelas.",
+    "readers": 1490,
+    "purposes": [
+      "Komunikasi efektif"
+    ]
+  },
+  {
+    "id": 67,
+    "title": "Mendengarkan Lebih Dulu, Menjawab Kemudian",
+    "author": "Made Wirawan",
+    "category": "Bahasa & Komunikasi",
+    "pages": 142,
+    "rating": 4.4,
+    "hype": 99,
+    "level": "Menengah",
+    "year": 2021,
+    "description": "Teknik mendengarkan aktif yang bikin percakapan terasa lebih tulus.",
+    "readers": 1340,
+    "purposes": [
+      "Komunikasi efektif",
+      "Pengembangan tim"
+    ]
+  },
+  {
+    "id": 68,
+    "title": "Bahasa Tubuh dalam Rapat",
+    "author": "Ratih Anindya",
+    "category": "Bahasa & Komunikasi",
+    "pages": 136,
+    "rating": 4.1,
+    "hype": 57,
+    "level": "Menengah",
+    "year": 2020,
+    "description": "Membaca dan mengatur bahasa tubuh sendiri saat rapat penting.",
+    "readers": 780,
+    "purposes": [
+      "Komunikasi efektif",
+      "Naik karier"
+    ]
+  },
+  {
+    "id": 69,
+    "title": "Basa-basi yang Berujung Kenalan Baru",
+    "author": "Bimo Aditya",
+    "category": "Bahasa & Komunikasi",
+    "pages": 112,
+    "rating": 4.2,
+    "hype": 76,
+    "level": "Pemula",
+    "year": 2024,
+    "description": "Cara memulai obrolan ringan yang terasa natural, bukan dipaksakan.",
+    "readers": 1610,
+    "purposes": [
+      "Komunikasi efektif"
+    ]
+  },
+  {
+    "id": 70,
+    "title": "Kenapa Kita Butuh Tidur",
+    "author": "Dewi Larasati",
+    "category": "Sains Populer",
+    "pages": 186,
+    "rating": 4.6,
+    "hype": 126,
+    "level": "Pemula",
+    "year": 2023,
+    "description": "Penjelasan sederhana tentang manfaat tidur bagi tubuh dan otak sehari-hari.",
+    "readers": 2010,
+    "purposes": [
+      "Kesehatan & keseimbangan",
+      "Growth mindset"
+    ]
+  },
+  {
+    "id": 71,
+    "title": "Otak dan Kebiasaan Baru",
+    "author": "Yoga Firmansyah",
+    "category": "Sains Populer",
+    "pages": 204,
+    "rating": 4.4,
+    "hype": 94,
+    "level": "Menengah",
+    "year": 2021,
+    "description": "Bagaimana otak membentuk kebiasaan, dijelaskan tanpa istilah rumit.",
+    "readers": 1280,
+    "purposes": [
+      "Membangun kebiasaan",
+      "Growth mindset"
+    ]
+  },
+  {
+    "id": 72,
+    "title": "Cuaca yang Makin Sulit Ditebak",
+    "author": "Aji Prakoso",
+    "category": "Sains Populer",
+    "pages": 168,
+    "rating": 4.0,
+    "hype": 48,
+    "level": "Menengah",
+    "year": 2019,
+    "description": "Pengantar ringan memahami perubahan pola cuaca yang makin ekstrem.",
+    "readers": 640,
+    "purposes": [
+      "Wawasan umum"
+    ]
+  },
+  {
+    "id": 73,
+    "title": "Mikroba yang Hidup di Tubuh Kita",
+    "author": "Dewi Larasati",
+    "category": "Sains Populer",
+    "pages": 178,
+    "rating": 4.5,
+    "hype": 109,
+    "level": "Pemula",
+    "year": 2024,
+    "description": "Kenalan dengan mikroba baik yang ternyata membantu kesehatan sehari-hari.",
+    "readers": 1730,
+    "purposes": [
+      "Wawasan umum",
+      "Kesehatan & keseimbangan"
+    ]
+  },
+  {
+    "id": 74,
+    "title": "Logika di Balik Berita Viral",
+    "author": "Yoga Firmansyah",
+    "category": "Sains Populer",
+    "pages": 194,
+    "rating": 4.3,
+    "hype": 82,
+    "level": "Lanjutan",
+    "year": 2022,
+    "description": "Cara sederhana menilai klaim yang beredar sebelum ikut membagikannya.",
+    "readers": 1150,
+    "purposes": [
+      "Wawasan umum",
+      "Growth mindset"
+    ]
+  }
+]

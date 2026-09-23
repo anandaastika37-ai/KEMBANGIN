@@ -1,22 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KembangIn</title>
-    <link rel="stylesheet" href="../public/css/component.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
-</head>
-<body data-page="forum">
-  <site-navbar></site-navbar>
 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forum - Kembangin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Jika CSS global (berisi :root variable) sudah ada, tautkan di sini sebelum forum.css -->
+  <link rel="stylesheet" href="../public/css/forum.css">
+  <link rel="stylesheet" href="../public/css/component.css" />
+
+</head>
+<body>
+
+  <!-- NAVBAR ATAS: ganti dengan navbar asli dari halaman lain (tandai Forum aktif) -->
+<site-navbar></site-navbar>
   <main>
-    <section class="hero">Apa ya</section>
+
+    <div class="wrap threecol">
+
+      <!-- Sidebar kiri: navigasi ala X/Threads (Beranda, Telusuri, Notifikasi, Pesan berfungsi berpindah tampilan) -->
+      <aside class="leftnav">
+        <nav>
+          <a class="lnitem active" href="#" data-view="home"><i class="fa-solid fa-house"></i><span>Beranda</span></a>
+          <a class="lnitem" href="#" data-view="explore"><i class="fa-solid fa-magnifying-glass"></i><span>Telusuri</span></a>
+          <a class="lnitem" href="#" data-view="notifications"><i class="fa-regular fa-bell"></i><span>Notifikasi</span><span class="dot" id="ln-notif-dot" hidden></span></a>
+          <a class="lnitem" href="#" data-view="messages"><i class="fa-regular fa-envelope"></i><span>Pesan</span><span class="dot" id="ln-msg-dot" hidden></span></a>
+        </nav>
+        <button class="btn lncompose" data-open><i class="fa-solid fa-pen"></i><span>Buat Diskusi</span></button>
+        <div class="lnprofile">
+          <div class="av">K</div>
+          <div class="lnp-b"><b>Kamu</b><small>@kamu</small></div>
+        </div>
+      </aside>
+
+      <!-- ===== Beranda ===== -->
+      <section class="feed" id="view-home" data-view-panel="home" aria-label="Daftar diskusi">
+        <div class="feedhead"><h2>Beranda</h2></div>
+        <div class="chips" id="cats" role="tablist" aria-label="Kategori forum"></div>
+        <div class="tabs" id="sorts">
+          <button class="on" data-sort="terbaru">Terbaru</button>
+          <button data-sort="populer">Terpopuler</button>
+        </div>
+        <div class="tagbar" id="tagbar" hidden>
+          Memfilter <b id="tagbar-val"></b>
+          <button id="tagbar-clear" aria-label="Hapus filter hashtag"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="list"></div>
+        <div class="state" id="empty" hidden>
+          <i class="fa-regular fa-comments"></i>
+          <h3>Belum ada diskusi yang cocok</h3>
+          <p>Coba kategori atau filter lain, atau mulai diskusi baru.</p>
+          <div class="state-act">
+            <button class="btn ghost" id="reset">Reset filter</button>
+            <button class="btn" data-open>Buat Diskusi</button>
+          </div>
+        </div>
+        <button class="btn ghost more" id="more" hidden>Muat Lebih Banyak</button>
+      </section>
+
+      <!-- ===== Telusuri ===== -->
+      <section class="feed" id="view-explore" data-view-panel="explore" aria-label="Telusuri" hidden>
+        <div class="feedhead"><h2>Telusuri</h2></div>
+        <div class="explore-search">
+          <label class="xsearch">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="explore-input" type="search" placeholder="Cari diskusi, kategori, username, atau #hashtag" autocomplete="off">
+          </label>
+        </div>
+        <h3 class="subhead">Hashtag trending</h3>
+        <div class="chips" id="explore-trend"></div>
+        <h3 class="subhead" id="explore-heading">Diskusi untuk kamu</h3>
+        <div id="explore-results"></div>
+      </section>
+
+      <!-- ===== Notifikasi ===== -->
+      <section class="feed" id="view-notifications" data-view-panel="notifications" aria-label="Notifikasi" hidden>
+        <div class="feedhead between"><h2>Notifikasi</h2><button class="link-btn" id="notif-read-all">Tandai semua dibaca</button></div>
+        <ul id="notif-list" class="notif-list"></ul>
+      </section>
+
+      <!-- ===== Pesan ===== -->
+      <section class="feed" id="view-messages" data-view-panel="messages" aria-label="Pesan" hidden>
+        <div class="feedhead"><h2>Pesan</h2></div>
+        <div class="msgview">
+          <ul id="msg-list" class="msg-list"></ul>
+          <div id="msg-chat" class="msg-chat">
+            <div class="msg-empty"><i class="fa-regular fa-comment-dots"></i><p>Pilih percakapan untuk membaca pesan.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sidebar kanan -->
+      <aside class="side">
+        <div class="panel">
+          <h2>Trending Topic</h2>
+          <ul id="trending" class="trend"></ul>
+        </div>
+        <div class="panel">
+          <h2>Who to Follow</h2>
+          <ul id="wtf" class="wtf"></ul>
+        </div>
+        <div class="panel ai">
+          <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Kemba AI</h2>
+          <p>Tanya seputar strategi bisnis langsung dari Forum.</p>
+          <div class="aibox">
+            <input id="ai-input" placeholder="Tanya Kemba AI...">
+            <button id="ai-send" aria-label="Kirim"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+          <span class="soon">Segera hadir di Forum</span>
+        </div>
+      </aside>
+    </div>
+
   </main>
 
+  <!-- Tombol mengambang untuk mobile (sidebar kiri disembunyikan) -->
+  <button class="fab" data-open aria-label="Buat Diskusi"><i class="fa-solid fa-pen"></i></button>
+
+  <!-- Tab bar bawah untuk mobile: pengganti sidebar kiri -->
+  <nav class="bottomnav" aria-label="Navigasi Forum">
+    <a class="bnitem active" href="#" data-view="home"><i class="fa-solid fa-house"></i></a>
+    <a class="bnitem" href="#" data-view="explore"><i class="fa-solid fa-magnifying-glass"></i></a>
+    <a class="bnitem" href="#" data-view="notifications"><i class="fa-regular fa-bell"></i><span class="dot" id="bn-notif-dot" hidden></span></a>
+    <a class="bnitem" href="#" data-view="messages"><i class="fa-regular fa-envelope"></i><span class="dot" id="bn-msg-dot" hidden></span></a>
+  </nav>
+
+ <site-footer></site-footer>
+  <div class="toast" id="toast" hidden></div>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-bg" data-close></div>
+    <form class="dialog" id="form" role="dialog" aria-modal="true" aria-labelledby="mt" novalidate>
+      <div class="dialog-head">
+        <h2 id="mt">Buat Diskusi Baru</h2>
+        <button type="button" class="x" data-close aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <label>Username<input id="f-user" maxlength="24" placeholder="mis. budi_usaha"></label>
+      <label>Kategori<select id="f-cat"></select></label>
+      <label>Apa yang ingin kamu diskusikan?<textarea id="f-text" rows="4" maxlength="280" placeholder="Tulis diskusimu di sini..."></textarea></label>
+      <label>Hashtag (opsional)<input id="f-tags" maxlength="60" placeholder="#umkm #hargajual, maksimal 3"></label>
+      <label>Gambar (opsional)
+        <input id="f-img" type="file" accept="image/*">
+      </label>
+      <div class="imgprev" id="f-imgprev" hidden>
+        <img id="f-imgprev-img" alt="Pratinjau gambar">
+        <button type="button" id="f-imgprev-clear" aria-label="Hapus gambar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p class="err" id="err" hidden></p>
+      <div class="dialog-act">
+        <button type="button" class="btn ghost" data-close>Batal</button>
+        <button type="submit" class="btn">Kirim Diskusi</button>
+      </div>
+    </form>
+  </div>
+   
     <!-- script -->
     <script src="../components/Navbar.js"></script>
+    <script src="../components/Footer.js"></script>
     <script src="../public/js/component.js"></script>
-    <!-- script end-->
+  <script src="../public/js/forum.js"></script>
 </body>
 </html>

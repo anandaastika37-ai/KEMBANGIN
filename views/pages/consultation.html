@@ -1,22 +1,375 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kembangin</title>
-    <link rel="stylesheet" href="../public/css/component.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Konsultasi — Kembangin</title>
+<meta name="description" content="Temukan konsultan berpengalaman di Kembangin untuk membantu strategi, keuangan, marketing, branding, digitalisasi, dan pengembangan UMKM.">
+
+<link rel="stylesheet" href="../public/css/component.css">
+<link rel="stylesheet" href="../public/css/consultation.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 </head>
-<body data-page="consultation">
+<body data-page="consultation" class="consultation-page">
   <site-navbar></site-navbar>
 
-  <main>
-    <section class="hero"></section>
-  </main>
+<main>
 
-    <!-- script -->
-    <script src="../components/Navbar.js"></script>
-    <script src="../public/js/component.js"></script>
-    <!-- script end-->
+  <!-- ================= HERO ================= -->
+  <section class="consultation-hero">
+    <div class="consultation-hero__glow" aria-hidden="true"></div>
+    <div class="consultation-hero__inner">
+      <div class="consultation-hero__content">
+        <span class="consultation-badge">
+          <i class="fa-solid fa-comments" aria-hidden="true"></i>
+          Konsultasi Bersama Ahli
+        </span>
+        <h1 class="consultation-hero__title">Temukan Arah untuk Mengembangkan Bisnis</h1>
+        <p class="consultation-hero__desc">
+          Dapatkan insight dan solusi dari konsultan berpengalaman untuk membantu kamu memahami masalah,
+          menentukan strategi, dan mengembangkan bisnis dengan lebih terarah.
+        </p>
+        <div class="consultation-hero__actions">
+          <a href="#consultants" class="consultation-btn consultation-btn--primary" data-scroll>
+            Cari Konsultan
+          </a>
+          <a href="#how-it-works" class="consultation-btn consultation-btn--ghost" data-scroll>
+            Lihat Cara Kerjanya
+          </a>
+        </div>
+      </div>
+
+      <div class="consultation-hero__visual" aria-hidden="true">
+        <div class="consultation-hero__orbit"></div>
+        <div class="consultation-hero__card consultation-hero__card--chat">
+          <div class="consultation-hero__card-avatar">AP</div>
+          <div class="consultation-hero__card-lines">
+            <span></span><span></span>
+          </div>
+        </div>
+        <div class="consultation-hero__card consultation-hero__card--chart">
+          <i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i>
+          <div class="consultation-hero__bars">
+            <span style="height:35%"></span>
+            <span style="height:55%"></span>
+            <span style="height:40%"></span>
+            <span style="height:75%"></span>
+            <span style="height:95%"></span>
+          </div>
+        </div>
+        <div class="consultation-hero__card consultation-hero__card--check">
+          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+          <span>Strategi tersusun</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUICK SEARCH ================= -->
+  <section class="consultation-quick">
+    <div class="consultation-quick__box">
+      <h2 class="consultation-quick__title">Apa yang ingin kamu konsultasikan?</h2>
+      <form class="consultation-quick__form" id="quickSearchForm" role="search">
+        <label for="quickSearchInput" class="consultation-visually-hidden">Cari bidang atau kebutuhan bisnis</label>
+        <i class="fa-solid fa-magnifying-glass consultation-quick__icon" aria-hidden="true"></i>
+        <input
+          type="text"
+          id="quickSearchInput"
+          class="consultation-quick__input"
+          placeholder="Cari bidang atau kebutuhan bisnis..."
+          autocomplete="off">
+        <button type="submit" class="consultation-btn consultation-btn--primary consultation-quick__btn">
+          Cari
+        </button>
+      </form>
+      <div class="consultation-quick__suggestions" id="quickSuggestions">
+        <span class="consultation-quick__suggestions-label">Populer:</span>
+        <button type="button" class="consultation-chip" data-term="Strategi bisnis">Strategi bisnis</button>
+        <button type="button" class="consultation-chip" data-term="Marketing">Marketing</button>
+        <button type="button" class="consultation-chip" data-term="Keuangan">Keuangan</button>
+        <button type="button" class="consultation-chip" data-term="Branding">Branding</button>
+        <button type="button" class="consultation-chip" data-term="Digitalisasi">Digitalisasi</button>
+        <button type="button" class="consultation-chip" data-term="UMKM">UMKM</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CHANNELS ================= -->
+  <section class="consultation-section" id="channels">
+    <div class="consultation-section__head">
+      <h2 class="consultation-section__title">Pilih Channel Konsultasi</h2>
+      <p class="consultation-section__desc">Temukan bidang konsultasi yang sesuai dengan kebutuhan dan tantangan bisnis kamu.</p>
+    </div>
+
+    <div class="consultation-channel-grid" id="channelGrid">
+
+      <article class="consultation-channel-card" data-channel="Bisnis">
+        <div class="consultation-channel-card__icon"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></div>
+        <h3 class="consultation-channel-card__title">Konsultasi Bisnis</h3>
+        <p class="consultation-channel-card__desc">Diskusikan strategi, perencanaan, pengembangan, dan berbagai tantangan dalam menjalankan bisnis.</p>
+        <span class="consultation-channel-card__count" data-channel-count="Bisnis">— konsultan</span>
+        <button type="button" class="consultation-btn consultation-btn--outline consultation-channel-card__btn" data-channel-btn="Bisnis">
+          Cari Konsultan
+        </button>
+      </article>
+
+      <article class="consultation-channel-card" data-channel="Keuangan">
+        <div class="consultation-channel-card__icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+        <h3 class="consultation-channel-card__title">Konsultasi Keuangan</h3>
+        <p class="consultation-channel-card__desc">Dapatkan panduan dalam mengelola keuangan, modal, cash flow, dan perencanaan finansial bisnis.</p>
+        <span class="consultation-channel-card__count" data-channel-count="Keuangan">— konsultan</span>
+        <button type="button" class="consultation-btn consultation-btn--outline consultation-channel-card__btn" data-channel-btn="Keuangan">
+          Cari Konsultan
+        </button>
+      </article>
+
+      <article class="consultation-channel-card" data-channel="Marketing">
+        <div class="consultation-channel-card__icon"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></div>
+        <h3 class="consultation-channel-card__title">Konsultasi Marketing</h3>
+        <p class="consultation-channel-card__desc">Temukan strategi pemasaran yang sesuai untuk meningkatkan jangkauan dan pertumbuhan bisnis.</p>
+        <span class="consultation-channel-card__count" data-channel-count="Marketing">— konsultan</span>
+        <button type="button" class="consultation-btn consultation-btn--outline consultation-channel-card__btn" data-channel-btn="Marketing">
+          Cari Konsultan
+        </button>
+      </article>
+
+      <article class="consultation-channel-card" data-channel="Branding">
+        <div class="consultation-channel-card__icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></div>
+        <h3 class="consultation-channel-card__title">Konsultasi Branding</h3>
+        <p class="consultation-channel-card__desc">Bangun identitas brand yang kuat dan mudah dikenali oleh target pelanggan.</p>
+        <span class="consultation-channel-card__count" data-channel-count="Branding">— konsultan</span>
+        <button type="button" class="consultation-btn consultation-btn--outline consultation-channel-card__btn" data-channel-btn="Branding">
+          Cari Konsultan
+        </button>
+      </article>
+
+      <article class="consultation-channel-card" data-channel="Digitalisasi">
+        <div class="consultation-channel-card__icon"><i class="fa-solid fa-laptop" aria-hidden="true"></i></div>
+        <h3 class="consultation-channel-card__title">Konsultasi Digitalisasi</h3>
+        <p class="consultation-channel-card__desc">Pelajari bagaimana teknologi dan platform digital dapat membantu bisnis berkembang lebih efektif.</p>
+        <span class="consultation-channel-card__count" data-channel-count="Digitalisasi">— konsultan</span>
+        <button type="button" class="consultation-btn consultation-btn--outline consultation-channel-card__btn" data-channel-btn="Digitalisasi">
+          Cari Konsultan
+        </button>
+      </article>
+
+      <article class="consultation-channel-card" data-channel="UMKM">
+        <div class="consultation-channel-card__icon"><i class="fa-solid fa-store" aria-hidden="true"></i></div>
+        <h3 class="consultation-channel-card__title">Konsultasi UMKM</h3>
+        <p class="consultation-channel-card__desc">Dapatkan insight praktis untuk membantu UMKM mengelola dan mengembangkan usahanya.</p>
+        <span class="consultation-channel-card__count" data-channel-count="UMKM">— konsultan</span>
+        <button type="button" class="consultation-btn consultation-btn--outline consultation-channel-card__btn" data-channel-btn="UMKM">
+          Cari Konsultan
+        </button>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= CONSULTANTS + FILTER ================= -->
+  <section class="consultation-section" id="consultants">
+    <div class="consultation-section__head">
+      <h2 class="consultation-section__title">Konsultan Pilihan</h2>
+      <p class="consultation-section__desc">Temukan ahli dengan pengalaman dan keahlian yang sesuai dengan kebutuhan bisnis kamu.</p>
+    </div>
+
+    <div class="consultation-filter-bar" id="filterBar">
+      <div class="consultation-filter-field">
+        <label for="filterBidang">Bidang</label>
+        <select id="filterBidang">
+          <option value="Semua">Semua</option>
+          <option value="Bisnis">Bisnis</option>
+          <option value="Keuangan">Keuangan</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Branding">Branding</option>
+          <option value="Digitalisasi">Digitalisasi</option>
+          <option value="UMKM">UMKM</option>
+        </select>
+      </div>
+      <div class="consultation-filter-field">
+        <label for="filterPengalaman">Pengalaman</label>
+        <select id="filterPengalaman">
+          <option value="Semua">Semua</option>
+          <option value="1-3">1–3 Tahun</option>
+          <option value="3-5">3–5 Tahun</option>
+          <option value="5+">5+ Tahun</option>
+        </select>
+      </div>
+      <div class="consultation-filter-field">
+        <label for="filterRating">Rating</label>
+        <select id="filterRating">
+          <option value="Semua">Semua</option>
+          <option value="4">4+</option>
+          <option value="4.5">4.5+</option>
+          <option value="4.8">4.8+</option>
+        </select>
+      </div>
+      <div class="consultation-filter-field">
+        <label for="filterStatus">Status</label>
+        <select id="filterStatus">
+          <option value="Semua">Semua</option>
+          <option value="online">Online</option>
+          <option value="offline">Offline</option>
+        </select>
+      </div>
+      <div class="consultation-filter-field">
+        <label for="filterSort">Urutkan</label>
+        <select id="filterSort">
+          <option value="terbaru">Terbaru</option>
+          <option value="rating">Rating tertinggi</option>
+          <option value="pengalaman">Pengalaman terbanyak</option>
+          <option value="konsultasi">Konsultasi terbanyak</option>
+        </select>
+      </div>
+      <button type="button" class="consultation-btn consultation-btn--ghost consultation-filter-reset" id="filterResetBtn">
+        <i class="fa-solid fa-arrow-rotate-left" aria-hidden="true"></i> Reset Filter
+      </button>
+    </div>
+
+    <p class="consultation-result-count" id="resultCount" aria-live="polite"></p>
+
+    <div class="consultation-consultant-grid" id="consultantGrid"></div>
+
+    <div class="consultation-empty-state" id="emptyState" hidden>
+      <i class="fa-solid fa-user-magnifying-glass" aria-hidden="true"></i>
+      <h3>Konsultan tidak ditemukan</h3>
+      <p>Coba gunakan kata kunci atau filter yang berbeda.</p>
+      <button type="button" class="consultation-btn consultation-btn--outline" id="emptyResetBtn">Reset Filter</button>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="consultation-section" id="how-it-works">
+    <div class="consultation-section__head">
+      <h2 class="consultation-section__title">Bagaimana Konsultasi Berjalan?</h2>
+    </div>
+    <div class="consultation-steps">
+      <div class="consultation-step">
+        <span class="consultation-step__number">01</span>
+        <i class="fa-solid fa-layer-group consultation-step__icon" aria-hidden="true"></i>
+        <h3>Pilih Channel</h3>
+        <p>Tentukan bidang konsultasi sesuai kebutuhan bisnis.</p>
+      </div>
+      <div class="consultation-step">
+        <span class="consultation-step__number">02</span>
+        <i class="fa-solid fa-user-check consultation-step__icon" aria-hidden="true"></i>
+        <h3>Pilih Konsultan</h3>
+        <p>Temukan konsultan berdasarkan keahlian dan pengalaman.</p>
+      </div>
+      <div class="consultation-step">
+        <span class="consultation-step__number">03</span>
+        <i class="fa-solid fa-calendar-check consultation-step__icon" aria-hidden="true"></i>
+        <h3>Tentukan Jadwal</h3>
+        <p>Pilih waktu konsultasi yang tersedia.</p>
+      </div>
+      <div class="consultation-step">
+        <span class="consultation-step__number">04</span>
+        <i class="fa-solid fa-rocket consultation-step__icon" aria-hidden="true"></i>
+        <h3>Mulai Konsultasi</h3>
+        <p>Lakukan konsultasi dan dapatkan insight dari konsultan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BENEFITS ================= -->
+  <section class="consultation-section">
+    <div class="consultation-section__head">
+      <h2 class="consultation-section__title">Kenapa Berkonsultasi di Kembangin?</h2>
+    </div>
+    <div class="consultation-benefit-grid">
+      <div class="consultation-benefit-card">
+        <i class="fa-solid fa-award" aria-hidden="true"></i>
+        <h3>Konsultan Berpengalaman</h3>
+        <p>Temukan ahli dengan keahlian di berbagai bidang bisnis.</p>
+      </div>
+      <div class="consultation-benefit-card">
+        <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+        <h3>Sesuai Kebutuhan</h3>
+        <p>Pilih channel konsultasi berdasarkan masalah atau tujuan bisnis.</p>
+      </div>
+      <div class="consultation-benefit-card">
+        <i class="fa-solid fa-compass" aria-hidden="true"></i>
+        <h3>Lebih Terarah</h3>
+        <p>Dapatkan insight untuk membantu menentukan langkah selanjutnya.</p>
+      </div>
+      <div class="consultation-benefit-card">
+        <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+        <h3>Fleksibel</h3>
+        <p>Pilih konsultan dan waktu konsultasi sesuai kebutuhan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA BANNER ================= -->
+  <section class="consultation-cta-banner">
+    <div class="consultation-cta-banner__glow" aria-hidden="true"></div>
+    <h2>Punya Tantangan dalam Mengembangkan Bisnis?</h2>
+    <p>Jangan hadapi semuanya sendiri. Temukan konsultan yang sesuai dan mulai diskusikan langkah berikutnya.</p>
+    <a href="#consultants" class="consultation-btn consultation-btn--primary" data-scroll>Temukan Konsultan</a>
+  </section>
+
+</main>
+
+  <site-footer></site-footer>
+
+<!-- ================= PROFILE MODAL ================= -->
+<div class="consultation-modal-overlay" id="profileModalOverlay" hidden>
+  <div class="consultation-modal" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileModalName">
+    <button type="button" class="consultation-modal__close" id="profileModalClose" aria-label="Tutup profil konsultan">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+    <div id="profileModalBody"><!-- diisi oleh JavaScript --></div>
+  </div>
+</div>
+
+<!-- ================= BOOKING MODAL ================= -->
+<div class="consultation-modal-overlay" id="bookingModalOverlay" hidden>
+  <div class="consultation-modal consultation-booking-modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+    <button type="button" class="consultation-modal__close" id="bookingModalClose" aria-label="Tutup jadwal konsultasi">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+    <h2 id="bookingModalTitle" class="consultation-booking__title">Jadwalkan Konsultasi</h2>
+    <p class="consultation-booking__with">Bersama <strong id="bookingConsultantName">—</strong></p>
+
+    <div class="consultation-booking__block">
+      <h3><i class="fa-solid fa-calendar" aria-hidden="true"></i> Pilih tanggal</h3>
+      <div class="consultation-booking__dates" id="bookingDateList"></div>
+    </div>
+
+    <div class="consultation-booking__block">
+      <h3><i class="fa-solid fa-clock" aria-hidden="true"></i> Pilih waktu</h3>
+      <div class="consultation-booking__times" id="bookingTimeList"></div>
+      <div class="consultation-booking__legend">
+        <span><i class="consultation-dot consultation-dot--available"></i> Tersedia</span>
+        <span><i class="consultation-dot consultation-dot--full"></i> Penuh</span>
+        <span><i class="consultation-dot consultation-dot--selected"></i> Dipilih</span>
+      </div>
+    </div>
+
+    <div class="consultation-booking__summary" id="bookingSummary" hidden>
+      <h3>Ringkasan</h3>
+      <dl>
+        <div><dt>Konsultan</dt><dd id="summaryConsultant">—</dd></div>
+        <div><dt>Tanggal</dt><dd id="summaryDate">—</dd></div>
+        <div><dt>Waktu</dt><dd id="summaryTime">—</dd></div>
+        <div><dt>Durasi</dt><dd>60 menit</dd></div>
+      </dl>
+    </div>
+
+    <button type="button" class="consultation-btn consultation-btn--primary consultation-booking__confirm" id="bookingConfirmBtn" disabled>
+      Konfirmasi Konsultasi
+    </button>
+  </div>
+</div>
+
+<!-- ================= TOAST ================= -->
+<div class="consultation-toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- script -->
+<script src="../components/Footer.js"></script>
+<script src="../components/Navbar.js"></script>
+<script src="../public/js/component.js"></script>
+<script src="../public/js/consultation.js"></script>
+<!-- script end-->
 </body>
 </html>
