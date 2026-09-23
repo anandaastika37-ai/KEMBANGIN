@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kembangin</title>
+    <link rel="stylesheet" href="../public/css/component.css">
+    <link rel="stylesheet" href="../public/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+</head>
+<body data-page="dashboard">
+  <site-navbar></site-navbar>
+
+  <main>
+    <section class="dashboard-hero">
+        <h2>Dasbor Usaha</h2>
+        <p>Pantau ringkasan usaha dan aktivitas kamu di Kembangin</p>
+    </section>
+
+    <!-- chart ringkasan, selalu ada di paling atas -->
+    <section class="chart-box">
+        <div class="chart-head">
+            <h3>Ringkasan Pendapatan 7 Hari Terakhir</h3>
+            <span id="chartTotal">Rp0</span>
+        </div>
+        <div class="chart-bars" id="chartBars"></div>
+    </section>
+
+    <section class="dash-layout">
+        <aside class="dash-sidebar">
+            <button class="sidebar-btn active" data-target="tools"><i class="fa-solid fa-toolbox"></i> Tools UMKM</button>
+            <button class="sidebar-btn" data-target="pakar"><i class="fa-solid fa-user-tie"></i> Pakar Disubscribe</button>
+            <button class="sidebar-btn" data-target="savedArticle"><i class="fa-solid fa-bookmark"></i> Artikel Disave</button>
+            <button class="sidebar-btn" data-target="savedBook"><i class="fa-solid fa-book"></i> E-Book Disave</button>
+            <button class="sidebar-btn" data-target="myArticle"><i class="fa-solid fa-pen-nib"></i> Buat Artikel</button>
+            <button class="sidebar-btn" data-target="event"><i class="fa-solid fa-calendar-days"></i> Event</button>
+        </aside>
+
+        <div class="dash-content">
+
+            <!-- ===== 1. TOOLS UMKM ===== -->
+            <div class="panel active" id="panel-tools">
+                <h3>4 Tools UMKM</h3>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                        <h4>Kalkulator Keuntungan</h4>
+                        <p>Hitung untung bersih dari harga jual, modal, dan jumlah terjual.</p>
+                        <button class="tool-open-btn" data-tool="calc">Buka Tools</button>
+                        <div class="tool-body" id="tool-calc">
+                            <form id="calcForm">
+                                <input type="text" id="namaProduk" placeholder="Nama produk" required>
+                                <div class="calc-row">
+                                    <input type="number" id="hargaJual" placeholder="Harga jual" min="0" required>
+                                    <input type="number" id="modalProduk" placeholder="Modal" min="0" required>
+                                    <input type="number" id="jumlahJual" placeholder="Jumlah terjual" min="0" required>
+                                </div>
+                                <button type="submit">Hitung & Tambahkan</button>
+                            </form>
+                            <p class="tool-result" id="calcResult"></p>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <i class="fa-solid fa-ranking-star"></i>
+                        <h4>Analisa Produk Terlaris</h4>
+                        <p>Lihat produk mana yang paling banyak terjual.</p>
+                        <button class="tool-open-btn" data-tool="produk">Buka Tools</button>
+                        <div class="tool-body" id="tool-produk">
+                            <ul id="produkList"></ul>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <i class="fa-solid fa-tags"></i>
+                        <h4>Kalkulator Harga Jual</h4>
+                        <p>Tentuin harga jual dari modal + target margin keuntungan.</p>
+                        <button class="tool-open-btn" data-tool="harga">Buka Tools</button>
+                        <div class="tool-body" id="tool-harga">
+                            <form id="hargaForm">
+                                <div class="calc-row">
+                                    <input type="number" id="modalHarga" placeholder="Modal produk" min="0" required>
+                                    <input type="number" id="marginTarget" placeholder="Target margin (%)" min="1" required>
+                                </div>
+                                <button type="submit">Hitung Harga Jual</button>
+                            </form>
+                            <p class="tool-result" id="hargaResult"></p>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <h4>Cek Kesehatan Keuangan</h4>
+                        <p>Jawab 4 pertanyaan singkat buat cek kondisi keuangan usahamu.</p>
+                        <button class="tool-open-btn" data-tool="cek">Buka Tools</button>
+                        <div class="tool-body" id="tool-cek">
+                            <div class="cek-item">
+                                <span>Apakah kamu mencatat setiap pemasukan & pengeluaran?</span>
+                                <label class="switch"><input type="checkbox" class="cekInput"><span></span></label>
+                            </div>
+                            <div class="cek-item">
+                                <span>Apakah kamu punya tabungan/dana darurat usaha?</span>
+                                <label class="switch"><input type="checkbox" class="cekInput"><span></span></label>
+                            </div>
+                            <div class="cek-item">
+                                <span>Apakah keuntungan usaha lebih besar dari pengeluaran pribadi?</span>
+                                <label class="switch"><input type="checkbox" class="cekInput"><span></span></label>
+                            </div>
+                            <div class="cek-item">
+                                <span>Apakah kamu memisahkan uang usaha dan uang pribadi?</span>
+                                <label class="switch"><input type="checkbox" class="cekInput"><span></span></label>
+                            </div>
+                            <button id="cekBtn">Lihat Hasil</button>
+                            <p class="tool-result" id="cekResult"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 2. PAKAR DISUBSCRIBE ===== -->
+            <div class="panel" id="panel-pakar">
+                <h3>Pakar yang Disubscribe</h3>
+                <div class="pakar-list" id="pakarList"></div>
+            </div>
+
+            <!-- ===== 3. ARTIKEL DISAVE ===== -->
+            <div class="panel" id="panel-savedArticle">
+                <h3>Artikel yang Disave</h3>
+                <div class="saved-grid" id="savedArticleList"></div>
+            </div>
+
+            <!-- ===== 4. E-BOOK DISAVE ===== -->
+            <div class="panel" id="panel-savedBook">
+                <h3>E-Book yang Disave</h3>
+                <div class="saved-grid" id="savedBookList"></div>
+            </div>
+
+            <!-- ===== 5. BUAT ARTIKEL ===== -->
+            <div class="panel" id="panel-myArticle">
+                <div class="panel-head-row">
+                    <h3>Artikel Saya</h3>
+                    <button id="newArticleBtn">+ Buat Artikel Baru</button>
+                </div>
+                <div class="my-article-list" id="myArticleList"></div>
+            </div>
+
+            <!-- ===== 6. EVENT ===== -->
+            <div class="panel" id="panel-event">
+                <h3>Event yang Sudah Dibeli</h3>
+                <div class="event-grid" id="eventList"></div>
+            </div>
+
+        </div>
+    </section>
+  </main>
+
+    <!-- editor artikel ala wordpress, tampil sebagai overlay -->
+    <div class="editor-overlay" id="editorOverlay">
+        <div class="editor-modal">
+            <div class="editor-head">
+                <h3 id="editorTitle">Buat Artikel Baru</h3>
+                <button type="button" id="closeEditorBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <label>Judul Artikel</label>
+            <input type="text" id="editorJudul" placeholder="Judul artikel kamu">
+
+            <label>Kategori</label>
+            <input type="text" id="editorKategori" placeholder="cth: Bisnis Digital">
+
+            <label>Cover Artikel</label>
+            <div class="editor-cover-upload">
+                <i class="fa-solid fa-image"></i>
+                <span>Klik buat upload cover (dummy, belum tersimpan beneran)</span>
+            </div>
+
+            <label>Isi Artikel</label>
+            <textarea id="editorIsi" rows="6" placeholder="Tulis isi artikel di sini..."></textarea>
+
+            <div class="editor-footer">
+                <button type="button" class="btn-draft" id="saveDraftBtn">Simpan sebagai Draft</button>
+                <button type="button" class="btn-publish" id="publishBtn">Publish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- script -->
+    <script src="../components/Navbar.js"></script>
+    <script src="../public/js/component.js"></script>
+    <script src="../public/js/dashboard.js"></script>
+    <!-- script end-->
+</body>
+</html>

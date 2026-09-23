@@ -1,0 +1,339 @@
+body{
+    background-color: #05050a;
+}
+
+.group-header{
+    width: 100%;
+    color: white;
+}
+
+.group-cover{
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(120deg, #01030f, #071d50, #0066F6);
+    margin-top: 70px;
+}
+
+.group-info{
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid #13153a;
+}
+
+.group-icon{
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    border-radius: 16px;
+    background-color: rgb(0, 140, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-top: -35px;
+    border: 3px solid #05050a;
+}
+
+.group-text h2{
+    font-family: var(--font-poppins);
+    font-size: 1.3rem;
+}
+
+.group-text p{
+    color: #a09f9f;
+    font-size: .82rem;
+    margin-top: 4px;
+}
+
+.follow-btn{
+    margin-left: auto;
+    background-color: rgb(0, 140, 255);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-family: var(--font-poppins);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.follow-btn.following{
+    background-color: #242527;
+    color: #a09f9f;
+}
+
+.member-row{
+    width: 90%;
+    max-width: 900px;
+    margin: 16px auto 0;
+    display: flex;
+    gap: -8px;
+}
+
+.member-row .mini-avatar{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-montserrat);
+    font-weight: 700;
+    font-size: .85rem;
+    border: 2px solid #05050a;
+    margin-left: -10px;
+    cursor: pointer;
+}
+
+.member-row .mini-avatar:first-child{
+    margin-left: 0;
+}
+
+.see-all-btn{
+    display: block;
+    width: 90%;
+    max-width: 900px;
+    margin: 10px auto 20px;
+    background: none;
+    border: none;
+    color: rgb(0, 140, 255);
+    font-size: .82rem;
+    font-family: var(--font-poppins);
+    cursor: pointer;
+    text-align: left;
+}
+
+.community-body{
+    width: 90%;
+    max-width: 750px;
+    margin: 10px auto 35px;
+    color: white;
+}
+
+.post-box{
+    background-color: #00000ad7;
+    border: 1px solid #13153a;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.post-avatar{
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    background-color: rgb(0, 140, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-montserrat);
+    font-weight: 700;
+}
+
+.post-box form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-box textarea{
+    background-color: #242527;
+    border: 1px solid #424242;
+    border-radius: 6px;
+    padding: 10px;
+    color: white;
+    font-family: var(--font-openSans);
+    resize: none;
+}
+
+.post-box textarea:focus{
+    outline: 1px solid rgb(0, 140, 255);
+}
+
+.post-box button{
+    align-self: flex-end;
+    margin-top: 10px;
+    background-color: rgb(0, 140, 255);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-family: var(--font-poppins);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.post-feed{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.post-card{
+    background-color: #00000ad7;
+    border: 1px solid #13153a;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+
+    /* animasi scroll: mulai transparan+geser bawah, dimunculin lewat JS pas kelihatan */
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .5s ease, transform .5s ease;
+}
+
+.post-card.in-view{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.post-card .post-avatar{
+    background-color: #33356e;
+}
+
+.post-card-body{
+    width: 100%;
+}
+
+.post-card-head{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.post-card-head b{
+    font-family: var(--font-poppins);
+    font-size: .9rem;
+}
+
+.admin-tag{
+    background-color: #5454ff49;
+    color: #a0a0fa;
+    font-size: .65rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.post-card-head small{
+    color: #706f6f;
+    font-size: .75rem;
+}
+
+.post-card p{
+    font-size: .9rem;
+    color: #cfcfcf;
+    line-height: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.post-img{
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.like-btn{
+    background: none;
+    border: none;
+    color: #a09f9f;
+    font-size: .8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.like-btn i{
+    color: #a09f9f;
+}
+
+.like-btn.liked i{
+    color: rgb(0, 140, 255);
+    font-weight: 900;
+}
+
+.like-btn.liked{
+    color: rgb(0, 140, 255);
+}
+
+/* ===== panel semua anggota ===== */
+.member-overlay{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: #000000cc;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 20px;
+}
+
+.member-overlay.show{
+    display: flex;
+}
+
+.member-modal{
+    background-color: #0d0d14;
+    border: 1px solid #13153a;
+    border-radius: 12px;
+    padding: 22px;
+    width: 100%;
+    max-width: 420px;
+    max-height: 80vh;
+    overflow-y: auto;
+    color: white;
+}
+
+.member-modal-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.member-modal-head button{
+    background: none;
+    border: none;
+    color: #a09f9f;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.member-item{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #1c1c2a;
+}
+
+.member-item .mini-avatar{
+    margin: 0;
+}
+
+.member-item span{
+    font-size: .88rem;
+}
+
+@media (max-width: 600px){
+    .group-info{
+        flex-wrap: wrap;
+    }
+    .follow-btn{
+        margin-left: 0;
+        width: 100%;
+    }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kembangin</title>
+    <link rel="stylesheet" href="../public/css/component.css">
+    <link rel="stylesheet" href="../public/css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+</head>
+<body data-page="profile">
+  <site-navbar></site-navbar>
+
+  <main>
+    <section class="profile-hero">
+        <div class="profile-card">
+            <div class="profile-avatar" id="profileAvatar">S</div>
+            <div class="profile-detail">
+                <h2 id="profileFullname">Seseorang Wijaya</h2>
+                <p>@<span id="profileUsername">seseorang203</span></p>
+                <span class="profile-badge"><i class="fa-solid fa-store"></i> Pemilik Usaha</span>
+            </div>
+            <button class="edit-btn" id="openEditBtn"><i class="fa-solid fa-pen"></i> Edit Profil</button>
+        </div>
+    </section>
+
+    <section class="profile-body">
+        <div class="info-box">
+            <h3>Data Diri</h3>
+            <div class="info-grid">
+                <div><label>Email</label><p id="viewEmail">seseorang@gmail.com</p></div>
+                <div><label>Umur</label><p id="viewUmur">27 tahun</p></div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>Data Usaha</h3>
+            <div class="info-grid">
+                <div><label>Nama Usaha</label><p id="viewNamaUsaha">Kopi Senja</p></div>
+                <div><label>Kategori Usaha</label><p id="viewKategori">Kuliner & Minuman</p></div>
+                <div><label>Alamat Usaha</label><p id="viewAlamat">Jl. Merdeka No. 12, Denpasar</p></div>
+                <div><label>NPWP</label><p id="viewNpwp">09.123.456.7-901.000</p></div>
+                <div><label>Tahun Dibentuk</label><p id="viewTahun">2022</p></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="edit-overlay" id="editOverlay">
+        <form class="edit-modal" id="profileForm">
+            <div class="edit-head">
+                <h3>Edit Profil</h3>
+                <button type="button" id="closeEditBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <label for="inputFullname">Nama Lengkap</label>
+            <input type="text" id="inputFullname">
+
+            <label for="inputUsername">Username</label>
+            <input type="text" id="inputUsername">
+
+            <label for="inputEmail">Email</label>
+            <input type="email" id="inputEmail">
+
+            <label for="inputUmur">Umur</label>
+            <input type="number" id="inputUmur" min="0">
+
+            <label for="inputNamaUsaha">Nama Usaha</label>
+            <input type="text" id="inputNamaUsaha">
+
+            <label for="inputKategori">Kategori Usaha</label>
+            <input type="text" id="inputKategori">
+
+            <label for="inputAlamat">Alamat Usaha</label>
+            <input type="text" id="inputAlamat">
+
+            <label for="inputNpwp">NPWP</label>
+            <input type="text" id="inputNpwp">
+
+            <label for="inputTahun">Tahun Dibentuknya Usaha</label>
+            <input type="number" id="inputTahun" min="1900">
+
+            <button type="submit">Simpan Perubahan</button>
+        </form>
+    </div>
+  </main>
+
+    <!-- script -->
+    <script src="../components/Navbar.js"></script>
+    <script src="../public/js/component.js"></script>
+    <script src="../public/js/profile.js"></script>
+    <!-- script end-->
+</body>
+</html>

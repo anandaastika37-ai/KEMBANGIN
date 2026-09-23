@@ -261,6 +261,7 @@ class SiteNavbar extends HTMLElement {
               <ul>
 
                 <li>
+
                   <a href="#" class="notif-link">
                     <span>
                       <i class="fa-solid fa-bell" aria-hidden="true"></i>
@@ -278,13 +279,16 @@ class SiteNavbar extends HTMLElement {
                 </li>
 
                 <li>
+
                   <a href="#">
                     <i class="fa-solid fa-table" aria-hidden="true"></i>
+
                     Dasbor
                   </a>
                 </li>
 
                 <li>
+
                   <a href="#">
                     <i class="fa-solid fa-users" aria-hidden="true"></i>
                     Komunitas
