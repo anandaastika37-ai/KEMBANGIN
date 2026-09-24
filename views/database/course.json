@@ -1,0 +1,178 @@
+{
+  "id": "ekonomi-dasar",
+  "title": "Konsep Dasar Ekonomi untuk Pelaku Usaha",
+  "level": "Pemula",
+  "duration": "9 Jam 20 Menit",
+  "totalStages": 10,
+  "totalLessons": 28,
+  "roadmap": [
+    {
+      "title": "Pengantar Ekonomi untuk Bisnis",
+      "description": "Mengenal definisi ilmu ekonomi dan alasan setiap pelaku usaha perlu memahaminya sebelum mengambil keputusan bisnis.",
+      "lessons": [
+        { "id": "s1-l1", "title": "Apa itu Ilmu Ekonomi dan Mengapa Penting bagi Pelaku Usaha", "desc": "Mengenal definisi ilmu ekonomi dan alasan setiap pelaku usaha perlu memahaminya sebelum mengambil keputusan bisnis.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/01.jpg" },
+        { "id": "s1-l2", "title": "Kebutuhan, Keinginan, dan Skala Prioritas dalam Bisnis", "desc": "Membedakan kebutuhan dan keinginan usaha, lalu menyusun skala prioritas agar sumber daya terbatas digunakan seefektif mungkin.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/02.jpg" },
+        {
+          "id": "s1-l3", "title": "Ekonomi Mikro vs Makro: Apa Bedanya untuk Usahamu", "desc": "Memahami perbedaan sudut pandang ekonomi mikro (level usaha) dan makro (level negara/industri) serta relevansinya bagi bisnis.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/03.jpg",
+          "quiz": {
+            "question": "Manakah yang termasuk ruang lingkup ekonomi mikro bagi sebuah usaha?",
+            "options": ["Menentukan harga jual produk di tokonya sendiri", "Tingkat inflasi nasional tahun ini", "Pertumbuhan ekonomi suatu negara", "Nilai tukar mata uang antarnegara"],
+            "correctIndex": 0,
+            "explanation": "Menentukan harga jual produk adalah keputusan di level usaha, sehingga termasuk ruang lingkup ekonomi mikro. Inflasi, pertumbuhan ekonomi, dan nilai tukar termasuk ekonomi makro."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Permintaan, Penawaran, dan Harga Pasar",
+      "description": "Mempelajari bagaimana permintaan dan penawaran membentuk harga, lalu menerapkannya untuk menentukan harga jual yang kompetitif.",
+      "lessons": [
+        { "id": "s2-l1", "title": "Memahami Hukum Permintaan dan Penawaran", "desc": "Mempelajari bagaimana hubungan antara jumlah permintaan, penawaran, dan harga terbentuk di pasar.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/04.jpg" },
+        { "id": "s2-l2", "title": "Faktor yang Mempengaruhi Harga di Pasar", "desc": "Mengenal faktor-faktor seperti biaya produksi, kompetitor, dan daya beli yang memengaruhi pembentukan harga di pasar.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/05.jpg" },
+        {
+          "id": "s2-l3", "title": "Menentukan Harga Jual yang Kompetitif", "desc": "Menerapkan pemahaman permintaan dan penawaran untuk menyusun strategi harga jual yang kompetitif namun tetap menguntungkan.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/06.jpg",
+          "quiz": {
+            "question": "Jika harga suatu produk naik namun permintaannya tetap tinggi, apa yang paling mungkin terjadi?",
+            "options": ["Penawaran akan cenderung meningkat", "Produk tersebut pasti akan gagal di pasar", "Harga pasti akan turun kembali dengan sendirinya", "Permintaan akan langsung menjadi nol"],
+            "correctIndex": 0,
+            "explanation": "Ketika harga naik dan tetap diminati, produsen umumnya terdorong untuk meningkatkan penawaran guna memanfaatkan peluang keuntungan yang lebih besar."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Biaya, Modal, dan Keuntungan",
+      "description": "Membedah struktur biaya usaha, cara menghitung kebutuhan modal, dan menemukan titik impas agar usaha tidak berjalan buta.",
+      "lessons": [
+        { "id": "s3-l1", "title": "Mengenal Biaya Tetap dan Biaya Variabel", "desc": "Membedakan biaya tetap (tidak berubah meski produksi berubah) dan biaya variabel (mengikuti volume produksi).", "duration": 20, "thumbnail": "assets/images/course/ekonomi/07.jpg" },
+        { "id": "s3-l2", "title": "Menghitung Modal Usaha dengan Tepat", "desc": "Menyusun perhitungan kebutuhan modal awal dan modal kerja agar usaha berjalan dengan arus kas yang sehat.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/08.jpg" },
+        {
+          "id": "s3-l3", "title": "Analisis Titik Impas (Break Even Point)", "desc": "Mempelajari cara menghitung titik impas untuk mengetahui jumlah penjualan minimal agar usaha tidak merugi.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/09.jpg",
+          "quiz": {
+            "question": "Apa yang dimaksud dengan titik impas (break even point) dalam usaha?",
+            "options": ["Kondisi ketika total pendapatan sama dengan total biaya", "Kondisi ketika usaha mengalami kerugian maksimal", "Kondisi ketika seluruh modal usaha habis terpakai", "Kondisi ketika harga jual sama dengan harga kompetitor"],
+            "correctIndex": 0,
+            "explanation": "Titik impas terjadi saat pendapatan menutupi seluruh biaya, sehingga usaha berada pada posisi tidak untung dan tidak rugi."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Inflasi dan Daya Beli Konsumen",
+      "description": "Memahami apa itu inflasi, dampaknya pada biaya operasional, dan cara membaca perubahan daya beli pelanggan.",
+      "lessons": [
+        { "id": "s4-l1", "title": "Apa itu Inflasi dan Bagaimana Dampaknya pada Bisnis", "desc": "Memahami definisi inflasi dan bagaimana kenaikan harga secara umum dapat memengaruhi biaya operasional bisnis.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/10.jpg" },
+        { "id": "s4-l2", "title": "Strategi Bisnis Menghadapi Kenaikan Harga", "desc": "Mengenal beberapa strategi seperti efisiensi biaya dan penyesuaian harga untuk menjaga usaha tetap sehat saat inflasi tinggi.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/11.jpg" },
+        {
+          "id": "s4-l3", "title": "Membaca Daya Beli Konsumen di Sekitar Usaha", "desc": "Mempelajari cara mengamati perubahan daya beli konsumen agar strategi harga dan produk tetap relevan.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/12.jpg",
+          "quiz": {
+            "question": "Apa salah satu dampak inflasi yang paling langsung dirasakan pelaku usaha?",
+            "options": ["Kenaikan biaya produksi dan operasional", "Penurunan jumlah hari kerja dalam seminggu", "Perubahan warna logo perusahaan", "Bertambahnya jumlah karyawan secara otomatis"],
+            "correctIndex": 0,
+            "explanation": "Inflasi membuat harga barang dan jasa naik secara umum, termasuk bahan baku dan biaya operasional, sehingga langsung memengaruhi struktur biaya usaha."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Persaingan Usaha dan Struktur Pasar",
+      "description": "Mengenal berbagai struktur pasar dan menyusun strategi diferensiasi agar usaha tidak hanya bersaing lewat harga.",
+      "lessons": [
+        { "id": "s5-l1", "title": "Mengenal Jenis-jenis Struktur Pasar", "desc": "Mempelajari perbedaan pasar persaingan sempurna, monopoli, oligopoli, dan persaingan monopolistik secara sederhana.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/13.jpg" },
+        { "id": "s5-l2", "title": "Strategi Bersaing di Pasar yang Kompetitif", "desc": "Mengenal strategi bersaing seperti efisiensi biaya, kualitas layanan, dan inovasi untuk bertahan di pasar yang ramai pesaing.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/14.jpg" },
+        {
+          "id": "s5-l3", "title": "Diferensiasi Produk sebagai Keunggulan Bersaing", "desc": "Mempelajari cara menciptakan diferensiasi produk agar usaha tidak hanya bersaing dari sisi harga.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/15.jpg",
+          "quiz": {
+            "question": "Mengapa diferensiasi produk penting bagi sebuah usaha?",
+            "options": ["Agar usaha tidak hanya bersaing lewat harga termurah", "Agar biaya produksi otomatis menjadi nol", "Agar usaha bebas dari seluruh pesaing di pasar", "Agar harga jual selalu sama dengan kompetitor"],
+            "correctIndex": 0,
+            "explanation": "Dengan diferensiasi, usaha punya nilai atau ciri khas tersendiri sehingga konsumen memilih bukan semata karena harga, melainkan karena keunikan yang ditawarkan."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Menerapkan Ekonomi dalam Keputusan Bisnis",
+      "description": "Melatih cara menggunakan data ekonomi sederhana untuk mengambil keputusan bisnis lewat studi kasus dan rencana aksi.",
+      "lessons": [
+        { "id": "s6-l1", "title": "Mengambil Keputusan Bisnis Berdasarkan Data Ekonomi", "desc": "Mempelajari cara menggunakan data ekonomi sederhana seperti tren harga dan biaya untuk mendukung keputusan bisnis.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/16.jpg" },
+        { "id": "s6-l2", "title": "Studi Kasus: Penerapan Ekonomi dalam UMKM", "desc": "Mengulas contoh penerapan konsep permintaan-penawaran, biaya, dan inflasi pada sebuah UMKM secara sederhana.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/17.jpg" },
+        {
+          "id": "s6-l3", "title": "Merancang Rencana Aksi untuk Bisnismu", "desc": "Menyusun rencana aksi sederhana untuk menerapkan konsep-konsep ekonomi yang telah dipelajari ke dalam bisnis sendiri.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/18.jpg",
+          "quiz": {
+            "question": "Setelah mempelajari tahap ini, langkah paling tepat selanjutnya adalah?",
+            "options": ["Menyusun rencana aksi untuk menerapkan konsep yang dipelajari ke usaha sendiri", "Mengabaikan seluruh materi karena dianggap terlalu teoretis", "Menunggu kondisi ekonomi negara membaik terlebih dahulu", "Menghentikan operasional usaha sampai tahap lanjutan tersedia"],
+            "correctIndex": 0,
+            "explanation": "Tujuan akhir belajar konsep ekonomi adalah penerapannya, sehingga menyusun rencana aksi nyata adalah langkah paling tepat setelah menyelesaikan tahap ini."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Ekonomi Makro dan Indikatornya",
+      "description": "Mengenal istilah dan indikator ekonomi makro yang sering muncul di berita serta relevansinya bagi keputusan bisnis.",
+      "lessons": [
+        { "id": "s7-l1", "title": "Suku Bunga dan Pengaruhnya terhadap Kredit Usaha", "desc": "Mengenal BI Rate dan bagaimana perubahan suku bunga memengaruhi biaya kredit atau pinjaman usaha.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/19.jpg" },
+        { "id": "s7-l2", "title": "Nilai Tukar Rupiah dan Dampaknya pada Harga Barang", "desc": "Memahami nilai tukar rupiah dan pengaruhnya terhadap harga bahan baku atau produk impor.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/20.jpg" },
+        {
+          "id": "s7-l3", "title": "PDB dan Kesehatan Ekonomi Suatu Negara", "desc": "Memahami PDB secara sederhana dan mengapa indikator ini relevan bagi pelaku usaha.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/21.jpg",
+          "quiz": {
+            "question": "Apa yang diukur oleh PDB (Produk Domestik Bruto)?",
+            "options": ["Total nilai barang dan jasa yang dihasilkan suatu negara dalam periode tertentu", "Jumlah penduduk suatu negara", "Jumlah utang pemerintah", "Nilai tukar mata uang"],
+            "correctIndex": 0,
+            "explanation": "PDB mengukur total nilai barang dan jasa yang dihasilkan suatu negara dalam periode tertentu, dan menjadi salah satu indikator kesehatan ekonomi."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Kondisi dan Peran Ekonomi Indonesia",
+      "description": "Melihat gambaran ekonomi Indonesia dan peran UMKM di dalamnya sebagai konteks menjalankan usaha.",
+      "lessons": [
+        { "id": "s8-l1", "title": "Peran UMKM dalam Perekonomian Nasional", "desc": "Memahami kontribusi UMKM terhadap PDB dan penyerapan tenaga kerja di Indonesia.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/22.jpg" },
+        {
+          "id": "s8-l2", "title": "Mengenali Sektor Ekonomi yang Sedang Bertumbuh", "desc": "Mengenal sektor ekonomi yang berkembang dan peluang yang dapat diperhatikan pelaku usaha.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/23.jpg",
+          "quiz": {
+            "question": "Mengapa penting bagi pelaku usaha mengenali sektor ekonomi yang sedang bertumbuh?",
+            "options": ["Untuk melihat peluang dan menyesuaikan arah usaha", "Agar bisa berhenti berjualan", "Karena wajib menurut hukum", "Supaya harga produk otomatis naik"],
+            "correctIndex": 0,
+            "explanation": "Mengenali sektor yang bertumbuh membantu pelaku usaha melihat peluang pasar baru dan menyesuaikan strategi usahanya."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Literasi Keuangan untuk Pelaku Usaha",
+      "description": "Membangun pemahaman dasar literasi keuangan yang mendukung pengelolaan usaha jangka panjang.",
+      "lessons": [
+        { "id": "s9-l1", "title": "Mengenal Aset dan Liabilitas dalam Bisnis", "desc": "Memahami perbedaan aset dan liabilitas serta pengaruhnya terhadap kondisi keuangan usaha.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/24.jpg" },
+        { "id": "s9-l2", "title": "Menabung, Investasi, dan Berutang Secara Sehat", "desc": "Memahami konsep menabung, investasi, dan penggunaan utang usaha secara bijak.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/25.jpg" },
+        {
+          "id": "s9-l3", "title": "Mengenal Lembaga Keuangan bagi Pelaku Usaha", "desc": "Mengenal bank, koperasi, dan fintech serta fungsi dasarnya bagi kebutuhan usaha.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/26.jpg",
+          "quiz": {
+            "question": "Manakah yang termasuk contoh liabilitas dalam bisnis?",
+            "options": ["Utang kepada pemasok", "Uang tunai di kas", "Peralatan usaha", "Persediaan barang"],
+            "correctIndex": 0,
+            "explanation": "Liabilitas adalah kewajiban atau utang yang harus dibayar, seperti utang kepada pemasok, berbeda dengan aset yang merupakan sumber daya milik usaha."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Uang, Pembayaran Digital, dan Langkah Selanjutnya",
+      "description": "Menutup roadmap dengan memahami sistem pembayaran digital serta menyusun langkah lanjutan penerapan ilmu ekonomi di bisnismu.",
+      "lessons": [
+        { "id": "s10-l1", "title": "Sistem Pembayaran Digital di Indonesia", "desc": "Memahami perkembangan sistem pembayaran digital seperti QRIS dan e-wallet serta penggunaannya dalam bisnis.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/27.jpg" },
+        {
+          "id": "s10-l2", "title": "Menyusun Langkah Lanjutan Setelah Roadmap Ini", "desc": "Merangkum seluruh roadmap dan menyusun langkah konkret untuk diterapkan pada bisnismu.", "duration": 20, "thumbnail": "assets/images/course/ekonomi/28.jpg",
+          "quiz": {
+            "question": "QRIS di Indonesia berfungsi untuk apa?",
+            "options": ["Menyatukan berbagai metode pembayaran digital dalam satu kode QR", "Mengganti mata uang rupiah", "Menyimpan data karyawan", "Menghitung pajak usaha"],
+            "correctIndex": 0,
+            "explanation": "QRIS (Quick Response Code Indonesian Standard) menyatukan berbagai layanan pembayaran digital dalam satu kode QR, memudahkan transaksi bisnis."
+          }
+        }
+      ]
+    }
+  ]
+}

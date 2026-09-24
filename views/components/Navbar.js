@@ -261,6 +261,7 @@ class SiteNavbar extends HTMLElement {
               <ul>
 
                 <li>
+
                   <a href="#" class="notif-link">
                     <span>
                       <i class="fa-solid fa-bell" aria-hidden="true"></i>
@@ -271,21 +272,24 @@ class SiteNavbar extends HTMLElement {
                 </li>
 
                 <li>
-                  <a href="#">
+                  <a href="../pages/profile.html" data-page="profile">
                     <i class="fa-solid fa-image-portrait" aria-hidden="true"></i>
                     Profil
                   </a>
                 </li>
 
                 <li>
-                  <a href="#">
+
+                  <a href="../pages/dashboard.html" data-page="dashboard">
                     <i class="fa-solid fa-table" aria-hidden="true"></i>
+
                     Dasbor
                   </a>
                 </li>
 
                 <li>
-                  <a href="#">
+
+                  <a href="../pages/community.html" data-page="community">
                     <i class="fa-solid fa-users" aria-hidden="true"></i>
                     Komunitas
                   </a>
@@ -356,6 +360,27 @@ class SiteNavbar extends HTMLElement {
               <a href="../pages/forum.html">
                 <i class="fa-regular fa-file" aria-hidden="true"></i>
                 Forum
+              </a>
+            </li>
+
+            <li>
+              <a href="../pages/community.html">
+                <i class="fa-regular fa-file" aria-hidden="true"></i>
+                Komunitas
+              </a>
+            </li>
+
+            <li>
+              <a href="../pages/dashboard.html">
+                <i class="fa-regular fa-file" aria-hidden="true"></i>
+                Dasbor
+              </a>
+            </li>
+
+            <li>
+              <a href="../pages/profile.html">
+                <i class="fa-regular fa-file" aria-hidden="true"></i>
+                Profil
               </a>
             </li>
 

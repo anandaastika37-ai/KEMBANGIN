@@ -284,13 +284,22 @@
         </div>
         <div class="new-box">
           <div class="event">
-            <div class="box-event" data-aos="fade-up" data-aos-delay="0">
+            <div
+              class="box-event"
+              data-aos="fade-up"
+              data-aos-delay="0"
+              tabindex="0"
+              role="button"
+              aria-haspopup="dialog"
+              aria-labelledby="event-title-1"
+              data-desc="Workshop online ini membahas bagaimana pelaku usaha dan calon wirausahawan dapat memanfaatkan tools digital untuk memperluas jangkauan bisnis, mulai dari media sosial, digital marketing funnel, hingga automasi pemasaran. Peserta akan diajak memahami studi kasus nyata dan menyusun langkah awal strategi digital yang sesuai dengan skala bisnisnya. Cocok untuk mahasiswa yang ingin memulai bisnis maupun yang sedang merintis usaha kecil."
+            >
               <img
                 class="thumb-event"
                 src="../assets/thum-event-1.jpg"
-                alt=""
+                alt="Strategi Membangun Bisnis di Era Digital"
               />
-              <button class="bookmark-btn" aria-label="Simpan event">
+              <button class="bookmark-btn" aria-label="Simpan event" aria-pressed="false">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -304,7 +313,7 @@
                 </svg>
               </button>
               <div class="ket">
-                <h3>Strategi Membangun Bisnis di Era Digital</h3>
+                <h3 id="event-title-1">Strategi Membangun Bisnis di Era Digital</h3>
                 <h4>James Anderson <span>| Digital Marketing</span></h4>
                 <h5>Khusus Mahasiswa</h5>
                 <div class="meta-row">
@@ -358,13 +367,22 @@
               </div>
             </div>
 
-            <div class="box-event" data-aos="fade-up" data-aos-delay="100">
+            <div
+              class="box-event"
+              data-aos="fade-up"
+              data-aos-delay="100"
+              tabindex="0"
+              role="button"
+              aria-haspopup="dialog"
+              aria-labelledby="event-title-2"
+              data-desc="Sesi motivasi dan sharing pengalaman bersama pelaku usaha muda yang berhasil membangun bisnis sejak usia produktif. Peserta akan mendapatkan insight seputar mindset wirausaha, cara memulai bisnis dengan modal terbatas, serta tantangan yang umum dihadapi generasi muda saat merintis usaha. Acara ditutup dengan sesi tanya jawab interaktif di Aula Kampus."
+            >
               <img
                 class="thumb-event"
                 src="../assets/thum-event-2.jpg"
-                alt=""
+                alt="Muda Berkarya, Muda Berwirausaha"
               />
-              <button class="bookmark-btn" aria-label="Simpan event">
+              <button class="bookmark-btn" aria-label="Simpan event" aria-pressed="false">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -378,7 +396,7 @@
                 </svg>
               </button>
               <div class="ket">
-                <h3>Muda Berkarya, Muda Berwirausaha</h3>
+                <h3 id="event-title-2">Muda Berkarya, Muda Berwirausaha</h3>
                 <h4>Daniel Morgan <span>| Young Entrepreneur</span></h4>
                 <h5>Umum</h5>
                 <div class="meta-row">
@@ -432,13 +450,22 @@
               </div>
             </div>
 
-            <div class="box-event" data-aos="fade-up" data-aos-delay="200">
+            <div
+              class="box-event"
+              data-aos="fade-up"
+              data-aos-delay="200"
+              tabindex="0"
+              role="button"
+              aria-haspopup="dialog"
+              aria-labelledby="event-title-3"
+              data-desc="Seminar hybrid ini mengupas bagaimana inovasi teknologi dapat mendorong terbentuknya ekosistem bisnis yang berkelanjutan. Kenji Tanaka akan membagikan pengalamannya membangun strategi teknologi lintas negara serta cara mengidentifikasi peluang inovasi di tengah perubahan pasar global. Peserta dapat mengikuti secara langsung di Aula maupun online melalui Zoom."
+            >
               <img
                 class="thumb-event"
                 src="../assets/thum-event-3.jpg"
-                alt=""
+                alt="Ciptakan Inovasi, Bangun Ekosistem"
               />
-              <button class="bookmark-btn" aria-label="Simpan event">
+              <button class="bookmark-btn" aria-label="Simpan event" aria-pressed="false">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -452,7 +479,7 @@
                 </svg>
               </button>
               <div class="ket">
-                <h3>Ciptakan Inovasi, Bangun Ekosistem</h3>
+                <h3 id="event-title-3">Ciptakan Inovasi, Bangun Ekosistem</h3>
                 <h4>Kenji Tanaka <span>| Global Tech Strategist</span></h4>
                 <h5>Umum</h5>
                 <div class="meta-row">
@@ -942,10 +969,71 @@
       </div>
     </main>
     <site-footer></site-footer>
+
+    <!-- MODAL: detail event + top 5 konsultan (dipakai ulang untuk ke-3 event) -->
+    <div class="modal-overlay" id="event-modal" aria-hidden="true">
+      <div
+        class="modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="event-modal-title"
+      >
+        <button type="button" class="modal-close" id="event-modal-close" aria-label="Tutup">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+        <div class="modal-banner">
+          <img id="event-modal-img" src="" alt="" />
+          <span class="modal-tag" id="event-modal-tag"></span>
+        </div>
+
+        <div class="modal-content">
+          <h3 id="event-modal-title"></h3>
+          <p class="modal-speaker" id="event-modal-speaker"></p>
+
+          <div class="modal-meta meta-row" id="event-modal-meta"></div>
+
+          <p class="modal-desc" id="event-modal-desc"></p>
+
+          <div class="modal-stats info" id="event-modal-stats"></div>
+
+          <div class="modal-actions">
+            <a href="" class="btn-gabung" id="event-modal-join">Gabung</a>
+            <button
+              type="button"
+              class="modal-bookmark"
+              id="event-modal-bookmark"
+              aria-label="Simpan event"
+              aria-pressed="false"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="modal-consultants">
+            <h4>Top 5 Konsultan</h4>
+            <p class="modal-consultants-desc">
+              Ingin membahas topik ini lebih lanjut? Konsultasikan dengan ahlinya.
+            </p>
+            <div class="modal-consultant-list" id="event-modal-consultants"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- script -->
     <script src="../components/Navbar.js"></script>
     <script src="../components/Footer.js"></script>
     <script src="../public/js/component.js"></script>
+    <script src="../public/js/home.js"></script>
 
     <!-- animation on scroll (AOS) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

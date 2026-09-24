@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kembangin</title>
+    <link rel="stylesheet" href="../public/css/component.css">
+    <link rel="stylesheet" href="../public/css/article.css">
+    <link rel="stylesheet" href="../public/css/artikel-plus.css">
+    <link rel="stylesheet" href="../public/css/article-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+</head>
+<body data-page="article">
+
+  <site-navbar></site-navbar>
+
+  <main>
+    <div class="left-side">
+      <!-- breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="home.html">Beranda</a>
+        <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
+        <a href="article.html">Artikel</a>
+        <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
+        <span class="breadcrumb-current">Memuat...</span>
+      </nav>
+
+      <!-- Diisi article-detail.js: hero, meta, konten, tag, aksi -->
+      <article class="detail-article" id="detail-article">
+        <p class="detail-loading">Memuat artikel...</p>
+      </article>
+
+      <!-- Diisi article-detail.js: form + daftar komentar (statis, localStorage per artikel) -->
+      <section class="comments-wrap" id="comments-wrap"></section>
+
+      <!-- Diisi article-detail.js: artikel terkait (kategori sama) -->
+      <section class="related-wrap" hidden>
+        <h3 class="related-title">Artikel Lainnya</h3>
+        <div class="related-grid" id="related-grid"></div>
+      </section>
+    </div>
+
+    <div class="right">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Artikel Populer</h3>
+        <div class="popular-scroll" id="detail-popular"></div>
+      </div>
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Rekomendasi Artikel</h3>
+        <ul class="sidebar-list" id="detail-recommend"></ul>
+      </div>
+    </div>
+  </main>
+
+    <!-- script -->
+    <script src="../components/Navbar.js"></script>
+    <script src="../components/Footer.js"></script>
+    <script src="../public/js/component.js"></script>
+    <script src="../public/js/article-detail.js"></script>
+    <!-- script end-->
+</body>
+</html>

@@ -1,15 +1,3 @@
-/* ============================================================
-   KEMBANGIN — Halaman Konsultasi
-   Hanya berisi: judul halaman, search + filter, analisa data
-   (diagram), daftar konsultan, dan fitur pendukung (profil,
-   booking, toast). Tidak ada hero/promo/CTA section.
-
-   Semua warna memakai var(--nama-variable, fallback) sehingga
-   otomatis memakai variabel global Kembangin jika sudah ada.
-   Semua selector diberi prefix .consultation- / .consultant- /
-   .booking- agar tidak bentrok dengan halaman lain.
-   ============================================================ */
-
 .consultation-page {
   --c-bg: var(--background, #0a0e16);
   --c-surface: var(--surface, #10151f);
@@ -28,6 +16,10 @@
   --c-radius-lg: var(--radius-lg, 20px);
   --c-radius-md: var(--radius-md, 14px);
   --c-radius-sm: var(--radius-sm, 10px);
+  /* Tinggi site-navbar (fixed di atas) — pakai variabel global kalau sudah
+     ada (mis. --navbar-height dari component.css). Kalau namanya beda atau
+     navbar Anda punya tinggi lain, ganti angka fallback 80px ini saja. */
+  --nav-offset: var(--navbar-height, 80px);
 
   background: var(--c-bg);
   color: var(--c-text-100);
@@ -70,7 +62,8 @@
 .consultation-page a:focus-visible,
 .consultation-page button:focus-visible,
 .consultation-page input:focus-visible,
-.consultation-page select:focus-visible {
+.consultation-page select:focus-visible,
+.consultation-page [tabindex]:focus-visible {
   outline: 2px solid var(--c-primary);
   outline-offset: 2px;
 }
@@ -82,17 +75,16 @@
   }
 }
 
-/* ================= LAYOUT HELPERS ================= */
 .consultation-page-head,
 .consultation-toolbar,
 .consultation-analytics,
 .consultation-list {
-  max-width: 1240px;
+  max-width: 1480px;
   margin: 0 auto;
   padding: 32px 24px;
 }
 .consultation-page-head {
-  padding-top: 44px;
+  padding-top: calc(var(--nav-offset) + 44px);
   padding-bottom: 8px;
 }
 .consultation-page-head h1 {
@@ -104,7 +96,6 @@
   font-size: 0.95rem;
 }
 
-/* ================= BUTTONS ================= */
 .consultation-btn {
   display: inline-flex;
   align-items: center;
@@ -138,6 +129,10 @@
   box-shadow: 0 10px 28px -6px rgba(76, 125, 255, 0.7);
   transform: translateY(-1px);
 }
+.consultation-btn--primary:active {
+  background: var(--c-primary-dark);
+  box-shadow: 0 6px 16px -6px rgba(76, 125, 255, 0.6);
+}
 
 .consultation-btn--ghost {
   background: transparent;
@@ -165,7 +160,6 @@
   box-shadow: none !important;
 }
 
-/* ================= SEARCH & FILTER TOOLBAR ================= */
 .consultation-toolbar {
   padding-top: 8px;
   padding-bottom: 20px;
@@ -246,7 +240,6 @@
   flex: 0 0 auto;
 }
 
-/* ================= ANALYTICS ================= */
 .consultation-analytics {
   padding-top: 8px;
 }
@@ -314,7 +307,11 @@
   margin-bottom: 16px;
 }
 
-/* Horizontal bar chart (built from divs, not an image) */
+.consultation-bar-chart {
+  display: flex;
+  flex-direction: column;
+}
+
 .consultation-bar-row {
   display: grid;
   grid-template-columns: 168px 1fr 34px;
@@ -352,7 +349,6 @@
   text-align: right;
 }
 
-/* Donut chart (pure CSS conic-gradient) */
 .consultation-donut-wrap {
   display: flex;
   align-items: center;
@@ -376,6 +372,10 @@
   border-radius: 50%;
   background: var(--c-surface);
   display: flex;
+}
+.consultation-donut.is-empty {
+  background: var(--c-surface-2) !important;
+  border: 1px dashed var(--c-border);
 }
 .consultation-donut-legend {
   list-style: none;
@@ -406,7 +406,6 @@
   font-weight: 700;
 }
 
-/* ================= CONSULTANT LIST ================= */
 .consultation-list__head {
   display: flex;
   align-items: baseline;
@@ -429,7 +428,6 @@
   gap: 18px;
 }
 
-/* Card with the consultant's photo as full background */
 .consultant-card {
   position: relative;
   aspect-ratio: 3 / 4;
@@ -454,6 +452,7 @@
 .consultant-card__scrim {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     to top,
     rgba(6, 9, 16, 0.96) 0%,
@@ -463,11 +462,31 @@
   );
 }
 
+/* Fallback saat foto konsultan gagal dimuat: gradien + inisial nama.
+   Diaktifkan lewat class "no-photo" yang ditambahkan oleh consultation.js. */
+.consultant-card__initials {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading, inherit);
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(135deg, var(--c-primary) 0%, #6c5ce7 100%);
+}
+.consultant-card.no-photo .consultant-card__initials {
+  display: flex;
+}
+
 .consultant-card__top-row {
   position: absolute;
   top: 12px;
   left: 12px;
   right: 12px;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -510,6 +529,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 2;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -570,7 +590,6 @@
   font-size: 0.76rem;
 }
 
-/* ================= EMPTY STATE ================= */
 .consultation-empty-state {
   text-align: center;
   padding: 60px 20px;
@@ -592,14 +611,12 @@
   margin-bottom: 18px;
 }
 
-/* ================= LOAD MORE ================= */
 .consultation-load-more-wrap {
   display: flex;
   justify-content: center;
   margin-top: 28px;
 }
 
-/* ================= MODALS ================= */
 .consultation-modal-overlay {
   position: fixed;
   inset: 0;
@@ -640,6 +657,11 @@
   opacity: 1;
 }
 
+/* Modal booking butuh sedikit lebih lebar untuk grid tanggal & waktu */
+.consultation-booking-modal {
+  max-width: 640px;
+}
+
 .consultation-modal__close {
   position: absolute;
   top: 18px;
@@ -663,7 +685,6 @@
   border-color: var(--c-primary);
 }
 
-/* Profile modal content (built via JS, styled here) */
 .consultant-profile__head {
   display: flex;
   gap: 16px;
@@ -671,6 +692,7 @@
   margin-bottom: 20px;
 }
 .consultant-profile__avatar {
+  position: relative;
   width: 76px;
   height: 76px;
   border-radius: var(--c-radius-md);
@@ -679,6 +701,22 @@
   background-position: center;
   background-color: var(--c-bg);
   flex-shrink: 0;
+}
+.consultant-profile__avatar-initials {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--c-radius-md) - 1px);
+  font-family: var(--font-heading, inherit);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--c-primary) 0%, #6c5ce7 100%);
+}
+.consultant-profile__avatar.no-photo .consultant-profile__avatar-initials {
+  display: flex;
 }
 .consultant-profile__name {
   font-size: 1.2rem;
@@ -748,7 +786,6 @@
   flex: 1;
 }
 
-/* Booking modal */
 .consultation-booking__title {
   font-size: 1.2rem;
   font-weight: 800;
@@ -916,7 +953,6 @@
   width: 100%;
 }
 
-/* ================= TOAST ================= */
 .consultation-toast {
   position: fixed;
   bottom: 28px;
@@ -950,9 +986,6 @@
   color: #34d399;
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width: 1180px) {
   .consultant-grid {
     grid-template-columns: repeat(3, 1fr);

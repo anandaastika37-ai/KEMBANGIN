@@ -1,0 +1,992 @@
+:root {
+  /* ===== Fonts ===== */
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-openSans: "Open Sans", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-plusJakartaSans: "Plus Jakarta Sans", sans-serif;
+
+  /* ===== 1. Background dasar ===== */
+  --color-bg: #000000;             /* background body */
+  --color-bg-deep: #030512;        /* navy-hitam terdalam (awal gradient hero, dasar overlay) */
+  --color-bg-deep-rgb: 3, 5, 18;   /* warna di atas dalam format r,g,b untuk dipakai dengan alpha */
+  --color-bg-navy: #0a1c5c;        /* navy (akhir gradient hero) */
+  --color-overlay-rgb: 1, 1, 66;   /* biru tua untuk overlay gambar (kartu event) */
+
+  /* ===== 2. Surface (panel & kartu, semi transparan) ===== */
+  --color-section-bg: rgba(var(--color-bg-deep-rgb), 0.82);  /* wrapper section penuh */
+  --color-panel: rgba(var(--color-bg-deep-rgb), 0.85);       /* panel / kartu utama */
+  --color-surface-tint: rgba(3, 3, 53, 0.26);                /* kartu di dalam panel, chip statistik */
+
+  /* ===== 3. Border & garis pemisah ===== */
+  --color-border: #13153a;         /* border default panel */
+  --color-border-subtle: #0f1233;  /* border kartu di dalam panel (lebih gelap) */
+  --color-border-hover: #060670;   /* border saat hover */
+  --color-divider: #34386e;        /* garis pemisah kecil bernuansa biru */
+  --line-faint: #4a4a52;           /* garis pemisah netral (abu) */
+
+  /* ===== 4. Teks (skala abu, terang -> gelap) ===== */
+  --color-white: #ffffff;  /* teks default di atas section gelap */
+  --text-100: #ededed;     /* judul utama, angka besar */
+  --text-200: #d0d0d0;     /* judul kartu / sub-judul, teks tombol */
+  --text-300: #b8b8b8;     /* label, meta, deskripsi kartu */
+  --text-400: #969696;     /* paragraf, keterangan */
+  --text-500: #6f6f6f;     /* kutipan, emphasis paling rendah */
+
+  /* ===== 5. Aksen brand (biru indigo) ===== */
+  --color-accent-rgb: 43, 55, 226;
+  --color-accent: rgb(var(--color-accent-rgb));                     /* ikon, link, state aktif */
+  --color-accent-light: #7c8bff;                                    /* label & badge terang */
+  --color-accent-soft-bg: rgba(var(--color-accent-rgb), 0.14);      /* latar transparan (ikon, badge kartu) */
+  --color-accent-badge-bg: rgba(var(--color-accent-rgb), 0.3);      /* latar badge yang lebih tegas (.tema) */
+  --color-accent-border: rgba(var(--color-accent-rgb), 0.35);       /* border bernuansa aksen */
+
+  /* ===== 6. Biru pendukung (judul hero & tombol sekunder) ===== */
+  --color-blue: #2054e2;       /* teks tombol sekunder, awal gradient judul */
+  --color-blue-deep: #00007e;  /* akhir gradient judul */
+
+  /* ===== 7. Tombol ===== */
+  --color-button-bg: #0d1660;                       /* tombol solid (gabung, bookmark) */
+  --color-button-bg-soft: rgba(13, 22, 96, 0.58);   /* tombol sekunder transparan (diskusi) */
+  --color-button-grad-start: rgba(12, 44, 131, 0.88);
+  --color-button-grad-end: rgba(2, 2, 139, 0.62);
+
+  /* ===== 8. Gradient (disusun dari variable di atas) ===== */
+  --gradient-hero: linear-gradient(to top, var(--color-bg-deep), var(--color-bg-navy));
+  --gradient-title: linear-gradient(to left, var(--color-blue), var(--color-blue-deep));
+  --gradient-button: linear-gradient(to right, var(--color-button-grad-start), var(--color-button-grad-end));
+  --gradient-event-overlay: linear-gradient(
+    to top,
+    var(--color-bg-deep) 5%,
+    rgba(var(--color-overlay-rgb), 0.9) 30%,
+    rgba(var(--color-overlay-rgb), 0.4) 70%,
+    rgba(var(--color-overlay-rgb), 0) 100%
+  );
+
+  /* ===== 9. Kartu konsultan (bintang rating & status tersedia) ===== */
+  --color-rating: #f2b544;
+  --color-success-rgb: 52, 211, 153;
+  --color-success: rgb(var(--color-success-rgb));
+}
+
+
+/* =====================================================================
+   PROFILE PAGE
+   Struktur & tema lama (cover, avatar, tombol, identitas, Data Diri,
+   Data Usaha, modal edit) dipertahankan apa adanya. Semua penambahan di
+   bawah ini murni fitur baru, memakai token warna yang sudah ada di
+   component.css. Beberapa token tambahan (khusus untuk validasi form)
+   ditambahkan tanpa mengubah token warna utama yang sudah ada.
+   ===================================================================== */
+
+:root {
+  --color-error: #ef4444;
+}
+
+body {
+  background-color: var(--color-bg);
+}
+
+.profile-page {
+  width: 100%;
+  padding-bottom: 80px;
+}
+
+/* ===== Sampul ===== */
+.profile-cover {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  background: var(--gradient-hero);
+  background-size: cover;
+  background-position: center;
+}
+
+.cover-edit-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background-color: rgba(var(--color-bg-deep-rgb), 0.7);
+  color: var(--text-200);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+.cover-edit-btn:hover {
+  background-color: var(--color-button-bg);
+}
+.cover-edit-btn:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: 2px;
+}
+
+.profile-container {
+  width: 92%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ===== Baris avatar + tombol aksi ===== */
+.profile-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 18px;
+}
+
+.profile-avatar-wrap {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  margin-top: -84px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.profile-avatar-wrap:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: 3px;
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--gradient-button);
+  border: 5px solid var(--color-bg);
+  box-shadow: 0 0 0 2px var(--color-accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-montserrat);
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: var(--text-100);
+  overflow: hidden;
+}
+#avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.avatar-edit-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: rgba(var(--color-bg-deep-rgb), 0.65);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  color: var(--text-100);
+  font-family: var(--font-openSans);
+  font-size: 0.65rem;
+  text-align: center;
+}
+.avatar-edit-overlay i {
+  font-size: 1.15rem;
+}
+.profile-avatar-wrap:hover .avatar-edit-overlay,
+.profile-avatar-wrap:focus-visible .avatar-edit-overlay {
+  opacity: 1;
+}
+
+.profile-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-icon-pill {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-tint);
+  color: var(--text-300);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.btn-icon-pill:hover {
+  border-color: var(--color-border-hover);
+  color: var(--text-100);
+}
+
+.btn-primary-pill,
+.btn-secondary-pill {
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-plusJakartaSans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: filter 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary-pill {
+  background: var(--gradient-button);
+  color: var(--text-200);
+  border: 1px solid var(--color-accent-border);
+}
+.btn-primary-pill:hover {
+  filter: brightness(1.15);
+}
+
+.btn-secondary-pill {
+  background-color: var(--color-button-bg-soft);
+  color: var(--color-blue);
+}
+.btn-secondary-pill:hover {
+  background-color: #010dbd6c;
+  color: var(--text-200);
+}
+
+.btn-icon-pill:focus-visible,
+.btn-primary-pill:focus-visible,
+.btn-secondary-pill:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: 2px;
+}
+
+/* ===== Share dropdown ===== */
+.share-wrap {
+  position: relative;
+}
+.share-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 210px;
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 20;
+  box-shadow: 0 14px 30px rgba(var(--color-bg-deep-rgb), 0.6);
+}
+.share-dropdown.show {
+  display: flex;
+}
+.share-dropdown button,
+.share-dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  color: var(--text-300);
+  font-family: var(--font-openSans);
+  font-size: 0.82rem;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+}
+.share-dropdown button:hover,
+.share-dropdown a:hover {
+  background-color: var(--color-surface-tint);
+  color: var(--text-100);
+}
+
+/* ===== Identitas ===== */
+.profile-identity {
+  margin-top: 18px;
+  color: var(--color-white);
+}
+
+.profile-name-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.profile-name-row h2 {
+  font-family: var(--font-poppins);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-100);
+}
+.profile-verified {
+  font-size: 1.05rem;
+  color: var(--color-success);
+}
+
+.profile-username {
+  margin-top: 3px;
+  font-family: var(--font-openSans);
+  font-size: 0.9rem;
+  color: var(--text-400);
+}
+
+.profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  background-color: var(--color-accent-badge-bg);
+  color: var(--color-accent-light);
+  font-family: var(--font-poppins);
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.profile-joined {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-openSans);
+  font-size: 0.8rem;
+  color: var(--text-400);
+}
+
+.profile-about {
+  margin-top: 16px;
+  max-width: 640px;
+}
+.profile-about h3 {
+  font-family: var(--font-montserrat);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-300);
+  margin-bottom: 6px;
+}
+.profile-about p {
+  font-family: var(--font-openSans);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-300);
+}
+
+.profile-social {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-tint);
+  color: var(--text-300);
+  font-family: var(--font-openSans);
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.social-link:hover {
+  border-color: var(--color-border-hover);
+  color: var(--text-100);
+}
+.social-link.is-hidden {
+  display: none;
+}
+
+/* ===== Judul section baru ===== */
+.section-head {
+  margin: 34px 0 14px;
+}
+.section-head h3 {
+  font-family: var(--font-montserrat);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-200);
+}
+
+/* ===== Statistik ===== */
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.stat-card {
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.stat-value {
+  font-family: var(--font-plusJakartaSans);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-100);
+}
+.stat-label {
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-400);
+}
+
+/* ===== Sedang dipelajari ===== */
+.continue-card {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 18px;
+}
+.continue-thumb {
+  width: 96px;
+  height: 96px;
+  min-width: 96px;
+  border-radius: 12px;
+  background: var(--gradient-button);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-200);
+  font-size: 1.6rem;
+  overflow: hidden;
+}
+.continue-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.continue-info {
+  flex: 1;
+  min-width: 0;
+}
+.continue-info h4 {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  color: var(--text-100);
+  margin-bottom: 4px;
+}
+.continue-info p {
+  font-family: var(--font-openSans);
+  font-size: 0.8rem;
+  color: var(--text-400);
+  margin-bottom: 10px;
+}
+.continue-progress-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 6px;
+  background-color: var(--color-surface-tint);
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.continue-progress-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--gradient-button);
+  border-radius: 6px;
+}
+.continue-progress-label {
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-400);
+}
+.continue-cta {
+  flex-shrink: 0;
+}
+
+.continue-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: var(--color-panel);
+  border: 1px dashed var(--color-border-subtle);
+  border-radius: 14px;
+  padding: 28px;
+}
+.continue-empty p {
+  font-family: var(--font-openSans);
+  color: var(--text-400);
+  font-size: 0.85rem;
+}
+.continue-empty p.lead {
+  color: var(--text-200);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-montserrat);
+}
+
+/* ===== Progress belajar ===== */
+.progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.progress-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.progress-item-info {
+  flex: 1;
+  min-width: 0;
+}
+.progress-item-info h4 {
+  font-family: var(--font-montserrat);
+  font-size: 0.92rem;
+  color: var(--text-100);
+  margin-bottom: 4px;
+}
+.progress-item-info .progress-bar {
+  width: 100%;
+  height: 7px;
+  border-radius: 6px;
+  background-color: var(--color-surface-tint);
+  overflow: hidden;
+  margin: 6px 0;
+}
+.progress-item-info .progress-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--gradient-button);
+}
+.progress-item-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-400);
+}
+.progress-item .btn-secondary-pill {
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 14px;
+  font-size: 0.78rem;
+}
+
+/* ===== Minat & keahlian ===== */
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.interest-tag {
+  background-color: var(--color-accent-soft-bg);
+  border: 1px solid var(--color-accent-border);
+  color: var(--color-accent-light);
+  font-family: var(--font-plusJakartaSans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* ===== Data diri & data usaha (tidak diubah dari versi sebelumnya) ===== */
+.profile-sections {
+  margin-top: 34px;
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.info-box {
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 24px 26px;
+  color: var(--color-white);
+}
+.info-box-narrow {
+  flex: 0 0 300px;
+}
+.info-box-wide {
+  flex: 1;
+  min-width: 0;
+}
+
+.info-box h3 {
+  font-family: var(--font-montserrat);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-200);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.field-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-tint);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: border-color 0.25s ease;
+}
+.field-card:hover {
+  border-color: var(--color-border-hover);
+}
+
+.field-icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 10px;
+  background-color: var(--color-accent-soft-bg);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.field-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.field-text label {
+  font-family: var(--font-openSans);
+  font-size: 0.72rem;
+  color: var(--text-500);
+}
+.field-text p {
+  font-family: var(--font-openSans);
+  font-size: 0.92rem;
+  color: var(--text-100);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ===== Aktivitas terbaru ===== */
+.activity-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background-color: var(--color-panel);
+  overflow: hidden;
+}
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.activity-item:last-child {
+  border-bottom: none;
+}
+.activity-icon {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 50%;
+  background-color: var(--color-accent-soft-bg);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+.activity-text {
+  font-family: var(--font-openSans);
+  font-size: 0.82rem;
+  color: var(--text-300);
+}
+.activity-time {
+  margin-left: auto;
+  font-family: sans-serif;
+  font-size: 0.7rem;
+  color: var(--text-500);
+  white-space: nowrap;
+}
+.activity-empty {
+  padding: 24px;
+  text-align: center;
+  font-family: var(--font-openSans);
+  font-size: 0.85rem;
+  color: var(--text-400);
+  list-style: none;
+}
+
+/* ===== Modal edit profil ===== */
+.edit-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(var(--color-bg-deep-rgb), 0.75);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+}
+.edit-overlay.show {
+  display: flex;
+}
+
+.edit-modal {
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 26px;
+  width: 100%;
+  max-width: 460px;
+  max-height: 85vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-white);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-divider) transparent;
+}
+
+.edit-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.edit-head h3 {
+  font-family: var(--font-montserrat);
+  color: var(--text-200);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.edit-head button {
+  background: none;
+  border: none;
+  color: var(--text-400);
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.edit-head button:hover {
+  background-color: var(--color-button-bg);
+  color: var(--color-white);
+}
+
+.edit-modal label {
+  font-family: var(--font-openSans);
+  font-size: 0.78rem;
+  color: var(--text-400);
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+.edit-modal input,
+.edit-modal textarea {
+  background-color: var(--color-bg-deep);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  padding: 11px 12px;
+  color: var(--text-100);
+  font-family: var(--font-openSans);
+  font-size: 0.9rem;
+}
+.edit-modal textarea {
+  resize: vertical;
+}
+.edit-modal input:focus,
+.edit-modal textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+.edit-modal input.is-invalid,
+.edit-modal textarea.is-invalid {
+  border-color: var(--color-error);
+}
+
+.field-error {
+  display: block;
+  margin-top: 4px;
+  font-family: sans-serif;
+  font-size: 0.7rem;
+  color: var(--color-error);
+  min-height: 14px;
+}
+.field-hint {
+  display: block;
+  margin-top: 4px;
+  font-family: sans-serif;
+  font-size: 0.68rem;
+  color: var(--text-500);
+}
+
+.edit-modal button[type="submit"] {
+  margin-top: 22px;
+  background: var(--gradient-button);
+  color: var(--text-200);
+  border: 1px solid var(--color-accent-border);
+  padding: 13px;
+  border-radius: 8px;
+  font-family: var(--font-plusJakartaSans);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.25s ease;
+}
+.edit-modal button[type="submit"]:hover {
+  border-color: var(--color-accent);
+}
+.edit-modal input:focus-visible,
+.edit-modal textarea:focus-visible,
+.edit-modal button:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: 2px;
+}
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%) translateY(20px);
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  color: var(--text-100);
+  font-family: var(--font-openSans);
+  font-size: 0.85rem;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 14px 30px rgba(var(--color-bg-deep-rgb), 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 1200;
+  max-width: 90vw;
+  text-align: center;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===== Responsif ===== */
+@media (max-width: 900px) {
+  .profile-sections {
+    flex-direction: column;
+  }
+  .info-box-narrow {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  .profile-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .continue-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .continue-cta {
+    width: 100%;
+  }
+  .continue-cta {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-cover {
+    height: 180px;
+  }
+  .profile-avatar-wrap {
+    width: 92px;
+    height: 92px;
+    margin-top: -56px;
+  }
+  .profile-avatar {
+    font-size: 2rem;
+    border-width: 4px;
+  }
+  .profile-top {
+    align-items: flex-start;
+  }
+  .profile-top-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .share-dropdown {
+    left: 0;
+    right: auto;
+  }
+  .info-box {
+    padding: 20px;
+  }
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .progress-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .progress-item .btn-secondary-pill {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-icon-pill,
+  .btn-primary-pill,
+  .btn-secondary-pill,
+  .field-card,
+  .edit-head button,
+  .avatar-edit-overlay,
+  .toast {
+    transition-duration: 0.01ms !important;
+  }
+}

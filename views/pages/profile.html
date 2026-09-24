@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kembangin — Profil</title>
+    <link rel="stylesheet" href="../public/css/component.css">
+    <link rel="stylesheet" href="../public/css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+</head>
+<body data-page="profile">
+  <site-navbar></site-navbar>
+
+  <main class="profile-page">
+
+    <!-- Sampul: ukuran & posisi tetap sama, hanya ditambah tombol ganti foto -->
+    <div class="profile-cover">
+        <button type="button" class="cover-edit-btn" id="coverEditBtn" title="Ganti foto sampul">
+            <i class="fa-solid fa-camera"></i>
+        </button>
+        <input type="file" id="coverUploadInput" accept="image/*" hidden>
+    </div>
+
+    <div class="profile-container">
+
+        <div class="profile-top">
+            <div class="profile-avatar-wrap" id="profileAvatarWrap">
+                <div class="profile-avatar" id="profileAvatar">
+                    <span id="avatarInitials">S</span>
+                    <img id="avatarImg" alt="Foto profil" style="display:none">
+                </div>
+                <div class="avatar-edit-overlay">
+                    <i class="fa-solid fa-camera"></i>
+                    <span>Ubah Foto</span>
+                </div>
+                <input type="file" id="avatarUploadInput" accept="image/*" hidden>
+            </div>
+
+            <div class="profile-top-actions">
+                <button type="button" class="btn-icon-pill" title="Lihat sebagai publik"><i class="fa-regular fa-eye"></i></button>
+
+                <div class="share-wrap">
+                    <button type="button" class="btn-secondary-pill" id="shareProfileBtn"><i class="fa-solid fa-share-nodes"></i> Bagikan Profil</button>
+                    <div class="share-dropdown" id="shareDropdown">
+                        <button type="button" id="copyProfileLink"><i class="fa-regular fa-copy"></i> Salin Link Profil</button>
+                        <a id="shareWhatsapp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Bagikan ke WhatsApp</a>
+                        <button type="button" id="shareWebApi"><i class="fa-solid fa-arrow-up-from-bracket"></i> Bagikan...</button>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-primary-pill" id="openEditBtn"><i class="fa-solid fa-pen"></i> Edit Profil</button>
+            </div>
+        </div>
+
+        <div class="profile-identity">
+            <div class="profile-name-row">
+                <h2 id="profileFullname">Seseorang Wijaya</h2>
+                <i class="fa-solid fa-circle-check profile-verified" title="Akun terverifikasi"></i>
+            </div>
+            <p class="profile-username">@<span id="profileUsername">seseorang203</span></p>
+            <span class="profile-badge"><i class="fa-solid fa-store"></i> Pemilik Usaha</span>
+            <p class="profile-joined" id="profileJoined"><i class="fa-regular fa-calendar"></i> Bergabung sejak September 2026</p>
+
+            <div class="profile-about">
+                <h3>Tentang Saya</h3>
+                <p id="profileBio">Pemilik usaha yang tertarik mengembangkan bisnis melalui strategi digital dan inovasi produk.</p>
+            </div>
+
+            <div class="profile-social" id="profileSocial">
+                <a id="socialInstagram" class="social-link is-hidden" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> <span></span></a>
+                <a id="socialWebsite" class="social-link is-hidden" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> <span></span></a>
+                <a id="socialWhatsapp" class="social-link is-hidden" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> <span></span></a>
+            </div>
+        </div>
+
+        <div class="section-head"><h3>Statistik Aktivitas</h3></div>
+        <div class="profile-stats">
+            <div class="stat-card"><span class="stat-value" id="statCourse">0</span><span class="stat-label">Course Selesai</span></div>
+            <div class="stat-card"><span class="stat-value" id="statArtikel">0</span><span class="stat-label">Artikel Dibaca</span></div>
+            <div class="stat-card"><span class="stat-value" id="statBookmark">0</span><span class="stat-label">Bookmark</span></div>
+            <div class="stat-card"><span class="stat-value" id="statDiskusi">0</span><span class="stat-label">Diskusi</span></div>
+        </div>
+
+        <div class="section-head"><h3>Sedang Dipelajari</h3></div>
+        <div id="continueLearning"></div>
+
+        <div class="section-head"><h3>Progress Belajar</h3></div>
+        <div class="progress-list" id="progressList"></div>
+
+        <div class="section-head"><h3>Minat &amp; Keahlian</h3></div>
+        <div class="interest-tags" id="interestsList"></div>
+
+        <div class="profile-sections">
+
+            <div class="info-box info-box-narrow">
+                <h3>Data Diri</h3>
+                <div class="field-grid">
+                    <div class="field-card">
+                        <span class="field-icon"><i class="fa-solid fa-envelope"></i></span>
+                        <div class="field-text"><label>Email</label><p id="viewEmail">seseorang@gmail.com</p></div>
+                    </div>
+                    <div class="field-card">
+                        <span class="field-icon"><i class="fa-solid fa-cake-candles"></i></span>
+                        <div class="field-text"><label>Umur</label><p id="viewUmur">27 tahun</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box info-box-wide">
+                <h3>Data Usaha</h3>
+                <div class="field-grid">
+                    <div class="field-card">
+                        <span class="field-icon"><i class="fa-solid fa-shop"></i></span>
+                        <div class="field-text"><label>Nama Usaha</label><p id="viewNamaUsaha">Kopi Senja</p></div>
+                    </div>
+                    <div class="field-card">
+                        <span class="field-icon"><i class="fa-solid fa-tags"></i></span>
+                        <div class="field-text"><label>Kategori Usaha</label><p id="viewKategori">Kuliner & Minuman</p></div>
+                    </div>
+                    <div class="field-card">
+                        <span class="field-icon"><i class="fa-solid fa-location-dot"></i></span>
+                        <div class="field-text"><label>Alamat Usaha</label><p id="viewAlamat">Jl. Merdeka No. 12, Denpasar</p></div>
+                    </div>
+                    <div class="field-card">
+                        <span class="field-icon"><i class="fa-solid fa-id-card"></i></span>
+                        <div class="field-text"><label>NPWP</label><p id="viewNpwp">09.123.456.7-901.000</p></div>
+                    </div>
+                    <div class="field-card">
+                        <span class="field-icon"><i class="fa-solid fa-calendar-days"></i></span>
+                        <div class="field-text"><label>Tahun Dibentuk</label><p id="viewTahun">2022</p></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section-head"><h3>Aktivitas Terbaru</h3></div>
+        <ul class="activity-list" id="activityList"></ul>
+
+    </div>
+  </main>
+
+    <div class="edit-overlay" id="editOverlay">
+        <form class="edit-modal" id="profileForm" novalidate>
+            <div class="edit-head">
+                <h3>Edit Profil</h3>
+                <button type="button" id="closeEditBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <label for="inputFullname">Nama Lengkap</label>
+            <input type="text" id="inputFullname">
+            <span class="field-error" id="errFullname"></span>
+
+            <label for="inputUsername">Username</label>
+            <input type="text" id="inputUsername">
+            <span class="field-error" id="errUsername"></span>
+
+            <label for="inputEmail">Email</label>
+            <input type="email" id="inputEmail">
+            <span class="field-error" id="errEmail"></span>
+
+            <label for="inputUmur">Umur</label>
+            <input type="number" id="inputUmur" min="0">
+            <span class="field-error" id="errUmur"></span>
+
+            <label for="inputBio">Bio</label>
+            <textarea id="inputBio" rows="3" placeholder="Ceritakan tentang kamu..."></textarea>
+
+            <label for="inputNamaUsaha">Nama Usaha</label>
+            <input type="text" id="inputNamaUsaha">
+
+            <label for="inputKategori">Kategori Usaha</label>
+            <input type="text" id="inputKategori">
+
+            <label for="inputAlamat">Alamat Usaha</label>
+            <input type="text" id="inputAlamat">
+
+            <label for="inputNpwp">NPWP</label>
+            <input type="text" id="inputNpwp">
+
+            <label for="inputTahun">Tahun Dibentuknya Usaha</label>
+            <input type="number" id="inputTahun" min="1900">
+            <span class="field-error" id="errTahun"></span>
+
+            <label for="inputInstagram">Instagram</label>
+            <input type="text" id="inputInstagram" placeholder="@namausaha">
+
+            <label for="inputWebsite">Website</label>
+            <input type="text" id="inputWebsite" placeholder="namadomain.com">
+
+            <label for="inputWhatsapp">WhatsApp</label>
+            <input type="text" id="inputWhatsapp" placeholder="08xxxxxxxxxx">
+
+            <label for="inputInterests">Minat &amp; Keahlian</label>
+            <input type="text" id="inputInterests" placeholder="Pisahkan dengan koma, mis: Branding, UMKM">
+            <span class="field-hint">Pisahkan setiap minat dengan tanda koma.</span>
+
+            <button type="submit">Simpan Perubahan</button>
+        </form>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- script -->
+    <script src="../components/Navbar.js"></script>
+    <script src="../public/js/component.js"></script>
+    <script src="../public/js/profile.js"></script>
+    <!-- script end-->
+</body>
+</html>

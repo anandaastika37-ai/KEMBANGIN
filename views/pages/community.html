@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kembangin</title>
+    <link rel="stylesheet" href="../public/css/component.css">
+    <link rel="stylesheet" href="../public/css/community.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+</head>
+<body data-page="community">
+  <site-navbar></site-navbar>
+
+  <main>
+    <section class="group-header">
+        <div class="group-cover"></div>
+        <div class="group-info">
+            <div class="group-icon"><i class="fa-solid fa-shop"></i></div>
+            <div class="group-text">
+                <h2>Komunitas UMKM Kembangin</h2>
+                <p><span id="memberCount">1.284</span> anggota &middot; Grup Publik</p>
+            </div>
+            <button class="follow-btn" id="followBtn">Follow</button>
+        </div>
+
+        <div class="member-row" id="memberRow"></div>
+        <button class="see-all-btn" id="seeAllBtn">Lihat Semua Anggota <i class="fa-solid fa-angle-right"></i></button>
+    </section>
+
+    <section class="community-body">
+        <div class="post-box">
+            <div class="post-avatar" id="postAvatar">S</div>
+            <form id="postForm">
+                <textarea id="postText" rows="3" placeholder="Ada kendala usaha atau mau sharing progress? tulis di sini..."></textarea>
+                <button type="submit">Posting</button>
+            </form>
+        </div>
+
+        <div id="postFeed" class="post-feed"></div>
+    </section>
+  </main>
+
+    <!-- panel daftar anggota -->
+    <div class="member-overlay" id="memberOverlay">
+        <div class="member-modal">
+            <div class="member-modal-head">
+                <h3>Semua Anggota</h3>
+                <button type="button" id="closeMemberBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="memberFullList"></div>
+        </div>
+    </div>
+
+    <!-- script -->
+    <script src="../components/Navbar.js"></script>
+    <script src="../public/js/component.js"></script>
+    <script src="../public/js/community.js"></script>
+    <!-- script end-->
+</body>
+</html>

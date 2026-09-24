@@ -83,6 +83,11 @@
 
 body {
   background-color: var(--color-bg);
+  overflow-x: hidden;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 /* ===== Hero ===== */
@@ -254,7 +259,7 @@ body {
   font-weight: 600;
 }
 
-.right-side > img {
+.hero > .right-side > img {
   margin-bottom: -20px;
   width: 850px;
   height: 100%;
@@ -432,7 +437,7 @@ body {
 }
 
 .artikel-recomand > ul > li > img {
-  width: 520px;
+  width: 100%;
   height: 310px;
   object-fit: cover;
   opacity: 0.75;
@@ -754,6 +759,12 @@ body {
   background-color: var(--color-surface-tint);
   border-radius: 16px;
   overflow: hidden;
+  cursor: pointer;
+}
+
+.box-event:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: -4px;
 }
 
 .box-event > img.thumb-event {
@@ -797,12 +808,19 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 3;
+  transition: background-color 0.2s ease;
 }
 
 .bookmark-btn svg {
   width: 15px;
   height: 15px;
   stroke: var(--text-300);
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.bookmark-btn.is-saved svg {
+  fill: var(--color-accent-light);
+  stroke: var(--color-accent-light);
 }
 
 .ket {
@@ -1505,6 +1523,295 @@ body {
   color: var(--text-200);
 }
 
+/* =====================================================================
+   MODAL: detail event + top 5 konsultan
+   Dipicu dari .box-event (lihat public/js/event-modal.js), overlay tunggal
+   yang dipakai ulang dan diisi ulang isinya setiap kali sebuah event dibuka.
+   ===================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: rgba(var(--color-bg-deep-rgb), 0.75);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  transform: translateY(12px) scale(0.98);
+  transition: transform 0.25s ease;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-divider) transparent;
+}
+.modal-overlay.is-open .modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(var(--color-bg-deep-rgb), 0.75);
+  color: var(--text-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.modal-close:hover {
+  background-color: var(--color-button-bg);
+  color: var(--color-white);
+}
+
+.modal-banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+.modal-banner > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.modal-banner::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 45%;
+  background: linear-gradient(to top, rgba(var(--color-bg-deep-rgb), 0.85), transparent);
+  pointer-events: none;
+}
+
+.modal-tag {
+  display: inline-block;
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 1;
+  padding: 4px 10px;
+  background-color: var(--color-accent-soft-bg);
+  border: 1px solid var(--color-accent-border);
+  font-size: 0.7rem;
+  color: var(--color-accent-light);
+  border-radius: 10px;
+  font-family: sans-serif;
+}
+
+.modal-content {
+  padding: 22px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--color-white);
+}
+.modal-content > h3 {
+  font-family: var(--font-montserrat);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-100);
+}
+
+.modal-speaker {
+  font-family: var(--font-poppins);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-300);
+}
+.modal-speaker > span {
+  font-weight: 400;
+  color: var(--text-400);
+}
+
+.modal-desc {
+  font-family: var(--font-poppins);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--text-400);
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.modal-bookmark {
+  position: static;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: var(--color-button-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+.modal-bookmark svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--text-300);
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+.modal-bookmark.is-saved svg {
+  fill: var(--color-accent-light);
+  stroke: var(--color-accent-light);
+}
+
+.modal-consultants {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+.modal-consultants > h4 {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-200);
+  margin-bottom: 4px;
+}
+.modal-consultants-desc {
+  font-family: var(--font-poppins);
+  font-size: 0.75rem;
+  color: var(--text-400);
+  margin-bottom: 12px;
+}
+
+.modal-consultant-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-consultant-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-tint);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.modal-consultant-card:hover {
+  border-color: var(--color-border-hover);
+  background-color: rgba(var(--color-accent-rgb), 0.08);
+}
+.modal-consultant-card > img {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.modal-consultant-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.modal-consultant-name {
+  font-family: var(--font-montserrat);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-100);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.modal-consultant-name .cc-verified {
+  margin-left: 4px;
+  font-size: 0.7rem;
+}
+.modal-consultant-spes {
+  font-family: var(--font-plusJakartaSans);
+  font-size: 0.65rem;
+  color: var(--color-accent-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.modal-consultant-rating {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-plusJakartaSans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-200);
+}
+.modal-consultant-rating i {
+  color: var(--color-rating);
+  font-size: 0.65rem;
+}
+
+.modal-close:focus-visible,
+.modal-bookmark:focus-visible,
+.modal-consultant-card:focus-visible,
+#event-modal-join:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+  .modal-box {
+    max-height: 92vh;
+    border-radius: 20px 20px 0 0;
+  }
+  .modal-content {
+    padding: 18px 16px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay,
+  .modal-box {
+    transition-duration: 0.01ms !important;
+  }
+}
+
 
 /* ===== Responsif ===== */
 @media (max-width: 1280px) {
@@ -1540,13 +1847,13 @@ body {
 }
 
 
-@media (max-width: 1024px) {
+@media (max-width: 1900px) {
   .hero {
     height: auto;
     padding: 100px 20px 60px;
     text-align: center;
   }
-  .right-side {
+  .hero > .right-side {
     display: none;
   }
   .left-side {
@@ -1660,6 +1967,151 @@ body {
   .box-event > img {
     width: 100%;
   }
+
+  /* --- Kemba AI & AI tools: belum ada aturan responsif sama sekali
+     sebelumnya, jadi ukuran fixed-nya meluber di tablet/mobile --- */
+  .new-fitur-container {
+    height: auto;
+    padding: 60px 20px;
+  }
+  .intro-fitur {
+    flex-direction: column;
+  }
+  .intro-ai,
+  .intro-our-chatbot {
+    width: 100%;
+    height: auto;
+  }
+  .intro-ai {
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+  }
+  .intro-our-chatbot {
+    flex-direction: column;
+    padding: 30px 20px;
+    text-align: center;
+  }
+  .intro-our-chatbot > img {
+    width: 160px;
+  }
+  .chatbot-desk {
+    width: 100%;
+  }
+  .skill-chatbot > ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tool-ai-container {
+    height: auto;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .tool-ai-container > ul {
+    width: 100%;
+  }
+  .tool-ai-container > ul > li {
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  .tool-ai-container > ul > li > img {
+    width: 140px;
+  }
+
+  /* --- Konsultasi bisnis: intro-consultan & consul-des juga belum
+     punya aturan responsif, fixed 700px/900px meluber di bawah ~1780px --- */
+  .intro-consultan {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  .intro-consultan > img {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+  }
+  .consul-des {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+  .consul-des > h3 {
+    margin-top: 20px;
+  }
+  .consul-des > p {
+    width: 100%;
+  }
+  .data-consul {
+    flex-wrap: wrap;
+    row-gap: 15px;
+    margin-bottom: 30px;
+  }
+  .consul-des > ul {
+    flex-direction: column;
+  }
+  .consul-des > ul > li {
+    width: 100%;
+  }
+
+  /* --- Course steps: belum ada aturan responsif, 4 kartu 400px
+     berjajar akan meluber di tablet/mobile --- */
+  .course-container {
+    height: auto;
+    padding: 30px 20px;
+  }
+  .course-container > ul {
+    flex-direction: column;
+    height: auto;
+  }
+  .course-container > ul > li {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Langkah antara 1900px dan 600px supaya ukuran teks & elemen mengecil
+   bertahap, bukan loncat drastis dari desktop langsung ke mobile. */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.6rem;
+    line-height: 2.8rem;
+  }
+  .description {
+    font-size: 0.95rem;
+  }
+  .title-content > span {
+    font-size: 1.7rem;
+  }
+  .information > ul > li > i {
+    font-size: 2.6rem;
+  }
+  .information > ul > li > span > h4 {
+    font-size: 1.05rem;
+  }
+  .about > span > h3,
+  .why > h3 {
+    font-size: 1.35rem;
+  }
+  .intro-ai > h2,
+  .chatbot-desk > h2 {
+    font-size: 1.5rem;
+  }
+  .chatbot-desk > h3 {
+    font-size: 1rem;
+  }
+  .tool-ai-container > ul > li > span > h3 {
+    font-size: 1.5rem;
+  }
+  .consul-des > h3 {
+    font-size: 1.5rem;
+  }
+  .course-container > ul > li > span {
+    font-size: 1.4rem;
+  }
+  .product > ul > li > h3 {
+    font-size: 1.2rem;
+  }
 }
 
 
@@ -1685,5 +2137,158 @@ body {
   }
   .about > img {
     width: 140px;
+  }
+
+  .information {
+    padding: 24px 0;
+  }
+  .information > ul > li {
+    padding: 12px 20px;
+    gap: 18px;
+  }
+  .information > ul > li > i {
+    font-size: 2rem;
+  }
+  .information > ul > li > span > h4 {
+    font-size: 0.95rem;
+  }
+  .information > ul > li > span > p {
+    font-size: 12px;
+  }
+
+  .artikel-tag {
+    font-size: 0.6rem;
+  }
+  .artikel-recomand > ul > li:first-child .artikel-info > h4 {
+    font-size: 1.15rem;
+  }
+  .artikel-info > h4 {
+    font-size: 0.9rem;
+  }
+
+  .new-fitur-container {
+    padding: 40px 16px;
+  }
+  .intro-ai,
+  .intro-our-chatbot {
+    padding: 24px 16px;
+  }
+  .intro-ai > img {
+    width: 110px;
+    margin-bottom: 18px;
+  }
+  .intro-ai > h2 {
+    font-size: 1.4rem;
+  }
+  .intro-our-chatbot > img {
+    width: 120px;
+  }
+  .chatbot-desk > h2 {
+    font-size: 1.35rem;
+  }
+  .chatbot-desk > h3 {
+    font-size: 0.95rem;
+  }
+  .skill-chatbot > ul > li {
+    font-size: 0.65rem;
+    padding: 8px;
+  }
+  .tool-ai-container {
+    padding: 16px;
+  }
+  .tool-ai-container > ul > li {
+    padding: 16px;
+  }
+  .tool-ai-container > ul > li > img {
+    width: 100px;
+  }
+  .tool-ai-container > ul > li > span > h3 {
+    font-size: 1.25rem;
+  }
+  .tool-ai-container > ul > li > span > p {
+    font-size: 0.8rem;
+  }
+
+  .intro-consultan > img {
+    max-width: 100%;
+  }
+  .consul-des > h3 {
+    font-size: 1.3rem;
+  }
+  .consul-des > p {
+    font-size: 0.9rem;
+  }
+  .data-consul {
+    margin-bottom: 24px;
+  }
+  .data-consul > span {
+    font-size: 1.2rem;
+  }
+  .consul-des > ul > li {
+    padding: 14px;
+    font-size: 0.8rem;
+  }
+
+  .course-container {
+    padding: 24px 16px;
+  }
+  .course-container > ul > li {
+    padding: 16px;
+  }
+  .course-container > ul > li > i {
+    font-size: 2.4rem;
+    width: 70px;
+    height: 70px;
+  }
+  .course-container > ul > li > span {
+    font-size: 1.4rem;
+  }
+
+  .box-event {
+    height: 360px;
+  }
+}
+
+/* Ponsel kecil (±360-400px ke bawah): satu langkah penyesuaian terakhir
+   supaya teks & elemen besar tetap muat tanpa terpotong. */
+@media (max-width: 400px) {
+  .title {
+    font-size: 2rem;
+    line-height: 2.2rem;
+  }
+  .description {
+    font-size: 0.88rem;
+  }
+  .tema {
+    font-size: 0.72rem;
+  }
+  .count-analist > span > h4 {
+    font-size: 20px;
+  }
+  .title-content > span {
+    font-size: 1.25rem;
+  }
+  .about > span > h3,
+  .why > h3 {
+    font-size: 1.15rem;
+  }
+  .intro-ai > h2,
+  .chatbot-desk > h2 {
+    font-size: 1.2rem;
+  }
+  .tool-ai-container > ul > li > span > h3 {
+    font-size: 1.1rem;
+  }
+  .consul-des > h3 {
+    font-size: 1.15rem;
+  }
+  .course-container > ul > li > span {
+    font-size: 1.2rem;
+  }
+  .box-event {
+    height: 320px;
+  }
+  .ket > h3 {
+    font-size: 0.85rem;
   }
 }

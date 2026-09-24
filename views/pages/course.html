@@ -9,342 +9,116 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="../public/css/course.css">
+<link rel="stylesheet" href="../public/css/component.css" />
 </head>
-<body>
+<body data-page="course">
 
-<!-- ============ NAVBAR ============ -->
-<header class="nav">
-  <div class="wrap nav-in">
-    <a href="home.html" class="logo">KembangIN</a>
-    <nav class="nav-links" id="nav-links">
-      <a href="home.html">Beranda</a>
-      <a href="artikel.html">Artikel</a>
-      <a href="produk.html">Produk</a>
-      <a href="course.html" class="active">Course</a>
-      <a href="forum.html">Forum</a>
-    </nav>
-    <div class="nav-right">
-      <button class="icon-btn" id="nav-search-btn" aria-label="Cari course"><i class="fa-solid fa-magnifying-glass"></i></button>
-      <button class="nav-avatar" id="nav-profile" aria-label="Profil">K</button>
-      <button class="icon-btn burger" id="nav-burger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
-    </div>
-  </div>
-  <nav class="mobile-menu" id="mobile-menu" hidden>
-    <a href="home.html">Beranda</a>
-    <a href="artikel.html">Artikel</a>
-    <a href="produk.html">Produk</a>
-    <a href="course.html" class="active">Course</a>
-    <a href="forum.html">Forum</a>
-  </nav>
-</header>
+<site-navbar></site-navbar>
 
 <main id="main">
 
-<!-- ======================================================= -->
-<!-- ===================  VIEW: LANDING  ==================== -->
-<!-- ======================================================= -->
-<div class="view" id="view-landing">
+  <!-- ======================================================= -->
+  <!-- ===============  VIEW: DAFTAR MATERI  ================== -->
+  <!-- ======================================================= -->
+  <div class="view" id="view-list">
 
-  <!-- ---- Hero ---- -->
-  <section class="hero">
-    <div class="wrap hero-in">
-      <div class="hero-left reveal">
-        <span class="badge">LEARNING PLATFORM</span>
-        <h1>Belajar Lebih Banyak.<br>Berkembang Lebih Jauh.</h1>
-        <p class="hero-sub">Temukan course yang membantu kamu memahami bisnis, ekonomi, pemasaran, keuangan, dan berbagai keterampilan yang dibutuhkan untuk mengembangkan usaha.</p>
-        <div class="hero-cta">
-          <button class="btn" id="hero-start"><i class="fa-solid fa-play"></i> Mulai Belajar</button>
-          <button class="btn ghost" id="hero-explore">Jelajahi Course</button>
+    <section class="wrap course-header reveal">
+      <div class="course-header__top">
+        <div>
+          <span class="badge">COURSE</span>
+          <h1 id="course-title"></h1>
+          <div class="course-header__meta" id="course-meta"></div>
+        </div>
+        <div class="course-header__progress">
+          <div class="progress-bar"><div class="progress-fill" id="header-progress-fill"></div></div>
+          <p class="progress-label" id="header-progress-label"></p>
+          <button class="btn course-header__resume" id="resume-btn"></button>
         </div>
       </div>
-      <div class="hero-right reveal">
-        <div class="hero-orb">
-          <div class="orb orb-a"></div>
-          <div class="orb orb-b"></div>
-          <div class="ring"></div>
-          <div class="hero-glass"><i class="fa-solid fa-graduation-cap"></i></div>
-        </div>
-        <div class="float-card fc-1"><i class="fa-solid fa-book-open"></i><div><b>18</b><span>Materi</span></div></div>
-        <div class="float-card fc-2"><i class="fa-solid fa-layer-group"></i><div><b>6</b><span>Modul</span></div></div>
-        <div class="float-card fc-3"><i class="fa-regular fa-clock"></i><div><b>6 Jam</b><span>Belajar</span></div></div>
-        <div class="float-card fc-4"><i class="fa-solid fa-seedling"></i><div><b>Pemula</b><span>Level</span></div></div>
+      <div class="course-header__done-banner" id="done-banner" hidden>
+        <i class="fa-solid fa-trophy"></i>
+        <span>Kamu telah menyelesaikan seluruh materi course ini. Kerja bagus!</span>
       </div>
-    </div>
-  </section>
 
-  <!-- ---- Continue Learning ---- -->
-  <section class="wrap section">
-    <div class="continue-card reveal" id="continue-card">
-      <!-- diisi lewat JS: progress > 0 -> Lanjutkan Belajar, progress = 0 -> Mulai perjalanan -->
-    </div>
-  </section>
-
-  <!-- ---- Course Intro ---- -->
-  <section class="wrap section">
-    <div class="sec-head reveal">
-      <h2>Belajar dengan Alur yang Jelas</h2>
-      <p>Mulai dari memahami konsep dasar hingga mengenal penerapannya dalam dunia usaha.</p>
-    </div>
-    <div class="benefits">
-      <div class="benefit reveal">
-        <span class="bnum">01</span>
-        <h3>Materi Terstruktur</h3>
-        <p>Materi disusun dalam modul agar proses belajar lebih mudah diikuti.</p>
+      <div class="roadmap-section">
+        <p class="roadmap-section__title"><i class="fa-solid fa-road"></i> Roadmap Belajar</p>
+        <div class="roadmap-track" id="roadmap-track"></div>
       </div>
-      <div class="benefit reveal">
-        <span class="bnum">02</span>
-        <h3>Belajar Sesuai Progress</h3>
-        <p>Pantau materi yang sudah selesai dan lanjutkan pembelajaran kapan saja.</p>
+
+      <div class="analytics-section">
+        <p class="analytics-section__title"><i class="fa-solid fa-chart-simple"></i> Analisis Progres Belajar</p>
+        <div class="an-card-grid" id="analytics-cards"></div>
+        <div class="an-bars" id="analytics-bars"></div>
       </div>
-      <div class="benefit reveal">
-        <span class="bnum">03</span>
-        <h3>Praktis dan Relevan</h3>
-        <p>Materi dikaitkan dengan situasi bisnis dan kehidupan ekonomi sehari-hari.</p>
+    </section>
+
+    <section class="wrap section">
+      <div id="materi-list">
+        <p class="state-msg"><i class="fa-solid fa-spinner fa-spin"></i> Memuat materi course...</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ---- Featured Course ---- -->
-  <section class="wrap section">
-    <div class="featured reveal">
-      <div class="thumb thumb-lg" id="featured-thumb">
-        <i class="fa-solid fa-chart-line thumb-ic"></i>
-        <img src="assets/images/course-ekonomi.jpg" alt="Konsep Dasar Ekonomi untuk Pelaku Usaha" loading="lazy" onerror="this.classList.add('broken')">
-      </div>
-      <div class="featured-b">
-        <span class="badge badge-outline">COURSE UNGGULAN</span>
-        <h2 id="featured-title">Konsep Dasar Ekonomi untuk Pelaku Usaha</h2>
-        <p id="featured-desc">Pelajari konsep dasar ekonomi dan bagaimana penerapannya dalam kehidupan bisnis sehari-hari. Course ini membantu pelaku usaha memahami kondisi ekonomi dan mengambil keputusan bisnis dengan lebih baik.</p>
-        <ul class="stat-row" id="featured-stats"></ul>
-        <div class="featured-foot">
-          <span class="price">Gratis</span>
-          <button class="btn" id="featured-cta"><i class="fa-solid fa-play"></i> Mulai Belajar</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ---- Curriculum preview ---- -->
-  <section class="wrap section">
-    <div class="sec-head reveal">
-      <h2>Materi Course</h2>
-      <p>Pelajari materi secara bertahap melalui 6 modul pembelajaran.</p>
-    </div>
-    <div class="curriculum reveal" id="curriculum-landing"></div>
-    <p class="curriculum-total" id="curriculum-total-landing"></p>
-  </section>
-
-  <!-- ---- Statistics ---- -->
-  <section class="wrap section stats-sec reveal">
-    <h2 class="sec-head-plain">Course dalam Angka</h2>
-    <div class="stats-grid" id="stats-grid"></div>
-  </section>
-
-  <!-- ---- Jelajahi Course (search+filter+recommended) ---- -->
-  <section class="wrap section">
-    <div class="sec-head reveal">
-      <h2>Jelajahi Course</h2>
-      <p>Cari course lain yang sesuai kebutuhan bisnismu.</p>
-    </div>
-    <div class="catalog-tools reveal">
-      <label class="xsearch"><i class="fa-solid fa-magnifying-glass"></i><input id="course-search" type="search" placeholder="Cari course..." autocomplete="off"></label>
-      <div class="filter-row">
-        <div class="chips" id="cat-filter"></div>
-        <div class="chips" id="level-filter"></div>
-      </div>
-    </div>
-    <div class="course-grid reveal" id="course-grid"></div>
-    <div class="state" id="catalog-empty" hidden>
-      <i class="fa-regular fa-face-frown"></i>
-      <h3>Course tidak ditemukan</h3>
-      <p>Coba gunakan kata kunci atau filter lainnya.</p>
-    </div>
-  </section>
-</div>
-
-<!-- ======================================================= -->
-<!-- ===================  VIEW: DETAIL  ===================== -->
-<!-- ======================================================= -->
-<div class="view" id="view-detail" hidden>
-  <section class="wrap section">
-    <button class="back-link" data-back="landing"><i class="fa-solid fa-arrow-left"></i> Semua Course</button>
-
-    <div class="detail-top reveal">
-      <div class="thumb thumb-lg" id="detail-thumb">
-        <i class="fa-solid fa-chart-line thumb-ic"></i>
-        <img src="assets/images/course-ekonomi.jpg" alt="" loading="lazy" onerror="this.classList.add('broken')">
-      </div>
-      <div class="detail-b">
-        <h1 id="detail-title"></h1>
-        <p class="mentor" id="detail-mentor"></p>
-        <p id="detail-desc"></p>
-        <ul class="stat-row" id="detail-stats"></ul>
-        <div class="featured-foot">
-          <span class="price" id="detail-price"></span>
-          <button class="btn" id="detail-cta"><i class="fa-solid fa-play"></i> Mulai Belajar</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="detail-grid">
-      <div>
-        <h2 class="block-title">Apa yang Akan Kamu Pelajari</h2>
-        <ul class="checklist" id="detail-checklist"></ul>
-
-        <h2 class="block-title">Materi Course</h2>
-        <div class="curriculum" id="curriculum-detail"></div>
-      </div>
-      <aside>
-        <div class="panel">
-          <h3>Materi Tersimpan</h3>
-          <ul class="saved-list" id="saved-list"></ul>
-          <p class="empty-note" id="saved-empty">Belum ada materi yang kamu bookmark.</p>
-        </div>
-      </aside>
-    </div>
-  </section>
-</div>
-
-<!-- ======================================================= -->
-<!-- ===================  VIEW: PLAYER  ====================== -->
-<!-- ======================================================= -->
-<div class="view" id="view-player" hidden>
-  <section class="wrap section player">
-    <button class="back-link" data-back="detail"><i class="fa-solid fa-arrow-left"></i> Kembali ke Course</button>
-
-    <div class="player-grid">
-      <!-- Sidebar desktop -->
-      <aside class="player-side">
-        <div class="progress-card">
-          <h3>Progress Belajar</h3>
-          <p id="progress-text">0 dari 18 materi selesai</p>
-          <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-          <span class="progress-pct" id="progress-pct">0%</span>
-        </div>
-        <div class="side-modules" id="side-modules"></div>
-      </aside>
-
-      <!-- Drawer trigger mobile -->
-      <button class="drawer-trigger" id="drawer-open"><i class="fa-solid fa-list"></i> Modul &amp; Materi</button>
-
-      <!-- Konten materi -->
-      <div class="player-main">
-        <p class="lesson-count" id="lesson-count">Materi 1 dari 18</p>
-        <div class="thumb thumb-lg" id="lesson-thumb">
-          <i class="fa-solid fa-play thumb-ic"></i>
-          <img src="" alt="" loading="lazy" onerror="this.classList.add('broken')">
-        </div>
-        <h1 id="lesson-title"></h1>
-        <p id="lesson-desc"></p>
-
-        <div class="lesson-actions">
-          <button class="btn" id="btn-complete"><i class="fa-regular fa-circle-check"></i> Tandai Selesai</button>
-          <button class="btn ghost" id="btn-bookmark"><i class="fa-regular fa-bookmark"></i> Bookmark</button>
-          <button class="btn ghost" id="btn-notes"><i class="fa-regular fa-note-sticky"></i> Catatan</button>
-        </div>
-
-        <div class="notes-panel" id="notes-panel" hidden>
-          <textarea id="notes-text" rows="4" maxlength="600" placeholder="Tulis catatanmu untuk materi ini..."></textarea>
-          <button class="btn" id="notes-save">Simpan Catatan</button>
-          <span class="notes-saved" id="notes-saved" hidden><i class="fa-solid fa-check"></i> Catatan tersimpan</span>
-        </div>
-
-        <div class="quiz-box" id="quiz-box" hidden></div>
-
-        <div class="resources" id="resources">
-          <h3>Materi Pendukung</h3>
-          <div class="res-list">
-            <button class="res-item" data-res="ringkasan"><i class="fa-regular fa-file-lines"></i> Ringkasan</button>
-            <button class="res-item" data-res="pdf"><i class="fa-regular fa-file-pdf"></i> PDF</button>
-            <button class="res-item" data-res="referensi"><i class="fa-solid fa-link"></i> Referensi</button>
-            <button class="res-item" id="res-notes"><i class="fa-regular fa-note-sticky"></i> Catatan</button>
-          </div>
-        </div>
-
-        <div class="lesson-nav">
-          <button class="btn ghost" id="lesson-prev"><i class="fa-solid fa-arrow-left"></i> Sebelumnya</button>
-          <button class="btn" id="lesson-next">Berikutnya <i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Drawer mobile -->
-  <div class="drawer" id="drawer" hidden>
-    <div class="drawer-bg" id="drawer-close-bg"></div>
-    <div class="drawer-panel">
-      <div class="drawer-head"><h3>Modul &amp; Materi</h3><button id="drawer-close" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button></div>
-      <div class="progress-card">
-        <p id="progress-text-m">0 dari 18 materi selesai</p>
-        <div class="progress-bar"><div class="progress-fill" id="progress-fill-m"></div></div>
-      </div>
-      <div class="side-modules" id="side-modules-m"></div>
-    </div>
   </div>
-</div>
 
-<!-- ======================================================= -->
-<!-- =================  VIEW: COMPLETION  ==================== -->
-<!-- ======================================================= -->
-<div class="view" id="view-completion" hidden>
-  <section class="wrap section completion">
-    <div class="badge-medal"><i class="fa-solid fa-trophy"></i></div>
-    <span class="badge">ECONOMY FUNDAMENTALS</span>
-    <h1>Course Selesai!</h1>
-    <p>Selamat! Kamu telah menyelesaikan seluruh materi Konsep Dasar Ekonomi untuk Pelaku Usaha.</p>
-    <div class="completion-stats">
-      <div><b>18</b><span>Materi Selesai</span></div>
-      <div><b>6</b><span>Modul Selesai</span></div>
-      <div><b>100%</b><span>Progress</span></div>
-    </div>
-    <button class="btn" id="completion-again">Pelajari Lagi</button>
-  </section>
-</div>
+  <!-- ======================================================= -->
+  <!-- ==================  VIEW: PLAYER  ======================= -->
+  <!-- ======================================================= -->
+  <div class="view" id="view-player" hidden>
+    <section class="wrap section player-main">
+      <button class="back-link" id="back-to-list"><i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar Materi</button>
+
+      <p class="lesson-count" id="lesson-count">Materi 1 dari 18</p>
+      <div class="thumb" id="lesson-thumb">
+        <i class="fa-solid fa-play thumb-ic"></i>
+        <img src="" alt="" loading="lazy" onerror="this.classList.add('broken')">
+      </div>
+      <h1 id="lesson-title"></h1>
+      <p class="lesson-desc" id="lesson-desc"></p>
+
+      <div class="lesson-actions">
+        <button class="btn" id="btn-complete"><i class="fa-regular fa-circle-check"></i> Tandai Selesai</button>
+        <button class="btn ghost" id="btn-bookmark"><i class="fa-regular fa-bookmark"></i> Bookmark</button>
+        <button class="btn ghost" id="btn-notes"><i class="fa-regular fa-note-sticky"></i> Catatan</button>
+      </div>
+
+      <div class="notes-panel" id="notes-panel" hidden>
+        <textarea id="notes-text" rows="4" maxlength="600" placeholder="Tulis catatanmu untuk materi ini..."></textarea>
+        <button class="btn" id="notes-save">Simpan Catatan</button>
+        <span class="notes-saved" id="notes-saved" hidden><i class="fa-solid fa-check"></i> Catatan tersimpan</span>
+      </div>
+
+      <div class="quiz-box" id="quiz-box" hidden></div>
+
+      <div class="lesson-nav">
+        <button class="btn ghost" id="lesson-prev"><i class="fa-solid fa-arrow-left"></i> Sebelumnya</button>
+        <button class="btn" id="lesson-next">Berikutnya <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </section>
+  </div>
 
 </main>
 
-<!-- ============ FOOTER ============ -->
-<footer class="foot">
-  <div class="wrap foot-grid">
-    <div>
-      <p class="foot-logo">Kembangin</p>
-      <p class="foot-tag">Belajar lebih banyak. Berkembang lebih jauh.</p>
-    </div>
-    <div>
-      <h4>Navigasi</h4>
-      <a href="home.html">Beranda</a>
-      <a href="artikel.html">Artikel</a>
-      <a href="course.html">Course</a>
-      <a href="liblary.html">Library</a>
-      <a href="forum.html">Forum</a>
-    </div>
-    <div>
-      <h4>Produk</h4>
-      <a href="#" data-soon>Consultation</a>
-      <a href="liblary.html">Library</a>
-      <a href="course.html">Course</a>
-      <a href="#" data-soon>Kemba AI</a>
-    </div>
-  </div>
-  <p class="foot-copy">&copy; 2026 Kembangin. All rights reserved.</p>
-</footer>
+<div class="toast" id="toast" hidden></div>
 
-<!-- ============ KEMBA AI WIDGET ============ -->
-<button class="ai-fab" id="ai-fab" aria-label="Kemba AI"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+<!-- ============ KEMBA AI (prototipe tampilan, belum terhubung ke model AI) ============ -->
+<button class="ai-fab" id="ai-fab" aria-label="Buka Kemba AI"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
 <div class="ai-panel" id="ai-panel" hidden>
   <div class="ai-head">
-    <span><i class="fa-solid fa-wand-magic-sparkles"></i> Kemba AI</span>
+    <span><i class="fa-solid fa-wand-magic-sparkles"></i> Kemba AI <small>Prototipe</small></span>
     <button id="ai-close" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button>
   </div>
   <div class="ai-body" id="ai-body"></div>
   <form class="ai-input-row" id="ai-form">
-    <input id="ai-input" placeholder="Tanya seputar fitur Course..." autocomplete="off">
+    <input id="ai-input" placeholder="Tanya seputar fitur di halaman ini..." autocomplete="off">
     <button type="submit" aria-label="Kirim"><i class="fa-solid fa-paper-plane"></i></button>
   </form>
 </div>
 
-<div class="toast" id="toast" hidden></div>
-
+<site-footer></site-footer>
+<!-- script -->
+<script src="../components/Navbar.js"></script>
+<script src="../components/Footer.js"></script>
+<script src="../public/js/component.js"></script>
 <script src="../public/js/course.js"></script>
 </body>
 </html>

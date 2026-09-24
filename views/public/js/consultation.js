@@ -1,12 +1,17 @@
 /* ============================================================
    KEMBANGIN — Halaman Konsultasi (vanilla JS, tanpa dependency)
-   Menggunakan data asli dari consultants-data.js (window.CONSULTANTS_DATA)
+   Data konsultan dimuat lewat fetch() dari consultation.json
+   (lihat DATA_URL di bawah — sesuaikan path jika struktur folder
+   proyek Anda berbeda).
    ============================================================ */
 (function () {
   "use strict";
 
-  const DATA = window.CONSULTANTS_DATA || [];
+  // Sesuaikan path ini dengan lokasi file consultation.json pada proyek Anda.
+  const DATA_URL = "../database/consultation.json";
   const PAGE_SIZE = 12;
+
+  let DATA = [];
 
   /* ---------------- KLASIFIKASI BIDANG ----------------
      Data asli tidak punya field "kategori" tunggal, jadi bidang
@@ -52,6 +57,10 @@
     const div = document.createElement("div");
     div.textContent = str == null ? "" : String(str);
     return div.innerHTML;
+  }
+
+  function initials(name) {
+    return String(name || "").trim().split(/\s+/).slice(0, 2).map(w => w[0] || "").join("").toUpperCase();
   }
 
   function expYears(c) { return parseInt(c.pengalaman, 10) || 0; }
@@ -121,6 +130,7 @@
     return (
       '<article class="consultant-card" style="background-image:url(\'' + c.foto + '\')" data-id="' + c.id + '" role="button" tabindex="0" aria-label="Lihat profil ' + escapeHtml(c.nama) + '">' +
         '<div class="consultant-card__scrim"></div>' +
+        '<span class="consultant-card__initials" aria-hidden="true">' + escapeHtml(initials(c.nama)) + "</span>" +
         '<div class="consultant-card__top-row">' +
           '<span class="consultant-card__available"><i class="fa-solid fa-circle"></i>' + escapeHtml(c.status) + "</span>" +
           '<span class="consultant-card__rating"><i class="fa-solid fa-star"></i>' + c.rating.toFixed(1) + "</span>" +
@@ -142,6 +152,22 @@
         "</div>" +
       "</article>"
     );
+  }
+
+  // background-image tidak punya event onerror bawaan — jadi setiap foto
+  // dites lewat Image() terpisah; jika gagal dimuat, kartu diberi class
+  // "no-photo" agar CSS menampilkan gradien + inisial sebagai gantinya.
+  function checkCardPhotos(list) {
+    list.forEach(c => {
+      if (!c.foto) { markNoPhoto(c.id); return; }
+      const img = new Image();
+      img.onerror = () => markNoPhoto(c.id);
+      img.src = c.foto;
+    });
+  }
+  function markNoPhoto(id) {
+    const card = document.querySelector('.consultant-card[data-id="' + id + '"]');
+    if (card) card.classList.add("no-photo");
   }
 
   /* ---------------- RENDER: ANALYTICS ---------------- */
@@ -201,10 +227,12 @@
     const legend = document.getElementById("eduLegend");
 
     if (!total) {
-      donut.style.background = "var(--c-border)";
+      donut.classList.add("is-empty");
+      donut.style.background = "";
       legend.innerHTML = '<li>Tidak ada data.</li>';
       return;
     }
+    donut.classList.remove("is-empty");
 
     let cursor = 0;
     const segments = [];
@@ -254,6 +282,7 @@
     grid.innerHTML = visible.map(consultantCardHtml).join("");
     resultCount.textContent = "Menampilkan " + visible.length + " dari " + filtered.length + " konsultan";
     loadMoreWrap.hidden = visible.length >= filtered.length;
+    checkCardPhotos(visible);
   }
 
   /* ---------------- FILTER BAR / SEARCH ---------------- */
@@ -371,7 +400,7 @@
 
     body.innerHTML =
       '<div class="consultant-profile__head">' +
-        '<div class="consultant-profile__avatar" style="background-image:url(\'' + consultant.foto + '\')"></div>' +
+        '<div class="consultant-profile__avatar" style="background-image:url(\'' + consultant.foto + '\')" data-avatar-id="' + consultant.id + '"><span class="consultant-profile__avatar-initials">' + escapeHtml(initials(consultant.nama)) + '</span></div>' +
         "<div>" +
           '<div class="consultant-profile__name" id="profileModalName">' + escapeHtml(consultant.nama) + "</div>" +
           '<div class="consultant-profile__role">Ahli Bisnis &middot; ' + escapeHtml(consultant.pendidikan) + "</div>" +
@@ -392,6 +421,14 @@
       '<div class="consultant-profile__actions">' +
         '<button type="button" class="consultation-btn consultation-btn--primary" id="profileScheduleBtn">Jadwalkan Konsultasi</button>' +
       "</div>";
+
+    if (consultant.foto) {
+      const test = new Image();
+      test.onerror = () => { const av = body.querySelector('[data-avatar-id="' + consultant.id + '"]'); if (av) av.classList.add("no-photo"); };
+      test.src = consultant.foto;
+    } else {
+      body.querySelector('[data-avatar-id="' + consultant.id + '"]').classList.add("no-photo");
+    }
 
     overlay.hidden = false;
     requestAnimationFrame(() => overlay.classList.add("is-open"));
@@ -534,16 +571,44 @@
     });
   }
 
-  /* ---------------- INIT ---------------- */
-  document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("pageHeadSubtitle").textContent =
-      DATA.length + " konsultan siap membantu bisnis Anda menemukan arah yang tepat.";
+  /* ---------------- LOAD DATA (consultation.json) ---------------- */
+  function setLoadError(message) {
+    document.getElementById("pageHeadSubtitle").textContent = message;
+    const grid = document.getElementById("consultantGrid");
+    const emptyState = document.getElementById("emptyState");
+    grid.innerHTML = "";
+    emptyState.hidden = false;
+    emptyState.querySelector("h3").textContent = "Data konsultan belum bisa dimuat";
+    emptyState.querySelector("p").textContent = "Periksa kembali koneksi atau path consultation.json, lalu muat ulang halaman.";
+    document.getElementById("emptyResetBtn").textContent = "Muat Ulang";
+    document.getElementById("resultCount").textContent = "";
+  }
 
+  async function loadConsultants() {
+    const res = await fetch(DATA_URL);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    if (!Array.isArray(data)) throw new Error("Format consultation.json tidak sesuai (harus berupa array).");
+    return data;
+  }
+
+  /* ---------------- INIT ---------------- */
+  document.addEventListener("DOMContentLoaded", async () => {
     populateBidangFilter();
-    renderConsultants();
     bindToolbar();
     bindGridActions();
     bindModalClosers();
     bindBookingConfirm();
+
+    try {
+      DATA = await loadConsultants();
+      document.getElementById("pageHeadSubtitle").textContent =
+        DATA.length + " konsultan siap membantu bisnis Anda menemukan arah yang tepat.";
+      renderConsultants();
+    } catch (err) {
+      console.error("Gagal memuat consultation.json:", err);
+      setLoadError("Data konsultan belum bisa dimuat.");
+      document.getElementById("emptyResetBtn").addEventListener("click", () => location.reload(), { once: true });
+    }
   });
 })();
