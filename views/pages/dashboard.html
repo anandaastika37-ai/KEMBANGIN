@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kembangin</title>
+    <title>Dasbor Saya - Kembangin</title>
     <link rel="stylesheet" href="../public/css/component.css">
+    <link rel="stylesheet" href="../public/css/home.css">
     <link rel="stylesheet" href="../public/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 </head>
@@ -12,149 +13,116 @@
   <site-navbar></site-navbar>
 
   <main>
-    <section class="dashboard-hero">
-        <h2>Dasbor Usaha</h2>
-        <p>Pantau ringkasan usaha dan aktivitas kamu di Kembangin</p>
-    </section>
+    <div class="wrap dcol">
 
-    <!-- chart ringkasan, selalu ada di paling atas -->
-    <section class="chart-box">
-        <div class="chart-head">
-            <h3>Ringkasan Pendapatan 7 Hari Terakhir</h3>
-            <span id="chartTotal">Rp0</span>
-        </div>
-        <div class="chart-bars" id="chartBars"></div>
-    </section>
-
-    <section class="dash-layout">
         <aside class="dash-sidebar">
-            <button class="sidebar-btn active" data-target="tools"><i class="fa-solid fa-toolbox"></i> Tools UMKM</button>
-            <button class="sidebar-btn" data-target="pakar"><i class="fa-solid fa-user-tie"></i> Pakar Disubscribe</button>
-            <button class="sidebar-btn" data-target="savedArticle"><i class="fa-solid fa-bookmark"></i> Artikel Disave</button>
-            <button class="sidebar-btn" data-target="savedBook"><i class="fa-solid fa-book"></i> E-Book Disave</button>
+            <button class="sidebar-btn active" data-target="beranda"><i class="fa-solid fa-house"></i> Beranda</button>
+            <button class="sidebar-btn" data-target="pakar"><i class="fa-solid fa-user-tie"></i> Pakar Diikuti</button>
+            <button class="sidebar-btn" data-target="savedArticle"><i class="fa-solid fa-bookmark"></i> Artikel Tersimpan</button>
+            <button class="sidebar-btn" data-target="savedBook"><i class="fa-solid fa-book"></i> E-Book Tersimpan</button>
             <button class="sidebar-btn" data-target="myArticle"><i class="fa-solid fa-pen-nib"></i> Buat Artikel</button>
             <button class="sidebar-btn" data-target="event"><i class="fa-solid fa-calendar-days"></i> Event</button>
         </aside>
 
         <div class="dash-content">
 
-            <!-- ===== 1. TOOLS UMKM ===== -->
-            <div class="panel active" id="panel-tools">
-                <h3>4 Tools UMKM</h3>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <i class="fa-solid fa-sack-dollar"></i>
-                        <h4>Kalkulator Keuntungan</h4>
-                        <p>Hitung untung bersih dari harga jual, modal, dan jumlah terjual.</p>
-                        <button class="tool-open-btn" data-tool="calc">Buka Tools</button>
-                        <div class="tool-body" id="tool-calc">
-                            <form id="calcForm">
-                                <input type="text" id="namaProduk" placeholder="Nama produk" required>
-                                <div class="calc-row">
-                                    <input type="number" id="hargaJual" placeholder="Harga jual" min="0" required>
-                                    <input type="number" id="modalProduk" placeholder="Modal" min="0" required>
-                                    <input type="number" id="jumlahJual" placeholder="Jumlah terjual" min="0" required>
-                                </div>
-                                <button type="submit">Hitung & Tambahkan</button>
-                            </form>
-                            <p class="tool-result" id="calcResult"></p>
-                        </div>
+            <!-- ===== BERANDA: statistik penggunaan ===== -->
+            <div class="panel active" id="panel-beranda">
+                <h3>Statistik Penggunaan Kamu</h3>
+                <div class="stat-grid">
+                    <div class="stat-card reveal accent-blue">
+                        <div class="stat-icon"><i class="fa-solid fa-book-open"></i></div>
+                        <b id="statArtikel">0</b><span>Artikel Dibaca</span>
+                        <small class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 12% minggu ini</small>
                     </div>
+                    <div class="stat-card reveal accent-teal">
+                        <div class="stat-icon"><i class="fa-solid fa-book"></i></div>
+                        <b id="statEbook">0</b><span>E-Book Dibaca</span>
+                        <small class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 1 e-book baru</small>
+                    </div>
+                    <div class="stat-card reveal accent-purple">
+                        <div class="stat-icon"><i class="fa-solid fa-comments"></i></div>
+                        <b id="statForum">0</b><span>Diskusi Diikuti</span>
+                        <small class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 3 diskusi minggu ini</small>
+                    </div>
+                    <div class="stat-card reveal accent-orange">
+                        <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <b id="statEvent">0</b><span>Event Diikuti</span>
+                        <small class="trend flat"><i class="fa-solid fa-minus"></i> Stabil</small>
+                    </div>
+                    <div class="stat-card reveal accent-cyan">
+                        <div class="stat-icon"><i class="fa-solid fa-user-tie"></i></div>
+                        <b id="statPakar">0</b><span>Pakar Diikuti</span>
+                        <small class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 1 pakar baru</small>
+                    </div>
+                    <div class="stat-card reveal accent-green">
+                        <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <b id="statCourse">0</b><span>Kursus Selesai</span>
+                        <small class="trend flat"><i class="fa-solid fa-minus"></i> Stabil</small>
+                    </div>
+                    <div class="stat-card reveal accent-amber">
+                        <div class="stat-icon"><i class="fa-solid fa-fire"></i></div>
+                        <b id="statStreak">0</b><span>Hari Aktif Beruntun</span>
+                        <small class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> Rekor pribadi</small>
+                    </div>
+                    <div class="stat-card reveal accent-pink">
+                        <div class="stat-icon"><i class="fa-regular fa-heart"></i></div>
+                        <b id="statLike">0</b><span>Like Diberikan</span>
+                        <small class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 8 like minggu ini</small>
+                    </div>
+                </div>
 
-                    <div class="tool-card">
-                        <i class="fa-solid fa-ranking-star"></i>
-                        <h4>Analisa Produk Terlaris</h4>
-                        <p>Lihat produk mana yang paling banyak terjual.</p>
-                        <button class="tool-open-btn" data-tool="produk">Buka Tools</button>
-                        <div class="tool-body" id="tool-produk">
-                            <ul id="produkList"></ul>
-                        </div>
+                <div class="chart-box reveal">
+                    <div class="chart-head">
+                        <h4>Aktivitas 7 Hari Terakhir</h4>
+                        <span id="chartTotal">0 aktivitas</span>
                     </div>
+                    <div class="chart-bars" id="chartBars"></div>
+                </div>
 
-                    <div class="tool-card">
-                        <i class="fa-solid fa-tags"></i>
-                        <h4>Kalkulator Harga Jual</h4>
-                        <p>Tentuin harga jual dari modal + target margin keuntungan.</p>
-                        <button class="tool-open-btn" data-tool="harga">Buka Tools</button>
-                        <div class="tool-body" id="tool-harga">
-                            <form id="hargaForm">
-                                <div class="calc-row">
-                                    <input type="number" id="modalHarga" placeholder="Modal produk" min="0" required>
-                                    <input type="number" id="marginTarget" placeholder="Target margin (%)" min="1" required>
-                                </div>
-                                <button type="submit">Hitung Harga Jual</button>
-                            </form>
-                            <p class="tool-result" id="hargaResult"></p>
-                        </div>
-                    </div>
-
-                    <div class="tool-card">
-                        <i class="fa-solid fa-heart-pulse"></i>
-                        <h4>Cek Kesehatan Keuangan</h4>
-                        <p>Jawab 4 pertanyaan singkat buat cek kondisi keuangan usahamu.</p>
-                        <button class="tool-open-btn" data-tool="cek">Buka Tools</button>
-                        <div class="tool-body" id="tool-cek">
-                            <div class="cek-item">
-                                <span>Apakah kamu mencatat setiap pemasukan & pengeluaran?</span>
-                                <label class="switch"><input type="checkbox" class="cekInput"><span></span></label>
-                            </div>
-                            <div class="cek-item">
-                                <span>Apakah kamu punya tabungan/dana darurat usaha?</span>
-                                <label class="switch"><input type="checkbox" class="cekInput"><span></span></label>
-                            </div>
-                            <div class="cek-item">
-                                <span>Apakah keuntungan usaha lebih besar dari pengeluaran pribadi?</span>
-                                <label class="switch"><input type="checkbox" class="cekInput"><span></span></label>
-                            </div>
-                            <div class="cek-item">
-                                <span>Apakah kamu memisahkan uang usaha dan uang pribadi?</span>
-                                <label class="switch"><input type="checkbox" class="cekInput"><span></span></label>
-                            </div>
-                            <button id="cekBtn">Lihat Hasil</button>
-                            <p class="tool-result" id="cekResult"></p>
-                        </div>
-                    </div>
+                <div class="activity-box reveal">
+                    <h4>Aktivitas Terbaru</h4>
+                    <ul id="activityList"></ul>
                 </div>
             </div>
 
-            <!-- ===== 2. PAKAR DISUBSCRIBE ===== -->
+            <!-- ===== PAKAR DIIKUTI ===== -->
             <div class="panel" id="panel-pakar">
-                <h3>Pakar yang Disubscribe</h3>
+                <h3>Pakar yang Diikuti</h3>
                 <div class="pakar-list" id="pakarList"></div>
             </div>
 
-            <!-- ===== 3. ARTIKEL DISAVE ===== -->
+            <!-- ===== ARTIKEL TERSIMPAN ===== -->
             <div class="panel" id="panel-savedArticle">
-                <h3>Artikel yang Disave</h3>
+                <h3>Artikel yang Tersimpan</h3>
                 <div class="saved-grid" id="savedArticleList"></div>
             </div>
 
-            <!-- ===== 4. E-BOOK DISAVE ===== -->
+            <!-- ===== E-BOOK TERSIMPAN ===== -->
             <div class="panel" id="panel-savedBook">
-                <h3>E-Book yang Disave</h3>
+                <h3>E-Book yang Tersimpan</h3>
                 <div class="saved-grid" id="savedBookList"></div>
             </div>
 
-            <!-- ===== 5. BUAT ARTIKEL ===== -->
+            <!-- ===== BUAT ARTIKEL ===== -->
             <div class="panel" id="panel-myArticle">
                 <div class="panel-head-row">
                     <h3>Artikel Saya</h3>
-                    <button id="newArticleBtn">+ Buat Artikel Baru</button>
+                    <button class="btn" id="newArticleBtn">+ Buat Artikel Baru</button>
                 </div>
                 <div class="my-article-list" id="myArticleList"></div>
             </div>
 
-            <!-- ===== 6. EVENT ===== -->
+            <!-- ===== EVENT ===== -->
             <div class="panel" id="panel-event">
                 <h3>Event yang Sudah Dibeli</h3>
-                <div class="event-grid" id="eventList"></div>
+                <div class="saved-grid" id="eventList"></div>
             </div>
 
         </div>
-    </section>
+    </div>
   </main>
 
-    <!-- editor artikel ala wordpress, tampil sebagai overlay -->
     <div class="editor-overlay" id="editorOverlay">
         <div class="editor-modal">
             <div class="editor-head">
@@ -163,22 +131,18 @@
             </div>
             <label>Judul Artikel</label>
             <input type="text" id="editorJudul" placeholder="Judul artikel kamu">
-
             <label>Kategori</label>
             <input type="text" id="editorKategori" placeholder="cth: Bisnis Digital">
-
             <label>Cover Artikel</label>
             <div class="editor-cover-upload">
                 <i class="fa-solid fa-image"></i>
-                <span>Klik buat upload cover (dummy, belum tersimpan beneran)</span>
+                <span>Klik untuk mengunggah cover (contoh tampilan, belum benar-benar tersimpan)</span>
             </div>
-
             <label>Isi Artikel</label>
             <textarea id="editorIsi" rows="6" placeholder="Tulis isi artikel di sini..."></textarea>
-
             <div class="editor-footer">
-                <button type="button" class="btn-draft" id="saveDraftBtn">Simpan sebagai Draft</button>
-                <button type="button" class="btn-publish" id="publishBtn">Publish</button>
+                <button type="button" class="btn-draft" id="saveDraftBtn">Simpan sebagai Draf</button>
+                <button type="button" class="btn-publish" id="publishBtn">Terbitkan</button>
             </div>
         </div>
     </div>
