@@ -262,7 +262,7 @@ class SiteNavbar extends HTMLElement {
 
                 <li>
 
-                  <a href="#" class="notif-link">
+                  <a href="notification.html" class="notif-link">
                     <span>
                       <i class="fa-solid fa-bell" aria-hidden="true"></i>
                       Notifikasi

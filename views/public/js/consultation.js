@@ -126,9 +126,9 @@
     const hargaParts = String(c.harga).split(" / ");
     const hargaValue = hargaParts[0] || c.harga;
     const hargaUnit = hargaParts[1] || "sesi";
-
+    const bgStyle = c.foto ? ' style="background-image:url(../assets/consultan.jpg)"' : "";
     return (
-      '<article class="consultant-card" style="background-image:url(\'' + c.foto + '\')" data-id="' + c.id + '" role="button" tabindex="0" aria-label="Lihat profil ' + escapeHtml(c.nama) + '">' +
+      '<article class="consultant-card"' + bgStyle + '' + c.id + '" role="button" tabindex="0" aria-label="Lihat profil ' + escapeHtml(c.nama) + '">' +
         '<div class="consultant-card__scrim"></div>' +
         '<span class="consultant-card__initials" aria-hidden="true">' + escapeHtml(initials(c.nama)) + "</span>" +
         '<div class="consultant-card__top-row">' +

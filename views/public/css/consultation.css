@@ -668,6 +668,7 @@
   right: 18px;
   width: 34px;
   height: 34px;
+  color: white;
   border-radius: 50%;
   background: var(--c-bg);
   border: 1px solid var(--c-border);

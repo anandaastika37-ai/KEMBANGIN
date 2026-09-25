@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 *{
     margin: 0;
@@ -22,6 +22,15 @@
     height: auto;
     z-index: 10;
     width: 100%;
+}
+
+/* .container di atas position:fixed -> keluar dari alur dokumen, jadi
+   tanpa jarak ini navbar akan menutupi bagian atas konten setiap halaman.
+   Diberi jarak di sini (bukan di tiap file CSS halaman) supaya otomatis
+   berlaku di semua halaman yang memakai <site-navbar>, dan tidak menambah
+   jarak pada halaman yang tidak memakainya (mis. halaman auth). */
+site-navbar + main {
+    padding-top: 63px;
 }
 
 /* navbar */
@@ -626,8 +635,11 @@
 
 /* responsive */
 
-/* tablet & di bawahnya */
-@media (max-width: 900px) {
+/* tablet & di bawahnya. Catatan: .right-side (45%) berisi navbar-search
+   (20%) + navbar-navigation (40%) + tombol chatbot + profile-login + gap
+   -- baru benar-benar muat tanpa berdesakan di atas ±1460px, jadi
+   breakpoint ini sengaja dilebarkan dari 900px ke 1450px. */
+@media (max-width: 1450px) {
     .navbar-search{
         display: none;
     }
