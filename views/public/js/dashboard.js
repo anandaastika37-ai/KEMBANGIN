@@ -6,23 +6,43 @@ sidebarBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         sidebarBtns.forEach(b => b.classList.remove('active'));
         panels.forEach(p => p.classList.remove('active'));
-
         btn.classList.add('active');
-        document.getElementById('panel-' + btn.dataset.target).classList.add('active');
+        const target = document.getElementById('panel-' + btn.dataset.target);
+        target.classList.add('active');
+        target.querySelectorAll('.reveal').forEach(el => el.classList.remove('in-view'));
+        setTimeout(() => initScrollReveal('#' + target.id + ' .reveal'), 20);
     });
 });
 
-/* ================= CHART RINGKASAN (dummy 7 hari) ================= */
-const chartData = [420000, 650000, 300000, 780000, 500000, 910000, 660000];
-const chartDays = ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'];
-const chartBars = document.getElementById('chartBars');
-const chartTotal = document.getElementById('chartTotal');
+/* ================= BERANDA: statistik penggunaan (dummy) ================= */
+const usageStats = {
+    artikel: 18,
+    ebook: 4,
+    forum: 9,
+    event: 3,
+    course: 2,
+    streak: 6,
+    like: 27
+};
 
-function formatRupiah(angka) {
-    return 'Rp' + Math.round(angka).toLocaleString('id-ID');
+function renderStats() {
+    animateCount(document.getElementById('statArtikel'), usageStats.artikel);
+    animateCount(document.getElementById('statEbook'), usageStats.ebook);
+    animateCount(document.getElementById('statForum'), usageStats.forum);
+    animateCount(document.getElementById('statEvent'), usageStats.event);
+    animateCount(document.getElementById('statPakar'), getPakarData().length);
+    animateCount(document.getElementById('statCourse'), usageStats.course);
+    document.getElementById('statStreak').textContent = '0 hari';
+    animateCount(document.getElementById('statStreak'), usageStats.streak, 900, ' hari');
+    animateCount(document.getElementById('statLike'), usageStats.like);
 }
 
+/* chart aktivitas 7 hari (dummy) */
+const chartData = [3, 5, 2, 6, 4, 8, 5];
+const chartDays = ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'];
+
 (function renderChart() {
+    const chartBars = document.getElementById('chartBars');
     const max = Math.max(...chartData);
     let total = 0;
     chartBars.innerHTML = '';
@@ -30,109 +50,32 @@ function formatRupiah(angka) {
         total += val;
         const col = document.createElement('div');
         col.className = 'chart-col';
-        col.innerHTML = `<div class="bar" style="height:${(val / max) * 100}%"></div><span>${chartDays[i]}</span>`;
+        col.innerHTML = `<div class="bar" style="height:0%"></div><span>${chartDays[i]}</span>`;
         chartBars.appendChild(col);
+        const barEl = col.querySelector('.bar');
+        setTimeout(() => { barEl.style.height = (val / max) * 100 + '%'; }, 120 + i * 90);
     });
-    chartTotal.textContent = formatRupiah(total);
+    document.getElementById('chartTotal').textContent = total + ' aktivitas';
 })();
 
-/* ================= TOOL 1: KALKULATOR KEUNTUNGAN + PRODUK TERLARIS ================= */
-const seedProduk = [
-    { nama: 'Kopi Susu Gula Aren', harga: 15000, modal: 8000, jumlah: 42 },
-    { nama: 'Roti Bakar Coklat', harga: 12000, modal: 6000, jumlah: 27 },
-    { nama: 'Es Teh Jumbo', harga: 6000, modal: 2500, jumlah: 18 }
+/* aktivitas terbaru (dummy) */
+const recentActivity = [
+    { icon: 'fa-solid fa-book', text: 'Membaca artikel <b>Strategi Membangun Bisnis di Era Digital</b>', waktu: '3 jam lalu' },
+    { icon: 'fa-solid fa-comments', text: 'Ikut diskusi di forum <b>Strategi Pemasaran UMKM</b>', waktu: '1 hari lalu' },
+    { icon: 'fa-solid fa-user-tie', text: 'Subscribe ke pakar <b>Dr. Anita Pratiwi</b>', waktu: '2 hari lalu' },
+    { icon: 'fa-regular fa-heart', text: 'Menyukai postingan di Komunitas', waktu: '3 hari lalu' },
+    { icon: 'fa-solid fa-calendar-check', text: 'Membeli tiket event <b>Workshop Digital Marketing UMKM</b>', waktu: '5 hari lalu' }
 ];
 
-function getProdukData() {
-    const saved = localStorage.getItem('kembangin_produk');
-    if (saved) return JSON.parse(saved);
-    localStorage.setItem('kembangin_produk', JSON.stringify(seedProduk));
-    return seedProduk;
-}
-
-function renderProduk() {
-    const data = getProdukData();
-    const sorted = [...data].sort((a, b) => b.jumlah - a.jumlah);
-    const max = sorted.length ? sorted[0].jumlah : 0;
-    const produkList = document.getElementById('produkList');
-
-    produkList.innerHTML = '';
-    sorted.forEach(p => {
-        const persen = max > 0 ? (p.jumlah / max) * 100 : 0;
+(function renderActivity() {
+    const list = document.getElementById('activityList');
+    list.innerHTML = '';
+    recentActivity.forEach(a => {
         const li = document.createElement('li');
-        li.innerHTML = `
-            <div class="produk-top">
-                <span>${p.nama}</span>
-                <span>${p.jumlah} terjual</span>
-            </div>
-            <div class="bar-bg"><div class="bar-fill" style="width:${persen}%"></div></div>
-        `;
-        produkList.appendChild(li);
+        li.innerHTML = `<i class="${a.icon}"></i><div><span>${a.text}</span><small>${a.waktu}</small></div>`;
+        list.appendChild(li);
     });
-}
-
-document.getElementById('calcForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const nama = document.getElementById('namaProduk').value.trim();
-    const harga = Number(document.getElementById('hargaJual').value);
-    const modal = Number(document.getElementById('modalProduk').value);
-    const jumlah = Number(document.getElementById('jumlahJual').value);
-    if (!nama || jumlah <= 0) return;
-
-    const data = getProdukData();
-    const existing = data.find(p => p.nama.toLowerCase() === nama.toLowerCase());
-    if (existing) {
-        existing.jumlah += jumlah;
-        existing.harga = harga;
-        existing.modal = modal;
-    } else {
-        data.push({ nama, harga, modal, jumlah });
-    }
-    localStorage.setItem('kembangin_produk', JSON.stringify(data));
-
-    const keuntungan = (harga - modal) * jumlah;
-    document.getElementById('calcResult').textContent = `${nama}: keuntungan ${formatRupiah(keuntungan)}`;
-    this.reset();
-    renderProduk();
-});
-
-renderProduk();
-
-/* ================= TOOL 3: KALKULATOR HARGA JUAL ================= */
-document.getElementById('hargaForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const modal = Number(document.getElementById('modalHarga').value);
-    const margin = Number(document.getElementById('marginTarget').value);
-    if (modal <= 0 || margin <= 0 || margin >= 100) {
-        document.getElementById('hargaResult').textContent = 'Margin harus antara 1-99%';
-        return;
-    }
-    const hargaJual = modal / (1 - margin / 100);
-    document.getElementById('hargaResult').textContent =
-        `Harga jual yang disarankan: ${formatRupiah(hargaJual)} (untung ${formatRupiah(hargaJual - modal)}/pcs)`;
-});
-
-/* ================= TOOL 4: CEK KESEHATAN KEUANGAN ================= */
-document.getElementById('cekBtn').addEventListener('click', function () {
-    const checks = document.querySelectorAll('#tool-cek .cekInput');
-    let score = 0;
-    checks.forEach(c => { if (c.checked) score++; });
-
-    let pesan = '';
-    if (score <= 1) pesan = 'Perlu diperbaiki: coba mulai catat keuangan usaha secara rutin.';
-    else if (score <= 3) pesan = 'Lumayan sehat, tapi masih ada yang bisa ditingkatkan.';
-    else pesan = 'Keuangan usahamu sudah dikelola dengan baik!';
-
-    document.getElementById('cekResult').textContent = `Skor: ${score}/4 - ${pesan}`;
-});
-
-/* buka/tutup tiap tool */
-document.querySelectorAll('.tool-open-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.getElementById('tool-' + btn.dataset.tool).classList.toggle('show');
-    });
-});
+})();
 
 /* ================= PAKAR YANG DISUBSCRIBE (dummy) ================= */
 const seedPakar = [
@@ -141,48 +84,51 @@ const seedPakar = [
     { nama: 'Sarah Amelia', bidang: 'Manajemen Operasional Bisnis' }
 ];
 
-function renderPakar() {
+function getPakarData() {
     const saved = localStorage.getItem('kembangin_pakar');
-    const data = saved ? JSON.parse(saved) : seedPakar;
-    const pakarList = document.getElementById('pakarList');
+    if (saved) return JSON.parse(saved);
+    localStorage.setItem('kembangin_pakar', JSON.stringify(seedPakar));
+    return seedPakar;
+}
 
+function renderPakar() {
+    const data = getPakarData();
+    const pakarList = document.getElementById('pakarList');
     pakarList.innerHTML = '';
+
     if (data.length === 0) {
-        pakarList.innerHTML = '<p class="tool-result">Belum ada pakar yang disubscribe</p>';
+        pakarList.innerHTML = '<p style="color:var(--text-400);font-size:.85rem;">Belum ada pakar yang diikuti</p>';
         return;
     }
 
     data.forEach((p, i) => {
         const card = document.createElement('div');
-        card.className = 'pakar-card';
+        card.className = 'pakar-card reveal';
         card.innerHTML = `
             <div class="pakar-avatar">${p.nama.charAt(0)}</div>
-            <div class="pakar-info">
-                <h4>${p.nama}</h4>
-                <span>${p.bidang}</span>
-            </div>
-            <button data-i="${i}">Unsubscribe</button>
+            <div class="pakar-info"><h4>${p.nama}</h4><span>${p.bidang}</span></div>
+            <button data-i="${i}">Berhenti Ikuti</button>
         `;
         pakarList.appendChild(card);
     });
 
     pakarList.querySelectorAll('button').forEach(btn => {
         btn.addEventListener('click', () => {
+            const nama = data[btn.dataset.i].nama;
             const arr = data.filter((_, idx) => idx != btn.dataset.i);
             localStorage.setItem('kembangin_pakar', JSON.stringify(arr));
             renderPakar();
+            renderStats();
+            showToast(`Berhenti mengikuti ${nama}`, 'fa-solid fa-user-xmark');
         });
     });
+    initScrollReveal('#panel-pakar .reveal');
 }
-renderPakar();
 
-/* ================= ARTIKEL & E-BOOK YANG DISAVE ================= */
-/* dipakai persis dari data yang sudah ada beneran di article.html & liblary.json,
-   bukan karangan sendiri -- sengaja cuma 1 item soalnya baru itu yang beneran dibuat */
+/* ================= ARTIKEL & E-BOOK DISAVE (data asli dari article.html / liblary.json) ================= */
 const savedArticles = [
     { title: 'Strategi Membangun Bisnis di Era Digital', author: 'Alexander Morgan', views: 2140, likes: 27650, img: '../assets/artike-img.jpg', kategori: 'Bisnis' }
 ];
-
 const savedBooks = [
     { title: 'The Lean Startup', author: 'Eric Ries', kategori: 'Startup', rating: 4.8, img: '../assets/book-asset.jpg' }
 ];
@@ -192,7 +138,7 @@ function renderSavedArticles() {
     list.innerHTML = '';
     savedArticles.forEach(a => {
         const card = document.createElement('div');
-        card.className = 'saved-card';
+        card.className = 'saved-card reveal';
         card.innerHTML = `
             <img src="${a.img}" alt="">
             <div class="saved-card-body">
@@ -215,7 +161,7 @@ function renderSavedBooks() {
     list.innerHTML = '';
     savedBooks.forEach(b => {
         const card = document.createElement('div');
-        card.className = 'saved-card';
+        card.className = 'saved-card reveal';
         card.innerHTML = `
             <img src="${b.img}" alt="">
             <div class="saved-card-body">
@@ -232,9 +178,6 @@ function renderSavedBooks() {
     });
 }
 
-renderSavedArticles();
-renderSavedBooks();
-
 /* ================= EVENT YANG SUDAH DIBELI (dummy) ================= */
 const boughtEvents = [
     { nama: 'Workshop Digital Marketing UMKM', tanggal: '28 September 2026', lokasi: 'Online via Zoom', img: '../assets/thum-event-1.jpg' },
@@ -247,10 +190,10 @@ const boughtEvents = [
     list.innerHTML = '';
     boughtEvents.forEach(ev => {
         const card = document.createElement('div');
-        card.className = 'event-card';
+        card.className = 'saved-card reveal';
         card.innerHTML = `
             <img src="${ev.img}" alt="">
-            <div class="event-card-body">
+            <div class="saved-card-body">
                 <h4>${ev.nama}</h4>
                 <div class="meta">
                     <span><i class="fa-regular fa-calendar"></i> ${ev.tanggal}</span>
@@ -263,10 +206,10 @@ const boughtEvents = [
     });
 })();
 
-/* ================= ARTIKEL SAYA (dummy CRUD, disimpan di localStorage) ================= */
+/* ================= ARTIKEL SAYA (dummy CRUD di localStorage) ================= */
 const seedMyArticles = [
     { id: 1, title: 'Kenapa UMKM Wajib Melek Digital', kategori: 'Bisnis Digital', status: 'publish', views: 340, img: '../assets/artike-img.jpg', isi: '' },
-    { id: 2, title: 'Draft: Ide Konten Promosi Bulan Ini', kategori: 'Pemasaran', status: 'draft', views: 0, img: '../assets/artike-img.jpg', isi: '' }
+    { id: 2, title: 'Draf: Ide Konten Promosi Bulan Ini', kategori: 'Pemasaran', status: 'draft', views: 0, img: '../assets/artike-img.jpg', isi: '' }
 ];
 
 function getMyArticles() {
@@ -275,10 +218,7 @@ function getMyArticles() {
     localStorage.setItem('kembangin_my_articles', JSON.stringify(seedMyArticles));
     return seedMyArticles;
 }
-
-function saveMyArticles(arr) {
-    localStorage.setItem('kembangin_my_articles', JSON.stringify(arr));
-}
+function saveMyArticles(arr) { localStorage.setItem('kembangin_my_articles', JSON.stringify(arr)); }
 
 function renderMyArticles() {
     const data = getMyArticles();
@@ -286,13 +226,13 @@ function renderMyArticles() {
     list.innerHTML = '';
 
     if (data.length === 0) {
-        list.innerHTML = '<p class="tool-result">Belum ada artikel, yuk buat yang pertama!</p>';
+        list.innerHTML = '<p style="color:var(--text-400);font-size:.85rem;">Belum ada artikel, yuk buat yang pertama!</p>';
         return;
     }
 
     data.forEach(a => {
         const row = document.createElement('div');
-        row.className = 'my-article-row';
+        row.className = 'my-article-row reveal';
         row.innerHTML = `
             <img src="${a.img}" alt="">
             <div class="info">
@@ -302,7 +242,7 @@ function renderMyArticles() {
                     <span><i class="fa-regular fa-eye"></i> ${a.views} views</span>
                 </div>
             </div>
-            <span class="status-tag ${a.status}">Status: ${a.status === 'draft' ? 'Draft' : 'Publish'}</span>
+            <span class="status-tag ${a.status}">Status: ${a.status === 'draft' ? 'Draf' : 'Diterbitkan'}</span>
             <button class="kelola-btn" data-id="${a.id}">Kelola Artikel</button>
         `;
         list.appendChild(row);
@@ -311,8 +251,8 @@ function renderMyArticles() {
     list.querySelectorAll('.kelola-btn').forEach(btn => {
         btn.addEventListener('click', () => openEditor(Number(btn.dataset.id)));
     });
+    initScrollReveal('#panel-myArticle .reveal');
 }
-renderMyArticles();
 
 /* ================= EDITOR ARTIKEL ALA WORDPRESS (dummy, statis) ================= */
 const editorOverlay = document.getElementById('editorOverlay');
@@ -325,7 +265,6 @@ let editingId = null;
 function openEditor(id) {
     const data = getMyArticles();
     editingId = id;
-
     if (id) {
         const article = data.find(a => a.id === id);
         editorTitle.textContent = 'Kelola Artikel';
@@ -340,11 +279,7 @@ function openEditor(id) {
     }
     editorOverlay.classList.add('show');
 }
-
-function closeEditor() {
-    editorOverlay.classList.remove('show');
-    editingId = null;
-}
+function closeEditor() { editorOverlay.classList.remove('show'); editingId = null; }
 
 function submitArticle(status) {
     const data = getMyArticles();
@@ -354,25 +289,17 @@ function submitArticle(status) {
 
     if (editingId) {
         const article = data.find(a => a.id === editingId);
-        article.title = judul;
-        article.kategori = kategori;
-        article.isi = isi;
-        article.status = status;
+        article.title = judul; article.kategori = kategori; article.isi = isi; article.status = status;
     } else {
-        data.unshift({
-            id: Date.now(),
-            title: judul,
-            kategori: kategori,
-            status: status,
-            views: 0,
-            img: '../assets/artike-img.jpg',
-            isi: isi
-        });
+        data.unshift({ id: Date.now(), title: judul, kategori, status, views: 0, img: '../assets/artike-img.jpg', isi });
     }
-
     saveMyArticles(data);
     renderMyArticles();
     closeEditor();
+    showToast(
+        status === 'publish' ? 'Artikel berhasil diterbitkan!' : 'Artikel disimpan sebagai draf',
+        status === 'publish' ? 'fa-solid fa-circle-check' : 'fa-solid fa-file-pen'
+    );
 }
 
 document.getElementById('newArticleBtn').addEventListener('click', () => openEditor(null));
@@ -380,3 +307,11 @@ document.getElementById('closeEditorBtn').addEventListener('click', closeEditor)
 editorOverlay.addEventListener('click', (e) => { if (e.target === editorOverlay) closeEditor(); });
 document.getElementById('saveDraftBtn').addEventListener('click', () => submitArticle('draft'));
 document.getElementById('publishBtn').addEventListener('click', () => submitArticle('publish'));
+
+/* ================= INIT ================= */
+renderStats();
+renderPakar();
+renderSavedArticles();
+renderSavedBooks();
+renderMyArticles();
+initScrollReveal('.reveal');

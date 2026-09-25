@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kembangin</title>
+    <title>Komunitas - Kembangin</title>
     <link rel="stylesheet" href="../public/css/component.css">
+    <link rel="stylesheet" href="../public/css/home.css">
     <link rel="stylesheet" href="../public/css/community.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 </head>
@@ -12,32 +13,65 @@
   <site-navbar></site-navbar>
 
   <main>
-    <section class="group-header">
-        <div class="group-cover"></div>
-        <div class="group-info">
-            <div class="group-icon"><i class="fa-solid fa-shop"></i></div>
-            <div class="group-text">
+    <div class="wrap ccol">
+
+        <!-- ===== SIDEBAR KIRI: info grup ===== -->
+        <aside class="c-side">
+
+            <div class="panel c-info">
+                <div class="c-cover"></div>
+                <div class="c-icon"><i class="fa-solid fa-shop"></i></div>
                 <h2>Komunitas UMKM Kembangin</h2>
-                <p><span id="memberCount">1.284</span> anggota &middot; Grup Publik</p>
+                <p class="c-desc">Tempat berbagi cerita, tanya-jawab, dan saling mendukung sesama pelaku UMKM dari berbagai daerah.</p>
+                <div class="c-stats">
+                    <div><i class="fa-solid fa-users"></i><b id="memberCount">1.284</b><span>Anggota</span></div>
+                    <div><i class="fa-solid fa-file-lines"></i><b>312</b><span>Postingan</span></div>
+                </div>
+                <button class="btn follow-btn" id="followBtn"><i class="fa-solid fa-user-plus"></i> Ikuti</button>
             </div>
-            <button class="follow-btn" id="followBtn">Follow</button>
-        </div>
 
-        <div class="member-row" id="memberRow"></div>
-        <button class="see-all-btn" id="seeAllBtn">Lihat Semua Anggota <i class="fa-solid fa-angle-right"></i></button>
-    </section>
+            <div class="panel">
+                <h2><i class="fa-solid fa-users"></i> Anggota</h2>
+                <div class="member-grid" id="memberGrid"></div>
+                <button class="see-all-btn" id="seeAllBtn">Lihat Semua Anggota</button>
+            </div>
 
-    <section class="community-body">
-        <div class="post-box">
-            <div class="post-avatar" id="postAvatar">S</div>
-            <form id="postForm">
-                <textarea id="postText" rows="3" placeholder="Ada kendala usaha atau mau sharing progress? tulis di sini..."></textarea>
-                <button type="submit">Posting</button>
-            </form>
-        </div>
+            <div class="panel">
+                <h2><i class="fa-solid fa-shield-halved"></i> Aturan Komunitas</h2>
+                <ol class="rules-list">
+                    <li>Saling menghargai & sopan antar anggota</li>
+                    <li>Dilarang promosi/spam di luar konteks UMKM</li>
+                    <li>Diskusi seputar bisnis, keuangan, dan pemasaran</li>
+                    <li>Laporkan konten yang melanggar ke admin</li>
+                </ol>
+            </div>
 
-        <div id="postFeed" class="post-feed"></div>
-    </section>
+        </aside>
+
+        <!-- ===== KONTEN UTAMA: composer + feed ===== -->
+        <section class="c-main">
+
+            <div class="panel post-box">
+                <div class="post-avatar" id="postAvatar">S</div>
+                <form id="postForm">
+                    <textarea id="postText" rows="3" placeholder="Ada kendala usaha atau mau berbagi progres? Tulis di sini..."></textarea>
+                    <button type="submit" class="btn">Bagikan</button>
+                </form>
+            </div>
+
+            <div class="feed-controls">
+                <div class="tabs" id="feedTabs">
+                    <button class="tab-btn active" data-filter="semua">Terbaru</button>
+                    <button class="tab-btn" data-filter="unread">Belum Dibaca <span class="unread-count" id="unreadCount"></span></button>
+                </div>
+                <div class="chips" id="categoryChips"></div>
+            </div>
+
+            <div id="postFeed" class="post-feed"></div>
+
+        </section>
+
+    </div>
   </main>
 
     <!-- panel daftar anggota -->
