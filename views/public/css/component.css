@@ -309,6 +309,20 @@ site-navbar + main {
     font-weight: 500;
 }
 
+/* Ditambahkan: kontrol tampil/sembunyi tombol Masuk vs widget profil
+   berdasarkan status login (lihat auth.js + Navbar.js#applyAuthState).
+   Sengaja pakai class terpisah (bukan langsung ubah .login-btn/.profile-login)
+   supaya tidak bentrok dengan aturan display bawaan/responsive di atas. */
+.login-btn.is-visible{
+    display: inline-flex;
+    align-items: center;
+}
+
+.profile-login.is-hidden{
+    display: none;
+}
+
+
 /* navbar end */
 
 /* dropdown */

@@ -428,6 +428,7 @@ class SiteNavbar extends HTMLElement {
 
     this.highlightActivePage();
     this.initChatbot();
+    this.applyAuthState();
   }
 
 
@@ -533,6 +534,48 @@ class SiteNavbar extends HTMLElement {
     });
 
   }
+
+
+  applyAuthState() {
+
+    const loginBtn = this.querySelector(".login-btn");
+    const profileWidget = this.querySelector("#profile-login");
+    const logoutLink = this.querySelector(".logout a");
+
+    const auth = window.KembanginAuth;
+    const loggedIn = !!(auth && auth.isLoggedIn());
+    const user = loggedIn ? auth.getUser() : null;
+
+    if (loginBtn) loginBtn.classList.toggle("is-visible", !loggedIn);
+    if (profileWidget) profileWidget.classList.toggle("is-hidden", !loggedIn);
+
+    if (loggedIn && user) {
+      const name = user.displayName || user.username || "Pengguna";
+      const initial = name.charAt(0).toUpperCase();
+
+      const avatarInitial = this.querySelector(".profile-login > .avatar > h2");
+      const nameLabel = this.querySelector(".profile-login-name");
+      const dropdownInitial = this.querySelector(".username-display .profile");
+      const dropdownName = this.querySelector(".username-display .username h3");
+      const dropdownEmail = this.querySelector(".username-display .username h5");
+
+      if (avatarInitial) avatarInitial.textContent = initial;
+      if (nameLabel) nameLabel.textContent = name;
+      if (dropdownInitial) dropdownInitial.textContent = initial;
+      if (dropdownName) dropdownName.textContent = name;
+      if (dropdownEmail) dropdownEmail.textContent = user.email || "";
+    }
+
+    if (logoutLink) {
+      logoutLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (auth) auth.logout();
+        window.location.href = logoutLink.getAttribute("href");
+      });
+    }
+
+  }
+
 }
 
 customElements.define("site-navbar", SiteNavbar);

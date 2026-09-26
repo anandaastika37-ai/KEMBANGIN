@@ -107,6 +107,13 @@ h2 {
     text-decoration: underline;
 }
 
+.login-error {
+    margin: -10px 0 15px;
+    font-size: .85rem;
+    color: #ff6b6b;
+    text-align: center;
+}
+
 .btn-submit {
     width: 100%;
     height: 45px;
