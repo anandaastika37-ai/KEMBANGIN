@@ -245,6 +245,15 @@
   color: #fff;
   background: rgba(90, 93, 255, 0.12);
 }
+.share-btn.share-community-btn {
+  width: auto;
+  height: auto;
+  min-height: 34px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  gap: 7px;
+  font: 0.76rem var(--font-openSans);
+}
 .share-btn:focus-visible {
   outline: 2px solid var(--color-accent-light);
   outline-offset: 2px;

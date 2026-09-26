@@ -251,8 +251,27 @@
 
     setText("statCourse", courseSelesai);
     setText("statArtikel", readCountFromStorage("kembangin_articles_read", 28));
-    setText("statBookmark", readCountFromStorage("kembangin_bookmarks", 8));
-    setText("statDiskusi", readCountFromStorage("kembangin_discussions", 5));
+    var savedArticles = [];
+    try {
+      var rawBookmarks = JSON.parse(localStorage.getItem("kembangin:bookmarks") || "[]");
+      if (Array.isArray(rawBookmarks)) savedArticles = rawBookmarks;
+    } catch (e) {
+      savedArticles = [];
+    }
+    setText("statBookmark", savedArticles.length);
+
+    var userPosts = [];
+    try {
+      var posts = JSON.parse(localStorage.getItem("kembangin_posts_v2") || "[]");
+      if (Array.isArray(posts)) {
+        userPosts = posts.filter(function (post) {
+          return post.nama === profile.fullname;
+        });
+      }
+    } catch (e) {
+      userPosts = [];
+    }
+    setText("statDiskusi", userPosts.length);
   }
 
   function renderContinueLearning() {

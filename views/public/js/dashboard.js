@@ -1,3 +1,54 @@
+function animateCount(element, target, duration = 700, suffix = '') {
+    if (!element) return;
+    const end = Number(target) || 0;
+    const start = Number(element.textContent.replace(/[^\d.-]/g, '')) || 0;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        element.textContent = end.toLocaleString('id-ID') + suffix;
+        return;
+    }
+
+    const startedAt = performance.now();
+    function frame(now) {
+        const progress = Math.min((now - startedAt) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        element.textContent = Math.round(start + (end - start) * eased).toLocaleString('id-ID') + suffix;
+        if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+}
+
+function initScrollReveal(selector) {
+    const elements = document.querySelectorAll(selector);
+    if (!('IntersectionObserver' in window)) {
+        elements.forEach(element => element.classList.add('in-view'));
+        return;
+    }
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    elements.forEach(element => observer.observe(element));
+}
+
+function showToast(message, icon = 'fa-solid fa-circle-check') {
+    let toast = document.getElementById('dashboardToast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'dashboardToast';
+        toast.className = 'dashboard-toast';
+        toast.setAttribute('role', 'status');
+        document.body.appendChild(toast);
+    }
+    toast.innerHTML = `<i class="${icon}"></i><span>${escapeHtml(message)}</span>`;
+    toast.classList.add('show');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
 /* ================= SIDEBAR NAVIGATION ================= */
 const sidebarBtns = document.querySelectorAll('.sidebar-btn');
 const panels = document.querySelectorAll('.panel');
@@ -15,11 +66,12 @@ sidebarBtns.forEach(btn => {
 });
 
 /* ================= BERANDA: statistik penggunaan (dummy) ================= */
+// DATA DUMMY PROTOTYPE — nantinya dapat diganti dengan data akun/backend.
 const usageStats = {
     artikel: 18,
     ebook: 4,
     forum: 9,
-    event: 3,
+    event: 2,
     course: 2,
     streak: 6,
     like: 27
@@ -94,12 +146,30 @@ async function fetchJSON(url) {
 
 /* ID yang dianggap "diikuti/disimpan" oleh pengguna contoh ini */
 const DEFAULT_PAKAR_IDS = [1, 2, 3];
-const DEFAULT_ARTIKEL_IDS = [20, 76, 75];
 const DEFAULT_BUKU_IDS = [18, 43, 5];
+const ARTICLE_BOOKMARK_KEY = 'kembangin:bookmarks';
 
 function getSavedIds(key, defaultIds) {
-    const saved = localStorage.getItem(key);
-    return saved ? JSON.parse(saved) : defaultIds;
+    try {
+        const saved = localStorage.getItem(key);
+        const parsed = saved ? JSON.parse(saved) : defaultIds;
+        return Array.isArray(parsed) ? parsed : defaultIds;
+    } catch (err) {
+        console.warn('Data simpanan tidak dapat dibaca:', key, err);
+        return defaultIds;
+    }
+}
+
+function getSavedArticleIds() {
+    const saved = localStorage.getItem(ARTICLE_BOOKMARK_KEY);
+    if (saved !== null) return getSavedIds(ARTICLE_BOOKMARK_KEY, []);
+
+    const legacy = localStorage.getItem('kembangin_artikel_ids');
+    const ids = legacy !== null
+        ? getSavedIds('kembangin_artikel_ids', [])
+        : allArtikelData.filter(a => a.status === 'public').slice(0, 3).map(a => a.id);
+    localStorage.setItem(ARTICLE_BOOKMARK_KEY, JSON.stringify(ids));
+    return ids;
 }
 
 let allPakarData = [];
@@ -147,7 +217,7 @@ function renderPakar() {
 }
 
 function renderSavedArticles() {
-    const ids = getSavedIds('kembangin_artikel_ids', DEFAULT_ARTIKEL_IDS);
+    const ids = getSavedArticleIds();
     const data = allArtikelData.filter(a => ids.includes(a.id));
     const list = document.getElementById('savedArticleList');
     list.innerHTML = '';
@@ -160,22 +230,40 @@ function renderSavedArticles() {
     data.forEach(a => {
         const card = document.createElement('div');
         card.className = 'saved-card reveal';
+        const detailUrl = `article-detail.html?slug=${encodeURIComponent(a.slug)}`;
+        const author = a.author && a.author.name ? a.author.name : 'Penulis Kembangin';
         card.innerHTML = `
-            <img src="${a.image}" alt="" onerror="this.src='../assets/artike-img.jpg'">
+            <a href="${detailUrl}" aria-label="Baca ${escapeHtml(a.title)}"><img src="${escapeHtml(a.image || '../assets/artike-img.jpg')}" alt="" onerror="this.onerror=null;this.src='../assets/artike-img.jpg'"></a>
             <div class="saved-card-body">
                 <div class="save-icon"><i class="fa-solid fa-bookmark"></i></div>
-                <span class="mini-tag">${a.category}</span>
-                <h4>${a.title}</h4>
+                <span class="mini-tag">${escapeHtml(a.category || 'Artikel')}</span>
+                <h4><a href="${detailUrl}">${escapeHtml(a.title)}</a></h4>
                 <div class="meta">
-                    <span><i class="fa-solid fa-feather-pointed"></i> ${a.author.name}</span>
-                    <span><i class="fa-regular fa-eye"></i> ${a.views.toLocaleString('id-ID')}</span>
-                    <span><i class="fa-regular fa-heart"></i> ${a.likes.toLocaleString('id-ID')}</span>
+                    <span><i class="fa-solid fa-feather-pointed"></i> ${escapeHtml(author)}</span>
+                    <span><i class="fa-regular fa-eye"></i> ${Number(a.views || 0).toLocaleString('id-ID')}</span>
+                    <span><i class="fa-regular fa-heart"></i> ${Number(a.likes || 0).toLocaleString('id-ID')}</span>
                 </div>
+                <button type="button" class="saved-remove-btn" data-id="${a.id}"><i class="fa-solid fa-bookmark"></i> Hapus dari simpanan</button>
             </div>
         `;
         list.appendChild(card);
     });
+    list.querySelectorAll('.saved-remove-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = Number(btn.dataset.id);
+            const remaining = getSavedArticleIds().filter(savedId => savedId !== id);
+            localStorage.setItem(ARTICLE_BOOKMARK_KEY, JSON.stringify(remaining));
+            renderSavedArticles();
+            showToast('Artikel dihapus dari simpanan', 'fa-solid fa-bookmark');
+        });
+    });
     initScrollReveal('#panel-savedArticle .reveal');
+}
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
 }
 
 function renderSavedBooks() {
@@ -211,10 +299,10 @@ function renderSavedBooks() {
 
 
 /* ================= EVENT YANG SUDAH DIBELI (dummy) ================= */
+// DATA DUMMY PROTOTYPE — contoh event yang pernah diikuti pengguna.
 const boughtEvents = [
     { nama: 'Workshop Digital Marketing UMKM', tanggal: '28 September 2026', lokasi: 'Online via Zoom', img: '../assets/thum-event-1.jpg' },
-    { nama: 'Seminar Literasi Keuangan Usaha', tanggal: '3 Oktober 2026', lokasi: 'Denpasar', img: '../assets/thum-event-2.jpg' },
-    { nama: 'Bootcamp Strategi Bisnis 2026', tanggal: '12 Oktober 2026', lokasi: 'Online via Zoom', img: '../assets/thum-event-3.jpg' }
+    { nama: 'Seminar Literasi Keuangan Usaha', tanggal: '3 Oktober 2026', lokasi: 'Denpasar', img: '../assets/thum-event-2.jpg' }
 ];
 
 (function renderEvents() {
