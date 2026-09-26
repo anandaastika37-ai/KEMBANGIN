@@ -172,6 +172,9 @@ class SiteNavbar extends HTMLElement {
 
           </div>
 
+          <!-- Diisi otomatis oleh public/js/search.js, sama seperti #searchResults -->
+          <ul class="mobile-search-results" id="mobileSearchResults"></ul>
+
         </div>
 
 
@@ -352,74 +355,9 @@ class SiteNavbar extends HTMLElement {
         <!-- SEARCH RESULT -->
         <div class="dropdown-search">
 
-          <ul class="hiddenSearch">
-
-            <span>Pages</span>
-
-            <li>
-              <a href="../pages/home.html">
-                <i class="fa-regular fa-file" aria-hidden="true"></i>
-                Beranda
-              </a>
-            </li>
-
-            <li>
-              <a href="../pages/article.html">
-                <i class="fa-regular fa-file" aria-hidden="true"></i>
-                Artikel
-              </a>
-            </li>
-
-            <li>
-              <a href="../pages/course.html">
-                <i class="fa-regular fa-file" aria-hidden="true"></i>
-                Belajar
-              </a>
-            </li>
-
-            <li>
-              <a href="../pages/consultation.html">
-                <i class="fa-regular fa-file" aria-hidden="true"></i>
-                Konsultasi
-              </a>
-            </li>
-
-            <li>
-              <a href="../pages/library.html">
-                <i class="fa-regular fa-file" aria-hidden="true"></i>
-                Perpustakaan
-              </a>
-            </li>
-
-            <li>
-              <a href="../pages/forum.html">
-                <i class="fa-regular fa-file" aria-hidden="true"></i>
-                Forum
-              </a>
-            </li>
-
-            <li>
-              <a href="../pages/community.html">
-                <i class="fa-regular fa-file" aria-hidden="true"></i>
-                Komunitas
-              </a>
-            </li>
-
-            <li>
-              <a href="../pages/dashboard.html">
-                <i class="fa-regular fa-file" aria-hidden="true"></i>
-                Dasbor
-              </a>
-            </li>
-
-            <li>
-              <a href="../pages/profile.html">
-                <i class="fa-regular fa-file" aria-hidden="true"></i>
-                Profil
-              </a>
-            </li>
-
-          </ul>
+          <!-- Diisi otomatis oleh public/js/search.js (indeks halaman +
+               artikel/forum/konsultan/buku/kursus dari views/database) -->
+          <ul class="hiddenSearch" id="searchResults"></ul>
 
         </div>
 

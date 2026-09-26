@@ -11,6 +11,12 @@
   const DATA_URL = "../database/consultation.json";
   const PAGE_SIZE = 12;
 
+  // Durasi transisi modal terlama (lihat .consultation-modal di CSS: 0.28s)
+  // + sedikit buffer, supaya overlay baru benar-benar disembunyikan SETELAH
+  // animasi selesai — dan supaya modal berikutnya (kalau ada) tidak dibuka
+  // di atas modal yang masih fade-out.
+  const MODAL_TRANSITION_MS = 300;
+
   let DATA = [];
 
   /* ---------------- KLASIFIKASI BIDANG ----------------
@@ -57,6 +63,12 @@
     const div = document.createElement("div");
     div.textContent = str == null ? "" : String(str);
     return div.innerHTML;
+  }
+
+  // Dipakai khusus untuk menyisipkan URL ke dalam atribut style/url(...)
+  // supaya kutip tidak merusak markup.
+  function escapeUrlAttr(str) {
+    return escapeHtml(str).replace(/'/g, "%27");
   }
 
   function initials(name) {
@@ -126,9 +138,15 @@
     const hargaParts = String(c.harga).split(" / ");
     const hargaValue = hargaParts[0] || c.harga;
     const hargaUnit = hargaParts[1] || "sesi";
-    const bgStyle = c.foto ? ' style="background-image:url(../assets/consultan.jpg)"' : "";
+    // Foto dikirim lewat custom property --photo (bukan background-image
+    // langsung) supaya CSS bisa memisahkan foto ke layer ::before sendiri
+    // dan menganimasikannya lewat transform:scale() saat hover — lihat
+    // .consultant-card::before di consultation.css untuk alasan lengkapnya
+    // (transform bisa di-interpolasi mulus, background-size dari "cover"
+    // ke angka tidak bisa).
+    const bgStyle = c.foto ? ' style="--photo:url(\'' + escapeUrlAttr(c.foto) + '\')"' : "";
     return (
-      '<article class="consultant-card"' + bgStyle + '' + c.id + '" role="button" tabindex="0" aria-label="Lihat profil ' + escapeHtml(c.nama) + '">' +
+      '<article class="consultant-card"' + bgStyle + ' data-id="' + c.id + '" role="button" tabindex="0" aria-label="Lihat profil ' + escapeHtml(c.nama) + '">' +
         '<div class="consultant-card__scrim"></div>' +
         '<span class="consultant-card__initials" aria-hidden="true">' + escapeHtml(initials(c.nama)) + "</span>" +
         '<div class="consultant-card__top-row">' +
@@ -400,7 +418,7 @@
 
     body.innerHTML =
       '<div class="consultant-profile__head">' +
-        '<div class="consultant-profile__avatar" style="background-image:url(\'' + consultant.foto + '\')" data-avatar-id="' + consultant.id + '"><span class="consultant-profile__avatar-initials">' + escapeHtml(initials(consultant.nama)) + '</span></div>' +
+        '<div class="consultant-profile__avatar" style="background-image:url(\'' + escapeUrlAttr(consultant.foto || "") + '\')" data-avatar-id="' + consultant.id + '"><span class="consultant-profile__avatar-initials">' + escapeHtml(initials(consultant.nama)) + '</span></div>' +
         "<div>" +
           '<div class="consultant-profile__name" id="profileModalName">' + escapeHtml(consultant.nama) + "</div>" +
           '<div class="consultant-profile__role">Ahli Bisnis &middot; ' + escapeHtml(consultant.pendidikan) + "</div>" +
@@ -435,18 +453,22 @@
     document.body.style.overflow = "hidden";
 
     document.getElementById("profileScheduleBtn").addEventListener("click", () => {
-      closeModal(overlay);
-      openBookingModal(consultant);
+      // Tunggu modal profil BENAR-BENAR selesai tertutup (lihat
+      // MODAL_TRANSITION_MS) sebelum membuka modal booking — sebelumnya
+      // keduanya dibuka/ditutup nyaris bersamaan, jadi sekilas dua overlay
+      // gelap tumpuk (kelihatan seperti kedip).
+      closeModal(overlay, () => openBookingModal(consultant));
     });
   }
 
-  function closeModal(overlay) {
+  function closeModal(overlay, onDone) {
     overlay.classList.remove("is-open");
     setTimeout(() => {
       overlay.hidden = true;
       const anyOpen = document.querySelector(".consultation-modal-overlay.is-open");
       if (!anyOpen) document.body.style.overflow = "";
-    }, 250);
+      if (onDone) onDone();
+    }, MODAL_TRANSITION_MS);
   }
 
   /* ---------------- BOOKING MODAL ---------------- */
@@ -485,7 +507,7 @@
     ).join("");
 
     document.getElementById("bookingTimeList").innerHTML =
-      '<p style="color:var(--c-text-200);font-size:0.85rem;grid-column:1/-1;">Pilih tanggal terlebih dahulu.</p>';
+      '<p style="color:var(--text-200);font-size:0.85rem;grid-column:1/-1;">Pilih tanggal terlebih dahulu.</p>';
 
     dateList.querySelectorAll("[data-date-index]").forEach(btn => {
       btn.addEventListener("click", () => selectDate(parseInt(btn.dataset.dateIndex, 10), dates));

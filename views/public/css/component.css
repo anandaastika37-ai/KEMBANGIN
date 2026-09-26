@@ -576,6 +576,8 @@ site-navbar + main {
     width: 250px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
     transition: all .4s ease-in-out;
+    max-height: 70vh;
+    overflow-y: auto;
 }
 
 .find{
@@ -615,6 +617,107 @@ site-navbar + main {
 }
 
 .dropdown-search > ul > li > a:hover{
+    background-color: #242424;
+}
+
+/* Ditambahkan: hasil pencarian sekarang bisa berupa judul+sub-teks
+   (artikel/forum/konsultan/dst), bukan cuma label halaman polos, jadi
+   butuh sedikit tata letak & state tambahan. */
+.dropdown-search > ul > li > a{
+    min-width: 0; /* supaya ellipsis di dalam .search-result-text jalan */
+}
+
+.dropdown-search > ul > li > a.is-active,
+.mobile-search-results > li > a.is-active{
+    background-color: #242424;
+    outline: 2px solid #4ea1ff;
+    outline-offset: -2px;
+}
+
+.search-result-text{
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 2px;
+}
+
+.search-result-text strong{
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result-text small{
+    color: #8a8a8a;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-search mark,
+.mobile-search-results mark{
+    background: none;
+    color: #4ea1ff;
+    font-weight: 700;
+}
+
+.search-empty{
+    padding: 10px;
+    color: #8a8a8a;
+    font-size: 13px;
+    width: 100%;
+}
+
+/* Panel hasil search versi mobile — bukan absolute seperti .hiddenSearch
+   (posisinya dihitung untuk search bar desktop), tapi ikut alur normal
+   di bawah kotak input mobile. */
+.mobile-search-bar{
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mobile-search-results{
+    display: none;
+    width: 100%;
+    max-height: 60vh;
+    overflow-y: auto;
+    flex-direction: column;
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-openSans);
+}
+
+.mobile-search-results.show{
+    display: flex;
+}
+
+.mobile-search-results > span{
+    color: white;
+    font-weight: 600;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.mobile-search-results > li > a{
+    width: 100%;
+    background-color: #1b1c1d;
+    padding: 10px;
+    border-radius: 4px;
+    color: rgb(209, 209, 209);
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    transition: background-color .2s ease;
+}
+
+.mobile-search-results > li > a:hover{
     background-color: #242424;
 }
 

@@ -1,7 +1,3 @@
-const search = document.getElementById('search');
-const dropdownSearch = document.querySelector('.hiddenSearch');
-const navSearch = document.querySelector('.navbar-search');
-
 const produkBtn = document.getElementById('nav-drop');
 const dropdownProduct = document.querySelector('.dropdown-produk');
 const iconArrow = document.querySelector('.fa-angle-down')
@@ -19,17 +15,8 @@ const mobileSearchInput = document.getElementById('mobile-search');
 const produkBtnMobile = document.querySelector('.nav-drop-mobile');
 const dropdownProductMobile = document.querySelector('.dropdown-produk-mobile');
 
-/* SEARCH */
-
-search.addEventListener('focus', function () {
-    dropdownSearch.classList.add('find');
-    navSearch.classList.add('navbar-search-tall');
-});
-
-search.addEventListener('blur', function () {
-    dropdownSearch.classList.remove('find');
-    navSearch.classList.remove('navbar-search-tall');
-});
+/* SEARCH — dipindah ke public/js/search.js (live filter, bukan cuma
+   toggle tampil/sembunyi lagi) */
 const dropdowns = [];
 class Dropdown {
     constructor(button, dropdown, options = {}) {
