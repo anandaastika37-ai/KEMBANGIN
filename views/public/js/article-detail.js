@@ -137,6 +137,41 @@
     if (links[platform]) window.open(links[platform], '_blank', 'noopener,noreferrer');
   }
 
+  function shareToCommunity(a) {
+    const key = 'kembangin_posts_v2';
+    let posts = [];
+    try {
+      const stored = JSON.parse(localStorage.getItem(key) || '[]');
+      if (Array.isArray(stored)) posts = stored;
+    } catch { /* start with an empty community feed if stored data is invalid */ }
+
+    let profile = {};
+    try { profile = JSON.parse(localStorage.getItem('kembangin_profile') || '{}'); }
+    catch { /* use the guest name */ }
+
+    posts.unshift({
+      id: Date.now(),
+      nama: profile.fullname || 'Seseorang Wijaya',
+      admin: false,
+      pinned: false,
+      kategori: 'Artikel',
+      text: `Saya ingin berbagi artikel ini: ${a.title}`,
+      article: {
+        title: a.title,
+        excerpt: a.excerpt,
+        href: new URL(detailLink(a), location.href).href
+      },
+      img: '',
+      waktu: 'Baru saja',
+      likes: 0,
+      comments: 0,
+      liked: false,
+      read: true
+    });
+    localStorage.setItem(key, JSON.stringify(posts));
+    location.href = 'community.html';
+  }
+
   /* ---------- KOMENTAR (statis: hanya disimpan di localStorage browser ini, per artikel) ---------- */
   const readComments = (id) => {
     try { return JSON.parse(localStorage.getItem(`${CONFIG.storagePrefix}comments:${id}`)) || []; }
@@ -368,6 +403,7 @@
           <button type="button" class="share-btn" data-share="copy" aria-label="Salin link"><i class="fa-solid fa-link"></i></button>
           <button type="button" class="share-btn" data-share="whatsapp" aria-label="Bagikan ke WhatsApp"><i class="fa-brands fa-whatsapp"></i></button>
           <button type="button" class="share-btn" data-share="twitter" aria-label="Bagikan ke X"><i class="fa-brands fa-x-twitter"></i></button>
+          <button type="button" class="share-btn share-community-btn" data-share="community"><i class="fa-solid fa-users"></i> Bagikan ke Komunitas</button>
         </div>
 
         <div class="detail-author-card">
@@ -388,6 +424,7 @@
       if (shareBtn) {
         const platform = shareBtn.dataset.share;
         if (platform === 'copy') copyLink(a);
+        else if (platform === 'community') shareToCommunity(a);
         else shareTo(platform, a);
         return;
       }

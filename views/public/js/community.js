@@ -58,6 +58,7 @@ memberOverlay.addEventListener('click', (e) => { if (e.target === memberOverlay)
 /* ================= FOLLOW BUTTON ================= */
 const followBtn = document.getElementById('followBtn');
 const memberCountEl = document.getElementById('memberCount');
+// DATA DUMMY PROTOTYPE — ganti dengan data backend saat sistem sudah terhubung.
 const baseMember = 1284;
 
 function syncFollowState() {
@@ -88,8 +89,8 @@ const categoryChips = document.getElementById('categoryChips');
 const feedTabs = document.getElementById('feedTabs');
 const unreadCountEl = document.getElementById('unreadCount');
 
-const categories = ['Semua', 'Pemasaran', 'Keuangan', 'Inovasi', 'Curhat'];
-const categoryColorMap = { Pemasaran: 'orange', Keuangan: 'teal', Inovasi: 'purple', Curhat: 'pink' };
+const categories = ['Semua', 'Pemasaran', 'Keuangan', 'Inovasi', 'Curhat', 'Artikel'];
+const categoryColorMap = { Pemasaran: 'orange', Keuangan: 'teal', Inovasi: 'purple', Curhat: 'pink', Artikel: 'teal' };
 function categoryColorClass(cat) { return categoryColorMap[cat] ? 'cat-' + categoryColorMap[cat] : ''; }
 let activeCategory = 'Semua';
 let activeTab = 'semua';
@@ -114,15 +115,35 @@ const seedPosts = [
 
 function getPosts() {
     const saved = localStorage.getItem('kembangin_posts_v2');
-    if (saved) return JSON.parse(saved);
-    localStorage.setItem('kembangin_posts_v2', JSON.stringify(seedPosts));
-    return seedPosts;
+    let posts = seedPosts;
+    try {
+        const parsed = saved ? JSON.parse(saved) : seedPosts;
+        if (Array.isArray(parsed)) posts = parsed;
+    } catch (err) {
+        console.warn('Data komunitas tidak dapat dibaca; memakai data demo.', err);
+    }
+    if (!saved) localStorage.setItem('kembangin_posts_v2', JSON.stringify(seedPosts));
+
+    const postCount = document.getElementById('postCount');
+    if (postCount) postCount.textContent = Math.max(42, posts.length + 37);
+
+    return posts;
 }
 function getCurrentUser() {
-    const saved = localStorage.getItem('kembangin_profile_data');
-    return saved ? JSON.parse(saved) : { fullname: 'Seseorang203' };
+    try {
+        const saved = JSON.parse(localStorage.getItem('kembangin_profile') || '{}');
+        return { fullname: saved.fullname || 'Seseorang Wijaya' };
+    } catch (err) {
+        return { fullname: 'Seseorang Wijaya' };
+    }
 }
 function savePosts(posts) { localStorage.setItem('kembangin_posts_v2', JSON.stringify(posts)); }
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
+}
 
 /* chip kategori */
 categories.forEach(cat => {
@@ -180,18 +201,19 @@ function renderFeed() {
         const card = document.createElement('div');
         card.className = 'post-card' + (!post.read ? ' unread' : '') + (post.pinned ? ' pinned' : '');
         card.innerHTML = `
-            <div class="post-avatar" style="background:${avatarColor(i)}">${post.nama.charAt(0).toUpperCase()}</div>
+            <div class="post-avatar" style="background:${avatarColor(i)}">${escapeHtml(post.nama.charAt(0).toUpperCase())}</div>
             <div class="post-card-body">
                 ${post.pinned ? '<div class="pin-label"><i class="fa-solid fa-thumbtack"></i> Disematkan Admin</div>' : ''}
                 <div class="post-card-head">
-                    <b>${post.nama}</b>
+                    <b>${escapeHtml(post.nama)}</b>
                     ${post.admin ? '<span class="admin-tag">Admin</span>' : ''}
                     ${!post.read ? '<span class="unread-dot"></span>' : ''}
-                    <small>${post.waktu}</small>
+                    <small>${escapeHtml(post.waktu)}</small>
                 </div>
-                <span class="cat-tag ${categoryColorClass(post.kategori)}">${post.kategori}</span>
-                <p>${post.text}</p>
-                ${post.img ? `<img class="post-img" src="${post.img}" alt="">` : ''}
+                <span class="cat-tag ${categoryColorClass(post.kategori)}">${escapeHtml(post.kategori)}</span>
+                <p>${escapeHtml(post.text)}</p>
+                ${post.article ? `<a class="post-article-preview" href="${escapeHtml(post.article.href)}" target="_blank" rel="noopener"><strong>${escapeHtml(post.article.title)}</strong><span>${escapeHtml(post.article.excerpt)}</span><em>Baca artikel <i class="fa-solid fa-arrow-up-right-from-square"></i></em></a>` : ''}
+                ${post.img ? `<img class="post-img" src="${escapeHtml(post.img)}" alt="">` : ''}
                 <div class="post-actions">
                     <button class="like-btn ${post.liked ? 'liked' : ''}" data-id="${post.id}" data-action="like">
                         <i class="fa-solid fa-thumbs-up"></i> ${post.likes}
@@ -252,7 +274,7 @@ postForm.addEventListener('submit', function (e) {
     const newId = Date.now();
 
     posts.unshift({
-        id: newId, nama: user.fullname || user.name || 'Seseorang203', admin: false, pinned: false,
+        id: newId, nama: user.fullname || user.name || 'Seseorang Wijaya', admin: false, pinned: false,
         kategori: 'Curhat', text: text, img: '', waktu: 'Baru saja', likes: 0, comments: 0, liked: false, read: true
     });
 
