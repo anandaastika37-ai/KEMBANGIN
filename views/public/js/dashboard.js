@@ -61,9 +61,9 @@ const chartDays = ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'];
 /* aktivitas terbaru (dummy) */
 const recentActivity = [
     { icon: 'fa-solid fa-book', text: 'Membaca artikel <b>Strategi Membangun Bisnis di Era Digital</b>', waktu: '3 jam lalu' },
-    { icon: 'fa-solid fa-comments', text: 'Ikut diskusi di forum <b>Strategi Pemasaran UMKM</b>', waktu: '1 hari lalu' },
-    { icon: 'fa-solid fa-user-tie', text: 'Subscribe ke pakar <b>Dr. Anita Pratiwi</b>', waktu: '2 hari lalu' },
-    { icon: 'fa-regular fa-heart', text: 'Menyukai postingan di Komunitas', waktu: '3 hari lalu' },
+    { icon: 'fa-solid fa-comments', text: 'Mengikuti diskusi forum <b>Strategi Pemasaran UMKM</b>', waktu: '1 hari lalu' },
+    { icon: 'fa-solid fa-user-tie', text: 'Mulai mengikuti pakar <b>Andi Pratama, S.E.</b>', waktu: '2 hari lalu' },
+    { icon: 'fa-regular fa-heart', text: 'Menyukai sebuah unggahan di Komunitas', waktu: '3 hari lalu' },
     { icon: 'fa-solid fa-calendar-check', text: 'Membeli tiket event <b>Workshop Digital Marketing UMKM</b>', waktu: '5 hari lalu' }
 ];
 
@@ -77,18 +77,38 @@ const recentActivity = [
     });
 })();
 
-/* ================= PAKAR YANG DISUBSCRIBE (dummy) ================= */
-const seedPakar = [
-    { nama: 'Dr. Anita Pratiwi', bidang: 'Konsultan Keuangan UMKM' },
-    { nama: 'Budi Santoso, M.M.', bidang: 'Strategi Pemasaran Digital' },
-    { nama: 'Sarah Amelia', bidang: 'Manajemen Operasional Bisnis' }
-];
+/* ================= AMBIL DATA ASLI DARI FILE JSON ================= */
+/* Pakar, artikel, dan e-book sekarang diambil dari database yang sama
+   dengan halaman Konsultasi, Artikel, dan Perpustakaan (bukan data karangan lagi). */
+
+async function fetchJSON(url) {
+    try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Gagal memuat ' + url);
+        return await res.json();
+    } catch (err) {
+        console.error(err);
+        return [];
+    }
+}
+
+/* ID yang dianggap "diikuti/disimpan" oleh pengguna contoh ini */
+const DEFAULT_PAKAR_IDS = [1, 2, 3];
+const DEFAULT_ARTIKEL_IDS = [20, 76, 75];
+const DEFAULT_BUKU_IDS = [18, 43, 5];
+
+function getSavedIds(key, defaultIds) {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : defaultIds;
+}
+
+let allPakarData = [];
+let allArtikelData = [];
+let allBukuData = [];
 
 function getPakarData() {
-    const saved = localStorage.getItem('kembangin_pakar');
-    if (saved) return JSON.parse(saved);
-    localStorage.setItem('kembangin_pakar', JSON.stringify(seedPakar));
-    return seedPakar;
+    const ids = getSavedIds('kembangin_pakar_ids', DEFAULT_PAKAR_IDS);
+    return allPakarData.filter(p => ids.includes(p.id));
 }
 
 function renderPakar() {
@@ -101,22 +121,23 @@ function renderPakar() {
         return;
     }
 
-    data.forEach((p, i) => {
+    data.forEach((p) => {
         const card = document.createElement('div');
         card.className = 'pakar-card reveal';
         card.innerHTML = `
             <div class="pakar-avatar">${p.nama.charAt(0)}</div>
-            <div class="pakar-info"><h4>${p.nama}</h4><span>${p.bidang}</span></div>
-            <button data-i="${i}">Berhenti Ikuti</button>
+            <div class="pakar-info"><h4>${p.nama}</h4><span>${p.spesialisasi[0]}</span></div>
+            <button data-id="${p.id}">Berhenti Mengikuti</button>
         `;
         pakarList.appendChild(card);
     });
 
     pakarList.querySelectorAll('button').forEach(btn => {
         btn.addEventListener('click', () => {
-            const nama = data[btn.dataset.i].nama;
-            const arr = data.filter((_, idx) => idx != btn.dataset.i);
-            localStorage.setItem('kembangin_pakar', JSON.stringify(arr));
+            const id = Number(btn.dataset.id);
+            const nama = allPakarData.find(p => p.id === id).nama;
+            const ids = getSavedIds('kembangin_pakar_ids', DEFAULT_PAKAR_IDS).filter(x => x !== id);
+            localStorage.setItem('kembangin_pakar_ids', JSON.stringify(ids));
             renderPakar();
             renderStats();
             showToast(`Berhenti mengikuti ${nama}`, 'fa-solid fa-user-xmark');
@@ -125,48 +146,57 @@ function renderPakar() {
     initScrollReveal('#panel-pakar .reveal');
 }
 
-/* ================= ARTIKEL & E-BOOK DISAVE (data asli dari article.html / liblary.json) ================= */
-const savedArticles = [
-    { title: 'Strategi Membangun Bisnis di Era Digital', author: 'Alexander Morgan', views: 2140, likes: 27650, img: '../assets/artike-img.jpg', kategori: 'Bisnis' }
-];
-const savedBooks = [
-    { title: 'The Lean Startup', author: 'Eric Ries', kategori: 'Startup', rating: 4.8, img: '../assets/book-asset.jpg' }
-];
-
 function renderSavedArticles() {
+    const ids = getSavedIds('kembangin_artikel_ids', DEFAULT_ARTIKEL_IDS);
+    const data = allArtikelData.filter(a => ids.includes(a.id));
     const list = document.getElementById('savedArticleList');
     list.innerHTML = '';
-    savedArticles.forEach(a => {
+
+    if (data.length === 0) {
+        list.innerHTML = '<p style="color:var(--text-400);font-size:.85rem;">Belum ada artikel yang disimpan</p>';
+        return;
+    }
+
+    data.forEach(a => {
         const card = document.createElement('div');
         card.className = 'saved-card reveal';
         card.innerHTML = `
-            <img src="${a.img}" alt="">
+            <img src="${a.image}" alt="" onerror="this.src='../assets/artike-img.jpg'">
             <div class="saved-card-body">
                 <div class="save-icon"><i class="fa-solid fa-bookmark"></i></div>
-                <span class="mini-tag">${a.kategori}</span>
+                <span class="mini-tag">${a.category}</span>
                 <h4>${a.title}</h4>
                 <div class="meta">
-                    <span><i class="fa-solid fa-feather-pointed"></i> ${a.author}</span>
-                    <span><i class="fa-regular fa-eye"></i> ${a.views}</span>
-                    <span><i class="fa-regular fa-heart"></i> ${a.likes}</span>
+                    <span><i class="fa-solid fa-feather-pointed"></i> ${a.author.name}</span>
+                    <span><i class="fa-regular fa-eye"></i> ${a.views.toLocaleString('id-ID')}</span>
+                    <span><i class="fa-regular fa-heart"></i> ${a.likes.toLocaleString('id-ID')}</span>
                 </div>
             </div>
         `;
         list.appendChild(card);
     });
+    initScrollReveal('#panel-savedArticle .reveal');
 }
 
 function renderSavedBooks() {
+    const ids = getSavedIds('kembangin_buku_ids', DEFAULT_BUKU_IDS);
+    const data = allBukuData.filter(b => ids.includes(b.id));
     const list = document.getElementById('savedBookList');
     list.innerHTML = '';
-    savedBooks.forEach(b => {
+
+    if (data.length === 0) {
+        list.innerHTML = '<p style="color:var(--text-400);font-size:.85rem;">Belum ada e-book yang disimpan</p>';
+        return;
+    }
+
+    data.forEach(b => {
         const card = document.createElement('div');
         card.className = 'saved-card reveal';
         card.innerHTML = `
-            <img src="${b.img}" alt="">
+            <img src="../assets/book-asset.jpg" alt="">
             <div class="saved-card-body">
                 <div class="save-icon"><i class="fa-solid fa-bookmark"></i></div>
-                <span class="mini-tag">${b.kategori}</span>
+                <span class="mini-tag">${b.category}</span>
                 <h4>${b.title}</h4>
                 <div class="meta">
                     <span><i class="fa-solid fa-feather-pointed"></i> ${b.author}</span>
@@ -176,7 +206,9 @@ function renderSavedBooks() {
         `;
         list.appendChild(card);
     });
+    initScrollReveal('#panel-savedBook .reveal');
 }
+
 
 /* ================= EVENT YANG SUDAH DIBELI (dummy) ================= */
 const boughtEvents = [
@@ -309,9 +341,23 @@ document.getElementById('saveDraftBtn').addEventListener('click', () => submitAr
 document.getElementById('publishBtn').addEventListener('click', () => submitArticle('publish'));
 
 /* ================= INIT ================= */
+async function initDashboardData() {
+    const [pakar, artikel, buku] = await Promise.all([
+        fetchJSON('../database/consultation.json'),
+        fetchJSON('../database/artikel.json'),
+        fetchJSON('../database/liblary.json')
+    ]);
+    allPakarData = pakar;
+    allArtikelData = artikel;
+    allBukuData = buku;
+
+    renderPakar();
+    renderSavedArticles();
+    renderSavedBooks();
+    renderStats();
+}
+
 renderStats();
-renderPakar();
-renderSavedArticles();
-renderSavedBooks();
+initDashboardData();
 renderMyArticles();
 initScrollReveal('.reveal');
