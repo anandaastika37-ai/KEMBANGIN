@@ -1,3 +1,54 @@
+function animateCount(element, target, duration = 700, suffix = '') {
+    if (!element) return;
+    const end = Number(target) || 0;
+    const start = Number(element.textContent.replace(/[^\d.-]/g, '')) || 0;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        element.textContent = end.toLocaleString('id-ID') + suffix;
+        return;
+    }
+
+    const startedAt = performance.now();
+    function frame(now) {
+        const progress = Math.min((now - startedAt) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        element.textContent = Math.round(start + (end - start) * eased).toLocaleString('id-ID') + suffix;
+        if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+}
+
+function initScrollReveal(selector) {
+    const elements = document.querySelectorAll(selector);
+    if (!('IntersectionObserver' in window)) {
+        elements.forEach(element => element.classList.add('in-view'));
+        return;
+    }
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    elements.forEach(element => observer.observe(element));
+}
+
+function showToast(message, icon = 'fa-solid fa-circle-check') {
+    let toast = document.getElementById('dashboardToast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'dashboardToast';
+        toast.className = 'dashboard-toast';
+        toast.setAttribute('role', 'status');
+        document.body.appendChild(toast);
+    }
+    toast.innerHTML = `<i class="${icon}"></i><span>${escapeHtml(message)}</span>`;
+    toast.classList.add('show');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
 /* ================= SIDEBAR NAVIGATION ================= */
 const sidebarBtns = document.querySelectorAll('.sidebar-btn');
 const panels = document.querySelectorAll('.panel');
@@ -15,11 +66,12 @@ sidebarBtns.forEach(btn => {
 });
 
 /* ================= BERANDA: statistik penggunaan (dummy) ================= */
+// DATA DUMMY PROTOTYPE — nantinya dapat diganti dengan data akun/backend.
 const usageStats = {
     artikel: 18,
     ebook: 4,
     forum: 9,
-    event: 3,
+    event: 2,
     course: 2,
     streak: 6,
     like: 27
@@ -61,9 +113,9 @@ const chartDays = ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'];
 /* aktivitas terbaru (dummy) */
 const recentActivity = [
     { icon: 'fa-solid fa-book', text: 'Membaca artikel <b>Strategi Membangun Bisnis di Era Digital</b>', waktu: '3 jam lalu' },
-    { icon: 'fa-solid fa-comments', text: 'Ikut diskusi di forum <b>Strategi Pemasaran UMKM</b>', waktu: '1 hari lalu' },
-    { icon: 'fa-solid fa-user-tie', text: 'Subscribe ke pakar <b>Dr. Anita Pratiwi</b>', waktu: '2 hari lalu' },
-    { icon: 'fa-regular fa-heart', text: 'Menyukai postingan di Komunitas', waktu: '3 hari lalu' },
+    { icon: 'fa-solid fa-comments', text: 'Mengikuti diskusi forum <b>Strategi Pemasaran UMKM</b>', waktu: '1 hari lalu' },
+    { icon: 'fa-solid fa-user-tie', text: 'Mulai mengikuti pakar <b>Andi Pratama, S.E.</b>', waktu: '2 hari lalu' },
+    { icon: 'fa-regular fa-heart', text: 'Menyukai sebuah unggahan di Komunitas', waktu: '3 hari lalu' },
     { icon: 'fa-solid fa-calendar-check', text: 'Membeli tiket event <b>Workshop Digital Marketing UMKM</b>', waktu: '5 hari lalu' }
 ];
 
@@ -77,18 +129,56 @@ const recentActivity = [
     });
 })();
 
-/* ================= PAKAR YANG DISUBSCRIBE (dummy) ================= */
-const seedPakar = [
-    { nama: 'Dr. Anita Pratiwi', bidang: 'Konsultan Keuangan UMKM' },
-    { nama: 'Budi Santoso, M.M.', bidang: 'Strategi Pemasaran Digital' },
-    { nama: 'Sarah Amelia', bidang: 'Manajemen Operasional Bisnis' }
-];
+/* ================= AMBIL DATA ASLI DARI FILE JSON ================= */
+/* Pakar, artikel, dan e-book sekarang diambil dari database yang sama
+   dengan halaman Konsultasi, Artikel, dan Perpustakaan (bukan data karangan lagi). */
+
+async function fetchJSON(url) {
+    try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Gagal memuat ' + url);
+        return await res.json();
+    } catch (err) {
+        console.error(err);
+        return [];
+    }
+}
+
+/* ID yang dianggap "diikuti/disimpan" oleh pengguna contoh ini */
+const DEFAULT_PAKAR_IDS = [1, 2, 3];
+const DEFAULT_BUKU_IDS = [18, 43, 5];
+const ARTICLE_BOOKMARK_KEY = 'kembangin:bookmarks';
+
+function getSavedIds(key, defaultIds) {
+    try {
+        const saved = localStorage.getItem(key);
+        const parsed = saved ? JSON.parse(saved) : defaultIds;
+        return Array.isArray(parsed) ? parsed : defaultIds;
+    } catch (err) {
+        console.warn('Data simpanan tidak dapat dibaca:', key, err);
+        return defaultIds;
+    }
+}
+
+function getSavedArticleIds() {
+    const saved = localStorage.getItem(ARTICLE_BOOKMARK_KEY);
+    if (saved !== null) return getSavedIds(ARTICLE_BOOKMARK_KEY, []);
+
+    const legacy = localStorage.getItem('kembangin_artikel_ids');
+    const ids = legacy !== null
+        ? getSavedIds('kembangin_artikel_ids', [])
+        : allArtikelData.filter(a => a.status === 'public').slice(0, 3).map(a => a.id);
+    localStorage.setItem(ARTICLE_BOOKMARK_KEY, JSON.stringify(ids));
+    return ids;
+}
+
+let allPakarData = [];
+let allArtikelData = [];
+let allBukuData = [];
 
 function getPakarData() {
-    const saved = localStorage.getItem('kembangin_pakar');
-    if (saved) return JSON.parse(saved);
-    localStorage.setItem('kembangin_pakar', JSON.stringify(seedPakar));
-    return seedPakar;
+    const ids = getSavedIds('kembangin_pakar_ids', DEFAULT_PAKAR_IDS);
+    return allPakarData.filter(p => ids.includes(p.id));
 }
 
 function renderPakar() {
@@ -101,22 +191,23 @@ function renderPakar() {
         return;
     }
 
-    data.forEach((p, i) => {
+    data.forEach((p) => {
         const card = document.createElement('div');
         card.className = 'pakar-card reveal';
         card.innerHTML = `
             <div class="pakar-avatar">${p.nama.charAt(0)}</div>
-            <div class="pakar-info"><h4>${p.nama}</h4><span>${p.bidang}</span></div>
-            <button data-i="${i}">Berhenti Ikuti</button>
+            <div class="pakar-info"><h4>${p.nama}</h4><span>${p.spesialisasi[0]}</span></div>
+            <button data-id="${p.id}">Berhenti Mengikuti</button>
         `;
         pakarList.appendChild(card);
     });
 
     pakarList.querySelectorAll('button').forEach(btn => {
         btn.addEventListener('click', () => {
-            const nama = data[btn.dataset.i].nama;
-            const arr = data.filter((_, idx) => idx != btn.dataset.i);
-            localStorage.setItem('kembangin_pakar', JSON.stringify(arr));
+            const id = Number(btn.dataset.id);
+            const nama = allPakarData.find(p => p.id === id).nama;
+            const ids = getSavedIds('kembangin_pakar_ids', DEFAULT_PAKAR_IDS).filter(x => x !== id);
+            localStorage.setItem('kembangin_pakar_ids', JSON.stringify(ids));
             renderPakar();
             renderStats();
             showToast(`Berhenti mengikuti ${nama}`, 'fa-solid fa-user-xmark');
@@ -125,48 +216,75 @@ function renderPakar() {
     initScrollReveal('#panel-pakar .reveal');
 }
 
-/* ================= ARTIKEL & E-BOOK DISAVE (data asli dari article.html / liblary.json) ================= */
-const savedArticles = [
-    { title: 'Strategi Membangun Bisnis di Era Digital', author: 'Alexander Morgan', views: 2140, likes: 27650, img: '../assets/artike-img.jpg', kategori: 'Bisnis' }
-];
-const savedBooks = [
-    { title: 'The Lean Startup', author: 'Eric Ries', kategori: 'Startup', rating: 4.8, img: '../assets/book-asset.jpg' }
-];
-
 function renderSavedArticles() {
+    const ids = getSavedArticleIds();
+    const data = allArtikelData.filter(a => ids.includes(a.id));
     const list = document.getElementById('savedArticleList');
     list.innerHTML = '';
-    savedArticles.forEach(a => {
+
+    if (data.length === 0) {
+        list.innerHTML = '<p style="color:var(--text-400);font-size:.85rem;">Belum ada artikel yang disimpan</p>';
+        return;
+    }
+
+    data.forEach(a => {
         const card = document.createElement('div');
         card.className = 'saved-card reveal';
+        const detailUrl = `article-detail.html?slug=${encodeURIComponent(a.slug)}`;
+        const author = a.author && a.author.name ? a.author.name : 'Penulis Kembangin';
         card.innerHTML = `
-            <img src="${a.img}" alt="">
+            <a href="${detailUrl}" aria-label="Baca ${escapeHtml(a.title)}"><img src="${escapeHtml(a.image || '../assets/artike-img.jpg')}" alt="" onerror="this.onerror=null;this.src='../assets/artike-img.jpg'"></a>
             <div class="saved-card-body">
                 <div class="save-icon"><i class="fa-solid fa-bookmark"></i></div>
-                <span class="mini-tag">${a.kategori}</span>
-                <h4>${a.title}</h4>
+                <span class="mini-tag">${escapeHtml(a.category || 'Artikel')}</span>
+                <h4><a href="${detailUrl}">${escapeHtml(a.title)}</a></h4>
                 <div class="meta">
-                    <span><i class="fa-solid fa-feather-pointed"></i> ${a.author}</span>
-                    <span><i class="fa-regular fa-eye"></i> ${a.views}</span>
-                    <span><i class="fa-regular fa-heart"></i> ${a.likes}</span>
+                    <span><i class="fa-solid fa-feather-pointed"></i> ${escapeHtml(author)}</span>
+                    <span><i class="fa-regular fa-eye"></i> ${Number(a.views || 0).toLocaleString('id-ID')}</span>
+                    <span><i class="fa-regular fa-heart"></i> ${Number(a.likes || 0).toLocaleString('id-ID')}</span>
                 </div>
+                <button type="button" class="saved-remove-btn" data-id="${a.id}"><i class="fa-solid fa-bookmark"></i> Hapus dari simpanan</button>
             </div>
         `;
         list.appendChild(card);
     });
+    list.querySelectorAll('.saved-remove-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = Number(btn.dataset.id);
+            const remaining = getSavedArticleIds().filter(savedId => savedId !== id);
+            localStorage.setItem(ARTICLE_BOOKMARK_KEY, JSON.stringify(remaining));
+            renderSavedArticles();
+            showToast('Artikel dihapus dari simpanan', 'fa-solid fa-bookmark');
+        });
+    });
+    initScrollReveal('#panel-savedArticle .reveal');
+}
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
 }
 
 function renderSavedBooks() {
+    const ids = getSavedIds('kembangin_buku_ids', DEFAULT_BUKU_IDS);
+    const data = allBukuData.filter(b => ids.includes(b.id));
     const list = document.getElementById('savedBookList');
     list.innerHTML = '';
-    savedBooks.forEach(b => {
+
+    if (data.length === 0) {
+        list.innerHTML = '<p style="color:var(--text-400);font-size:.85rem;">Belum ada e-book yang disimpan</p>';
+        return;
+    }
+
+    data.forEach(b => {
         const card = document.createElement('div');
         card.className = 'saved-card reveal';
         card.innerHTML = `
-            <img src="${b.img}" alt="">
+            <img src="../assets/book-asset.jpg" alt="">
             <div class="saved-card-body">
                 <div class="save-icon"><i class="fa-solid fa-bookmark"></i></div>
-                <span class="mini-tag">${b.kategori}</span>
+                <span class="mini-tag">${b.category}</span>
                 <h4>${b.title}</h4>
                 <div class="meta">
                     <span><i class="fa-solid fa-feather-pointed"></i> ${b.author}</span>
@@ -176,13 +294,15 @@ function renderSavedBooks() {
         `;
         list.appendChild(card);
     });
+    initScrollReveal('#panel-savedBook .reveal');
 }
 
+
 /* ================= EVENT YANG SUDAH DIBELI (dummy) ================= */
+// DATA DUMMY PROTOTYPE — contoh event yang pernah diikuti pengguna.
 const boughtEvents = [
     { nama: 'Workshop Digital Marketing UMKM', tanggal: '28 September 2026', lokasi: 'Online via Zoom', img: '../assets/thum-event-1.jpg' },
-    { nama: 'Seminar Literasi Keuangan Usaha', tanggal: '3 Oktober 2026', lokasi: 'Denpasar', img: '../assets/thum-event-2.jpg' },
-    { nama: 'Bootcamp Strategi Bisnis 2026', tanggal: '12 Oktober 2026', lokasi: 'Online via Zoom', img: '../assets/thum-event-3.jpg' }
+    { nama: 'Seminar Literasi Keuangan Usaha', tanggal: '3 Oktober 2026', lokasi: 'Denpasar', img: '../assets/thum-event-2.jpg' }
 ];
 
 (function renderEvents() {
@@ -309,9 +429,23 @@ document.getElementById('saveDraftBtn').addEventListener('click', () => submitAr
 document.getElementById('publishBtn').addEventListener('click', () => submitArticle('publish'));
 
 /* ================= INIT ================= */
+async function initDashboardData() {
+    const [pakar, artikel, buku] = await Promise.all([
+        fetchJSON('../database/consultation.json'),
+        fetchJSON('../database/artikel.json'),
+        fetchJSON('../database/liblary.json')
+    ]);
+    allPakarData = pakar;
+    allArtikelData = artikel;
+    allBukuData = buku;
+
+    renderPakar();
+    renderSavedArticles();
+    renderSavedBooks();
+    renderStats();
+}
+
 renderStats();
-renderPakar();
-renderSavedArticles();
-renderSavedBooks();
+initDashboardData();
 renderMyArticles();
 initScrollReveal('.reveal');

@@ -9,9 +9,11 @@ main{
 }
 
 .wrap.dcol{
+    width: min(100% - 40px, 1080px);
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 260px minmax(0, 1fr);
-    gap: 24px;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 20px;
     align-items: start;
     padding-bottom: 60px;
 }
@@ -65,7 +67,7 @@ main{
     background: var(--color-panel);
     border: 1px solid var(--color-border);
     border-radius: 18px;
-    padding: 28px;
+    padding: 24px;
     color: var(--color-white);
     display: none;
 }
@@ -73,6 +75,8 @@ main{
 .dash-content .panel.active{
     display: block;
 }
+
+.dash-content{ min-width: 0; }
 
 .dash-content h3{
     font-family: var(--font-montserrat);
@@ -90,9 +94,9 @@ main{
 /* ===== statistik beranda ===== */
 .stat-grid{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 26px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
 }
 
 .stat-card{
@@ -357,6 +361,19 @@ main{
 }
 
 .saved-card img{ width: 100%; height: 140px; object-fit: cover; }
+.saved-card h4 a{ color: inherit; text-decoration: none; }
+.saved-card h4 a:hover{ color: var(--color-accent-light); }
+.saved-remove-btn{
+    margin-top: 14px;
+    padding: 7px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-400);
+    font: 0.74rem var(--font-openSans);
+    cursor: pointer;
+}
+.saved-remove-btn:hover{ color: var(--color-accent-light); border-color: var(--color-accent-border); }
 
 .saved-card-body{ padding: 16px; position: relative; }
 
@@ -515,13 +532,20 @@ main{
 .btn-draft{ background: var(--color-surface-tint); color: var(--color-danger); }
 .btn-publish{ background: var(--color-accent); color: var(--color-white); }
 
+@media (max-width: 1200px){
+    .wrap.dcol{
+        width: min(100% - 32px, 1080px);
+    }
+}
+
 @media (max-width: 1024px){
     .wrap.dcol{ grid-template-columns: 1fr; }
     .dash-sidebar{ position: static; flex-direction: row; overflow-x: auto; }
-    .stat-grid{ grid-template-columns: repeat(2, 1fr); }
+    .stat-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 600px){
+    .wrap.dcol{ width: calc(100% - 24px); }
     .stat-grid{ grid-template-columns: 1fr 1fr; }
     .dash-content .panel{ padding: 18px; }
 }
