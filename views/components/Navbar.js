@@ -124,7 +124,7 @@ class SiteNavbar extends HTMLElement {
                 <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
               </div>
 
-              <a href="#" class="chatbot-btn" aria-label="Chatbot">
+              <a href="#" class="chatbot-btn" aria-label="Chatbot" aria-haspopup="dialog" aria-expanded="false" aria-controls="chatbot-panel">
                 <i class="fa-solid fa-robot" aria-hidden="true"></i>
               </a>
 
@@ -262,7 +262,7 @@ class SiteNavbar extends HTMLElement {
 
                 <li>
 
-                  <a href="#" class="notif-link">
+                  <a href="notification.html" class="notif-link">
                     <span>
                       <i class="fa-solid fa-bell" aria-hidden="true"></i>
                       Notifikasi
@@ -310,6 +310,41 @@ class SiteNavbar extends HTMLElement {
             </div>
 
           </div>
+
+        </div>
+
+
+        <!-- CHATBOT PANEL -->
+        <div class="chatbot-panel" id="chatbot-panel" role="dialog" aria-label="Kemba Assistant" aria-hidden="true">
+
+          <div class="chatbot-header">
+            <div class="chatbot-header-info">
+              <span class="chatbot-avatar"><i class="fa-solid fa-robot" aria-hidden="true"></i></span>
+              <div>
+                <h4>Kemba Assistant</h4>
+                <p><span class="chatbot-status-dot" aria-hidden="true"></span> Online</p>
+              </div>
+            </div>
+            <button type="button" class="chatbot-close" id="chatbot-close" aria-label="Tutup chatbot">
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="chatbot-messages" id="chatbot-messages">
+            <div class="chatbot-message bot">
+              Halo! Selamat datang. Ada yang bisa saya bantu hari ini?
+              <span class="chatbot-time">10:00</span>
+            </div>
+          </div>
+
+          <form class="chatbot-form" id="chatbot-form">
+            <div class="chatbot-input-box">
+              <input type="text" id="chatbot-input" placeholder="Ketik pesan Anda di sini..." autocomplete="off" aria-label="Ketik pesan">
+            </div>
+            <button type="submit" class="chatbot-send" aria-label="Kirim pesan">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            </button>
+          </form>
 
         </div>
 
@@ -392,6 +427,8 @@ class SiteNavbar extends HTMLElement {
     `;
 
     this.highlightActivePage();
+    this.initChatbot();
+    this.applyAuthState();
   }
 
 
@@ -412,6 +449,133 @@ class SiteNavbar extends HTMLElement {
     });
 
   }
+
+
+  initChatbot() {
+
+    const chatbotBtn = this.querySelector(".chatbot-btn");
+    const chatbotPanel = this.querySelector("#chatbot-panel");
+    const chatbotClose = this.querySelector("#chatbot-close");
+    const chatbotForm = this.querySelector("#chatbot-form");
+    const chatbotInput = this.querySelector("#chatbot-input");
+    const chatbotMessages = this.querySelector("#chatbot-messages");
+
+    const openChatbot = () => {
+      // posisikan panel di bawah tombol chatbot, tengahnya sejajar dengan
+      // tengah tombol, dengan jarak yang lebih lega -- apa pun lebar layarnya
+      const btnRect = chatbotBtn.getBoundingClientRect();
+      const gap = 20;
+      const edgeMargin = 12;
+      const panelWidth = chatbotPanel.offsetWidth;
+
+      let left = btnRect.left + (btnRect.width / 2) - (panelWidth / 2);
+      const maxLeft = window.innerWidth - panelWidth - edgeMargin;
+      left = Math.max(edgeMargin, Math.min(left, maxLeft));
+
+      chatbotPanel.style.top = `${btnRect.bottom + gap}px`;
+      chatbotPanel.style.left = `${left}px`;
+      chatbotPanel.style.right = "auto";
+
+      chatbotPanel.classList.add("show");
+      chatbotBtn.setAttribute("aria-expanded", "true");
+      chatbotPanel.setAttribute("aria-hidden", "false");
+      chatbotInput.focus();
+    };
+
+    const closeChatbot = () => {
+      chatbotPanel.classList.remove("show");
+      chatbotBtn.setAttribute("aria-expanded", "false");
+      chatbotPanel.setAttribute("aria-hidden", "true");
+    };
+
+    chatbotBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      chatbotPanel.classList.contains("show") ? closeChatbot() : openChatbot();
+    });
+
+    chatbotClose.addEventListener("click", closeChatbot);
+
+    document.addEventListener("click", (e) => {
+      if (!chatbotPanel.contains(e.target) && !chatbotBtn.contains(e.target)) {
+        closeChatbot();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeChatbot();
+    });
+
+    const appendMessage = (text, sender) => {
+      const time = new Date().toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" });
+
+      const bubble = document.createElement("div");
+      bubble.className = `chatbot-message ${sender}`;
+      bubble.append(text, Object.assign(document.createElement("span"), {
+        className: "chatbot-time",
+        textContent: time
+      }));
+
+      chatbotMessages.appendChild(bubble);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    };
+
+    chatbotForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const text = chatbotInput.value.trim();
+      if (!text) return;
+
+      appendMessage(text, "user");
+      chatbotInput.value = "";
+
+      // balasan dummy — ganti dengan panggilan API chatbot Anda yang sebenarnya
+      setTimeout(() => {
+        appendMessage("Terima kasih, pesan Anda sudah kami terima. Tim kami akan segera membantu.", "bot");
+      }, 600);
+    });
+
+  }
+
+
+  applyAuthState() {
+
+    const loginBtn = this.querySelector(".login-btn");
+    const profileWidget = this.querySelector("#profile-login");
+    const logoutLink = this.querySelector(".logout a");
+
+    const auth = window.KembanginAuth;
+    const loggedIn = !!(auth && auth.isLoggedIn());
+    const user = loggedIn ? auth.getUser() : null;
+
+    if (loginBtn) loginBtn.classList.toggle("is-visible", !loggedIn);
+    if (profileWidget) profileWidget.classList.toggle("is-hidden", !loggedIn);
+
+    if (loggedIn && user) {
+      const name = user.displayName || user.username || "Pengguna";
+      const initial = name.charAt(0).toUpperCase();
+
+      const avatarInitial = this.querySelector(".profile-login > .avatar > h2");
+      const nameLabel = this.querySelector(".profile-login-name");
+      const dropdownInitial = this.querySelector(".username-display .profile");
+      const dropdownName = this.querySelector(".username-display .username h3");
+      const dropdownEmail = this.querySelector(".username-display .username h5");
+
+      if (avatarInitial) avatarInitial.textContent = initial;
+      if (nameLabel) nameLabel.textContent = name;
+      if (dropdownInitial) dropdownInitial.textContent = initial;
+      if (dropdownName) dropdownName.textContent = name;
+      if (dropdownEmail) dropdownEmail.textContent = user.email || "";
+    }
+
+    if (logoutLink) {
+      logoutLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (auth) auth.logout();
+        window.location.href = logoutLink.getAttribute("href");
+      });
+    }
+
+  }
+
 }
 
 customElements.define("site-navbar", SiteNavbar);

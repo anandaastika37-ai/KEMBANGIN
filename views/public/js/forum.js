@@ -357,19 +357,84 @@
     if (reportBtn) { closeAllMenus(); return toast('Laporan terkirim, tim kami akan meninjau'); }
 
     const moreBtn = e.target.closest('[data-more]');
-    if (moreBtn) {
-      const menu = $(`#menu-${moreBtn.dataset.more}`);
-      const willOpen = menu.hidden;
-      closeAllMenus();
-      if (willOpen) {
-        const r = moreBtn.getBoundingClientRect();
-        menu.style.top = Math.round(r.bottom + 6) + 'px';
-        menu.style.right = Math.round(window.innerWidth - r.right) + 'px';
-      }
-      menu.hidden = !willOpen;
-      moreBtn.setAttribute('aria-expanded', String(willOpen));
-      return;
+
+if (moreBtn) {
+    const menu = $(`#menu-${moreBtn.dataset.more}`);
+    const willOpen = menu.hidden;
+
+    closeAllMenus();
+
+    if (willOpen) {
+        // Tampilkan sementara agar ukuran menu bisa dihitung
+        menu.hidden = false;
+
+        const btnRect = moreBtn.getBoundingClientRect();
+        const menuRect = menu.getBoundingClientRect();
+
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        const padding = 8;
+        const gap = 6;
+
+        let left;
+        let top;
+
+        /*
+         * Posisi awal:
+         * menu berada di bawah tombol
+         * dan sisi kanannya sejajar dengan tombol
+         */
+        left = btnRect.right - menuRect.width;
+        top = btnRect.bottom + gap;
+
+        /*
+         * Jika menu keluar dari sisi kanan layar,
+         * geser ke kiri.
+         */
+        if (left + menuRect.width > viewportWidth - padding) {
+            left = viewportWidth - menuRect.width - padding;
+        }
+
+        /*
+         * Jika menu keluar dari sisi kiri layar,
+         * geser kembali ke kanan.
+         */
+        if (left < padding) {
+            left = padding;
+        }
+
+        /*
+         * Jika menu tidak muat di bawah tombol,
+         * tampilkan di atas tombol.
+         */
+        if (top + menuRect.height > viewportHeight - padding) {
+            top = btnRect.top - menuRect.height - gap;
+        }
+
+        /*
+         * Jangan sampai keluar dari bagian atas layar.
+         */
+        if (top < padding) {
+            top = padding;
+        }
+
+        menu.style.left = `${Math.round(left)}px`;
+        menu.style.top = `${Math.round(top)}px`;
+
+        // Jangan gunakan right lagi
+        menu.style.right = 'auto';
+    } else {
+        menu.hidden = true;
     }
+
+    moreBtn.setAttribute(
+        'aria-expanded',
+        String(willOpen)
+    );
+
+    return;
+}
     closeAllMenus();
 
     const clearImg = e.target.closest('[data-r-imgclear]');
@@ -545,3 +610,4 @@
   }
   init();
 })();
+

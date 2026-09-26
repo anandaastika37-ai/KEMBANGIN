@@ -4,38 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bussinese</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/login.css">
 </head>
 <body>
     <section>
         <div class="login-box">
-        <form action="">
-            <h2>Login</h2>
-            <div class="input-box">
-                <span class="icon"><ion-icon name="mail"></ion-icon> </span>
-                <label>Email</label>
-                <input type="Email" placeholder="Email Address" required>
-            </div>
-    
-         <div class="input-box">
-                <span class="icon"><ion-icon name="lock-closed"></ion-icon> </span>
-                <label>Password</label>
-                <input type="Password" placeholder="Enter your password" required>
-             </div>
-        <div class="remember-forgot">
-            <label><input type="checkbox">Remember me</label>
-            <a href="#">Forgot Password?</a>
-        </div>
-        <button type="submit" >Login</button>
-        <div class="register-link">
-            <p> Don't have an account? <a href="#"> Register </a> </p>
-        </div> 
-        </form>
-     </div>
-    </section>
-     <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+            <form action="" id="loginForm">
+                <h2>Login</h2>
 
-    
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <label for="login_username">Username</label>
+                    <input type="text" id="login_username" placeholder="Masukkan username" required autocomplete="username">
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <label for="login_password">Password</label>
+                    <input type="password" id="login_password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <p class="login-error" id="loginError" role="alert" hidden></p>
+
+                <button type="submit" class="btn-submit">Login</button>
+
+                <div class="register-link">
+                    <p>Don't have an account? <a href="../auth/register.html">Register</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+    <script src="../public/js/auth.js"></script>
+    <script src="../public/js/login.js"></script>
 </body>
 </html>

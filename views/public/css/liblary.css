@@ -263,6 +263,7 @@ select:focus-visible {
 
 .select > select {
   height: 42px;
+  min-width: 130px;
   padding: 0 36px 0 16px;
   background-color: var(--color-surface-tint);
   border: 1px solid var(--color-divider);
@@ -495,6 +496,7 @@ select:focus-visible {
 .page-list {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 6px;
   list-style: none;
 }
@@ -772,7 +774,11 @@ select:focus-visible {
   background-color: var(--color-bg-deep);
 }
 
-@media (min-width: 1101px) and (max-width: 1299px), (max-width: 700px) {
+/* Diperbaiki: sebelumnya rentang 701-1100px tidak tercakup breakpoint manapun
+   sehingga diam-diam jatuh ke 5 kolom (mepet) tepat saat sidebar baru saja
+   turun ke bawah. Sekarang satu rule ini menutup seluruh rentang <=1299px
+   tanpa celah, dan override 2 kolom di bawah tetap berlaku untuk layar kecil. */
+@media (max-width: 1299px) {
   .top-hype-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -860,6 +866,16 @@ select:focus-visible {
   }
 }
 
+/* Ditambahkan: sebelumnya rentang 901-1100px tidak tercakup breakpoint manapun
+   (rule 1101-1500px berhenti tepat di 1101, rule <=900px baru mulai di 900),
+   jadi diam-diam jatuh ke 4 kolom lebar penuh tepat saat sidebar baru turun.
+   Rule ini menutup celah itu supaya transisinya mulus. */
+@media (max-width: 1100px) and (min-width: 901px) {
+  .liblary-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 600px) {
   .liblary-page {
     padding: calc(var(--navbar-offset) + 12px) 0 calc(var(--navbar-offset-bottom) + 56px);
@@ -914,6 +930,17 @@ select:focus-visible {
   }
   .pagination {
     justify-content: center;
+  }
+}
+
+/* Ditambahkan: search box sangat sempit dijejalkan dengan tombol "Cari" di
+   layar sekecil ini, jadi tombolnya turun ke bawah dan melebar penuh. */
+@media (max-width: 380px) {
+  .search-liblary {
+    flex-direction: column;
+  }
+  .btn-cari {
+    width: 100%;
   }
 }
 
@@ -1351,12 +1378,35 @@ body.modal-open {
   flex: 0 1 auto;
 }
 
-@media (max-width: 700px) {
+/* Diperbaiki + diperluas: breakpoint lama (700px, lalu 1100px) masih belum
+   cukup — begitu sidebar 340px masih tampil di samping (di atas 1100px),
+   ruang untuk baris search+filter-select cuma sisa lebar-utama dikurangi
+   sidebar, dan itu baru benar-benar lega di atas ~1120px (search min 320px +
+   beberapa select min 130px + gap). 1100px masih terlalu mepet di
+   1100-1150px. Sekarang breakpoint-nya 1250px supaya ada margin aman, dan
+   select-nya ikut melebar rapi saat ditumpuk. */
+@media (max-width: 1250px) {
   .search-filter-row {
     flex-direction: column;
     align-items: stretch;
   }
+
+  /* Ditambahkan: flex-basis 320px di atas dibuat untuk mode baris (lebar
+     minimal). Begitu flex-direction jadi column, basis itu terbaca sebagai
+     TINGGI minimal, bikin .search-field ikut setinggi 320px dan icon
+     search (top:50%) jadi jauh di bawah input. Reset ke auto di sini. */
+  .search-filter-row > .search-liblary {
+    flex: 1 1 auto;
+  }
+
   .search-filter-row > .filter-selects {
+    width: 100%;
+  }
+  .search-filter-row > .filter-selects > .select {
+    flex: 1;
+    min-width: 140px;
+  }
+  .search-filter-row > .filter-selects .select > select {
     width: 100%;
   }
 }
@@ -1648,6 +1698,7 @@ body.modal-open {
     bottom: 84px;
     height: min(70vh, 520px);
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {

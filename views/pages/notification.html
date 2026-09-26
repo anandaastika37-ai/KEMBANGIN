@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notifikasi</title>
+    <script src="../public/js/auth.js"></script>
+    <script src="../public/js/auth-guard.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../public/css/notification.css">
+ <link rel="stylesheet" href="../public/css/component.css" />
+<!-- Catatan: notifikasi.css juga berisi blok :root token. Kalau token itu
+     sudah ada di stylesheet utama Anda (style.css), hapus blok :root dari
+     notifikasi.css agar tidak dobel. -->
+</head>
+<body>
+
+<site-navbar></site-navbar>
+
+<main class="notif-page">
+  <section class="notif-wrap">
+
+    <div class="notif-header">
+      <div>
+        <div class="notif-title-row">
+          <h1>Notifikasi</h1>
+          <span class="notif-count-badge" id="unreadBadge">4 baru</span>
+        </div>
+        <p>Semua update dan aktivitas akun Anda dalam satu tempat</p>
+      </div>
+      <button class="notif-mark-all" id="markAllBtn">Tandai semua dibaca</button>
+    </div>
+
+    <div class="notif-tabs" id="notifTabs">
+      <button class="notif-tab is-active" data-filter="all">Semua</button>
+      <button class="notif-tab" data-filter="unread">Belum Dibaca</button>
+      <button class="notif-tab" data-filter="event">Event</button>
+      <button class="notif-tab" data-filter="diskusi">Diskusi</button>
+      <button class="notif-tab" data-filter="konsultan">Konsultan</button>
+      <button class="notif-tab" data-filter="lainnya">Lainnya</button>
+    </div>
+
+    <div class="notif-group">
+      <h3 class="notif-group-label">HARI INI</h3>
+      <div class="notif-list">
+
+        <article class="notif-item is-unread" data-category="event">
+          <span class="notif-icon notif-icon--event"><i class="fa-solid fa-calendar-days"></i></span>
+          <div class="notif-body">
+            <p class="notif-item-title">Webinar "Strategi Investasi Q4 2026" dimulai 2 jam lagi</p>
+            <p class="notif-item-desc">Sesi bersama analis senior kami. Link akan dikirim 15 menit sebelum mulai.</p>
+            <div class="notif-meta"><span class="notif-tag">Event</span><span class="notif-time">10 menit lalu</span></div>
+          </div>
+          <span class="notif-dot"></span>
+        </article>
+
+        <article class="notif-item is-unread" data-category="diskusi">
+          <span class="notif-avatar"><img src="https://i.pravatar.cc/80?img=47" alt=""></span>
+          <div class="notif-body">
+            <p class="notif-item-title">Rina Wijaya membalas komentar Anda</p>
+            <p class="notif-item-desc">"Setuju, tapi valuasinya perlu dicek ulang di laporan kuartal ini" — di forum Analisis Sektor Perbankan.</p>
+            <div class="notif-meta"><span class="notif-tag">Diskusi</span><span class="notif-time">45 menit lalu</span></div>
+          </div>
+          <span class="notif-dot"></span>
+        </article>
+
+        <article class="notif-item is-unread" data-category="konsultan">
+          <span class="notif-avatar"><img src="https://i.pravatar.cc/80?img=12" alt=""></span>
+          <div class="notif-body">
+            <p class="notif-item-title">Ahmad Fauzi menerima permintaan konsultasi Anda</p>
+            <p class="notif-item-desc">Jadwalkan sesi dengan Konsultan Keuangan ini di waktu yang Anda inginkan.</p>
+            <div class="notif-meta"><span class="notif-tag">Konsultan</span><span class="notif-time">3 jam lalu</span></div>
+          </div>
+          <span class="notif-dot"></span>
+        </article>
+
+        <article class="notif-item" data-category="lainnya">
+          <span class="notif-icon notif-icon--sistem"><i class="fa-solid fa-circle-check"></i></span>
+          <div class="notif-body">
+            <p class="notif-item-title">Verifikasi akun Anda berhasil</p>
+            <p class="notif-item-desc">Akun Anda kini terverifikasi dan mendapat akses penuh ke fitur konsultasi.</p>
+            <div class="notif-meta"><span class="notif-tag">Sistem</span><span class="notif-time">5 jam lalu</span></div>
+          </div>
+          <span class="notif-dot"></span>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="notif-group">
+      <h3 class="notif-group-label">KEMARIN</h3>
+      <div class="notif-list">
+
+        <article class="notif-item" data-category="lainnya">
+          <span class="notif-icon notif-icon--kursus"><i class="fa-solid fa-book-open"></i></span>
+          <div class="notif-body">
+            <p class="notif-item-title">Materi baru di kursus "Fundamental Analysis untuk Pemula"</p>
+            <p class="notif-item-desc">Modul 4: Membaca Laporan Arus Kas kini bisa diakses.</p>
+            <div class="notif-meta"><span class="notif-tag">Kursus</span><span class="notif-time">Kemarin, 14:20</span></div>
+          </div>
+          <span class="notif-dot"></span>
+        </article>
+
+        <article class="notif-item" data-category="lainnya">
+          <span class="notif-icon notif-icon--promo"><i class="fa-solid fa-tag"></i></span>
+          <div class="notif-body">
+            <p class="notif-item-title">Diskon 30% untuk konsultasi 1-on-1 bulan ini</p>
+            <p class="notif-item-desc">Berlaku untuk semua konsultan hingga akhir September.</p>
+            <div class="notif-meta"><span class="notif-tag">Promo</span><span class="notif-time">Kemarin, 09:00</span></div>
+          </div>
+          <span class="notif-dot"></span>
+        </article>
+
+        <article class="notif-item" data-category="event">
+          <span class="notif-icon notif-icon--event"><i class="fa-solid fa-bookmark"></i></span>
+          <div class="notif-body">
+            <p class="notif-item-title">Event yang Anda simpan dimulai besok</p>
+            <p class="notif-item-desc">"Kelas AI untuk Analisis Saham" — jangan lupa siapkan pertanyaan Anda.</p>
+            <div class="notif-meta"><span class="notif-tag">Event</span><span class="notif-time">Kemarin, 08:15</span></div>
+          </div>
+          <span class="notif-dot"></span>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="notif-group">
+      <h3 class="notif-group-label">MINGGU INI</h3>
+      <div class="notif-list">
+
+        <article class="notif-item" data-category="diskusi">
+          <span class="notif-icon notif-icon--diskusi"><i class="fa-solid fa-heart"></i></span>
+          <div class="notif-body">
+            <p class="notif-item-title">5 orang menyukai komentar Anda</p>
+            <p class="notif-item-desc">Di diskusi "Outlook Sektor Energi 2027".</p>
+            <div class="notif-meta"><span class="notif-tag">Diskusi</span><span class="notif-time">3 hari lalu</span></div>
+          </div>
+          <span class="notif-dot"></span>
+        </article>
+
+        <article class="notif-item" data-category="konsultan">
+          <span class="notif-avatar"><img src="https://i.pravatar.cc/80?img=33" alt=""></span>
+          <div class="notif-body">
+            <p class="notif-item-title">Sesi dengan Budi Santoso telah selesai</p>
+            <p class="notif-item-desc">Beri rating dan ulasan untuk membantu pengguna lain.</p>
+            <div class="notif-meta"><span class="notif-tag">Konsultan</span><span class="notif-time">4 hari lalu</span></div>
+          </div>
+          <span class="notif-dot"></span>
+        </article>
+
+        <article class="notif-item" data-category="lainnya">
+          <span class="notif-icon notif-icon--sistem"><i class="fa-solid fa-shield-halved"></i></span>
+          <div class="notif-body">
+            <p class="notif-item-title">Kebijakan privasi platform diperbarui</p>
+            <p class="notif-item-desc">Perubahan berlaku mulai 1 Oktober 2026.</p>
+            <div class="notif-meta"><span class="notif-tag">Sistem</span><span class="notif-time">6 hari lalu</span></div>
+          </div>
+          <span class="notif-dot"></span>
+        </article>
+
+      </div>
+    </div>
+
+    <p class="notif-empty" id="notifEmpty" style="display:none;">Tidak ada notifikasi di kategori ini.</p>
+
+  </section>
+</main>
+
+<site-footer></site-footer>
+
+<script>
+(function () {
+  const tabs = document.querySelectorAll('.notif-tab');
+  const groups = document.querySelectorAll('.notif-group');
+  const emptyMsg = document.getElementById('notifEmpty');
+  const markAllBtn = document.getElementById('markAllBtn');
+  const badge = document.getElementById('unreadBadge');
+
+  function updateBadge() {
+    const unread = document.querySelectorAll('.notif-item.is-unread').length;
+    badge.style.display = unread > 0 ? 'inline-block' : 'none';
+    badge.textContent = unread + ' baru';
+    markAllBtn.disabled = unread === 0;
+  }
+
+  function activeFilter() {
+    return document.querySelector('.notif-tab.is-active').dataset.filter;
+  }
+
+  function applyFilter(filter) {
+    let anyVisible = false;
+    groups.forEach(group => {
+      let groupHasVisible = false;
+      group.querySelectorAll('.notif-item').forEach(item => {
+        const isUnread = item.classList.contains('is-unread');
+        const match = filter === 'all' ? true : filter === 'unread' ? isUnread : item.dataset.category === filter;
+        item.style.display = match ? 'flex' : 'none';
+        if (match) groupHasVisible = true;
+      });
+      group.style.display = groupHasVisible ? 'block' : 'none';
+      if (groupHasVisible) anyVisible = true;
+    });
+    emptyMsg.style.display = anyVisible ? 'none' : 'block';
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+      applyFilter(tab.dataset.filter);
+    });
+  });
+
+  document.querySelectorAll('.notif-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.remove('is-unread');
+      updateBadge();
+      if (activeFilter() === 'unread') applyFilter('unread');
+    });
+  });
+
+  markAllBtn.addEventListener('click', () => {
+    document.querySelectorAll('.notif-item.is-unread').forEach(i => i.classList.remove('is-unread'));
+    updateBadge();
+    if (activeFilter() === 'unread') applyFilter('unread');
+  });
+
+  updateBadge();
+})();
+</script>
+    <script src="../components/Navbar.js"></script>
+    <script src="../components/Footer.js"></script>
+    <script src="../public/js/component.js"></script>
+
+</body>
+</html>

@@ -42,6 +42,39 @@
   margin: 0;
   padding: 0;
 }
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+}
+
+/* Scrollbar gelap: tanpa ini browser memakai scrollbar terang bawaan,
+   yang muncul sebagai garis vertikal putih/terang di tengah tema gelap. */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-hover) var(--color-bg-deep);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-hover);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg-deep);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-accent);
+}
 body {
   font-family: var(--font-plusJakartaSans);
   background: var(--color-bg);
@@ -53,7 +86,9 @@ body {
   font-size: 16px;
 }
 main {
-  margin-top: 65px;
+  /* Jarak atas untuk navbar fixed sekarang ditangani component.css lewat
+     "site-navbar + main", jadi tidak perlu diulang di sini (kalau tetap
+     ada, keduanya akan menumpuk jadi ~128px, bukan ~63px). */
   flex: 1;
 }
 a {
@@ -529,59 +564,104 @@ main .threecol {
   background: none;
 }
 .morewrap {
-  position: relative;
-}
-.more-menu-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 0;
-  background: none;
-  color: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-.more-menu-btn:hover,
-.more-menu-btn[aria-expanded="true"] {
-  color: var(--text-100);
-  background: var(--color-surface-tint);
-}
-/* position:fixed dihitung lewat JS agar tidak terpotong oleh overflow:hidden pada .feed */
-.menu {
-  position: fixed;
-  min-width: 190px;
-  background: var(--color-bg-deep);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-  overflow: hidden;
-  z-index: 80;
-}
-.menu[hidden] {
-  display: none;
-}
-.menu button {
-  width: 100%;
-  padding: 11px 16px;
-  border: 0;
-  background: none;
-  color: var(--text-200);
-  text-align: left;
-  font-size: 0.9rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.menu button:hover {
-  background: var(--color-surface-tint);
+    position: relative;
 }
 
+.act .morewrap {
+    padding: 0;
+    background: none;
+}
+
+.more-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 6px 10px;
+
+    border: 0;
+    border-radius: 999px;
+    background: none;
+
+    color: inherit;
+    font-size: inherit;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+
+.more-menu-btn:hover,
+.more-menu-btn[aria-expanded="true"] {
+    color: var(--text-100);
+    background: var(--color-surface-tint);
+}
+
+/*
+   Menu menggunakan fixed karena .feed memiliki
+   overflow: hidden.
+*/
+.more-menu {
+    position: fixed;
+
+    width: max-content;
+    min-width: 190px;
+    max-width: calc(100vw - 16px);
+
+    padding: 4px 0;
+
+    background: var(--color-bg-deep);
+
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.45);
+
+    overflow: hidden;
+
+    z-index: 9999;
+
+    box-sizing: border-box;
+}
+
+.more-menu[hidden] {
+    display: none;
+}
+
+.more-menu button {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 11px 16px;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--text-200);
+
+    text-align: left;
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+
+.more-menu button:hover {
+    background: var(--color-surface-tint);
+    color: var(--text-100);
+}
 /* Panel balasan */
 .replybox {
   margin-top: 14px;
@@ -1422,100 +1502,230 @@ main .threecol {
 }
 /* Mobile: sembunyikan sidebar kiri, tampilkan FAB + tab bar bawah */
 @media (max-width: 860px) {
-  .wrap {
-    padding: 0 14px;
-  }
-  .nav-links {
-    gap: 14px;
-    font-size: 0.9rem;
-  }
-  .threecol {
-    grid-template-columns: 1fr;
-    padding-top: 14px;
-    padding-bottom: 64px;
-  }
-  .leftnav {
-    display: none;
-  }
-  .bottomnav {
-    display: flex;
-  }
-  .fab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    bottom: 78px;
-  }
-  .feed {
-    border-radius: 14px;
-  }
-  .feedhead {
-    padding: 14px 16px;
-  }
-  .chips {
-    padding: 14px;
-  }
-  .tabs button {
-    font-size: 0.86rem;
-    padding: 13px 6px;
-  }
-  .tagbar {
-    padding: 10px 14px;
-  }
-  .post {
-    padding: 16px;
-  }
-  .tweet-text {
-    font-size: 1rem;
-  }
-  .prow {
-    gap: 12px;
-  }
-  .av {
-    width: 44px;
-    height: 44px;
-  }
-  .act {
+
+    .wrap {
+        padding: 0 14px;
+    }
+
+    .threecol {
+        grid-template-columns: 1fr;
+
+        padding-top: 14px;
+        padding-bottom: 64px;
+    }
+
+    .leftnav {
+        display: none;
+    }
+
+    .bottomnav {
+        display: flex;
+    }
+
+    .fab {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        bottom: 78px;
+    }
+
+    .feed {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 14px;
+    }
+
+    .feedhead {
+        padding: 14px 16px;
+    }
+
+    .chips {
+        padding: 14px;
+    }
+
+    .tabs button {
+        font-size: 0.86rem;
+        padding: 13px 6px;
+    }
+
+    .tagbar {
+        padding: 10px 14px;
+    }
+
+    .post {
+        padding: 16px;
+    }
+
+    .tweet-text {
+        font-size: 1rem;
+    }
+
+    .prow {
+        gap: 12px;
+    }
+
+    /* ==============================
+       ACTION POST
+       ============================== */
+
+    .act {
+        width: 100%;
+        max-width: 100%;
+
+        display: flex;
+        align-items: center;
+
+        gap: 2px;
+
+        margin-top: 12px;
+
+        justify-content: space-between;
+
+        /*
+         * Jangan gunakan overflow:hidden di sini.
+         * Menu titik tiga membutuhkan ruang keluar
+         * dari container.
+         */
+        overflow: visible;
+    }
+
+    .act > * {
+        min-width: 0;
+        flex-shrink: 1;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 6px 7px;
+
+        gap: 4px;
+
+        font-size: 0.8rem;
+    }
+
+    .act .flex-sp {
+        display: none;
+    }
+
+    .morewrap {
+        flex-shrink: 0;
+    }
+
+    .more-menu-btn {
+        flex-shrink: 0;
+
+        width: 34px;
+        height: 34px;
+
+        padding: 0;
+    }
+
+    /* ==============================
+       MORE MENU MOBILE
+       ============================== */
+
+    .more-menu {
+        min-width: 170px;
+        max-width: calc(100vw - 16px);
+    }
+
+    .more-menu button {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+
+    /* ==============================
+       COMPOSER
+       ============================== */
+
+    .c2row {
+        flex-direction: column;
+    }
+
+    .c2row input.uname {
+        width: 100%;
+    }
+
+    /* ==============================
+       DIALOG
+       ============================== */
+
+    .dialog-act .btn {
+        flex: 1;
+    }
+
+    /* ==============================
+       EXPLORE
+       ============================== */
+
+    .explore-search,
+    .subhead,
+    #view-explore .chips {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* ==============================
+       NOTIFICATION
+       ============================== */
+
+    .notif-item {
+        padding: 14px 16px;
+    }
+
+    /* ==============================
+       MESSAGE
+       ============================== */
+
+    .msgview {
+        min-height: 0;
+    }
+
+    .msg-list {
+        width: 100%;
+
+        border-right: 0;
+
+        max-height: none;
+    }
+
+    .msg-chat {
+        display: none;
+    }
+
+    .msgview.chat-open .msg-list {
+        display: none;
+    }
+
+    .msgview.chat-open .msg-chat {
+        display: flex;
+    }
+
+    .msg-back {
+        display: inline-flex;
+    }
+}
+
+.act > * {
+    min-width: 0;
+    flex-shrink: 1;
+
+    padding: 6px 7px;
     gap: 4px;
-  }
-  .c2row {
-    flex-direction: column;
-  }
-  .c2row input.uname {
-    width: 100%;
-  }
-  .dialog-act .btn {
-    flex: 1;
-  }
-  .explore-search,
-  .subhead,
-  #view-explore .chips {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-  .notif-item {
-    padding: 14px 16px;
-  }
-  .msgview {
-    min-height: 0;
-  }
-  .msg-list {
-    width: 100%;
-    border-right: 0;
-    max-height: none;
-  }
-  .msg-chat {
+
+    font-size: 0.8rem;
+}
+
+.act .flex-sp {
     display: none;
-  }
-  .msgview.chat-open .msg-list {
-    display: none;
-  }
-  .msgview.chat-open .msg-chat {
-    display: flex;
-  }
-  .msg-back {
-    display: inline-flex;
-  }
+}
+
+.more-menu-btn {
+    flex-shrink: 0;
+    padding: 6px 7px;
+}
 }
 .av {
   flex: none;
@@ -1536,4 +1746,48 @@ main .threecol {
     transition: none !important;
     animation: none !important;
   }
+}
+@media (max-width: 480px) {
+
+    .wrap {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .feed {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 12px;
+    }
+
+    .post {
+        padding: 14px 12px;
+    }
+
+    .prow {
+        gap: 9px;
+    }
+
+    .act {
+        gap: 0;
+    }
+
+    .act > * {
+        padding: 6px 5px;
+        font-size: 0.75rem;
+    }
+
+    .act > * i {
+        font-size: 0.8rem;
+    }
+
+    .more-menu {
+        min-width: 160px;
+        max-width: calc(100vw - 16px);
+    }
+
+    .more-menu button {
+        padding: 10px 12px;
+        font-size: 0.82rem;
+    }
 }

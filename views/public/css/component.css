@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 *{
     margin: 0;
@@ -22,6 +22,15 @@
     height: auto;
     z-index: 10;
     width: 100%;
+}
+
+/* .container di atas position:fixed -> keluar dari alur dokumen, jadi
+   tanpa jarak ini navbar akan menutupi bagian atas konten setiap halaman.
+   Diberi jarak di sini (bukan di tiap file CSS halaman) supaya otomatis
+   berlaku di semua halaman yang memakai <site-navbar>, dan tidak menambah
+   jarak pada halaman yang tidak memakainya (mis. halaman auth). */
+site-navbar + main {
+    padding-top: 63px;
 }
 
 /* navbar */
@@ -300,6 +309,20 @@
     font-weight: 500;
 }
 
+/* Ditambahkan: kontrol tampil/sembunyi tombol Masuk vs widget profil
+   berdasarkan status login (lihat auth.js + Navbar.js#applyAuthState).
+   Sengaja pakai class terpisah (bukan langsung ubah .login-btn/.profile-login)
+   supaya tidak bentrok dengan aturan display bawaan/responsive di atas. */
+.login-btn.is-visible{
+    display: inline-flex;
+    align-items: center;
+}
+
+.profile-login.is-hidden{
+    display: none;
+}
+
+
 /* navbar end */
 
 /* dropdown */
@@ -307,7 +330,7 @@
     position: absolute;
     top: 75px;
     right: 30px;
-    width: 23%;
+    width: 20%;
     display: flex;
     align-items: start;
     justify-content: space-between;
@@ -538,7 +561,7 @@
     position: absolute;
     pointer-events: none;
     top: 70px;
-    right: 610px;
+    right: 580px;
     border-radius: 6px;
     background-color: #0d0d11;
     display: flex;
@@ -603,6 +626,196 @@
 }
 /* dropdown search end*/
 
+/* chatbot panel — posisi top/right diisi lewat JS (initChatbot di
+   site-navbar.js) supaya selalu tepat di bawah tombol chatbot-btn,
+   berapa pun lebar layarnya */
+.chatbot-panel{
+    position: fixed;
+    z-index: 30;
+    width: 340px;
+    height: 460px;
+    display: flex;
+    flex-direction: column;
+    background-color: #0d0d11;
+    border: #242424 1px solid;
+    border-radius: 10px;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity .2s ease-in-out, transform .2s ease-in-out;
+    overflow: hidden;
+}
+
+.chatbot-panel.show{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.chatbot-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background-color: #020218;
+    border-bottom: #242424 1px solid;
+}
+
+.chatbot-header-info{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chatbot-avatar{
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right , rgb(51, 51, 238) , rgb(14, 1, 128));
+    color: white;
+    font-size: .8rem;
+}
+
+.chatbot-header-info > div > h4{
+    font-family: var(--font-montserrat);
+    font-size: .85rem;
+    font-weight: 600;
+    color: white;
+}
+
+.chatbot-header-info > div > p{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-openSans);
+    font-size: .7rem;
+    color: #8bc9ff;
+}
+
+.chatbot-status-dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #00ff88;
+    box-shadow: 0 0 6px #00ff88;
+}
+
+.chatbot-close{
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    color: #d4d4d4;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .2s ease;
+}
+.chatbot-close:hover{
+    background-color: #2c2e30;
+}
+
+.chatbot-messages{
+    flex: 1;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+}
+.chatbot-messages::-webkit-scrollbar{ width: 5px; }
+.chatbot-messages::-webkit-scrollbar-track{ background: transparent; }
+.chatbot-messages::-webkit-scrollbar-thumb{ background: #2c2e30; border-radius: 10px; }
+
+.chatbot-message{
+    max-width: 80%;
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-family: var(--font-openSans);
+    font-size: .8rem;
+    line-height: 1.45;
+    color: #e0e0e0;
+}
+.chatbot-message.bot{
+    align-self: flex-start;
+    background-color: #1b1c1d;
+    border: #242424 1px solid;
+    border-top-left-radius: 2px;
+}
+.chatbot-message.user{
+    align-self: flex-end;
+    background: linear-gradient(to right , rgb(51, 51, 238) , rgb(14, 1, 128));
+    color: white;
+    border-top-right-radius: 2px;
+}
+.chatbot-time{
+    display: block;
+    margin-top: 4px;
+    font-size: .62rem;
+    opacity: .6;
+    text-align: right;
+}
+
+.chatbot-form{
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    background-color: #020218;
+    border-top: #242424 1px solid;
+}
+
+.chatbot-input-box{
+    flex: 1;
+}
+.chatbot-input-box > input{
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    border-radius: 6px;
+    border: 1px solid #424242;
+    background-color: #242527;
+    color: #fffcfc;
+    font-family: var(--font-openSans);
+    font-size: .8rem;
+    outline: none;
+    transition: border-color .2s ease, background-color .2s ease;
+}
+.chatbot-input-box > input::placeholder{
+    color: #8a8a8a;
+}
+.chatbot-input-box > input:focus{
+    border-color: #797878;
+    background-color: #2f3032;
+}
+
+.chatbot-send{
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: none;
+    background: linear-gradient(to right , rgb(51, 51, 238) , rgb(14, 1, 128));
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .85rem;
+    transition: opacity .2s ease;
+}
+.chatbot-send:hover{
+    opacity: .85;
+}
+/* chatbot panel end */
+
 /* keyboard accessibility */
 .desktop-navigation > li > a:focus-visible,
 .mobile-navigation > li > a:focus-visible,
@@ -618,7 +831,10 @@
 .menu:focus-visible,
 .mobile-search-btn:focus-visible,
 .img-logo:focus-visible,
-.dropdown-search > ul > li > a:focus-visible{
+.dropdown-search > ul > li > a:focus-visible,
+.chatbot-close:focus-visible,
+.chatbot-send:focus-visible,
+.chatbot-input-box > input:focus-visible{
     outline: 2px solid #4ea1ff;
     outline-offset: 2px;
     border-radius: 5px;
@@ -626,8 +842,11 @@
 
 /* responsive */
 
-/* tablet & di bawahnya */
-@media (max-width: 900px) {
+/* tablet & di bawahnya. Catatan: .right-side (45%) berisi navbar-search
+   (20%) + navbar-navigation (40%) + tombol chatbot + profile-login + gap
+   -- baru benar-benar muat tanpa berdesakan di atas ±1460px, jadi
+   breakpoint ini sengaja dilebarkan dari 900px ke 1450px. */
+@media (max-width: 1450px) {
     .navbar-search{
         display: none;
     }
@@ -756,6 +975,13 @@
     .dropdown-container{
         right: 10px;
         top: 65px;
+    }
+
+    .chatbot-panel{
+        left: 12px !important;
+        right: 12px !important;
+        width: auto;
+        height: 70vh;
     }
 }
 
@@ -1008,7 +1234,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .footer-social > li > a,
-  .newsletter-form > button {
+  .newsletter-form > button,
+  .chatbot-panel {
     transition-duration: 0.01ms !important;
   }
   .footer-social > li > a:hover {

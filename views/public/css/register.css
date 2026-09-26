@@ -1,61 +1,124 @@
-*{
+* {
     font-family: "Arial", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-section{
+
+section {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 40px 20px;
     background: linear-gradient(to top, #01030f, #071d50);
 }
-.container{
-   width: 100%;
+
+.container {
+    width: 100%;
     max-width: 650px;
-    background: rgba(255, 255, 255, 0.05); /* Latar transparan */
-    backdrop-filter: blur(15px); /* Efek blur/kaca */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 30px 30px;
+    padding: 40px 35px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
-h2{
-    font-size: 2.5rem;
+h2 {
+    font-size: 2.2rem;
     text-align: center;
     color: #dddddd;
-    font-family: "Arial", sans-serif;
+    margin-bottom: 30px;
 }
 
-label{
-    font-size: 1rem;
-    color: #dddddd;
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 20px;
 }
-.input-box{
+
+.input-box {
     position: relative;
-    width : 100%;
+    width: 100%;
     margin: 10px 0;
 }
 
-.input-box input{
-    width: 100%;
-    height: 25px;
-    font-size: 1rem;
+label {
+    display: block;
+    font-size: 0.85rem;
+    color: #aeb7bb;
+    margin-bottom: 6px;
 }
 
-button{
+.input-box input,
+.input-box select {
+    width: 100%;
+    height: 45px;
+    padding: 0 15px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #fbfdfd;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.input-box input::placeholder {
+    color: #8b93a7;
+}
+
+.input-box input:focus,
+.input-box select:focus {
+    border-color: #1a8ad4;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.input-box select {
+    cursor: pointer;
+}
+
+.input-box select option {
+    background: #071026;
+    color: #fbfdfd;
+}
+
+.btn-submit {
     display: block;
-    margin: 20px auto 0;
-    text-align: center;
-    width: 50%;
-    height: 40px;
+    margin: 25px auto 0;
+    width: 60%;
+    height: 45px;
     background-color: #1a8ad4;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #1577b8;
+}
+
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 30px 20px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .btn-submit {
+        width: 100%;
+    }
 }
